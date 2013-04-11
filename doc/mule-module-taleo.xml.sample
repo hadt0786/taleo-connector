@@ -1,0 +1,578 @@
+<!-- BEGIN_INCLUDE(taleo:create-account) -->
+    <taleo:create-account>
+        <taleo:account ref="#[groovy: 
+            org.mule.modules.taleo.model.AccountBean account = new org.mule.modules.taleo.model.AccountBean();
+            account.setStatus('Hired');
+            account.setAddress('foo');
+            account.SetName('Brazil Aero');
+            return account;
+            ]"/>
+    </taleo:create-account>
+<!-- END_INCLUDE(taleo:create-account) -->
+<!-- BEGIN_INCLUDE(taleo:delete-account) -->
+    <taleo:delete-account accountId="1"/>
+<!-- END_INCLUDE(taleo:delete-account) -->
+<!-- BEGIN_INCLUDE(taleo:get-account-by-id) -->
+    <taleo:get-account-by-id accountId="1"/>
+<!-- END_INCLUDE(taleo:get-account-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-account-history) -->
+    <taleo:get-account-history accountId="1"/>
+<!-- END_INCLUDE(taleo:get-account-history) -->
+<!-- BEGIN_INCLUDE(taleo:search-account) -->
+    <taleo:search-account/>
+<!-- END_INCLUDE(taleo:search-account) -->
+<!-- BEGIN_INCLUDE(taleo:update-account) -->
+    <taleo:update-account>
+        <taleo:account ref="#[groovy: 
+            org.mule.modules.taleo.model.AccountBean account = new org.mule.modules.taleo.model.AccountBean();
+            account.setId(1);
+            account.setStatus('NewStatus');
+            account.setAddress('foo');
+            account.SetName('NewName');
+            return account;
+            ]"/>
+    </taleo:update-account>
+<!-- END_INCLUDE(taleo:update-account) -->
+<!-- BEGIN_INCLUDE(taleo:create-attachment) -->
+    <taleo:create-attachment
+            candidateId="1"
+            attachment="test1.docx"
+            attachmentName="test1.docx"
+            contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+<!-- END_INCLUDE(taleo:create-attachment) -->
+<!-- BEGIN_INCLUDE(taleo:create-entity-attachment) -->
+    <taleo:create-entity-attachment entityType="REQU" entityId="69" description="pdfAttachment"
+            fileName="new.pdf" contentType="application/pdf">
+        <taleo:data ref="#[payload]"/>
+    </taleo:create-entity-attachment>
+<!-- END_INCLUDE(taleo:create-entity-attachment) -->
+<!-- BEGIN_INCLUDE(taleo:get-attachment) -->
+    <taleo:get-attachment attachmentId="1"/>
+<!-- END_INCLUDE(taleo:get-attachment) -->
+<!-- BEGIN_INCLUDE(taleo:delete-attachment) -->
+    <taleo:delete-attachment attachmentId="1"/>
+<!-- END_INCLUDE(taleo:delete-attachment) -->
+<!-- BEGIN_INCLUDE(taleo:get-attachment-data) -->
+    <taleo:get-attachment-data attachmentId="1"/>
+<!-- END_INCLUDE(taleo:get-attachment-data) -->
+<!-- BEGIN_INCLUDE(taleo:get-attachments) -->
+    <taleo:get-attachments candidateId="1"/>
+<!-- END_INCLUDE(taleo:get-attachments) -->
+<!-- BEGIN_INCLUDE(taleo:get-entity-attachments) -->
+    <taleo:get-entity-attachments entityType="CAND" entityId="48"/>
+<!-- END_INCLUDE(taleo:get-entity-attachments) -->
+<!-- BEGIN_INCLUDE(taleo:update-attachment) -->
+    <taleo:update-attachment attachmentId="1" description="test.docx" attachmentName="test.docx" contentType="application/vnd.openxmlformats-
+officedocument.wordprocessingml.document"/>
+<!-- END_INCLUDE(taleo:update-attachment) -->
+<!-- BEGIN_INCLUDE(taleo:create-background-check) -->
+    <taleo:create-background-check>
+        <taleo:background-check candidateId="48" checkerEmail="sara@intellius.com" checkerName="Intellius Background" checkerPhone="630-345-6978" comments="Package 1 background check process"/>
+    </taleo:create-background-check>
+<!-- END_INCLUDE(taleo:create-background-check) -->
+<!-- BEGIN_INCLUDE(taleo:delete-background-check) -->
+    <taleo:delete-background-check backgroundCheckId="1"/>
+<!-- END_INCLUDE(taleo:delete-background-check) -->
+<!-- BEGIN_INCLUDE(taleo:get-background-check-by-id) -->
+    <taleo:get-background-check-by-id backgroundCheckId="1"/>
+<!-- END_INCLUDE(taleo:get-background-check-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-background-checks-by-candidate) -->
+    <taleo:get-background-checks-by-candidate candidateId="1"/>
+<!-- END_INCLUDE(taleo:get-background-checks-by-candidate) -->
+<!-- BEGIN_INCLUDE(taleo:update-background-check) -->
+    <taleo:update-background-check>
+        <taleo:background-check candidateId="48" checkerEmail="sara@intellius.com" checkerName="New name" checkerPhone="630-345-6978" comments="Package 1 background check process"/>
+    </taleo:update-background-check>
+<!-- END_INCLUDE(taleo:update-background-check) -->
+<!-- BEGIN_INCLUDE(taleo:create-candidate) -->
+    <taleo:create-candidate>
+        <taleo:candidate email="scary@talent.com" firstName="Jessica" lastName="Karim"/>
+    </taleo:create-candidate>
+<!-- END_INCLUDE(taleo:create-candidate) -->
+<!-- BEGIN_INCLUDE(taleo:delete-candidate) -->
+    <taleo:delete-candidate candidateId="1"/>
+<!-- END_INCLUDE(taleo:delete-candidate) -->
+<!-- BEGIN_INCLUDE(taleo:get-candidate-by-id) -->
+    <taleo:get-candidate-by-id candidateId="1"/>
+<!-- END_INCLUDE(taleo:get-candidate-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-candidate-details-by-id) -->
+    <taleo:get-candidate-details-by-id candidateId="1"
+            includeRequisitions="true"
+            includeInterviews="false"
+            includeReferences="false"
+            includeHistory="false"
+            includeAttachments="false"
+            includeOffers="true"/>
+<!-- END_INCLUDE(taleo:get-candidate-details-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-candidate-history) -->
+    <taleo:get-candidate-history candidateId="1"/>
+<!-- END_INCLUDE(taleo:get-candidate-history) -->
+<!-- BEGIN_INCLUDE(taleo:get-candidates-by-requisition) -->
+    <taleo:get-candidates-by-requisition requisitionId="1"/>
+<!-- END_INCLUDE(taleo:get-candidates-by-requisition) -->
+<!-- BEGIN_INCLUDE(taleo:get-candidate-work-history) -->
+    <taleo:get-candidate-work-history candidateId="1"/>
+<!-- END_INCLUDE(taleo:get-candidate-work-history) -->
+<!-- BEGIN_INCLUDE(taleo:get-cand-req-status) -->
+    <taleo:get-cand-req-status candidateId="1" requisitionId="1"/>
+<!-- END_INCLUDE(taleo:get-cand-req-status) -->
+<!-- BEGIN_INCLUDE(taleo:get-requisitions) -->
+    <taleo:get-requisitions candidateId="12"/>
+<!-- END_INCLUDE(taleo:get-requisitions) -->
+<!-- BEGIN_INCLUDE(taleo:search-candidate) -->
+    <taleo:search-candidate/>
+<!-- END_INCLUDE(taleo:search-candidate) -->
+<!-- BEGIN_INCLUDE(taleo:submit-candidate) -->
+    <taleo:submit-candidate candidateId="1">
+        <taleo:requisition-ids/>
+    </taleo:submit-candidate>
+<!-- END_INCLUDE(taleo:submit-candidate) -->
+<!-- BEGIN_INCLUDE(taleo:remove-candidate) -->
+    <taleo:remove-candidate candidateId="1" requisitionId="2"/>
+<!-- END_INCLUDE(taleo:remove-candidate) -->
+<!-- BEGIN_INCLUDE(taleo:update-candidate) -->
+    <taleo:update-candidate>
+        <taleo:candidate email="scary@talent.com" firstName="Jessica" lastName="Karim"/>
+    </taleo:update-candidate>
+<!-- END_INCLUDE(taleo:update-candidate) -->
+<!-- BEGIN_INCLUDE(taleo:upsert-candidate-to-requisitions) -->
+    <taleo:upsert-candidate-to-requisitions
+            candidateId="2" statusId="14"
+            reasonId="478" doRanking="false">
+            <taleo:requisition-ids>
+                <taleo:array>
+                    <taleo:item>
+                        <taleo:item>12</taleo:item>
+                        <taleo:item>25</taleo:item>
+                    </taleo:item>
+                </taleo:array>
+            </taleo:requisition-ids>
+    </taleo:upsert-candidate-to-requisitions>
+<!-- END_INCLUDE(taleo:upsert-candidate-to-requisitions) -->
+<!-- BEGIN_INCLUDE(taleo:create-contact) -->
+    <taleo:create-contact>
+        <taleo:contact accountId="2" email="ddarrah@taleo.com" firstName="Don" lastName="Darrah"/>
+    </taleo:create-contact>
+<!-- END_INCLUDE(taleo:create-contact) -->
+<!-- BEGIN_INCLUDE(taleo:delete-contact) -->
+    <taleo:delete-contact contactId="1"/>
+<!-- END_INCLUDE(taleo:delete-contact) -->
+<!-- BEGIN_INCLUDE(taleo:get-contact-by-id) -->
+    <taleo:get-contact-by-id contactId="1"/>
+<!-- END_INCLUDE(taleo:get-contact-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-contact-history) -->
+    <taleo:get-contact-history contactId="2"/>
+<!-- END_INCLUDE(taleo:get-contact-history) -->
+<!-- BEGIN_INCLUDE(taleo:search-contact) -->
+    <taleo:search-contact/>
+<!-- END_INCLUDE(taleo:search-contact) -->
+<!-- BEGIN_INCLUDE(taleo:update-contact) -->
+    <taleo:update-contact/>
+<!-- END_INCLUDE(taleo:update-contact) -->
+<!-- BEGIN_INCLUDE(taleo:create-contact-log) -->
+    <taleo:create-contact-log>
+        <taleo:contact-log creator="skarim" entityId="48" entityType="CAND" subject="Phone Screen" typeNo="2"/>
+    </taleo:create-contact-log>
+<!-- END_INCLUDE(taleo:create-contact-log) -->
+<!-- BEGIN_INCLUDE(taleo:delete-contact-log) -->
+    <taleo:delete-contact-log contactLogId="1"/>
+<!-- END_INCLUDE(taleo:delete-contact-log) -->
+<!-- BEGIN_INCLUDE(taleo:get-contact-log-by-id) -->
+    <taleo:get-contact-log-by-id contactLogId="1"/>
+<!-- END_INCLUDE(taleo:get-contact-log-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-contact-logs-by-entity) -->
+    <taleo:get-contact-logs-by-entity entityType="REQ" entityId="1"/>
+<!-- END_INCLUDE(taleo:get-contact-logs-by-entity) -->
+<!-- BEGIN_INCLUDE(taleo:update-contact-log) -->
+    <taleo:update-contact-log/>
+<!-- END_INCLUDE(taleo:update-contact-log) -->
+<!-- BEGIN_INCLUDE(taleo:create-department) -->
+    <taleo:create-department>
+        <taleo:department departmentName="Sales Operations">
+            <taleo:associated-users>
+                <taleo:item>
+                    <taleo:item>2</taleo:item>
+                    <taleo:item>5</taleo:item>
+                    <taleo:item>19</taleo:item>
+                </taleo:item>
+            </taleo:associated-users>
+            <taleo:default-approvers>
+                <taleo:item>
+                    <taleo:item>19</taleo:item>
+                    <taleo:item>18</taleo:item>
+                </taleo:item>
+            </taleo:default-approvers>
+        </taleo:department>
+    </taleo:create-department>
+<!-- END_INCLUDE(taleo:create-department) -->
+<!-- BEGIN_INCLUDE(taleo:delete-department) -->
+    <taleo:delete-department departmentId="1"/>
+<!-- END_INCLUDE(taleo:delete-department) -->
+<!-- BEGIN_INCLUDE(taleo:get-department-by-id) -->
+    <taleo:get-department-by-id departmentId="1"/>
+<!-- END_INCLUDE(taleo:get-department-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-department-by-name) -->
+    <taleo:get-department-by-name departmentName="depname"/>
+<!-- END_INCLUDE(taleo:get-department-by-name) -->
+<!-- BEGIN_INCLUDE(taleo:get-departments) -->
+    <taleo:get-departments/>
+<!-- END_INCLUDE(taleo:get-departments) -->
+<!-- BEGIN_INCLUDE(taleo:upsert-department) -->
+    <taleo:upsert-department/>
+<!-- END_INCLUDE(taleo:upsert-department) -->
+<!-- BEGIN_INCLUDE(taleo:create-email-log) -->
+    <taleo:create-email-log email="foo@foo.com" subject="This is the tittle" body="this is the content" date-ref="#[payload]"/>
+<!-- END_INCLUDE(taleo:create-email-log) -->
+<!-- BEGIN_INCLUDE(taleo:create-email-sent-log) -->
+    <taleo:create-email-sent-log email="foo@foo.com"
+    subject="My subject"
+    body="Content of message"
+    date-ref="#[payload]"/>
+<!-- END_INCLUDE(taleo:create-email-sent-log) -->
+<!-- BEGIN_INCLUDE(taleo:create-employee) -->
+    <taleo:create-employee>
+        <taleo:employee employeeNumber="2" firstName="Paul" middleInitial="M" lastName="Jones" ewsLogin="sand" ewsPassword="sand"/>
+    </taleo:create-employee>
+<!-- END_INCLUDE(taleo:create-employee) -->
+<!-- BEGIN_INCLUDE(taleo:delete-employee) -->
+    <taleo:delete-employee employeeId="1"/>
+<!-- END_INCLUDE(taleo:delete-employee) -->
+<!-- BEGIN_INCLUDE(taleo:delete-employee-by-number) -->
+    <taleo:delete-employee-by-number employeeNumber="123XYZ"/>
+<!-- END_INCLUDE(taleo:delete-employee-by-number) -->
+<!-- BEGIN_INCLUDE(taleo:get-employee-by-id) -->
+    <taleo:get-employee-by-id employeeId="1"/>
+<!-- END_INCLUDE(taleo:get-employee-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-employee-by-number) -->
+    <taleo:get-employee-by-number employeeNumber="123XYZ"/>
+<!-- END_INCLUDE(taleo:get-employee-by-number) -->
+<!-- BEGIN_INCLUDE(taleo:search-employee) -->
+    <taleo:search-employee/>
+<!-- END_INCLUDE(taleo:search-employee) -->
+<!-- BEGIN_INCLUDE(taleo:update-employee) -->
+    <taleo:update-employee/>
+<!-- END_INCLUDE(taleo:update-employee) -->
+<!-- BEGIN_INCLUDE(taleo:upsert-employee) -->
+    <taleo:upsert-employee employeeNumber="XXYYZZ">
+        <taleo:employee employeeNumber="XXYYZZ"/>
+    </taleo:upsert-employee>
+<!-- END_INCLUDE(taleo:upsert-employee) -->
+<!-- BEGIN_INCLUDE(taleo:create-event) -->
+    <taleo:create-event>
+            <taleo:event creator="skarim" description="Face to face interview" duration="50000" entityId="48" entityType="CAND" isPrivate="true" startDate-ref="#[payload]">
+                <taleo:participants>
+                    <taleo:item>
+                        <taleo:item eventType="CLDEV" personId="7" personType="WORK"/>
+                    </taleo:item>
+                </taleo:participants>
+            </taleo:event>
+        </taleo:create-event>
+<!-- END_INCLUDE(taleo:create-event) -->
+<!-- BEGIN_INCLUDE(taleo:delete-event) -->
+    <taleo:delete-event eventId="1"/>
+<!-- END_INCLUDE(taleo:delete-event) -->
+<!-- BEGIN_INCLUDE(taleo:get-event-by-id) -->
+    <taleo:get-event-by-id eventId="1"/>
+<!-- END_INCLUDE(taleo:get-event-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-event-by-entity) -->
+    <taleo:get-event-by-entity entityType="CAND" entityId="48"/>
+<!-- END_INCLUDE(taleo:get-event-by-entity) -->
+<!-- BEGIN_INCLUDE(taleo:get-public-events) -->
+    <taleo:get-public-events startDate-ref="" endDate-ref=""/>
+<!-- END_INCLUDE(taleo:get-public-events) -->
+<!-- BEGIN_INCLUDE(taleo:update-event) -->
+    <taleo:update-event/>
+<!-- END_INCLUDE(taleo:update-event) -->
+<!-- BEGIN_INCLUDE(taleo:create-interview) -->
+    <taleo:create-interview>
+        <taleo:interview candidateId="48" comments="Direct Report" creator="skarim" interviewRoom="Whistler" interviewType="1st Interview"/>
+    </taleo:create-interview>
+<!-- END_INCLUDE(taleo:create-interview) -->
+<!-- BEGIN_INCLUDE(taleo:delete-interview) -->
+    <taleo:delete-interview interviewId="1"/>
+<!-- END_INCLUDE(taleo:delete-interview) -->
+<!-- BEGIN_INCLUDE(taleo:get-interviews-by-candidate) -->
+    <taleo:get-interviews-by-candidate candidateId="1"/>
+<!-- END_INCLUDE(taleo:get-interviews-by-candidate) -->
+<!-- BEGIN_INCLUDE(taleo:get-interview-by-id) -->
+    <taleo:get-interview-by-id interviewId="1"/>
+<!-- END_INCLUDE(taleo:get-interview-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:update-interview) -->
+    <taleo:update-interview/>
+<!-- END_INCLUDE(taleo:update-interview) -->
+<!-- BEGIN_INCLUDE(taleo:create-link) -->
+    <taleo:create-link entityType1="ACCT"
+             entityId1="1"
+             entityType2="REQU"
+             entityId2="12"/>
+<!-- END_INCLUDE(taleo:create-link) -->
+<!-- BEGIN_INCLUDE(taleo:remove-link) -->
+    <taleo:remove-link entityType1="ACCT"
+             entityId1="1"
+             entityType2="REQU"
+             entityId2="12"/>
+<!-- END_INCLUDE(taleo:remove-link) -->
+<!-- BEGIN_INCLUDE(taleo:create-location) -->
+    <taleo:create-location>
+        <taleo:location directions="Take the 101 until you find us" locationName="Los Angeles" regionId="3" timeZone="America/Los_Angeles">
+            <taleo:interview-rooms>
+                <taleo:item >
+                    <taleo:item>Mount Rainier</taleo:item>
+                </taleo:item>
+            </taleo:interview-rooms>
+            <taleo:default-approvers>
+                <taleo:item>
+                    <taleo:item>8</taleo:item>
+                </taleo:item>
+            </taleo:default-approvers>
+        </taleo:location>
+    </taleo:create-location>
+<!-- END_INCLUDE(taleo:create-location) -->
+<!-- BEGIN_INCLUDE(taleo:delete-location) -->
+    <taleo:delete-location locationId="1"/>
+<!-- END_INCLUDE(taleo:delete-location) -->
+<!-- BEGIN_INCLUDE(taleo:get-location-by-id) -->
+    <taleo:get-location-by-id locationId="1"/>
+<!-- END_INCLUDE(taleo:get-location-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-location-by-name) -->
+    <taleo:get-location-by-name locationName="Boston Office"/>
+<!-- END_INCLUDE(taleo:get-location-by-name) -->
+<!-- BEGIN_INCLUDE(taleo:get-locations) -->
+    <taleo:get-locations/>
+<!-- END_INCLUDE(taleo:get-locations) -->
+<!-- BEGIN_INCLUDE(taleo:upsert-location) -->
+    <taleo:upsert-location/>
+<!-- END_INCLUDE(taleo:upsert-location) -->
+<!-- BEGIN_INCLUDE(taleo:get-url) -->
+    <taleo:get-url companyCode="MS"/>
+<!-- END_INCLUDE(taleo:get-url) -->
+<!-- BEGIN_INCLUDE(taleo:get-login-token) -->
+    <taleo:get-login-token sessionId="webapi-7677111958344909818"/>
+<!-- END_INCLUDE(taleo:get-login-token) -->
+<!-- BEGIN_INCLUDE(taleo:get-lookup) -->
+    <taleo:get-lookup fieldName="myfield"/>
+<!-- END_INCLUDE(taleo:get-lookup) -->
+<!-- BEGIN_INCLUDE(taleo:get-metadata) -->
+    <taleo:get-metadata entityType="ACCT"/>
+<!-- END_INCLUDE(taleo:get-metadata) -->
+<!-- BEGIN_INCLUDE(taleo:create-offer) -->
+    <taleo:create-offer>
+        <taleo:offer candidateId="48" employmentType="Full Time" manager="skarim" 
+            payRate="50000" requisitionId="13" stockOptions="True" title="Offer Business Development"/>
+    </taleo:create-offer>
+<!-- END_INCLUDE(taleo:create-offer) -->
+<!-- BEGIN_INCLUDE(taleo:delete-offer) -->
+    <taleo:delete-offer offerId="1"/>
+<!-- END_INCLUDE(taleo:delete-offer) -->
+<!-- BEGIN_INCLUDE(taleo:get-binary-offer) -->
+    <taleo:get-binary-offer offerId="32"/>
+<!-- END_INCLUDE(taleo:get-binary-offer) -->
+<!-- BEGIN_INCLUDE(taleo:get-offer-by-id) -->
+    <taleo:get-offer-by-id offerId="1"/>
+<!-- END_INCLUDE(taleo:get-offer-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-offers) -->
+    <taleo:get-offers candidateId="1"/>
+<!-- END_INCLUDE(taleo:get-offers) -->
+<!-- BEGIN_INCLUDE(taleo:set-binary-offer) -->
+    <taleo:set-binary-offer offerId="1" fileName="file.txt"/>
+<!-- END_INCLUDE(taleo:set-binary-offer) -->
+<!-- BEGIN_INCLUDE(taleo:update-offer) -->
+    <taleo:update-offer/>
+<!-- END_INCLUDE(taleo:update-offer) -->
+<!-- BEGIN_INCLUDE(taleo:create-reference) -->
+    <taleo:create-reference>
+        <taleo:reference candidateId="48" comments="Candidate's major strength is selling and buying" creator="skarim" 
+                employer="Nordstroms" refEmail="store@nordstroms.com" refName="Sally Store" 
+                refPhone="948-232-4958" refTitle="Manager" relToCandidate="Direct Manager"/>
+    </taleo:create-reference>
+<!-- END_INCLUDE(taleo:create-reference) -->
+<!-- BEGIN_INCLUDE(taleo:delete-reference) -->
+    <taleo:delete-reference referenceId="1"/>
+<!-- END_INCLUDE(taleo:delete-reference) -->
+<!-- BEGIN_INCLUDE(taleo:get-references-by-candidate) -->
+    <taleo:get-references-by-candidate candidateId="1"/>
+<!-- END_INCLUDE(taleo:get-references-by-candidate) -->
+<!-- BEGIN_INCLUDE(taleo:get-reference-by-id) -->
+    <taleo:get-reference-by-id referenceId="1"/>
+<!-- END_INCLUDE(taleo:get-reference-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:update-reference) -->
+    <taleo:update-reference/>
+<!-- END_INCLUDE(taleo:update-reference) -->
+<!-- BEGIN_INCLUDE(taleo:create-region) -->
+    <taleo:create-region>
+        <taleo:region regionName="Northwest">
+            <taleo:associated-locations>
+                <taleo:item>
+                    <taleo:item>Seattle Office</taleo:item>
+                    <taleo:item>San Francisco</taleo:item>
+                </taleo:item>
+            </taleo:associated-locations>
+            <taleo:associated-users>
+                <taleo:item>
+                    <taleo:item>28</taleo:item>
+                    <taleo:item>9</taleo:item>
+                </taleo:item>
+            </taleo:associated-users>
+            <taleo:default-approvers>
+                <taleo:item>
+                    <taleo:item>28</taleo:item>
+                    <taleo:item>9</taleo:item>
+                </taleo:item>
+            </taleo:default-approvers>
+        </taleo:region>
+    </taleo:create-region>
+<!-- END_INCLUDE(taleo:create-region) -->
+<!-- BEGIN_INCLUDE(taleo:delete-region) -->
+    <taleo:delete-region regionId="1"/>
+<!-- END_INCLUDE(taleo:delete-region) -->
+<!-- BEGIN_INCLUDE(taleo:get-region-by-id) -->
+    <taleo:get-region-by-id regionId="1"/>
+<!-- END_INCLUDE(taleo:get-region-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-region-by-name) -->
+    <taleo:get-region-by-name regionName="West"/>
+<!-- END_INCLUDE(taleo:get-region-by-name) -->
+<!-- BEGIN_INCLUDE(taleo:get-regions) -->
+    <taleo:get-regions/>
+<!-- END_INCLUDE(taleo:get-regions) -->
+<!-- BEGIN_INCLUDE(taleo:upsert-region) -->
+    <taleo:upsert-region/>
+<!-- END_INCLUDE(taleo:upsert-region) -->
+<!-- BEGIN_INCLUDE(taleo:create-requisition) -->
+    <taleo:create-requisition>
+        <taleo:requisition description="This could be a really long text" duration="Full Time" 
+                jobCategory="Professionals" jobCode="Level 1" location="Headquarters" numOpen="3" 
+                openedDate-ref="#[payload]" payRange="50000 - 75000" title="HR Generalist"/>
+    </taleo:create-requisition>
+<!-- END_INCLUDE(taleo:create-requisition) -->
+<!-- BEGIN_INCLUDE(taleo:create-requisition-template) -->
+    <taleo:create-requisition-template>
+        <taleo:requisition description="This could be a really long text" duration="Full Time" 
+        jobCategory="Professionals" jobCode="Level 1" location="Headquarters" numOpen="3" 
+        openedDate-ref="#[payload]" payRange="50000 - 75000" title="HR Generalist"/>
+    </taleo:create-requisition-template>
+<!-- END_INCLUDE(taleo:create-requisition-template) -->
+<!-- BEGIN_INCLUDE(taleo:delete-requisition) -->
+    <taleo:delete-requisition requisitionId="1"/>
+<!-- END_INCLUDE(taleo:delete-requisition) -->
+<!-- BEGIN_INCLUDE(taleo:get-requisition-by-id) -->
+    <taleo:get-requisition-by-id requisitionId="1"/>
+<!-- END_INCLUDE(taleo:get-requisition-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-requisition-history) -->
+    <taleo:get-requisition-history requisitionId="1"/>
+<!-- END_INCLUDE(taleo:get-requisition-history) -->
+<!-- BEGIN_INCLUDE(taleo:post-requisition) -->
+    <taleo:post-requisition requisitionId="1" posterId="5" formVersion="0"/>
+<!-- END_INCLUDE(taleo:post-requisition) -->
+<!-- BEGIN_INCLUDE(taleo:search-requisition) -->
+    <taleo:search-requisition/>
+<!-- END_INCLUDE(taleo:search-requisition) -->
+<!-- BEGIN_INCLUDE(taleo:unpost-requisition) -->
+    <taleo:unpost-requisition requisitionId="2" posterId="15"/>
+<!-- END_INCLUDE(taleo:unpost-requisition) -->
+<!-- BEGIN_INCLUDE(taleo:update-requisition) -->
+    <taleo:update-requisition/>
+<!-- END_INCLUDE(taleo:update-requisition) -->
+<!-- BEGIN_INCLUDE(taleo:get-binary-resume) -->
+    <taleo:get-binary-resume candidateId="1"/>
+<!-- END_INCLUDE(taleo:get-binary-resume) -->
+<!-- BEGIN_INCLUDE(taleo:parse-resume) -->
+    <taleo:parse-resume/>
+<!-- END_INCLUDE(taleo:parse-resume) -->
+<!-- BEGIN_INCLUDE(taleo:parse-resume-into-candidate) -->
+    <taleo:parse-resume-into-candidate referredBy="bdonland" fileName="resume.doc"/>
+<!-- END_INCLUDE(taleo:parse-resume-into-candidate) -->
+<!-- BEGIN_INCLUDE(taleo:set-binary-resume) -->
+    <taleo:set-binary-resume candidateId="1" fileName="filename.txt">
+        <taleo:binary-attachment/>
+    </taleo:set-binary-resume>
+<!-- END_INCLUDE(taleo:set-binary-resume) -->
+<!-- BEGIN_INCLUDE(taleo:delete-rolling-entity) -->
+    <taleo:delete-rolling-entity rollingEntityId="1"/>
+<!-- END_INCLUDE(taleo:delete-rolling-entity) -->
+<!-- BEGIN_INCLUDE(taleo:get-rolling-entities) -->
+    <taleo:get-rolling-entities rollingEntityType="WORK_HISTORY" entityType="CAND" entityId="48"/>
+<!-- END_INCLUDE(taleo:get-rolling-entities) -->
+<!-- BEGIN_INCLUDE(taleo:upsert-rolling-entity) -->
+    <taleo:upsert-rolling-entity/>
+<!-- END_INCLUDE(taleo:upsert-rolling-entity) -->
+<!-- BEGIN_INCLUDE(taleo:get-enabled-services) -->
+    <taleo:get-enabled-services/>
+<!-- END_INCLUDE(taleo:get-enabled-services) -->
+<!-- BEGIN_INCLUDE(taleo:get-system-props) -->
+    <taleo:get-system-props/>
+<!-- END_INCLUDE(taleo:get-system-props) -->
+<!-- BEGIN_INCLUDE(taleo:create-task) -->
+    <taleo:create-task>
+        <taleo:task creator="skarim" description="Complete Interview" dueDate-ref="#[payload]" entityId="48" entityType="CAND" priority="High" subject="Iterview Schedule">
+            <taleo:assigned-to>
+                <taleo:item>
+                    <taleo:item eventId="2" eventType="CLDEV" personId="7" personType="WORK"/>
+                </taleo:item>
+            </taleo:assigned-to>
+        </taleo:task>
+    </taleo:create-task>
+<!-- END_INCLUDE(taleo:create-task) -->
+<!-- BEGIN_INCLUDE(taleo:delete-task) -->
+    <taleo:delete-task taskId="1"/>
+<!-- END_INCLUDE(taleo:delete-task) -->
+<!-- BEGIN_INCLUDE(taleo:get-task-by-entity) -->
+    <taleo:get-task-by-entity entityType="ACCT" entityId="1"/>
+<!-- END_INCLUDE(taleo:get-task-by-entity) -->
+<!-- BEGIN_INCLUDE(taleo:get-task-by-id) -->
+    <taleo:get-task-by-id taskId="1"/>
+<!-- END_INCLUDE(taleo:get-task-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-task-by-user) -->
+    <taleo:get-task-by-user userId="48" startDate-ref="" endDate-ref=""/>
+<!-- END_INCLUDE(taleo:get-task-by-user) -->
+<!-- BEGIN_INCLUDE(taleo:update-task) -->
+    <taleo:update-task/>
+<!-- END_INCLUDE(taleo:update-task) -->
+<!-- BEGIN_INCLUDE(taleo:get-associated-users) -->
+    <taleo:get-associated-users requisitionId="1" association="V"/>
+<!-- END_INCLUDE(taleo:get-associated-users) -->
+<!-- BEGIN_INCLUDE(taleo:remove-associated-user) -->
+    <taleo:remove-associated-user requisitionId="1" association="O" userId="1"/>
+<!-- END_INCLUDE(taleo:remove-associated-user) -->
+<!-- BEGIN_INCLUDE(taleo:set-associated-user) -->
+    <taleo:set-associated-user 
+             requisitionId="15"
+             association="O"
+             userId="7"
+             userSequenceNumber="1"/>
+<!-- END_INCLUDE(taleo:set-associated-user) -->
+<!-- BEGIN_INCLUDE(taleo:create-user) -->
+    <taleo:create-user>
+        <taleo:user cellPhone="638-234-5364" email="sk@invalidemail.com" fax="384-239-2345" firstName="James" 
+            lastName="Jason" localeCode="Asia/Taipei" location="Vancouver" loginName="JamosJason" manager="skarim" 
+            middleInitial="J" phone="897-239-5364" role="A" timeZoneId="Pacific/Apia" title="Manager"/>
+    </taleo:create-user>
+<!-- END_INCLUDE(taleo:create-user) -->
+<!-- BEGIN_INCLUDE(taleo:create-user-with-permissions) -->
+    <taleo:create-user-with-permissions>
+        <taleo:user cellPhone="638-234-5364" email="sk@invalidemail.com" fax="384-239-2345" firstName="James" lastName="Jason" localeCode="Asia/Taipei" location="Vancouver" loginName="JamosJason" manager="skarim" middleInitial="J" phone="897-239-5364" role="A" timeZoneId="Pacific/Apia" title="Manager"/>
+        <taleo:additional-entities>
+            <taleo:item>
+                <taleo:item key-ref="offerAppr" propertyValue-ref="true"/>
+                <taleo:item key-ref="approver" propertyValue-ref="true"/>
+            </taleo:item>
+        </taleo:additional-entities>
+    </taleo:create-user-with-permissions>
+<!-- END_INCLUDE(taleo:create-user-with-permissions) -->
+<!-- BEGIN_INCLUDE(taleo:delete-user) -->
+    <taleo:delete-user userId="1"/>
+<!-- END_INCLUDE(taleo:delete-user) -->
+<!-- BEGIN_INCLUDE(taleo:get-user-by-id) -->
+    <taleo:get-user-by-id userId="1"/>
+<!-- END_INCLUDE(taleo:get-user-by-id) -->
+<!-- BEGIN_INCLUDE(taleo:get-user-history) -->
+    <taleo:get-user-history userId="1"/>
+<!-- END_INCLUDE(taleo:get-user-history) -->
+<!-- BEGIN_INCLUDE(taleo:update-user) -->
+    <taleo:update-user/>
+<!-- END_INCLUDE(taleo:update-user) -->
+<!-- BEGIN_INCLUDE(taleo:login-partner) -->
+    <taleo:login-partner orgCode="foo" partnerCode="foo2" currentTimeMillis="1" digest="foo3"/>
+<!-- END_INCLUDE(taleo:login-partner) -->
+<!-- BEGIN_INCLUDE(taleo:search-user) -->
+    <taleo:search-user/>
+<!-- END_INCLUDE(taleo:search-user) -->
