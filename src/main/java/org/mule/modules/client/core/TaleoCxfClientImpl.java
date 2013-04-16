@@ -3,9 +3,6 @@
  *
  * Copyright (c) MuleSoft, Inc. All rights reserved. http://www.mulesoft.com
  *
- * The software in this package is published under the terms of the CPAL v1.0
- * license, a copy of which has been included with this distribution in the
- * LICENSE.md file.
  */
 
 
@@ -75,6 +72,16 @@ public class TaleoCxfClientImpl implements TaleoClient {
 
 	private IWebAPIService serviceClient;
 	
+	private String dispatcherUrl;
+	
+	public String getDispatcherUrl() {
+		return dispatcherUrl;
+	}
+
+	public void setDispatcherUrl(String dispatcherUrl) {
+		this.dispatcherUrl = dispatcherUrl;
+	}
+
 	private String endpoint;
 	
 	private String sessionId;
@@ -899,6 +906,12 @@ public class TaleoCxfClientImpl implements TaleoClient {
             Dispatch<Source> dispatch = service.createDispatch(port,
                     Source.class, Service.Mode.MESSAGE);
 
+            if(dispatcherUrl !=null){
+	            BindingProvider bindingProvider = ((BindingProvider) dispatch);
+	            bindingProvider.getRequestContext().put(
+	                    BindingProvider.ENDPOINT_ADDRESS_PROPERTY, dispatcherUrl);
+            }
+            
             String getUrlRequest = generateUrlRequest(companyCode);
             
             

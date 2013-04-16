@@ -21,7 +21,7 @@ public class TaleoConnectorTestDriver {
 	@BeforeClass
 	public static void setup(){
 		connector=new TaleoConnector();
-		//connector.setDispatcherUrl("http://localhost:8088/geturl");
+		connector.setDispatcherUrl("http://localhost:8088/geturl");
 		connector.setCompanyCode("CODE");
 	}
 	
