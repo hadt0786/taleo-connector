@@ -5,7 +5,7 @@
  * 
  */
 
-package org.mule.modules;
+package org.mule.modules.taleo;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -24,10 +24,10 @@ import org.mule.api.annotations.display.Password;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
-import org.mule.modules.client.core.TaleoClient;
-import org.mule.modules.client.core.TaleoCxfClientImpl;
-import org.mule.modules.client.core.TaleoException;
 import org.mule.modules.taleo.api.EntityTypeEnum;
+import org.mule.modules.taleo.client.TaleoClient;
+import org.mule.modules.taleo.client.TaleoCxfClientImpl;
+import org.mule.modules.taleo.client.TaleoException;
 import org.mule.modules.taleo.model.AccountBean;
 import org.mule.modules.taleo.model.AttachmentBean;
 import org.mule.modules.taleo.model.BackgroundCheckBean;

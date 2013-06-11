@@ -5,7 +5,7 @@
  *
  */
 
-package org.mule.modules.client.core;
+package org.mule.modules.taleo.client;
 
 import java.util.GregorianCalendar;
 

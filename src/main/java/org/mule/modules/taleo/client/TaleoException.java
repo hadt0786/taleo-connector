@@ -5,7 +5,7 @@
  *
  */
 
-package org.mule.modules.client.core;
+package org.mule.modules.taleo.client;
 
 public class TaleoException extends Exception {
 

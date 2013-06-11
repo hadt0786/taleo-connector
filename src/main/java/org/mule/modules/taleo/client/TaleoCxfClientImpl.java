@@ -5,7 +5,7 @@
  *
  */
 
-package org.mule.modules.client.core;
+package org.mule.modules.taleo.client;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,6 +26,7 @@ import javax.xml.ws.BindingProvider;
 import javax.xml.ws.soap.SOAPFaultException;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.Validate;
 import org.mule.api.ConnectionException;
 import org.mule.modules.taleo.api.EntityTypeEnum;
 import org.mule.modules.taleo.model.AccountBean;
@@ -945,6 +946,8 @@ public class TaleoCxfClientImpl implements TaleoClient {
 	public String getUrl(String companyCode) throws TaleoException {
 		String companyUrl = null;
 		try {
+			Validate.notNull(dispatcherUrl);
+			Validate.notEmpty(dispatcherUrl);
 			URL url = new URL(dispatcherUrl);
 
 			Document response = makeUrlRequest(companyCode, url);
@@ -952,15 +955,15 @@ public class TaleoCxfClientImpl implements TaleoClient {
 			companyUrl = response.getFirstChild().getTextContent().trim();
 
 		} catch (SOAPFaultException e) {
-			throw new TaleoException(e);
+			throw new TaleoException(e.getMessage());
 		} catch (MalformedURLException e) {
-			throw new TaleoException(e);
+			throw new TaleoException(e.getMessage());
 		} catch (SOAPException e) {
-			throw new TaleoException(e);
+			throw new TaleoException(e.getMessage());
 		} catch (IOException e) {
-			throw new TaleoException(e);
+			throw new TaleoException(e.getMessage());
 		} catch (Exception e) {
-			throw new TaleoException(e);
+			throw new TaleoException(e.getMessage());
 		}
 		return companyUrl;
 	}

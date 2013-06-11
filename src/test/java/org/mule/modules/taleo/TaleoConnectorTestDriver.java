@@ -8,12 +8,12 @@
  * LICENSE.md file.
  */
 
-package org.mule.modules;
+package org.mule.modules.taleo;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mule.api.ConnectionException;
-import org.mule.modules.client.core.TaleoException;
+import org.mule.modules.taleo.client.TaleoException;
 
 public class TaleoConnectorTestDriver {
 
@@ -21,13 +21,13 @@ public class TaleoConnectorTestDriver {
 	@BeforeClass
 	public static void setup(){
 		connector=new TaleoConnector();
-		connector.setDispatcherUrl("http://localhost:8088/geturl");
-		connector.setCompanyCode("CODE");
+		connector.setDispatcherUrl("https://tbe.taleo.net/MANAGER/dispatcher/servlet/rpcrouter");
+		connector.setCompanyCode(System.getenv("taleoCompanyCode"));
 	}
 	
 	@Test
 	public void getUrlTest() throws TaleoException, ConnectionException{
-		connector.connect("dummyUser", "dummyPass");
+		connector.connect(System.getenv("taleoUser"), System.getenv("taleoPassword"));
 		connector.disconnect();
 	}
 }
