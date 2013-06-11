@@ -7,21 +7,23 @@
 
 package org.mule.modules;
 
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
-import org.mule.api.annotations.Connector;
+import org.mule.api.ConnectionException;
+import org.mule.api.ConnectionExceptionCode;
+import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Connect;
-import org.mule.api.annotations.ValidateConnection;
 import org.mule.api.annotations.ConnectionIdentifier;
+import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Disconnect;
+import org.mule.api.annotations.Processor;
+import org.mule.api.annotations.ValidateConnection;
 import org.mule.api.annotations.display.Password;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
-import org.mule.api.ConnectionException;
-import org.mule.api.ConnectionExceptionCode;
-import org.mule.api.annotations.Configurable;
-import org.mule.api.annotations.Processor;
 import org.mule.modules.client.core.TaleoClient;
 import org.mule.modules.client.core.TaleoCxfClientImpl;
 import org.mule.modules.client.core.TaleoException;
@@ -48,6 +50,7 @@ import org.mule.modules.taleo.model.LocationBean;
 import org.mule.modules.taleo.model.LongArr;
 import org.mule.modules.taleo.model.LookupArr;
 import org.mule.modules.taleo.model.Map;
+import org.mule.modules.taleo.model.MapItem;
 import org.mule.modules.taleo.model.MetadataArr;
 import org.mule.modules.taleo.model.OfferBean;
 import org.mule.modules.taleo.model.ReferenceBean;
@@ -118,7 +121,7 @@ public class TaleoConnector
 		} catch (TaleoException e) {
 			throw new ConnectionException(ConnectionExceptionCode.UNKNOWN,null, e.getMessage(), e);
 		}
-    }
+	}
 
     /**
      * Disconnect
@@ -220,9 +223,10 @@ public class TaleoConnector
 	 */
 	@Processor
 	public SearchResultArr searchRequisition(
-			 @Optional @Default("#[payload]") Map searchParams)
+			 @Optional @Default("#[payload]") java.util.Map<String,Object> searchParams)
 			throws TaleoException {
-		return client.searchRequisition(searchParams);
+		Map searchMapParams = toTaleoMap(searchParams);
+		return client.searchRequisition(searchMapParams);
 	}
 
 	/**
@@ -891,9 +895,10 @@ public class TaleoConnector
 	 */
 	@Processor
 	public SearchResultArr searchContact(
-			@Optional @Default("#[payload]") Map searchParams)
+			@Optional @Default("#[payload]") java.util.Map<String,Object> searchParams)
 			throws TaleoException {
-		return client.searchContact(searchParams);
+		Map searchMapParams = toTaleoMap(searchParams);
+		return client.searchContact(searchMapParams);
 	}
 
 	/**
@@ -1955,9 +1960,10 @@ public class TaleoConnector
 	 */
 	@Processor
 	public SearchResultArr searchUser(
-			@Optional @Default("#[payload]") Map searchParams)
+			@Optional @Default("#[payload]") java.util.Map<String,Object> searchParams)
 			throws TaleoException {
-		return client.searchUser(searchParams);
+		Map searchMapParams = toTaleoMap(searchParams);
+		return client.searchUser(searchMapParams);
 	}
 
 
@@ -2298,9 +2304,10 @@ public class TaleoConnector
 	 */
 	@Processor
 	public SearchResultArr searchAccount(
-			@Optional @Default("#[payload]") Map searchParams)
+			@Optional @Default("#[payload]") java.util.Map<String,Object> searchParams)
 			throws TaleoException {
-		return client.searchAccount(searchParams);
+		Map searchMapParams = toTaleoMap(searchParams);
+		return client.searchAccount(searchMapParams);
 	}
 
 
@@ -2464,9 +2471,10 @@ public class TaleoConnector
 	 */
 	@Processor
 	public SearchResultArr searchCandidate(
-			@Optional @Default("#[payload]") Map searchParams)
+			@Optional @Default("#[payload]") java.util.Map<String,Object> searchParams)
 			throws TaleoException {
-		return client.searchCandidate(searchParams);
+		Map searchMapParams = toTaleoMap(searchParams);
+		return client.searchCandidate(searchMapParams);
 	}
 
 
@@ -2498,8 +2506,9 @@ public class TaleoConnector
 	 */
 	@Processor
 	public SearchResultArr searchEmployee(
-			@Optional @Default("#[payload]") Map searchParams) throws TaleoException {
-		return client.searchEmployee(searchParams);
+			@Optional @Default("#[payload]") java.util.Map<String,Object> searchParams) throws TaleoException {
+		Map searchMapParams = toTaleoMap(searchParams);
+		return client.searchEmployee(searchMapParams);
 	}
 
 
@@ -2625,5 +2634,19 @@ public class TaleoConnector
 	@Processor
 	public String getUrl(String companyCode) throws TaleoException{
 		return client.getUrl(companyCode);
-	}	
+	}
+	
+	private Map toTaleoMap(java.util.Map<String,Object> mapEntries){
+		Map map=new Map();
+		List<MapItem> listItem = new ArrayList<MapItem>();
+		MapItem item = null;
+		for(java.util.Map.Entry<String, Object> entry:mapEntries.entrySet()){
+			item = new MapItem();
+			item.setKey(entry.getKey());
+			item.setPropertyValue(entry.getValue());
+			listItem.add(item);
+		}
+		map.setItem(listItem);
+		return map;
+	}
 }
