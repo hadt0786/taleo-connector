@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>automation-credentials.properties</value>
+		</property>
+	</bean>
+
+	<!-- create-account -->
+
+	<bean id="createAccountAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+		<property name="address" value="99 Seymour" />
+		<property name="city" value="San Paolo" />
+		<property name="country" value="Brazil" />
+		<property name="description" value="TESTING" />
+		<property name="fax" value="894-439-0404" />
+		<property name="industry" value="Aerospace" />
+		<property name="name" value="Brazil Aero" />
+		<property name="phone" value="894-439-0404" />
+		<property name="type" value="Partner" />
+		<property name="webSite" value="www.brazil.com" />
+	</bean>
+
+	<!-- get-account-by-id -->
+
+	<bean id="getAccountByIdAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+		<property name="address" value="99 Seymour" />
+		<property name="city" value="San Paolo" />
+		<property name="country" value="Brazil" />
+		<property name="description" value="TESTING" />
+		<property name="fax" value="894-439-0404" />
+		<property name="industry" value="Aerospace" />
+		<property name="name" value="Brazil Aero" />
+		<property name="phone" value="894-439-0404" />
+		<property name="type" value="Partner" />
+		<property name="webSite" value="www.brazil.com" />
+	</bean>
+
+	<!-- delete-account -->
+
+	<bean id="deleteAccountAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+		<property name="address" value="99 Seymour" />
+		<property name="city" value="San Paolo" />
+		<property name="country" value="Brazil" />
+		<property name="description" value="TESTING" />
+		<property name="fax" value="894-439-0404" />
+		<property name="industry" value="Aerospace" />
+		<property name="name" value="Brazil Aero" />
+		<property name="phone" value="894-439-0404" />
+		<property name="type" value="Partner" />
+		<property name="webSite" value="www.brazil.com" />
+	</bean>
+
+	<!-- update-account -->
+
+	<bean id="updateAccountAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+		<property name="address" value="99 Seymour" />
+		<property name="city" value="San Paolo" />
+		<property name="country" value="Brazil" />
+		<property name="description" value="TESTING" />
+		<property name="fax" value="894-439-0404" />
+		<property name="industry" value="Aerospace" />
+		<property name="name" value="Brazil Aero" />
+		<property name="phone" value="894-439-0404" />
+		<property name="type" value="Partner" />
+		<property name="webSite" value="www.brazil.com" />
+	</bean>
+
+	<!-- get-account-history -->
+
+	<bean id="getAccountHistoryAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+		<property name="address" value="99 Seymour" />
+		<property name="city" value="San Paolo" />
+		<property name="country" value="Brazil" />
+		<property name="description" value="TESTING" />
+		<property name="fax" value="894-439-0404" />
+		<property name="industry" value="Aerospace" />
+		<property name="name" value="Brazil Aero" />
+		<property name="phone" value="894-439-0404" />
+		<property name="type" value="Partner" />
+		<property name="webSite" value="www.brazil.com" />
+	</bean>
+
+	<!-- search-account -->
+
+	<bean id="searchAccountAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+		<property name="address" value="99 Seymour" />
+		<property name="city" value="San Paolo" />
+		<property name="country" value="Brazil" />
+		<property name="description" value="TESTING" />
+		<property name="fax" value="894-439-0404" />
+		<property name="industry" value="Aerospace" />
+		<property name="name" value="Brazil Aero" />
+		<property name="phone" value="894-439-0404" />
+		<property name="type" value="Partner" />
+		<property name="webSite" value="www.brazil.com" />
+	</bean>
+
+	<util:map id="searchAccountSearchParams" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="description" value="TESTING" />
+	</util:map>
+
+	<!-- search-user  -->
+
+	<util:map id="searchUserSearchParams" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="loginName" value="${taleo.username}" />
+	</util:map>
+	
+	<util:map id="searchUserTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="expectedUserId" value="${taleo.userId}" />
+		<entry key="searchParams" value-ref="searchUserSearchParams" />
+	</util:map>
+	
+	<!-- get-user-history  -->
+
+	<util:map id="getUserHistoryTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="userId" value="${taleo.userId}" />
+		<entry key="expectedUsername" value="${taleo.username}" />
+	</util:map>
+	
+	<!-- get-user-by-id  -->
+
+	<util:map id="getUserByIdTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="userId" value="${taleo.userId}" />
+		<entry key="expectedEmail" value="${taleo.email}" />
+	</util:map>
+
+	<!-- create-contact -->
+
+	<bean id="createContactContactBean" class="org.mule.modules.taleo.model.ContactBean">
+		<property name="address" value="82 Taleo Drive" />
+		<property name="assistantEmail" value="skarim@taleo.com" />
+		<property name="assistantName" value="Shakir Karim" />
+		<property name="assistantPhone" value="604-761-0087" />
+		<property name="cellPhone" value="604-920-3949" />
+		<property name="city" value="Dublin" />
+		<property name="contactType" value="?" />
+		<property name="country" value="United States" />
+		<property name="department" value="Sales" />
+		<property name="description" value="Head of Partners and Alliances" />
+		<property name="email" value="ddarrah@taleo.com" />
+		<property name="fax" value="604-323-2323" />
+		<property name="firstName" value="Don" />
+		<property name="lastName" value="Darrah" />
+		<property name="phone" value="583-903-3434" />
+		<property name="state" value="US-CA" />
+		<property name="title" value="Manager" />
+		<property name="zipCode" value="90210" />
+	</bean>
+
+	<!-- get-contact-by-id -->
+
+	<bean id="getContactByIdContactBean" class="org.mule.modules.taleo.model.ContactBean">
+		<property name="address" value="82 Taleo Drive" />
+		<property name="assistantEmail" value="skarim@taleo.com" />
+		<property name="assistantName" value="Shakir Karim" />
+		<property name="assistantPhone" value="604-761-0087" />
+		<property name="cellPhone" value="604-920-3949" />
+		<property name="city" value="Dublin" />
+		<property name="contactType" value="?" />
+		<property name="country" value="United States" />
+		<property name="department" value="Sales" />
+		<property name="description" value="Head of Partners and Alliances" />
+		<property name="email" value="ddarrah@taleo.com" />
+		<property name="fax" value="604-323-2323" />
+		<property name="firstName" value="Don" />
+		<property name="lastName" value="Darrah" />
+		<property name="phone" value="583-903-3434" />
+		<property name="state" value="US-CA" />
+		<property name="title" value="Manager" />
+		<property name="zipCode" value="90210" />
+	</bean>
+
+	<!-- delete-contact -->
+
+	<bean id="deleteContactContactBean" class="org.mule.modules.taleo.model.ContactBean">
+		<property name="address" value="82 Taleo Drive" />
+		<property name="assistantEmail" value="skarim@taleo.com" />
+		<property name="assistantName" value="Shakir Karim" />
+		<property name="assistantPhone" value="604-761-0087" />
+		<property name="cellPhone" value="604-920-3949" />
+		<property name="city" value="Dublin" />
+		<property name="contactType" value="?" />
+		<property name="country" value="United States" />
+		<property name="department" value="Sales" />
+		<property name="description" value="Head of Partners and Alliances" />
+		<property name="email" value="ddarrah@taleo.com" />
+		<property name="fax" value="604-323-2323" />
+		<property name="firstName" value="Don" />
+		<property name="lastName" value="Darrah" />
+		<property name="phone" value="583-903-3434" />
+		<property name="state" value="US-CA" />
+		<property name="title" value="Manager" />
+		<property name="zipCode" value="90210" />
+	</bean>
+
+	<!-- update-contact -->
+
+	<bean id="updateContactContactBean" class="org.mule.modules.taleo.model.ContactBean">
+		<property name="address" value="82 Taleo Drive" />
+		<property name="assistantEmail" value="skarim@taleo.com" />
+		<property name="assistantName" value="Shakir Karim" />
+		<property name="assistantPhone" value="604-761-0087" />
+		<property name="cellPhone" value="604-920-3949" />
+		<property name="city" value="Dublin" />
+		<property name="contactType" value="?" />
+		<property name="country" value="United States" />
+		<property name="department" value="Sales" />
+		<property name="description" value="Head of Partners and Alliances" />
+		<property name="email" value="ddarrah@taleo.com" />
+		<property name="fax" value="604-323-2323" />
+		<property name="firstName" value="Don" />
+		<property name="lastName" value="Darrah" />
+		<property name="phone" value="583-903-3434" />
+		<property name="state" value="US-CA" />
+		<property name="title" value="Manager" />
+		<property name="zipCode" value="90210" />
+	</bean>
+
+	<!-- get-contact-history -->
+
+	<bean id="getContactHistoryContactBean" class="org.mule.modules.taleo.model.ContactBean">
+		<property name="address" value="82 Taleo Drive" />
+		<property name="assistantEmail" value="skarim@taleo.com" />
+		<property name="assistantName" value="Shakir Karim" />
+		<property name="assistantPhone" value="604-761-0087" />
+		<property name="cellPhone" value="604-920-3949" />
+		<property name="city" value="Dublin" />
+		<property name="contactType" value="?" />
+		<property name="country" value="United States" />
+		<property name="department" value="Sales" />
+		<property name="description" value="Head of Partners and Alliances" />
+		<property name="email" value="ddarrah@taleo.com" />
+		<property name="fax" value="604-323-2323" />
+		<property name="firstName" value="Don" />
+		<property name="lastName" value="Darrah" />
+		<property name="phone" value="583-903-3434" />
+		<property name="state" value="US-CA" />
+		<property name="title" value="Manager" />
+		<property name="zipCode" value="90210" />
+	</bean>
+
+	<!-- search-contact -->
+
+	<bean id="searchContactContactBean" class="org.mule.modules.taleo.model.ContactBean">
+		<property name="address" value="82 Taleo Drive" />
+		<property name="assistantEmail" value="skarim@taleo.com" />
+		<property name="assistantName" value="Shakir Karim" />
+		<property name="assistantPhone" value="604-761-0087" />
+		<property name="cellPhone" value="604-920-3949" />
+		<property name="city" value="Dublin" />
+		<property name="contactType" value="?" />
+		<property name="country" value="United States" />
+		<property name="department" value="Sales" />
+		<property name="description" value="TESTING" />
+		<property name="email" value="ddarrah@taleo.com" />
+		<property name="fax" value="604-323-2323" />
+		<property name="firstName" value="Don" />
+		<property name="lastName" value="Darrah" />
+		<property name="phone" value="583-903-3434" />
+		<property name="state" value="US-CA" />
+		<property name="title" value="Manager" />
+		<property name="zipCode" value="90210" />
+	</bean>
+
+	<util:map id="searchContactSearchParams" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="description" value="TESTING" />
+	</util:map>
+
+
+
+</beans>

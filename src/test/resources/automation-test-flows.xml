@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:taleo="http://www.mulesoft.org/schema/mule/taleo"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/taleo/1.0-SNAPSHOT/mule-taleo.xsd">
+    
+    <context:property-placeholder location="automation-credentials.properties" />
+    
+    <taleo:config name="Taleo" username="${taleo.username}" password="${taleo.password}" companyCode="${taleo.companyCode}" doc:name="Taleo">
+        <taleo:connection-pooling-profile initialisationPolicy="INITIALISE_ONE" exhaustedAction="WHEN_EXHAUSTED_GROW"/>
+    </taleo:config>
+    
+    <flow name="create-account" doc:name="create-account">
+        <taleo:create-account config-ref="Taleo" doc:name="Create account">
+            <taleo:account ref="#[payload.account]"/>
+        </taleo:create-account>
+    </flow>
+    <flow name="get-account-by-id" doc:name="get-account-by-id">
+        <taleo:get-account-by-id config-ref="Taleo" doc:name="Get account by id" accountId="#[payload.accountId]">
+        </taleo:get-account-by-id>
+    </flow>
+    <flow name="get-account-history" doc:name="get-account-history">
+        <taleo:get-account-history config-ref="Taleo" doc:name="Get account history" accountId="#[payload.accountId]">
+        </taleo:get-account-history>
+    </flow>
+    <flow name="update-account" doc:name="update-account">
+        <taleo:update-account config-ref="Taleo" doc:name="Update account">
+            <taleo:account ref="#[payload.account]"/>
+        </taleo:update-account>
+    </flow>
+    <flow name="search-account" doc:name="search-account">
+        <taleo:search-account config-ref="Taleo" doc:name="Search account">
+            <taleo:search-params ref="#[payload.searchParams]"/>
+        </taleo:search-account>
+    </flow>
+    <flow name="delete-account" doc:name="delete-account">
+        <taleo:delete-account config-ref="Taleo" doc:name="Create account" accountId="#[payload.accountId]">
+        </taleo:delete-account>
+    </flow>
+    <flow name="get-user-by-id" doc:name="get-user-by-id">
+        <taleo:get-user-by-id config-ref="Taleo" doc:name="Get user by id" userId="#[payload.userId]">
+        </taleo:get-user-by-id>
+    </flow>
+    <flow name="get-user-history" doc:name="get-user-history">
+        <taleo:get-user-history config-ref="Taleo" doc:name="Get user history" userId="#[payload.userId]">
+        </taleo:get-user-history>
+    </flow>
+    <flow name="search-user" doc:name="search-user">
+        <taleo:search-user config-ref="Taleo" doc:name="Search user">
+            <taleo:search-params ref="#[payload.searchParams]"/>
+        </taleo:search-user>
+    </flow>
+    <flow name="create-contact" doc:name="create-contact">
+        <taleo:create-contact config-ref="Taleo" doc:name="Create contact">
+            <taleo:contact ref="#[payload.contact]"/>
+        </taleo:create-contact>
+    </flow>
+    <flow name="get-contact-by-id" doc:name="get-contact-by-id">
+        <taleo:get-contact-by-id config-ref="Taleo" doc:name="Get contact by id" contactId="#[payload.contactId]">
+        </taleo:get-contact-by-id>
+    </flow>
+    <flow name="get-contact-history" doc:name="get-contact-history">
+        <taleo:get-contact-history config-ref="Taleo" doc:name="Get contact history" contactId="#[payload.contactId]">
+        </taleo:get-contact-history>
+    </flow>
+    <flow name="update-contact" doc:name="update-contact">
+        <taleo:update-contact config-ref="Taleo" doc:name="Update contact">
+            <taleo:contact ref="#[payload.contact]"/>
+        </taleo:update-contact>
+    </flow>
+    <flow name="search-contact" doc:name="search-contact">
+        <taleo:search-contact config-ref="Taleo" doc:name="Search contact">
+            <taleo:search-params ref="#[payload.searchParams]"/>
+        </taleo:search-contact>
+    </flow>
+    <flow name="delete-contact" doc:name="delete-contact">
+        <taleo:delete-contact config-ref="Taleo" doc:name="Delete contact" contactId="#[payload.contactId]">
+        </taleo:delete-contact>
+    </flow>
+    
+</mule>
