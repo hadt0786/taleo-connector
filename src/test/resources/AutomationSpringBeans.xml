@@ -457,6 +457,7 @@
 	<!-- create-department -->
 
 	<bean id="createDepartmentDepartmentBean" class="org.mule.modules.taleo.model.DepartmentBean">
+	
 	</bean>
 
 </beans>
