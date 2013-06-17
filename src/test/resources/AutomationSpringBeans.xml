@@ -280,7 +280,183 @@
 		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
 		<entry key="description" value="TESTING" />
 	</util:map>
+	
+	<!-- create-candidate -->
 
+	<bean id="createCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="email" value="scary@talent.com" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="My status to work in this country is unknown" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
 
+	<!-- get-candidate-by-id -->
+
+	<bean id="getCandidateByIdCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="email" value="scary@talent.com" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="My status to work in this country is unknown" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+
+	<!-- delete-candidate -->
+
+	<bean id="deleteCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="email" value="scary@talent.com" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="My status to work in this country is unknown" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+
+	<!-- update-candidate -->
+
+	<bean id="updateCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="email" value="scary@talent.com" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="My status to work in this country is unknown" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+
+	<!-- get-candidate-history -->
+
+	<bean id="getCandidateHistoryCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="email" value="scary@talent.com" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="My status to work in this country is unknown" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+
+	<!-- search-candidate -->
+
+	<bean id="searchCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="email" value="scary@talent.com" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+
+	<util:map id="searchCandidateSearchParams" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="legalStatus" value="TESTING" />
+	</util:map>
+	
+	<!-- create-department -->
+
+	<bean id="createDepartmentDepartmentBean" class="org.mule.modules.taleo.model.DepartmentBean">
+	</bean>
 
 </beans>
