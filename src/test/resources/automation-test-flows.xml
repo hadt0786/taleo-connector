@@ -16,7 +16,7 @@ http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/ta
     
     <flow name="create-account" doc:name="create-account">
         <taleo:create-account config-ref="Taleo" doc:name="Create account">
-            <taleo:account ref="#[payload.account]"/>
+            <taleo:account ref="#[payload.accountRef]"/>
         </taleo:create-account>
     </flow>
     <flow name="get-account-by-id" doc:name="get-account-by-id">
@@ -29,12 +29,12 @@ http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/ta
     </flow>
     <flow name="update-account" doc:name="update-account">
         <taleo:update-account config-ref="Taleo" doc:name="Update account">
-            <taleo:account ref="#[payload.account]"/>
+            <taleo:account ref="#[payload.accountRef]"/>
         </taleo:update-account>
     </flow>
     <flow name="search-account" doc:name="search-account">
         <taleo:search-account config-ref="Taleo" doc:name="Search account">
-            <taleo:search-params ref="#[payload.searchParams]"/>
+            <taleo:search-params ref="#[payload.searchParamsRef]"/>
         </taleo:search-account>
     </flow>
     <flow name="delete-account" doc:name="delete-account">
@@ -51,12 +51,12 @@ http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/ta
     </flow>
     <flow name="search-user" doc:name="search-user">
         <taleo:search-user config-ref="Taleo" doc:name="Search user">
-            <taleo:search-params ref="#[payload.searchParams]"/>
+            <taleo:search-params ref="#[payload.searchParamsRef]"/>
         </taleo:search-user>
     </flow>
     <flow name="create-contact" doc:name="create-contact">
         <taleo:create-contact config-ref="Taleo" doc:name="Create contact">
-            <taleo:contact ref="#[payload.contact]"/>
+            <taleo:contact ref="#[payload.contactRef]"/>
         </taleo:create-contact>
     </flow>
     <flow name="get-contact-by-id" doc:name="get-contact-by-id">
@@ -69,17 +69,65 @@ http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/ta
     </flow>
     <flow name="update-contact" doc:name="update-contact">
         <taleo:update-contact config-ref="Taleo" doc:name="Update contact">
-            <taleo:contact ref="#[payload.contact]"/>
+            <taleo:contact ref="#[payload.contactRef]"/>
         </taleo:update-contact>
     </flow>
     <flow name="search-contact" doc:name="search-contact">
         <taleo:search-contact config-ref="Taleo" doc:name="Search contact">
-            <taleo:search-params ref="#[payload.searchParams]"/>
+            <taleo:search-params ref="#[payload.searchParamsRef]"/>
         </taleo:search-contact>
     </flow>
     <flow name="delete-contact" doc:name="delete-contact">
         <taleo:delete-contact config-ref="Taleo" doc:name="Delete contact" contactId="#[payload.contactId]">
         </taleo:delete-contact>
     </flow>
+    <flow name="create-candidate" doc:name="create-candidate">
+        <taleo:create-candidate config-ref="Taleo" doc:name="Create candidate">
+            <taleo:candidate ref="#[payload.candidateRef]"/>
+        </taleo:create-candidate>
+    </flow>
+    <flow name="get-candidate-by-id" doc:name="get-candidate-by-id">
+        <taleo:get-candidate-by-id config-ref="Taleo" doc:name="Get candidate by id" candidateId="#[payload.candidateId]">
+        </taleo:get-candidate-by-id>
+    </flow>
+    <flow name="get-candidate-history" doc:name="get-candidate-history">
+        <taleo:get-candidate-history config-ref="Taleo" doc:name="Get candidate history" candidateId="#[payload.candidateId]">
+        </taleo:get-candidate-history>
+    </flow>
+    <flow name="update-candidate" doc:name="update-candidate">
+        <taleo:update-candidate config-ref="Taleo" doc:name="Update candidate">
+            <taleo:candidate ref="#[payload.candidateRef]"/>
+        </taleo:update-candidate>
+    </flow>
+    <flow name="search-candidate" doc:name="search-candidate">
+        <taleo:search-candidate config-ref="Taleo" doc:name="Search candidate">
+            <taleo:search-params ref="#[payload.searchParamsRef]"/>
+        </taleo:search-candidate>
+    </flow>
+    <flow name="delete-candidate" doc:name="delete-candidate">
+        <taleo:delete-candidate config-ref="Taleo" doc:name="Delete candidate" candidateId="#[payload.candidateId]">
+        </taleo:delete-candidate>
+    </flow>
+    <flow name="get-candidate-details-by-id" doc:name="get-candidate-details-by-id">
+        <taleo:get-candidate-details-by-id config-ref="Taleo" candidateId="#[payload.candidateId]" doc:name="Taleo"/>
+    </flow>  
     
+    <flow name="create-department" doc:name="create-department">
+        <taleo:create-department config-ref="Taleo" doc:name="Create department">
+            <taleo:department ref="#[payload.departmentRef]"/>
+        </taleo:create-department>
+    </flow>
+    <flow name="get-department-by-id" doc:name="get-department-by-id">
+        <taleo:get-department-by-id config-ref="Taleo" doc:name="Get department by id" departmentId="#[payload.departmentId]">
+        </taleo:get-department-by-id>
+    </flow>
+    <flow name="upsert-department" doc:name="update-department">
+        <taleo:upsert-department config-ref="Taleo" doc:name="Update department">
+            <taleo:department ref="#[payload.departmentRef]"/>
+        </taleo:upsert-department>
+    </flow>
+    <flow name="delete-department" doc:name="delete-department">
+        <taleo:delete-department config-ref="Taleo" doc:name="Delete department" departmentId="#[payload.departmentId]">
+        </taleo:delete-department>
+    </flow>
 </mule>
