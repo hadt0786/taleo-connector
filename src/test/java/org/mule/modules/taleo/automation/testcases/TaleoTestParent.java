@@ -20,7 +20,6 @@ public class TaleoTestParent extends FunctionalTestCase {
 	
 	protected static final String[] SPRING_CONFIG_FILES = new String[] {"AutomationSpringBeans.xml"};
 	protected static ApplicationContext context;
-	protected Map<String,Object> setupData;
 	protected Map<String,Object> testObjects;
 
 	
@@ -34,7 +33,7 @@ public class TaleoTestParent extends FunctionalTestCase {
     }
 	
     @BeforeClass
-    public static void beforeClass(){
+    public static void beforeClass() {
     	
     	context = new ClassPathXmlApplicationContext(SPRING_CONFIG_FILES);
     	
