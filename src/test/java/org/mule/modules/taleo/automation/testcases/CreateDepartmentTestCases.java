@@ -54,6 +54,7 @@ public class CreateDepartmentTestCases extends TaleoTestParent {
     	
     	testObjects.put("departmentRef", departmentBean);
     	
+    	
 		MessageProcessor flow = lookupFlowConstruct("create-department");
     	
 		try {
