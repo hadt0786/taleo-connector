@@ -47,7 +47,7 @@ public class CreateContactTestCases extends TaleoTestParent {
 	public void testCreateContact() {
     	
     	testObjects =  new HashMap<String,Object>();
-    	testObjects.put("contact", (ContactBean) context.getBean("createContactContactBean"));
+    	testObjects.put("contactRef", (ContactBean) context.getBean("createContactContactBean"));
     	
 		MessageProcessor flow = lookupFlowConstruct("create-contact");
     	

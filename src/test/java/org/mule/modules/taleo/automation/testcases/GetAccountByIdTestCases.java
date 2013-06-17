@@ -26,7 +26,7 @@ public class GetAccountByIdTestCases extends TaleoTestParent {
 	public void setUp() {
 		
 		testObjects = new HashMap<String,Object>();
-		testObjects.put("account", (AccountBean) context.getBean("getAccountByIdAccountBean"));
+		testObjects.put("accountRef", (AccountBean) context.getBean("getAccountByIdAccountBean"));
     	
 		MessageProcessor flow = lookupFlowConstruct("create-account");
     	

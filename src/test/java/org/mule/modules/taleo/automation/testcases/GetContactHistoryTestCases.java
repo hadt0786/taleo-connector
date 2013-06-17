@@ -29,7 +29,7 @@ public class GetContactHistoryTestCases extends TaleoTestParent {
 	public void setUp() {
 		
 		testObjects = new HashMap<String,Object>();
-		testObjects.put("contact", (ContactBean) context.getBean("getContactHistoryContactBean"));
+		testObjects.put("contactRef", (ContactBean) context.getBean("getContactHistoryContactBean"));
     	
 		MessageProcessor flow = lookupFlowConstruct("create-contact");
     	
@@ -87,7 +87,7 @@ public class GetContactHistoryTestCases extends TaleoTestParent {
 			contactBean = (ContactBean) getContactByResponse.getMessage().getPayload();
 			
 			contactBean.setPhone(UPDATED_CELLPHONE_NUMBER);
-			testObjects.put("contact", contactBean);
+			testObjects.put("contactRef", contactBean);
 			
 			updateContactResponse = updateContactFlow.process(getTestEvent(testObjects));
 			updateContactResponse.getMessage().getPayload();

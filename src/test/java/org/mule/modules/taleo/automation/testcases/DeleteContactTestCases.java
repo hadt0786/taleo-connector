@@ -23,7 +23,7 @@ public class DeleteContactTestCases extends TaleoTestParent {
 	public void setUp() {
 		
 		testObjects = new HashMap<String,Object>();
-		testObjects.put("contact", (ContactBean) context.getBean("deleteContactContactBean"));
+		testObjects.put("contactRef", (ContactBean) context.getBean("deleteContactContactBean"));
     	
 		MessageProcessor flow = lookupFlowConstruct("create-contact");
     	

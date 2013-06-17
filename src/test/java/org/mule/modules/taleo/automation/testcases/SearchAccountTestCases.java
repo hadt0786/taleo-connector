@@ -30,8 +30,8 @@ public class SearchAccountTestCases extends TaleoTestParent {
 	public void setUp() {
 		
 		testObjects = new HashMap<String,Object>();
-		testObjects.put("account", (AccountBean) context.getBean("searchAccountAccountBean"));
-		testObjects.put("searchParams", (HashMap<String,Object>) context.getBean("searchAccountSearchParams"));
+		testObjects.put("accountRef", (AccountBean) context.getBean("searchAccountAccountBean"));
+		testObjects.put("searchParamsRef", (HashMap<String,Object>) context.getBean("searchAccountSearchParams"));
     	
 		MessageProcessor flow = lookupFlowConstruct("create-account");
     	

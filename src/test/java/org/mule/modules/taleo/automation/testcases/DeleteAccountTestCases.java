@@ -29,7 +29,7 @@ public class DeleteAccountTestCases extends TaleoTestParent {
 	public void setUp() {
 		
 		testObjects = new HashMap<String,Object>();
-		testObjects.put("account", (AccountBean) context.getBean("deleteAccountAccountBean"));
+		testObjects.put("accountRef", (AccountBean) context.getBean("deleteAccountAccountBean"));
     	
 		MessageProcessor flow = lookupFlowConstruct("create-account");
     	

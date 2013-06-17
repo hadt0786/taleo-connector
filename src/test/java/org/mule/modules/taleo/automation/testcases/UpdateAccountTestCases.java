@@ -26,7 +26,7 @@ public class UpdateAccountTestCases extends TaleoTestParent {
 	public void setUp() {
 		
 		testObjects = new HashMap<String,Object>();
-		testObjects.put("account", (AccountBean) context.getBean("updateAccountAccountBean"));
+		testObjects.put("accountRef", (AccountBean) context.getBean("updateAccountAccountBean"));
     	
 		MessageProcessor flow = lookupFlowConstruct("create-account");
     	
@@ -83,7 +83,7 @@ public class UpdateAccountTestCases extends TaleoTestParent {
 			accountBean = (AccountBean) getAccountByResponse.getMessage().getPayload();
 			
 			accountBean.setPhone(UPDATED_PHONE_NUMBER);
-			testObjects.put("account", accountBean);
+			testObjects.put("accountRef", accountBean);
 			
 			updateAccountResponse = updateAccountFlow.process(getTestEvent(testObjects));
 			updateAccountResponse.getMessage().getPayload();

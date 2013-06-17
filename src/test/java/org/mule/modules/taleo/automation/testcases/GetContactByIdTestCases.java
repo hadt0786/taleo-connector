@@ -26,7 +26,7 @@ public class GetContactByIdTestCases extends TaleoTestParent {
 	public void setUp() {
 		
 		testObjects = new HashMap<String,Object>();
-		testObjects.put("contact", (ContactBean) context.getBean("getContactByIdContactBean"));
+		testObjects.put("contactRef", (ContactBean) context.getBean("getContactByIdContactBean"));
     	
 		MessageProcessor flow = lookupFlowConstruct("create-contact");
     	
