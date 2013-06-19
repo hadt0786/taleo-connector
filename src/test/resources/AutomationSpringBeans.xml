@@ -289,7 +289,6 @@
 		<property name="cellPhone" value="999-343-2344" />
 		<property name="city" value="Jason" />
 		<property name="country" value="US-CA" />
-		<property name="email" value="scary@talent.com" />
 		<property name="firstName" value="Jessica" />
 		<property name="gender" value="Choose Not to Disclose" />
 		<property name="lastName" value="Karim" />
@@ -317,7 +316,6 @@
 		<property name="cellPhone" value="999-343-2344" />
 		<property name="city" value="Jason" />
 		<property name="country" value="US-CA" />
-		<property name="email" value="scary@talent.com" />
 		<property name="firstName" value="Jessica" />
 		<property name="gender" value="Choose Not to Disclose" />
 		<property name="lastName" value="Karim" />
@@ -345,7 +343,6 @@
 		<property name="cellPhone" value="999-343-2344" />
 		<property name="city" value="Jason" />
 		<property name="country" value="US-CA" />
-		<property name="email" value="scary@talent.com" />
 		<property name="firstName" value="Jessica" />
 		<property name="gender" value="Choose Not to Disclose" />
 		<property name="lastName" value="Karim" />
@@ -373,7 +370,6 @@
 		<property name="cellPhone" value="999-343-2344" />
 		<property name="city" value="Jason" />
 		<property name="country" value="US-CA" />
-		<property name="email" value="scary@talent.com" />
 		<property name="firstName" value="Jessica" />
 		<property name="gender" value="Choose Not to Disclose" />
 		<property name="lastName" value="Karim" />
@@ -401,7 +397,6 @@
 		<property name="cellPhone" value="999-343-2344" />
 		<property name="city" value="Jason" />
 		<property name="country" value="US-CA" />
-		<property name="email" value="scary@talent.com" />
 		<property name="firstName" value="Jessica" />
 		<property name="gender" value="Choose Not to Disclose" />
 		<property name="lastName" value="Karim" />
@@ -429,7 +424,6 @@
 		<property name="cellPhone" value="999-343-2344" />
 		<property name="city" value="Jason" />
 		<property name="country" value="US-CA" />
-		<property name="email" value="scary@talent.com" />
 		<property name="firstName" value="Jessica" />
 		<property name="gender" value="Choose Not to Disclose" />
 		<property name="lastName" value="Karim" />
@@ -457,7 +451,470 @@
 	<!-- create-department -->
 
 	<bean id="createDepartmentDepartmentBean" class="org.mule.modules.taleo.model.DepartmentBean">
+	</bean>
+
+	<!-- create-attachment -->
+
+	<bean id="createAttachmentCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
 	
+	<bean id="createAttachmentBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+		<property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX==" />
+	</bean>
+
+	<util:map id="createAttachmentTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />	
+		<entry key="binaryResumeRef" value-ref="createAttachmentBinaryResumeRef" />
+	</util:map>
+	
+	<!-- get-attachment -->
+
+	<bean id="getAttachmentCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="getAttachmentBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+		<property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX==" />
+	</bean>
+	
+	<util:map id="getAttachmentTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="attachmentDescription" value="test1.docx" />
+		<entry key="attachmentName" value="test1.docx" />
+		<entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />	
+		<entry key="binaryResumeRef" value-ref="getAttachmentBinaryResumeRef" />
+	</util:map>
+	
+	<!-- get-attachment-data -->
+
+	<bean id="getAttachmentDataCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="getAttachmentDataBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+		<property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX==" />
+	</bean>
+	
+	<util:map id="getAttachmentDataTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="attachmentDescription" value="test1.docx" />
+		<entry key="attachmentName" value="test1.docx" />
+		<entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />	
+		<entry key="binaryResumeRef" value-ref="getAttachmentDataBinaryResumeRef" />
+	</util:map>
+
+	<!-- get-attachments -->
+
+	<bean id="getAttachmentsAttachmentsAmount" class="java.lang.Integer">
+		<constructor-arg>
+			<value>2</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="getAttachmentsCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="getAttachmentsBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+		<property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX==" />
+	</bean>
+	
+	<util:map id="getAttachmentsTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />	
+		<entry key="binaryResumeRef" value-ref="getAttachmentsBinaryResumeRef" />
+	</util:map>
+	
+	<!-- update-attachment -->
+
+	<bean id="updateAttachmentCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="updateAttachmentBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+		<property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX==" />
+	</bean>
+
+	<util:map id="updateAttachmentTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />	
+		<entry key="binaryResumeRef" value-ref="updateAttachmentBinaryResumeRef" />
+	</util:map>
+
+	<!-- delete-attachment -->
+
+	<bean id="deleteAttachmentCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="deleteAttachmentBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+		<property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX==" />
+	</bean>
+
+	<util:map id="deleteAttachmentTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document" />	
+		<entry key="binaryResumeRef" value-ref="deleteAttachmentBinaryResumeRef" />
+	</util:map>
+
+	<!-- create-entity-attachment -->
+
+	<bean id="createEntityAttachmentCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="createEntityAttachmentDataRef" class="org.mule.modules.taleo.model.ByteArr">
+		<property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaXplZCAxL0wgMTg3NT==" />
+	</bean>
+
+	<util:map id="createEntityAttachmentTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="entityType" value="CAND" />
+		<entry key="description" value="pdfAttachment" />
+		<entry key="fileName" value="new.pdf" />
+		<entry key="contentType" value="application/pdf" />
+		<entry key="dataRef" value-ref="createEntityAttachmentDataRef" />
+	</util:map>
+
+	<!-- get-entity-attachments -->
+
+	<bean id="getEntityAttachmentsAttachmentsAmount" class="java.lang.Integer">
+		<constructor-arg>
+			<value>2</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="getEntityAttachmentsCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="getEntityAttachmentsDataRef" class="org.mule.modules.taleo.model.ByteArr">
+		<property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaXplZCAxL0wgMTg3NT==" />
+	</bean>
+
+	<util:map id="getEntityAttachmentsTestData" map-class="java.util.HashMap"
+		key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+		<entry key="entityType" value="CAND" />
+		<entry key="description" value="pdfAttachment" />
+		<entry key="fileName" value="new.pdf" />
+		<entry key="contentType" value="application/pdf" />
+		<entry key="dataRef" value-ref="getEntityAttachmentsDataRef" />
+	</util:map>
+
+	<!-- create-background-check -->
+
+	<bean id="createBackgroundCheckCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="createBackgroundCheckBackgroundCheckBean" class="org.mule.modules.taleo.model.BackgroundCheckBean">
+		<property name="checkerEmail" value="checkerEmail" />
+		<property name="checkerName" value="checkerName" />
+		<property name="checkerPhone" value="checkerPhone" />
+		<property name="comments" value="comments" />
+		<property name="creator" value="creator" />
+	</bean>
+	
+	<!-- delete-background-check -->
+
+	<bean id="deleteBackgroundCheckCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="deleteBackgroundCheckBackgroundCheckBean" class="org.mule.modules.taleo.model.BackgroundCheckBean">
+		<property name="checkerEmail" value="checkerEmail" />
+		<property name="checkerName" value="checkerName" />
+		<property name="checkerPhone" value="checkerPhone" />
+		<property name="comments" value="comments" />
+		<property name="creator" value="creator" />
+	</bean>
+	
+	<!-- get-background-check-by-id -->
+
+	<bean id="getBackgroundCheckByIdCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="getBackgroundCheckByIdBackgroundCheckBean" class="org.mule.modules.taleo.model.BackgroundCheckBean">
+		<property name="checkerEmail" value="checkerEmail" />
+		<property name="checkerName" value="checkerName" />
+		<property name="checkerPhone" value="checkerPhone" />
+		<property name="comments" value="comments" />
+		<property name="creator" value="creator" />
+	</bean>
+	
+	<!-- get-backgroundchecks-by-candidate -->
+
+	<bean id="getBackgroundChecksByCandidateBackgroundChecksAmount" class="java.lang.Integer">
+		<constructor-arg>
+			<value>2</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="getBackgroundChecksByCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="getBackgroundChecksByCandidateBackgroundCheckBean" class="org.mule.modules.taleo.model.BackgroundCheckBean">
+		<property name="checkerEmail" value="checkerEmail" />
+		<property name="checkerName" value="checkerName" />
+		<property name="checkerPhone" value="checkerPhone" />
+		<property name="comments" value="comments" />
+		<property name="creator" value="creator" />
 	</bean>
 
 </beans>
