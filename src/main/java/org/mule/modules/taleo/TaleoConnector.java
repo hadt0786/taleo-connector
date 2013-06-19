@@ -840,13 +840,7 @@ public class TaleoConnector
 	@Processor
 	public long createCandidate(
 			@Optional @Default("#[payload]") CandidateBean candidate)
-			throws TaleoException {
-		candidate.setState("HIRED");
-		candidate.setEmail("foo@foo.com");
-		candidate.setLastName("Bond");
-		candidate.setFirstName("Jamos");
-		candidate.setReferredBy("M");
-		
+			throws TaleoException {		
 		return client.createCandidate(candidate);
 	}
 
