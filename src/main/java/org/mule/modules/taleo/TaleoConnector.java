@@ -629,7 +629,7 @@ public class TaleoConnector
 	 * {@sample.xml ../../../doc/mule-module-taleo.xml.sample taleo:update-attachment }
 	 * 
 	 * @param attachmentId Attachment ID
-	 * @param description Attachment Description
+	 * @param attachmentDescription Attachment Description
 	 * @param attachmentName Attachment Name
 	 * @param contentType Content Type
 	 * @param binaryResume Binary resume
@@ -638,12 +638,12 @@ public class TaleoConnector
 	@Processor
 	public void updateAttachment(
 			 long attachmentId,
-			 String description,
+			 String attachmentDescription,
 			 String attachmentName,
 			 String contentType,
 			 @Optional @Default("#[payload]") ByteArr binaryResume)
 			throws TaleoException {
-		client.updateAttachment(attachmentId,description,attachmentName,contentType,binaryResume);
+		client.updateAttachment(attachmentId,attachmentDescription,attachmentName,contentType,binaryResume);
 	}
 
 
@@ -2332,7 +2332,7 @@ public class TaleoConnector
 	 *  {@sample.xml ../../../doc/mule-module-taleo.xml.sample taleo:create-attachment }
 	 *  
 	 * @param candidateId Candidate Id
-	 * @param attachment Attachment description
+	 * @param attachmentDescription Attachment description
 	 * @param attachmentName Attachment name
 	 * @param contentType Content Type
 	 * @param binaryResume Base64 data
@@ -2342,12 +2342,12 @@ public class TaleoConnector
 	@Processor
 	public long createAttachment(
 			 long candidateId,
-			 String attachment,
+			 String attachmentDescription,
 			 String attachmentName,
 			 String contentType,
 			 @Optional @Default("#[payload]") ByteArr binaryResume)
 			throws TaleoException {
-		return client.createAttachment(candidateId,attachment,attachmentName,contentType,binaryResume);
+		return client.createAttachment(candidateId,attachmentDescription,attachmentName,contentType,binaryResume);
 	}
 
 

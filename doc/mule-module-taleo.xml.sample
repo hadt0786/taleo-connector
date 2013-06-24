@@ -36,7 +36,7 @@
 <!-- BEGIN_INCLUDE(taleo:create-attachment) -->
     <taleo:create-attachment
             candidateId="1"
-            attachment="test1.docx"
+            attachmentDescription="test1.docx"
             attachmentName="test1.docx"
             contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
 <!-- END_INCLUDE(taleo:create-attachment) -->
@@ -62,7 +62,7 @@
     <taleo:get-entity-attachments entityType="CAND" entityId="48"/>
 <!-- END_INCLUDE(taleo:get-entity-attachments) -->
 <!-- BEGIN_INCLUDE(taleo:update-attachment) -->
-    <taleo:update-attachment attachmentId="1" description="test.docx" attachmentName="test.docx" contentType="application/vnd.openxmlformats-
+    <taleo:update-attachment attachmentId="1" attachmentDescription="test.docx" attachmentName="test.docx" contentType="application/vnd.openxmlformats-
 officedocument.wordprocessingml.document"/>
 <!-- END_INCLUDE(taleo:update-attachment) -->
 <!-- BEGIN_INCLUDE(taleo:create-background-check) -->
