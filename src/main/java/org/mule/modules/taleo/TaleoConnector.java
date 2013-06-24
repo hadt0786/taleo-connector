@@ -2326,8 +2326,7 @@ public class TaleoConnector
 
 
 	/**
-	 *  Create an attachment for a specific candidate, and sends a correlated message of attachment ID.
-	 *  Attachments are all of the appended files associated with any entity in Taleo Business Edition. There is a one-to-many relationship with attachments to entities. Entities include accounts (ACCT), candidates (CAND), contacts (CTCT), employees (EMPL), requisitions (REQU) and users (WORK).
+	 *  The endpoint receives a message to create an attachment for a specific candidate, and sends a correlated message of attachment ID.
 	 *  
 	 *  {@sample.xml ../../../doc/mule-module-taleo.xml.sample taleo:create-attachment }
 	 *  
