@@ -27,6 +27,8 @@ import javax.xml.ws.soap.SOAPFaultException;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.Validate;
+import org.apache.cxf.endpoint.Client;
+import org.apache.cxf.frontend.ClientProxy;
 import org.mule.api.ConnectionException;
 import org.mule.modules.taleo.api.EntityTypeEnum;
 import org.mule.modules.taleo.model.AccountBean;
@@ -121,6 +123,8 @@ public class TaleoCxfClientImpl implements TaleoClient {
 		bindingProvider.getRequestContext().put(
 				BindingProvider.ENDPOINT_ADDRESS_PROPERTY, endpoint);
 
+		Client cxfClient = ClientProxy.getClient(rpc);
+		cxfClient.getInInterceptors().add(new CustomMessageReaderInterceptor());
 		String loginResult;
 		try {
 			loginResult = this.rpc.login(companyCode, username, password);
