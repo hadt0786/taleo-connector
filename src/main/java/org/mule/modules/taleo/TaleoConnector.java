@@ -68,7 +68,7 @@ import org.mule.modules.taleo.model.WorkHistoryArr;
  *
  * @author MuleSoft, Inc.
  */
-@Connector(name="taleo", schemaVersion="1.0-SNAPSHOT", friendlyName = "Taleo")
+@Connector(name="taleo", schemaVersion="1.0-SNAPSHOT", friendlyName = "Taleo", minMuleVersion="3.4")
 public class TaleoConnector
 {
 	private TaleoClient client;
@@ -517,11 +517,19 @@ public class TaleoConnector
 	 * @throws TaleoException Exception
 	 */
 	@Processor
-	public Map getSystemProps()
+	public java.util.Map<String,Object> getSystemProps()
 			throws TaleoException {
-		return client.getSystemProps();
+		return fromTaleoMap(client.getSystemProps());
 	}
 
+
+	private java.util.Map<String, Object> fromTaleoMap(Map systemProps) {
+		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+		for(MapItem item: systemProps.getItem()){
+			map.put((String)item.getKey(), item.getPropertyValue());
+		}
+		return map;
+	}
 
 	/**
 	 * Retrieve all field values within an entity. 
@@ -1937,9 +1945,9 @@ public class TaleoConnector
 	@Processor
 	public long createUserWithPermissions(
 			 UserBean user,
-			 @Optional @Default("#[payload]") Map additionalEntities)
+			 @Optional @Default("#[payload]") java.util.Map<String,Object> additionalEntities)
 			throws TaleoException {
-		return client.createUserWithPermissions(user,additionalEntities);
+		return client.createUserWithPermissions(user,toTaleoMap(additionalEntities));
 	}
 
 
