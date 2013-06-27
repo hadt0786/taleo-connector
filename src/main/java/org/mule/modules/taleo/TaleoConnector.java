@@ -68,7 +68,7 @@ import org.mule.modules.taleo.model.WorkHistoryArr;
  *
  * @author MuleSoft, Inc.
  */
-@Connector(name="taleo", schemaVersion="1.0-SNAPSHOT", friendlyName = "Taleo", minMuleVersion="3.4")
+@Connector(name="taleo", schemaVersion="1.0", friendlyName = "Taleo", minMuleVersion="3.4")
 public class TaleoConnector
 {
 	private TaleoClient client;
