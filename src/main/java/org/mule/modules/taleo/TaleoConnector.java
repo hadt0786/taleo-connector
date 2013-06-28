@@ -68,7 +68,7 @@ import org.mule.modules.taleo.model.WorkHistoryArr;
  *
  * @author MuleSoft, Inc.
  */
-@Connector(name="taleo", schemaVersion="1.0-SNAPSHOT", friendlyName = "Taleo")
+@Connector(name="taleo", schemaVersion="1.0", friendlyName = "Taleo", minMuleVersion="3.4")
 public class TaleoConnector
 {
 	private TaleoClient client;
@@ -517,11 +517,19 @@ public class TaleoConnector
 	 * @throws TaleoException Exception
 	 */
 	@Processor
-	public Map getSystemProps()
+	public java.util.Map<String,Object> getSystemProps()
 			throws TaleoException {
-		return client.getSystemProps();
+		return fromTaleoMap(client.getSystemProps());
 	}
 
+
+	private java.util.Map<String, Object> fromTaleoMap(Map systemProps) {
+		java.util.Map<String, Object> map = new java.util.HashMap<String, Object>();
+		for(MapItem item: systemProps.getItem()){
+			map.put((String)item.getKey(), item.getPropertyValue());
+		}
+		return map;
+	}
 
 	/**
 	 * Retrieve all field values within an entity. 
@@ -629,7 +637,7 @@ public class TaleoConnector
 	 * {@sample.xml ../../../doc/mule-module-taleo.xml.sample taleo:update-attachment }
 	 * 
 	 * @param attachmentId Attachment ID
-	 * @param description Attachment Description
+	 * @param attachmentDescription Attachment Description
 	 * @param attachmentName Attachment Name
 	 * @param contentType Content Type
 	 * @param binaryResume Binary resume
@@ -638,12 +646,12 @@ public class TaleoConnector
 	@Processor
 	public void updateAttachment(
 			 long attachmentId,
-			 String description,
+			 String attachmentDescription,
 			 String attachmentName,
 			 String contentType,
 			 @Optional @Default("#[payload]") ByteArr binaryResume)
 			throws TaleoException {
-		client.updateAttachment(attachmentId,description,attachmentName,contentType,binaryResume);
+		client.updateAttachment(attachmentId,attachmentDescription,attachmentName,contentType,binaryResume);
 	}
 
 
@@ -840,13 +848,7 @@ public class TaleoConnector
 	@Processor
 	public long createCandidate(
 			@Optional @Default("#[payload]") CandidateBean candidate)
-			throws TaleoException {
-		candidate.setState("HIRED");
-		candidate.setEmail("foo@foo.com");
-		candidate.setLastName("Bond");
-		candidate.setFirstName("Jamos");
-		candidate.setReferredBy("M");
-		
+			throws TaleoException {		
 		return client.createCandidate(candidate);
 	}
 
@@ -1943,9 +1945,9 @@ public class TaleoConnector
 	@Processor
 	public long createUserWithPermissions(
 			 UserBean user,
-			 @Optional @Default("#[payload]") Map additionalEntities)
+			 @Optional @Default("#[payload]") java.util.Map<String,Object> additionalEntities)
 			throws TaleoException {
-		return client.createUserWithPermissions(user,additionalEntities);
+		return client.createUserWithPermissions(user,toTaleoMap(additionalEntities));
 	}
 
 
@@ -2203,7 +2205,7 @@ public class TaleoConnector
 			 LongArr requisitionIds,
 			 long statusId,
 			 long reasonId,
-			 boolean doRanking)
+			 @Optional @Default("false") Boolean doRanking)
 			throws TaleoException {
 		client.upsertCandidateToRequisitions(candidateId,requisitionIds,statusId,reasonId,doRanking);
 		
@@ -2332,13 +2334,12 @@ public class TaleoConnector
 
 
 	/**
-	 *  Create an attachment for a specific candidate, and sends a correlated message of attachment ID.
-	 *  Attachments are all of the appended files associated with any entity in Taleo Business Edition. There is a one-to-many relationship with attachments to entities. Entities include accounts (ACCT), candidates (CAND), contacts (CTCT), employees (EMPL), requisitions (REQU) and users (WORK).
+	 *  The endpoint receives a message to create an attachment for a specific candidate, and sends a correlated message of attachment ID.
 	 *  
 	 *  {@sample.xml ../../../doc/mule-module-taleo.xml.sample taleo:create-attachment }
 	 *  
 	 * @param candidateId Candidate Id
-	 * @param attachment Attachment description
+	 * @param attachmentDescription Attachment description
 	 * @param attachmentName Attachment name
 	 * @param contentType Content Type
 	 * @param binaryResume Base64 data
@@ -2348,12 +2349,12 @@ public class TaleoConnector
 	@Processor
 	public long createAttachment(
 			 long candidateId,
-			 String attachment,
+			 String attachmentDescription,
 			 String attachmentName,
 			 String contentType,
 			 @Optional @Default("#[payload]") ByteArr binaryResume)
 			throws TaleoException {
-		return client.createAttachment(candidateId,attachment,attachmentName,contentType,binaryResume);
+		return client.createAttachment(candidateId,attachmentDescription,attachmentName,contentType,binaryResume);
 	}
 
 
