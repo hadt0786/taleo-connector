@@ -6,50 +6,26 @@
 
 package org.mule.modules.taleo.automation.testcases;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 import java.util.UUID;
 
-import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
 import org.mule.modules.taleo.model.DepartmentBean;
 
-
-public class CreateDepartmentTestCases extends TaleoTestParent {
+public class DeleteDepartmentTestCases extends TaleoTestParent {
 	
-	@After
-	public void tearDown() {
+	@Before
+	public void setUp() {
 		
-		MessageProcessor flow = lookupFlowConstruct("delete-department");
-		
-		try {		
-			
-			if (testObjects.containsKey("departmentId")) {
-				
-				flow.process(getTestEvent(testObjects));
-				
-			}
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-				e.printStackTrace();
-				fail();
-		}
-		
-	}
-
-    @Category({SmokeTests.class, RegressionTests.class})
-	@Test
-	public void testCreateDepartment() {
-
     	testObjects =  new HashMap<String,Object>();
     	
-    	DepartmentBean departmentBean = (DepartmentBean) context.getBean("createDepartmentDepartmentBean");
+    	DepartmentBean departmentBean = (DepartmentBean) context.getBean("deleteDepartmentDepartmentBean");
     	departmentBean.setDepartmentName(UUID.randomUUID().toString());
     	
     	testObjects.put("departmentRef", departmentBean);
@@ -59,18 +35,26 @@ public class CreateDepartmentTestCases extends TaleoTestParent {
 		try {
 
 			MuleEvent response = flow.process(getTestEvent(testObjects));
-			Long departmentId = (Long) response.getMessage().getPayload();
-			
-			assertNotNull(departmentId);
-			
-			testObjects.put("departmentId", departmentId);
+			testObjects.put("departmentId", (Long) response.getMessage().getPayload());
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			fail();
 		}
-     
+		
+	}	
+	
+	
+    @Category({SmokeTests.class, RegressionTests.class})
+	@Test(expected=org.mule.api.MessagingException.class)
+	public void testDeleteDepartment() throws Exception {
+		
+		MessageProcessor deleteDepartmentFlow = lookupFlowConstruct("delete-department");
+		deleteDepartmentFlow.process(getTestEvent(testObjects));
+
+		MessageProcessor getDepartmentByIdFlow = lookupFlowConstruct("get-department-by-id");
+		getDepartmentByIdFlow.process(getTestEvent(testObjects));
+
 	}
-    
 }

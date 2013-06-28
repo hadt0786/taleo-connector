@@ -10,26 +10,27 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;
-import java.util.UUID;
 
+import javax.xml.datatype.DatatypeFactory;
+
+import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
-import org.mule.modules.taleo.model.DepartmentBean;
+import org.mule.modules.taleo.model.RequisitionBean;
 
-
-public class CreateDepartmentTestCases extends TaleoTestParent {
+public class CreateRequisitionTemplateTestCases extends TaleoTestParent {
 	
 	@After
 	public void tearDown() {
 		
-		MessageProcessor flow = lookupFlowConstruct("delete-department");
+		MessageProcessor flow = lookupFlowConstruct("delete-requisition");
 		
 		try {		
 			
-			if (testObjects.containsKey("departmentId")) {
+			if (testObjects.containsKey("requisitionId")) {
 				
 				flow.process(getTestEvent(testObjects));
 				
@@ -45,25 +46,23 @@ public class CreateDepartmentTestCases extends TaleoTestParent {
 
     @Category({SmokeTests.class, RegressionTests.class})
 	@Test
-	public void testCreateDepartment() {
-
+	public void testCreateRequisitionTemplate() {
+    	
     	testObjects =  new HashMap<String,Object>();
-    	
-    	DepartmentBean departmentBean = (DepartmentBean) context.getBean("createDepartmentDepartmentBean");
-    	departmentBean.setDepartmentName(UUID.randomUUID().toString());
-    	
-    	testObjects.put("departmentRef", departmentBean);
-    	
-		MessageProcessor flow = lookupFlowConstruct("create-department");
+		MessageProcessor flow = lookupFlowConstruct("create-requisition-template");
     	
 		try {
+			
+			RequisitionBean requisitionBean = (RequisitionBean) context.getBean("createRequisitionTemplateRequisitionBean");
+	    	requisitionBean.setOpenedDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(new DateTime().toGregorianCalendar()));
+	    	testObjects.put("requisitionRef", requisitionBean);
 
 			MuleEvent response = flow.process(getTestEvent(testObjects));
-			Long departmentId = (Long) response.getMessage().getPayload();
+			Long requisitionId = (Long) response.getMessage().getPayload();
 			
-			assertNotNull(departmentId);
+			assertNotNull(requisitionId);
 			
-			testObjects.put("departmentId", departmentId);
+			testObjects.put("requisitionId", requisitionId);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -73,7 +73,7 @@ public class UpdateContactTestCases extends TaleoTestParent {
 		MessageProcessor getContactByIdFLow = lookupFlowConstruct("get-contact-by-id");
 		MessageProcessor updateContactFlow = lookupFlowConstruct("update-contact");
     	
-		MuleEvent updateContactResponse, getContactByResponse;
+		MuleEvent getContactByResponse;
 		ContactBean contactBean, updatedContactBean;
 		
 		try {
@@ -84,8 +84,7 @@ public class UpdateContactTestCases extends TaleoTestParent {
 			contactBean.setPhone(UPDATED_CELLPHONE_NUMBER);
 			testObjects.put("contactRef", contactBean);
 			
-			updateContactResponse = updateContactFlow.process(getTestEvent(testObjects));
-			updateContactResponse.getMessage().getPayload();
+			updateContactFlow.process(getTestEvent(testObjects));
 			
 			getContactByResponse = getContactByIdFLow.process(getTestEvent(testObjects));
 			updatedContactBean = (ContactBean) getContactByResponse.getMessage().getPayload();

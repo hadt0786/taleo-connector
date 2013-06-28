@@ -18,30 +18,33 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
+import org.mule.modules.taleo.model.BackgroundCheckBean;
 import org.mule.modules.taleo.model.CandidateBean;
 
 
-public class CreateAttachmentTestCases extends TaleoTestParent {
+public class CreateBackgroundCheckTestCases extends TaleoTestParent {
 	
 	 
 	@Before
 	public void setUp() {
     	
     	testObjects =  new HashMap<String,Object>();
-    	CandidateBean candidateBean = (CandidateBean) context.getBean("createAttachmentCandidateBean");
+    	CandidateBean candidateBean = (CandidateBean) context.getBean("createBackgroundCheckCandidateBean");
     	candidateBean.setEmail(String.format("%s@email.com", UUID.randomUUID().toString().substring(0, 8)));
     	
     	testObjects.put("candidateRef", candidateBean);
-    	
+
 		MessageProcessor flow = lookupFlowConstruct("create-candidate");
     	
 		try {
 
 			MuleEvent response = flow.process(getTestEvent(testObjects));
 			Long candidateId = (Long) response.getMessage().getPayload();
-
-			testObjects = (HashMap<String,Object>) context.getBean("createAttachmentTestData");
 			testObjects.put("candidateId", candidateId);
+			
+			BackgroundCheckBean backgroundCheckBean = (BackgroundCheckBean) context.getBean("createBackgroundCheckBackgroundCheckBean");
+			backgroundCheckBean.setCandidateId(candidateId);
+			testObjects.put("backgroundCheckRef", backgroundCheckBean);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -55,12 +58,12 @@ public class CreateAttachmentTestCases extends TaleoTestParent {
 	public void tearDown() {
 		
 		MessageProcessor deleteCandidateFlow = lookupFlowConstruct("delete-candidate");
-		MessageProcessor deleteAttachmentFlow = lookupFlowConstruct("delete-attachment");
+		MessageProcessor deleteBackgroundCheckFlow = lookupFlowConstruct("delete-background-check");
 		
 		try {		
 
-			if (testObjects.containsKey("attachmentId")) {
-				deleteAttachmentFlow.process(getTestEvent(testObjects));	
+			if (testObjects.containsKey("backgroundCheckId")) {
+				deleteBackgroundCheckFlow.process(getTestEvent(testObjects));	
 			}
 			
 			if (testObjects.containsKey("candidateId")) {	
@@ -77,21 +80,18 @@ public class CreateAttachmentTestCases extends TaleoTestParent {
 
     @Category({SmokeTests.class, RegressionTests.class})
 	@Test
-	public void testCreateAttachment() {
+	public void testCreateBackgroundCheck() {
     	
-		MessageProcessor flow = lookupFlowConstruct("create-attachment");
+		MessageProcessor flow = lookupFlowConstruct("create-background-check");
     	
 		try {
-			
-			testObjects.put("attachmentDescription", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
-			testObjects.put("attachmentName", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
 
 			MuleEvent response = flow.process(getTestEvent(testObjects));
-			Long attachmentId = (Long) response.getMessage().getPayload();
+			Long backgroundCheckId = (Long) response.getMessage().getPayload();
 			
-			assertNotNull(attachmentId);
+			assertNotNull(backgroundCheckId);
 			
-			testObjects.put("attachmentId", attachmentId);
+			testObjects.put("backgroundCheckId", backgroundCheckId);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

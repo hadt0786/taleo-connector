@@ -74,7 +74,7 @@ public class UpdateAccountTestCases extends TaleoTestParent {
 		MessageProcessor getAccountByIdFLow = lookupFlowConstruct("get-account-by-id");
 		MessageProcessor updateAccountFlow = lookupFlowConstruct("update-account");
     	
-		MuleEvent updateAccountResponse, getAccountByResponse;
+		MuleEvent getAccountByResponse;
 		AccountBean accountBean, updatedAccountBean;
 		
 		try {
@@ -85,8 +85,7 @@ public class UpdateAccountTestCases extends TaleoTestParent {
 			accountBean.setPhone(UPDATED_PHONE_NUMBER);
 			testObjects.put("accountRef", accountBean);
 			
-			updateAccountResponse = updateAccountFlow.process(getTestEvent(testObjects));
-			updateAccountResponse.getMessage().getPayload();
+			updateAccountFlow.process(getTestEvent(testObjects));
 			
 			getAccountByResponse = getAccountByIdFLow.process(getTestEvent(testObjects));
 			updatedAccountBean = (AccountBean) getAccountByResponse.getMessage().getPayload();

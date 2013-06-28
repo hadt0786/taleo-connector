@@ -21,14 +21,14 @@ import org.mule.api.processor.MessageProcessor;
 import org.mule.modules.taleo.model.CandidateBean;
 
 
-public class CreateAttachmentTestCases extends TaleoTestParent {
+public class CreateEntityAttachmentTestCases extends TaleoTestParent {
 	
 	 
 	@Before
 	public void setUp() {
     	
     	testObjects =  new HashMap<String,Object>();
-    	CandidateBean candidateBean = (CandidateBean) context.getBean("createAttachmentCandidateBean");
+    	CandidateBean candidateBean = (CandidateBean) context.getBean("createEntityAttachmentCandidateBean");
     	candidateBean.setEmail(String.format("%s@email.com", UUID.randomUUID().toString().substring(0, 8)));
     	
     	testObjects.put("candidateRef", candidateBean);
@@ -40,8 +40,9 @@ public class CreateAttachmentTestCases extends TaleoTestParent {
 			MuleEvent response = flow.process(getTestEvent(testObjects));
 			Long candidateId = (Long) response.getMessage().getPayload();
 
-			testObjects = (HashMap<String,Object>) context.getBean("createAttachmentTestData");
+			testObjects = (HashMap<String,Object>) context.getBean("createEntityAttachmentTestData");
 			testObjects.put("candidateId", candidateId);
+			testObjects.put("entityId", candidateId);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -77,13 +78,12 @@ public class CreateAttachmentTestCases extends TaleoTestParent {
 
     @Category({SmokeTests.class, RegressionTests.class})
 	@Test
-	public void testCreateAttachment() {
+	public void testCreateEntityAttachment() {
     	
-		MessageProcessor flow = lookupFlowConstruct("create-attachment");
+		MessageProcessor flow = lookupFlowConstruct("create-entity-attachment");
     	
 		try {
 			
-			testObjects.put("attachmentDescription", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
 			testObjects.put("attachmentName", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
 
 			MuleEvent response = flow.process(getTestEvent(testObjects));

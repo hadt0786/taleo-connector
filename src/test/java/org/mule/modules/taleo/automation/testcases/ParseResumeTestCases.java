@@ -10,28 +10,26 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;
-import java.util.UUID;
 
 import org.junit.After;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
-import org.mule.modules.taleo.model.DepartmentBean;
+import org.mule.modules.taleo.model.AccountBean;
 
-
-public class CreateDepartmentTestCases extends TaleoTestParent {
+public class ParseResumeTestCases extends TaleoTestParent {
 	
 	@After
 	public void tearDown() {
 		
-		MessageProcessor flow = lookupFlowConstruct("delete-department");
+		MessageProcessor flow = lookupFlowConstruct("delete-account");
 		
 		try {		
 			
-			if (testObjects.containsKey("departmentId")) {
+			if (testObjects.containsKey("accountId")) {
 				
-				flow.process(getTestEvent(testObjects));
+				MuleEvent response = flow.process(getTestEvent(testObjects));
 				
 			}
 			
@@ -45,25 +43,21 @@ public class CreateDepartmentTestCases extends TaleoTestParent {
 
     @Category({SmokeTests.class, RegressionTests.class})
 	@Test
-	public void testCreateDepartment() {
-
+	public void testCreateAccount() {
+    	
     	testObjects =  new HashMap<String,Object>();
+    	testObjects.put("accountRef", (AccountBean) context.getBean("createAccountAccountBean"));
     	
-    	DepartmentBean departmentBean = (DepartmentBean) context.getBean("createDepartmentDepartmentBean");
-    	departmentBean.setDepartmentName(UUID.randomUUID().toString());
-    	
-    	testObjects.put("departmentRef", departmentBean);
-    	
-		MessageProcessor flow = lookupFlowConstruct("create-department");
+		MessageProcessor flow = lookupFlowConstruct("create-account");
     	
 		try {
 
 			MuleEvent response = flow.process(getTestEvent(testObjects));
-			Long departmentId = (Long) response.getMessage().getPayload();
+			Long accountId = (Long) response.getMessage().getPayload();
 			
-			assertNotNull(departmentId);
+			assertNotNull(accountId);
 			
-			testObjects.put("departmentId", departmentId);
+			testObjects.put("accountId", accountId);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -6,9 +6,12 @@
 
 package org.mule.modules.taleo.automation.testcases;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -18,30 +21,41 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
+import org.mule.modules.taleo.model.AccountBean;
+import org.mule.modules.taleo.model.AttachmentBean;
+import org.mule.modules.taleo.model.ByteArr;
 import org.mule.modules.taleo.model.CandidateBean;
 
 
-public class CreateAttachmentTestCases extends TaleoTestParent {
+public class GetAttachmentDataTestCases extends TaleoTestParent {
 	
 	 
 	@Before
 	public void setUp() {
     	
+		MessageProcessor createCandidateFlow = lookupFlowConstruct("create-candidate");
+		MessageProcessor createAttachmentFlow = lookupFlowConstruct("create-attachment");;
+		
+		MuleEvent createCandidateResponse, createAttachmentResponse;
+		
     	testObjects =  new HashMap<String,Object>();
-    	CandidateBean candidateBean = (CandidateBean) context.getBean("createAttachmentCandidateBean");
+    	CandidateBean candidateBean = (CandidateBean) context.getBean("getAttachmentDataCandidateBean");
     	candidateBean.setEmail(String.format("%s@email.com", UUID.randomUUID().toString().substring(0, 8)));
     	
     	testObjects.put("candidateRef", candidateBean);
-    	
-		MessageProcessor flow = lookupFlowConstruct("create-candidate");
-    	
+    
 		try {
 
-			MuleEvent response = flow.process(getTestEvent(testObjects));
-			Long candidateId = (Long) response.getMessage().getPayload();
+			createCandidateResponse = createCandidateFlow.process(getTestEvent(testObjects));
+			Long candidateId = (Long) createCandidateResponse.getMessage().getPayload();
 
-			testObjects = (HashMap<String,Object>) context.getBean("createAttachmentTestData");
+			testObjects = (HashMap<String,Object>) context.getBean("getAttachmentDataTestData");
 			testObjects.put("candidateId", candidateId);
+
+			createAttachmentResponse = createAttachmentFlow.process(getTestEvent(testObjects));
+			Long attachmentId = (Long) createAttachmentResponse.getMessage().getPayload();
+			
+			testObjects.put("attachmentId", attachmentId);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -77,22 +91,21 @@ public class CreateAttachmentTestCases extends TaleoTestParent {
 
     @Category({SmokeTests.class, RegressionTests.class})
 	@Test
-	public void testCreateAttachment() {
+	public void testGetAttachmentData() {
     	
-		MessageProcessor flow = lookupFlowConstruct("create-attachment");
+		MessageProcessor flow = lookupFlowConstruct("get-attachment-data");
     	
 		try {
-			
-			testObjects.put("attachmentDescription", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
-			testObjects.put("attachmentName", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
 
 			MuleEvent response = flow.process(getTestEvent(testObjects));
-			Long attachmentId = (Long) response.getMessage().getPayload();
+			ByteArr actualByteArr = (ByteArr) response.getMessage().getPayload();
+			byte[] actualByteArray = actualByteArr.getArray();
 			
-			assertNotNull(attachmentId);
+			ByteArr expectedByteArr = (ByteArr) testObjects.get("binaryResumeRef");
+			byte[] expectedByteArray = expectedByteArr.getArray();
 			
-			testObjects.put("attachmentId", attachmentId);
-			
+			assertTrue(Arrays.equals(actualByteArray, expectedByteArray));
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

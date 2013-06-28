@@ -17,21 +17,21 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
-import org.mule.modules.taleo.model.DepartmentBean;
+import org.mule.modules.taleo.model.CandidateBean;
 
 
-public class CreateDepartmentTestCases extends TaleoTestParent {
+public class CreateCandidateTestCases extends TaleoTestParent {
 	
 	@After
 	public void tearDown() {
 		
-		MessageProcessor flow = lookupFlowConstruct("delete-department");
+		MessageProcessor flow = lookupFlowConstruct("delete-candidate");
 		
 		try {		
 			
-			if (testObjects.containsKey("departmentId")) {
+			if (testObjects.containsKey("candidateId")) {
 				
-				flow.process(getTestEvent(testObjects));
+				MuleEvent response = flow.process(getTestEvent(testObjects));
 				
 			}
 			
@@ -45,25 +45,24 @@ public class CreateDepartmentTestCases extends TaleoTestParent {
 
     @Category({SmokeTests.class, RegressionTests.class})
 	@Test
-	public void testCreateDepartment() {
+	public void testCreateCandidate() {
 
+    	CandidateBean candidateBean = (CandidateBean) context.getBean("createCandidateCandidateBean");
+    	candidateBean.setEmail(String.format("%s@email.com", UUID.randomUUID().toString().substring(0, 8)));
+    	
     	testObjects =  new HashMap<String,Object>();
+    	testObjects.put("candidateRef", candidateBean);
     	
-    	DepartmentBean departmentBean = (DepartmentBean) context.getBean("createDepartmentDepartmentBean");
-    	departmentBean.setDepartmentName(UUID.randomUUID().toString());
-    	
-    	testObjects.put("departmentRef", departmentBean);
-    	
-		MessageProcessor flow = lookupFlowConstruct("create-department");
+		MessageProcessor flow = lookupFlowConstruct("create-candidate");
     	
 		try {
 
 			MuleEvent response = flow.process(getTestEvent(testObjects));
-			Long departmentId = (Long) response.getMessage().getPayload();
+			Long candidateId = (Long) response.getMessage().getPayload();
 			
-			assertNotNull(departmentId);
+			assertNotNull(candidateId);
 			
-			testObjects.put("departmentId", departmentId);
+			testObjects.put("candidateId", candidateId);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

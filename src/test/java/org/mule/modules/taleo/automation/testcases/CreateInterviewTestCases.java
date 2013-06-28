@@ -9,9 +9,13 @@ package org.mule.modules.taleo.automation.testcases;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.UUID;
 
+import javax.xml.datatype.DatatypeFactory;
+
+import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,29 +23,33 @@ import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
 import org.mule.modules.taleo.model.CandidateBean;
+import org.mule.modules.taleo.model.InterviewBean;
 
 
-public class CreateAttachmentTestCases extends TaleoTestParent {
+public class CreateInterviewTestCases extends TaleoTestParent {
 	
 	 
 	@Before
 	public void setUp() {
     	
     	testObjects =  new HashMap<String,Object>();
-    	CandidateBean candidateBean = (CandidateBean) context.getBean("createAttachmentCandidateBean");
+    	CandidateBean candidateBean = (CandidateBean) context.getBean("createInterviewCandidateBean");
     	candidateBean.setEmail(String.format("%s@email.com", UUID.randomUUID().toString().substring(0, 8)));
     	
     	testObjects.put("candidateRef", candidateBean);
-    	
+
 		MessageProcessor flow = lookupFlowConstruct("create-candidate");
     	
 		try {
 
 			MuleEvent response = flow.process(getTestEvent(testObjects));
 			Long candidateId = (Long) response.getMessage().getPayload();
-
-			testObjects = (HashMap<String,Object>) context.getBean("createAttachmentTestData");
 			testObjects.put("candidateId", candidateId);
+			
+			InterviewBean interviewBean = (InterviewBean) context.getBean("createInterviewInterviewBean");
+			interviewBean.setCandidateId(candidateId);
+			interviewBean.setStartDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(new DateTime().toGregorianCalendar()));
+			testObjects.put("interviewRef", interviewBean);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -55,12 +63,12 @@ public class CreateAttachmentTestCases extends TaleoTestParent {
 	public void tearDown() {
 		
 		MessageProcessor deleteCandidateFlow = lookupFlowConstruct("delete-candidate");
-		MessageProcessor deleteAttachmentFlow = lookupFlowConstruct("delete-attachment");
+		MessageProcessor deleteInterviewFlow = lookupFlowConstruct("delete-interview");
 		
 		try {		
 
-			if (testObjects.containsKey("attachmentId")) {
-				deleteAttachmentFlow.process(getTestEvent(testObjects));	
+			if (testObjects.containsKey("interviewId")) {
+				deleteInterviewFlow.process(getTestEvent(testObjects));	
 			}
 			
 			if (testObjects.containsKey("candidateId")) {	
@@ -77,21 +85,18 @@ public class CreateAttachmentTestCases extends TaleoTestParent {
 
     @Category({SmokeTests.class, RegressionTests.class})
 	@Test
-	public void testCreateAttachment() {
+	public void testCreateInterview() {
     	
-		MessageProcessor flow = lookupFlowConstruct("create-attachment");
+		MessageProcessor flow = lookupFlowConstruct("create-interview");
     	
 		try {
-			
-			testObjects.put("attachmentDescription", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
-			testObjects.put("attachmentName", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
 
 			MuleEvent response = flow.process(getTestEvent(testObjects));
-			Long attachmentId = (Long) response.getMessage().getPayload();
+			Long interviewId = (Long) response.getMessage().getPayload();
 			
-			assertNotNull(attachmentId);
+			assertNotNull(interviewId);
 			
-			testObjects.put("attachmentId", attachmentId);
+			testObjects.put("interviewId", interviewId);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

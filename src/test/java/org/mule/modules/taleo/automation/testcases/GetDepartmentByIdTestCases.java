@@ -6,21 +6,47 @@
 
 package org.mule.modules.taleo.automation.testcases;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 import java.util.UUID;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
 import org.mule.modules.taleo.model.DepartmentBean;
 
+public class GetDepartmentByIdTestCases extends TaleoTestParent {
+	
+	@Before
+	public void setUp() {
+		
+    	testObjects =  new HashMap<String,Object>();
+    	
+    	DepartmentBean departmentBean = (DepartmentBean) context.getBean("getDepartmentByIdDepartmentBean");
+    	departmentBean.setDepartmentName(UUID.randomUUID().toString());
+    	
+    	testObjects.put("departmentRef", departmentBean);
+    	
+		MessageProcessor flow = lookupFlowConstruct("create-department");
+    	
+		try {
 
-public class CreateDepartmentTestCases extends TaleoTestParent {
+			MuleEvent response = flow.process(getTestEvent(testObjects));
+			testObjects.put("departmentId", (Long) response.getMessage().getPayload());
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail();
+		}
+		
+	}	
+	
 	
 	@After
 	public void tearDown() {
@@ -45,26 +71,17 @@ public class CreateDepartmentTestCases extends TaleoTestParent {
 
     @Category({SmokeTests.class, RegressionTests.class})
 	@Test
-	public void testCreateDepartment() {
-
-    	testObjects =  new HashMap<String,Object>();
+	public void testGetDepartmentById() {
     	
-    	DepartmentBean departmentBean = (DepartmentBean) context.getBean("createDepartmentDepartmentBean");
-    	departmentBean.setDepartmentName(UUID.randomUUID().toString());
-    	
-    	testObjects.put("departmentRef", departmentBean);
-    	
-		MessageProcessor flow = lookupFlowConstruct("create-department");
+		MessageProcessor flow = lookupFlowConstruct("get-department-by-id");
     	
 		try {
 
 			MuleEvent response = flow.process(getTestEvent(testObjects));
-			Long departmentId = (Long) response.getMessage().getPayload();
+			DepartmentBean departmentBean = (DepartmentBean) response.getMessage().getPayload();
 			
-			assertNotNull(departmentId);
-			
-			testObjects.put("departmentId", departmentId);
-			
+			assertEquals((Long) departmentBean.getDepartmentId(), (Long) testObjects.get("departmentId"));
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

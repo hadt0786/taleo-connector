@@ -15,8 +15,10 @@ import java.util.UUID;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.junit.rules.ExpectedException;
 import org.mule.api.MuleEvent;
 import org.mule.api.MuleException;
 import org.mule.api.processor.MessageProcessor;
@@ -24,6 +26,9 @@ import org.mule.api.processor.MessageProcessor;
 import org.mule.modules.taleo.model.AccountBean;
 
 public class DeleteAccountTestCases extends TaleoTestParent {
+	
+	@Rule
+    public ExpectedException thrown= ExpectedException.none();
 	
 	@Before
 	public void setUp() {
@@ -56,8 +61,6 @@ public class DeleteAccountTestCases extends TaleoTestParent {
 
 		MessageProcessor getAccountByIdFlow = lookupFlowConstruct("get-account-by-id");
 		getAccountByIdFlow.process(getTestEvent(testObjects));
-		
-			
-		
+	
 	}
 }
