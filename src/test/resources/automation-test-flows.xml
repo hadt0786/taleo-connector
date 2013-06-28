@@ -288,5 +288,23 @@ http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/ta
         <taleo:remove-associated-user config-ref="Taleo" doc:name="Remove associated user" association="#[payload.association]" requisitionId="#[payload.requisitionId]" userId="#[payload.userId]">
         </taleo:remove-associated-user>
     </flow>
+    <flow name="create-offer" doc:name="create-offer">
+        <taleo:create-offer config-ref="Taleo" doc:name="Create offer">
+            <taleo:offer ref="#[payload.offerRef]"/>
+        </taleo:create-offer>
+    </flow>
+    <flow name="get-offer-by-id" doc:name="get-offer-by-id">
+        <taleo:get-offer-by-id config-ref="Taleo" doc:name="Get offer by id" offerId="#[payload.offerId]">
+        </taleo:get-offer-by-id>
+    </flow>
+    <flow name="update-offer" doc:name="update-offer">
+        <taleo:update-offer config-ref="Taleo" doc:name="Update offer">
+            <taleo:offer ref="#[payload.offerRef]"/>
+        </taleo:update-offer>
+    </flow>
+    <flow name="delete-offer" doc:name="delete-offer">
+        <taleo:delete-offer config-ref="Taleo" doc:name="Create offer" offerId="#[payload.offerId]">
+        </taleo:delete-offer>
+    </flow>
 
 </mule>
