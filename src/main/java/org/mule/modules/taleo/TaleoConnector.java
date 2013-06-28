@@ -2205,7 +2205,7 @@ public class TaleoConnector
 			 LongArr requisitionIds,
 			 long statusId,
 			 long reasonId,
-			 boolean doRanking)
+			 @Optional @Default("false") Boolean doRanking)
 			throws TaleoException {
 		client.upsertCandidateToRequisitions(candidateId,requisitionIds,statusId,reasonId,doRanking);
 		
