@@ -23,7 +23,7 @@ import org.mule.modules.taleo.automation.testcases.*;
 	CreateBackgroundCheckTestCases.class,
 	CreateCandidateTestCases.class,
 	CreateContactTestCases.class,
-	CreateDeleteLinkTestCases.class,
+	CreateLinkTestCases.class,
 	CreateDepartmentTestCases.class,
 	CreateEntityAttachmentTestCases.class,
 	CreateInterviewTestCases.class,

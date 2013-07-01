@@ -16,7 +16,7 @@ import org.mule.modules.taleo.automation.testcases.CreateAttachmentTestCases;
 import org.mule.modules.taleo.automation.testcases.CreateBackgroundCheckTestCases;
 import org.mule.modules.taleo.automation.testcases.CreateCandidateTestCases;
 import org.mule.modules.taleo.automation.testcases.CreateContactTestCases;
-import org.mule.modules.taleo.automation.testcases.CreateDeleteLinkTestCases;
+import org.mule.modules.taleo.automation.testcases.CreateLinkTestCases;
 import org.mule.modules.taleo.automation.testcases.CreateDepartmentTestCases;
 import org.mule.modules.taleo.automation.testcases.CreateEntityAttachmentTestCases;
 import org.mule.modules.taleo.automation.testcases.CreateInterviewTestCases;
@@ -86,7 +86,7 @@ import org.mule.modules.taleo.automation.testcases.UpsertDepartmentTestCases;
 	CreateBackgroundCheckTestCases.class,
 	CreateCandidateTestCases.class,
 	CreateContactTestCases.class,
-	CreateDeleteLinkTestCases.class,
+	CreateLinkTestCases.class,
 	CreateDepartmentTestCases.class,
 	CreateEntityAttachmentTestCases.class,
 	CreateInterviewTestCases.class,

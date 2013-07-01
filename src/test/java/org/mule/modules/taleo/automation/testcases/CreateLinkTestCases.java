@@ -98,13 +98,11 @@ public class CreateLinkTestCases extends TaleoTestParent {
 	public void testCreateDeleteLink() {
     	
 		MessageProcessor createLink = lookupFlowConstruct("create-link");
-		MessageProcessor deleteLink = lookupFlowConstruct("delete-link");
     	
 		try {
 
 			createLink.process(getTestEvent(testObjects));
-			deleteLink.process(getTestEvent(testObjects));
-
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
