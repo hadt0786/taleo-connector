@@ -288,17 +288,14 @@ http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/ta
         <taleo:remove-associated-user config-ref="Taleo" doc:name="Remove associated user" association="#[payload.association]" requisitionId="#[payload.requisitionId]" userId="#[payload.userId]">
         </taleo:remove-associated-user>
     </flow>
-<<<<<<< HEAD
     <flow name="create-link" doc:name="create-link">
         <taleo:create-link config-ref="Taleo" doc:name="Create link" entityId1="#[payload.entityIdOne]" entityId2="#[payload.entityIdTwo]" entityType1="#[payload.entityTypeOne]" entityType2="#[payload.entityTypeOne]">
         </taleo:create-link>
-    </flow>
+    </flow>    
     <flow name="remove-link" doc:name="remove-link">
         <taleo:remove-link config-ref="Taleo" doc:name="Remove link" entityId1="#[payload.entityIdOne]" entityId2="#[payload.entityIdTwo]" entityType1="#[payload.entityTypeOne]" entityType2="#[payload.entityTypeOne]">
         </taleo:remove-link>
     </flow>
-
-=======
     <flow name="create-offer" doc:name="create-offer">
         <taleo:create-offer config-ref="Taleo" doc:name="Create offer">
             <taleo:offer ref="#[payload.offerRef]"/>
@@ -317,6 +314,5 @@ http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/ta
         <taleo:delete-offer config-ref="Taleo" doc:name="Create offer" offerId="#[payload.offerId]">
         </taleo:delete-offer>
     </flow>
->>>>>>> origin/master
 
 </mule>
