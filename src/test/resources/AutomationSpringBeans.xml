@@ -1528,15 +1528,51 @@
 		<entry key="userSequenceNumber" value="1" />
 	</util:map>
 
-	<!-- remove-candidate-to-requisitions -->
+	<!-- create-offer -->
 
-	<bean id="removeCandidateRequisitionsAmount" class="java.lang.Integer">
-		<constructor-arg>
-			<value>2</value>
-		</constructor-arg>
+	<bean id="createOfferOfferBean" class="org.mule.modules.taleo.model.OfferBean">
+		<property name="status" value="New" />
+		<property name="candidateId" value="48" />
+		<property name="employmentType" value="Full time" />
+		<property name="manager" value="skarim" />
+		<property name="requisitionId" value="13" />
+		<property name="title" value="Offer Business Development" />
 	</bean>
 
-	<bean id="removeCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+	<!-- get-offer-by-id -->
+
+	<bean id="getOfferByIdOfferBean" class="org.mule.modules.taleo.model.OfferBean">
+		<property name="status" value="New" />
+		<property name="candidateId" value="48" />
+		<property name="employmentType" value="Full time" />
+		<property name="manager" value="skarim" />
+		<property name="requisitionId" value="13" />
+		<property name="title" value="Offer Business Development" />
+	</bean>
+
+	<!-- delete-offer -->
+
+	<bean id="deleteOfferOfferBean" class="org.mule.modules.taleo.model.OfferBean">
+		<property name="status" value="New" />
+		<property name="candidateId" value="48" />
+		<property name="employmentType" value="Full time" />
+		<property name="manager" value="skarim" />
+		<property name="requisitionId" value="13" />
+		<property name="title" value="Offer Business Development" />
+	</bean>
+
+	<!-- update-offer -->
+
+	<bean id="updateOfferOfferBean" class="org.mule.modules.taleo.model.OfferBean">
+		<property name="status" value="New" />
+		<property name="candidateId" value="48" />
+		<property name="employmentType" value="Full time" />
+		<property name="manager" value="skarim" />
+		<property name="requisitionId" value="13" />
+		<property name="title" value="Offer Business Development" />
+	</bean>
+	
+	<bean id="createOfferCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
 		<property name="status" value="Hired" />
 		<property name="address" value="2323 Macaroni Road" />
 		<property name="cellPhone" value="999-343-2344" />
@@ -1561,7 +1597,7 @@
 		<property name="zipCode" value="93045" />
 	</bean>
 	
-	<bean id="removeCandidateRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+	<bean id="createOfferRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
 		<property name="status" value="Waiting for Approval" />
 		<property name="description" value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues." />
 		<property name="duration" value="Full time" />
@@ -1573,15 +1609,7 @@
 		<property name="title" value="HR Generalist" />
 	</bean>
 	
-	<!-- submit-candidate-to-requisitions -->
-
-	<bean id="submitCandidateRequisitionsAmount" class="java.lang.Integer">
-		<constructor-arg>
-			<value>2</value>
-		</constructor-arg>
-	</bean>
-
-	<bean id="submitCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+	<bean id="deleteOfferCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
 		<property name="status" value="Hired" />
 		<property name="address" value="2323 Macaroni Road" />
 		<property name="cellPhone" value="999-343-2344" />
@@ -1606,7 +1634,79 @@
 		<property name="zipCode" value="93045" />
 	</bean>
 	
-	<bean id="submitCandidateRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+	<bean id="deleteOfferRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+		<property name="status" value="Waiting for Approval" />
+		<property name="description" value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues." />
+		<property name="duration" value="Full time" />
+		<property name="jobCategory" value="Professionals" />
+		<property name="jobCode" value="Level 1" />
+		<property name="location" value="Headquarters" />
+		<property name="numOpen" value="3" />
+		<property name="payRange" value="50000 - 75000" />
+		<property name="title" value="HR Generalist" />
+	</bean>
+	<bean id="updateOfferCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="updateOfferRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+		<property name="status" value="Waiting for Approval" />
+		<property name="description" value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues." />
+		<property name="duration" value="Full time" />
+		<property name="jobCategory" value="Professionals" />
+		<property name="jobCode" value="Level 1" />
+		<property name="location" value="Headquarters" />
+		<property name="numOpen" value="3" />
+		<property name="payRange" value="50000 - 75000" />
+		<property name="title" value="HR Generalist" />
+	</bean>
+	<bean id="getOfferByIdCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+		<property name="status" value="Hired" />
+		<property name="address" value="2323 Macaroni Road" />
+		<property name="cellPhone" value="999-343-2344" />
+		<property name="city" value="Jason" />
+		<property name="country" value="US-CA" />
+		<property name="firstName" value="Jessica" />
+		<property name="gender" value="Choose Not to Disclose" />
+		<property name="lastName" value="Karim" />
+		<property name="legalStatus" value="TESTING" />
+		<property name="middleInitial" value="H" />
+		<property name="password" value="jason" />
+		<property name="phone" value="748-232-2323" />
+		<property name="race" value="Hispanic or Latino" />
+		<property name="rank" value="100" />
+		<property name="reasonRejected" value="Position was canceled" />
+		<property name="referredBy" value="skarim" />
+		<property name="source" value="Other" />
+		<property name="state" value="US-CA" />
+		<property name="submittedBy" value="skarim" />
+		<property name="textResume" value="Skilled in after school specials" />
+		<property name="veteran" value="Armed Forces Service Medal Veterans" />
+		<property name="zipCode" value="93045" />
+	</bean>
+	
+	<bean id="getOfferByIdRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
 		<property name="status" value="Waiting for Approval" />
 		<property name="description" value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues." />
 		<property name="duration" value="Full time" />
@@ -1618,7 +1718,7 @@
 		<property name="title" value="HR Generalist" />
 	</bean>
 	
-	<!-- create-link -->
+	<!-- create-delete-link -->
 
 	<bean id="createLinkAccountBean" class="org.mule.modules.taleo.model.AccountBean">
 		<property name="address" value="99 Seymour" />
@@ -1644,6 +1744,5 @@
 		<property name="payRange" value="50000 - 75000" />
 		<property name="title" value="HR Generalist" />
 	</bean>
-
-
+	
 </beans>
