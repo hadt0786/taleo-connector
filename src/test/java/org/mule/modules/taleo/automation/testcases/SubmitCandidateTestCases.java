@@ -6,7 +6,7 @@
 
 package org.mule.modules.taleo.automation.testcases;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
@@ -24,15 +24,15 @@ import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
 import org.mule.modules.taleo.model.ArrayOfXsdLong;
-import org.mule.modules.taleo.model.RequisitionBean;
 import org.mule.modules.taleo.model.CandidateBean;
 import org.mule.modules.taleo.model.LongArr;
+import org.mule.modules.taleo.model.RequisitionBean;
 
 
-public class GetRequisitionsTestCases extends TaleoTestParent {
+public class SubmitCandidateTestCases extends TaleoTestParent {
 	
-	private List<Long> expectedRequisitionIds = new ArrayList<Long>();
-	private int expectedRequisitionsAmount = (Integer) context.getBean("getRequisitionsRequisitionsAmount");
+	private List<Long> associatedRequisitionIds = new ArrayList<Long>();
+	private int associatedRequisitionsAmount = (Integer) context.getBean("submitCandidateRequisitionsAmount");
 	
 	@Before
 	public void setUp() {
@@ -44,9 +44,8 @@ public class GetRequisitionsTestCases extends TaleoTestParent {
 		
 		MessageProcessor createCandidateFlow = lookupFlowConstruct("create-candidate");
 		MessageProcessor createRequisitionFlow = lookupFlowConstruct("create-requisition");
-		MessageProcessor upsertCandidateToRequisitionFlow = lookupFlowConstruct("upsert-candidate-to-requisitions");
 	
-    	CandidateBean candidateBean = (CandidateBean) context.getBean("getRequisitionsCandidateBean");
+    	CandidateBean candidateBean = (CandidateBean) context.getBean("submitCandidateCandidateBean");
     	candidateBean.setEmail(String.format("%s@email.com", UUID.randomUUID().toString().substring(0, 8)));
     	
     	testObjects =  new HashMap<String,Object>();
@@ -58,26 +57,22 @@ public class GetRequisitionsTestCases extends TaleoTestParent {
 			Long candidateId = (Long) createCandidateResponse.getMessage().getPayload();
 			testObjects.put("candidateId", candidateId);
 			
-			for (int index=0; index<expectedRequisitionsAmount; index++) {
+			for (int index=0; index<associatedRequisitionsAmount; index++) {
 				
-				RequisitionBean requisitionBean = (RequisitionBean) context.getBean("getRequisitionsRequisitionBean");
+				RequisitionBean requisitionBean = (RequisitionBean) context.getBean("submitCandidateRequisitionBean");
 				requisitionBean.setOpenedDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(new DateTime().toGregorianCalendar()));
 		    	testObjects.put("requisitionRef", requisitionBean);
 				
 				createRequisitionResponse = createRequisitionFlow.process(getTestEvent(testObjects));
 				Long requisitionId = (Long) createRequisitionResponse.getMessage().getPayload();
 				
-				expectedRequisitionIds.add(requisitionId);
+				associatedRequisitionIds.add(requisitionId);
 				arrayOfXsdLong.getItem().add(requisitionId);
 				
 			}
 			
 			requisitionIdsLongArray.setArray(arrayOfXsdLong);
-			
-			HashMap<String,Object> upsertCandidateToRequisitionsTestObjects = (HashMap<String,Object>) context.getBean("getRequisitionsUpsertCandidateToRequisitions");
-			upsertCandidateToRequisitionsTestObjects.putAll(testObjects);
-			upsertCandidateToRequisitionsTestObjects.put("requisitionIdsRef",requisitionIdsLongArray);
-			upsertCandidateToRequisitionFlow.process(getTestEvent(upsertCandidateToRequisitionsTestObjects));
+			testObjects.put("requisitionIdsRef",requisitionIdsLongArray);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -90,16 +85,14 @@ public class GetRequisitionsTestCases extends TaleoTestParent {
 	@After
 	public void tearDown() {
 		
-		MessageProcessor removeCandidateFlow = lookupFlowConstruct("remove-candidate");
 		MessageProcessor deleteRequisitionFlow = lookupFlowConstruct("delete-requisition");
 		MessageProcessor deleteCandidateFlow = lookupFlowConstruct("delete-candidate");
 		
 		try {		
 
-			if (!expectedRequisitionIds.isEmpty() && testObjects.containsKey("candidateId")) {
-				 for (int index=0; index<expectedRequisitionsAmount; index++){
-					 testObjects.put("requisitionId", expectedRequisitionIds.get(index));
-					 removeCandidateFlow.process(getTestEvent(testObjects));	
+			if (!associatedRequisitionIds.isEmpty() && testObjects.containsKey("candidateId")) {
+				 for (int index=0; index<associatedRequisitionsAmount; index++){
+					 testObjects.put("requisitionId", associatedRequisitionIds.get(index));
 					 deleteRequisitionFlow.process(getTestEvent(testObjects));
 				 }
 			}
@@ -118,19 +111,22 @@ public class GetRequisitionsTestCases extends TaleoTestParent {
 
     @Category({SmokeTests.class, RegressionTests.class})
 	@Test
-	public void testGetRequisitions() {
+	public void testSubmitCandidate() {
     	
-		MessageProcessor flow = lookupFlowConstruct("get-requisitions");
+    	MessageProcessor submitCandidateFlow = lookupFlowConstruct("submit-candidate");
+    	MessageProcessor getRequisitionsFlow = lookupFlowConstruct("get-requisitions");
     	
 		try {
 
-			MuleEvent response = flow.process(getTestEvent(testObjects));
+			submitCandidateFlow.process(getTestEvent(testObjects));
+ 
+			MuleEvent response = getRequisitionsFlow.process(getTestEvent(testObjects));
 			LongArr longArr = (LongArr) response.getMessage().getPayload();
 			ArrayOfXsdLong arrayOfXsdLong = longArr.getArray();
-			List<Long> retrievedRequisitionIds = arrayOfXsdLong.getItem();
+			List<Long> candidateRequisitionIds = arrayOfXsdLong.getItem();
 			
-			assertTrue(retrievedRequisitionIds.containsAll(expectedRequisitionIds));
-
+			assertFalse(candidateRequisitionIds.contains(associatedRequisitionIds));
+	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
