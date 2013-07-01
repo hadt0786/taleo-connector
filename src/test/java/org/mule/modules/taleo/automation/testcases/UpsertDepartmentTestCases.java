@@ -7,7 +7,6 @@
 package org.mule.modules.taleo.automation.testcases;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 import java.util.List;
@@ -72,7 +71,7 @@ public class UpsertDepartmentTestCases extends TaleoTestParent {
 		
 	}
 
-    @Category({SmokeTests.class, RegressionTests.class})
+    @Category({RegressionTests.class})
 	@Test
 	public void testUpsertDepartment() {
     	

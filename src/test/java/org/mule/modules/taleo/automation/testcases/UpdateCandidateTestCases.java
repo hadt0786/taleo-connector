@@ -64,7 +64,7 @@ public class UpdateCandidateTestCases extends TaleoTestParent {
 		
 	}
 
-    @Category({SmokeTests.class, RegressionTests.class})
+    @Category({RegressionTests.class})
 	@Test
 	public void testUpdateCandidate() {
     	

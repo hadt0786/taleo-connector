@@ -109,7 +109,7 @@ public class RemoveCandidateTestCases extends TaleoTestParent {
 		
 	}
 
-    @Category({SmokeTests.class, RegressionTests.class})
+    @Category({RegressionTests.class})
 	@Test
 	public void testRemoveCandidate() {
     	

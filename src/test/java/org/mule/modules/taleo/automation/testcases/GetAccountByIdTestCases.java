@@ -7,7 +7,6 @@
 package org.mule.modules.taleo.automation.testcases;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;
@@ -65,7 +64,7 @@ public class GetAccountByIdTestCases extends TaleoTestParent {
 		
 	}
 
-    @Category({SmokeTests.class, RegressionTests.class})
+    @Category({RegressionTests.class})
 	@Test
 	public void testGetAccountById() {
     	

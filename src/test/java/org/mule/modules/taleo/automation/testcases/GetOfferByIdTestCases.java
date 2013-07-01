@@ -120,7 +120,7 @@ public class GetOfferByIdTestCases extends TaleoTestParent {
 		}
 	}
 
-    @Category({SmokeTests.class, RegressionTests.class})
+    @Category({RegressionTests.class})
 	@Test
 	public void testGetOfferById() {
     	

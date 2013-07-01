@@ -6,23 +6,17 @@
 
 package org.mule.modules.taleo.automation.testcases;
 
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;
-import java.util.UUID;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.rules.ExpectedException;
 import org.mule.api.MuleEvent;
-import org.mule.api.MuleException;
 import org.mule.api.processor.MessageProcessor;
-
 import org.mule.modules.taleo.model.AccountBean;
 
 public class DeleteAccountTestCases extends TaleoTestParent {

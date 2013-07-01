@@ -6,7 +6,6 @@
 
 package org.mule.modules.taleo.automation.testcases;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;

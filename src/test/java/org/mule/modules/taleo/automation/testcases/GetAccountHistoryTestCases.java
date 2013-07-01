@@ -6,13 +6,10 @@
 
 package org.mule.modules.taleo.automation.testcases;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 import org.junit.After;
@@ -23,10 +20,8 @@ import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
 import org.mule.modules.taleo.model.AccountBean;
 import org.mule.modules.taleo.model.ArrayOfHistoryBean;
-import org.mule.modules.taleo.model.ArrayOfSearchResultBean;
 import org.mule.modules.taleo.model.HistoryBean;
 import org.mule.modules.taleo.model.HistoryBeanArr;
-import org.mule.modules.taleo.model.SearchResultBean;
 
 public class GetAccountHistoryTestCases extends TaleoTestParent {
 	

@@ -78,7 +78,7 @@ public class AssociatedUserTestCases extends TaleoTestParent {
 		
 	}
 
-    @Category({SmokeTests.class, RegressionTests.class})
+    @Category({RegressionTests.class})
 	@Test
 	public void testAssociatedUser() {
     	

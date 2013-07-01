@@ -9,7 +9,6 @@ package org.mule.modules.taleo.automation.testcases;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.UUID;
 

@@ -99,7 +99,7 @@ public class GetEntityAttachmentTestCases extends TaleoTestParent {
 	}
 
 
-    @Category({SmokeTests.class, RegressionTests.class})
+    @Category({RegressionTests.class})
 	@Test
 	public void testGetEntityAttachments() {
     	

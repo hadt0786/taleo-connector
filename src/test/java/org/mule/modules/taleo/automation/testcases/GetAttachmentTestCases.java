@@ -7,7 +7,6 @@
 package org.mule.modules.taleo.automation.testcases;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;
@@ -19,7 +18,6 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
-import org.mule.modules.taleo.model.AccountBean;
 import org.mule.modules.taleo.model.AttachmentBean;
 import org.mule.modules.taleo.model.CandidateBean;
 
@@ -86,7 +84,7 @@ public class GetAttachmentTestCases extends TaleoTestParent {
 		
 	}
 
-    @Category({SmokeTests.class, RegressionTests.class})
+    @Category({RegressionTests.class})
 	@Test
 	public void testGetAttachment() {
     	

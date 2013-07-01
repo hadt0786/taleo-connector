@@ -99,7 +99,7 @@ public class GetBackgroundChecksByCandidateTestCases extends TaleoTestParent {
 		
 	}
 
-    @Category({SmokeTests.class, RegressionTests.class})
+    @Category({RegressionTests.class})
 	@Test
 	public void testGetBackgroundChecksByCandidate() {
     	
