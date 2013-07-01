@@ -289,11 +289,11 @@ http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/ta
         </taleo:remove-associated-user>
     </flow>
     <flow name="create-link" doc:name="create-link">
-        <taleo:create-link config-ref="Taleo" doc:name="Create link" entityId1="#[payload.entityIdOne]" entityId2="#[payload.entityIdTwo]" entityType1="#[payload.entityTypeOne]" entityType2="#[payload.entityTypeOne]">
+        <taleo:create-link config-ref="Taleo" doc:name="Create link" entityId1="#[payload.entityIdOne]" entityId2="#[payload.entityIdTwo]" entityType1="#[payload.entityTypeOne]" entityType2="#[payload.entityTypeTwo]">
         </taleo:create-link>
     </flow>    
     <flow name="remove-link" doc:name="remove-link">
-        <taleo:remove-link config-ref="Taleo" doc:name="Remove link" entityId1="#[payload.entityIdOne]" entityId2="#[payload.entityIdTwo]" entityType1="#[payload.entityTypeOne]" entityType2="#[payload.entityTypeOne]">
+        <taleo:remove-link config-ref="Taleo" doc:name="Remove link" entityId1="#[payload.entityIdOne]" entityId2="#[payload.entityIdTwo]" entityType1="#[payload.entityTypeOne]" entityType2="#[payload.entityTypeTwo]">
         </taleo:remove-link>
     </flow>
     <flow name="create-offer" doc:name="create-offer">
