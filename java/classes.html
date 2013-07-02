@@ -1,0 +1,3187 @@
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule Taleo Cloud Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+<title>
+
+  Class Index
+
+
+| Mule Taleo Cloud Connector
+
+</title>
+<link href="../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../", "../assets/");
+</script>
+<script src="../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule Taleo Cloud Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+</head>
+
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule Taleo Cloud Connector</span>
+    
+    <ul id="header-tabs" class="java">
+    
+    	<li id="guide"><a href="../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../')"
+                      onkeyup="return search_changed(event, false, '../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links">
+                <a href="../java/packages.html"  >Package Index</a> |
+                <a href="../java/classes.html" class="selected">Class Index</a>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/package-summary.html">org.mule.modules.taleo</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/adapter/package-summary.html">org.mule.modules.taleo.adapter</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/adapters/package-summary.html">org.mule.modules.taleo.adapters</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/agents/package-summary.html">org.mule.modules.taleo.agents</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/api/package-summary.html">org.mule.modules.taleo.api</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/api/transformers/package-summary.html">org.mule.modules.taleo.api.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/basic/package-summary.html">org.mule.modules.taleo.basic</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/callback/package-summary.html">org.mule.modules.taleo.callback</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/client/package-summary.html">org.mule.modules.taleo.client</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/config/package-summary.html">org.mule.modules.taleo.config</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/connection/package-summary.html">org.mule.modules.taleo.connection</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/connectivity/package-summary.html">org.mule.modules.taleo.connectivity</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/devkit/package-summary.html">org.mule.modules.taleo.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/model/package-summary.html">org.mule.modules.taleo.model</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/model/holders/package-summary.html">org.mule.modules.taleo.model.holders</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/model/transformers/package-summary.html">org.mule.modules.taleo.model.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/oauth/package-summary.html">org.mule.modules.taleo.oauth</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/process/package-summary.html">org.mule.modules.taleo.process</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/processors/package-summary.html">org.mule.modules.taleo.processors</a></li>
+    <li class="api apilevel-">
+  <a href="../java/org/mule/modules/taleo/transformers/package-summary.html">org.mule.modules.taleo.transformers</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+              <script>
+                /*addLoadEvent(maxPackageHeight);*/
+              </script>
+              <p style="padding:10px">Select a package to view its members</p><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links">
+            <a href="../packages.html"  >Package Index</a> | 
+            <a href="../classes.html" class="selected">Class Index</a>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="jd-header">
+<h1>Class Index</h1>
+</div>
+
+<div id="jd-content">
+
+<div class="jd-letterlist">
+    <a href="#letter_A">A</a>
+    <a href="#letter_B">B</a>
+    <a href="#letter_C">C</a>
+    <a href="#letter_D">D</a>
+    <a href="#letter_E">E</a>
+    <a href="#letter_F">F</a>
+    <a href="#letter_G">G</a>
+    <a href="#letter_H">H</a>
+    <a href="#letter_I">I</a>
+    <a href="#letter_L">L</a>
+    <a href="#letter_M">M</a>
+    <a href="#letter_N">N</a>
+    <a href="#letter_O">O</a>
+    <a href="#letter_P">P</a>
+    <a href="#letter_R">R</a>
+    <a href="#letter_S">S</a>
+    <a href="#letter_T">T</a>
+    <a href="#letter_U">U</a>
+    <a href="#letter_V">V</a>
+    <a href="#letter_W">W</a>
+    <a href="#letter_X">X</a>
+</div>
+
+
+
+<h2 id="letter_A">A</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/AbstractConnectedProcessor.html">AbstractConnectedProcessor</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/AbstractDefinitionParser.html">AbstractDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/AbstractDefinitionParser.ParseDelegate.html">AbstractDefinitionParser.ParseDelegate</a>&lt;T&gt;</td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/AbstractExpressionEvaluator.html">AbstractExpressionEvaluator</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/AbstractListeningMessageProcessor.html">AbstractListeningMessageProcessor</a>&lt;O&gt;</td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/AbstractMessageProcessor.html">AbstractMessageProcessor</a>&lt;O&gt;</td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/AccountBean.html">AccountBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for AccountBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/AccountBeanExpressionHolder.html">AccountBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/AccountBeanExpressionHolderTransformer.html">AccountBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/AddressEntityBean.html">AddressEntityBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for AddressEntityBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfAttachmentBean.html">ArrayOfAttachmentBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfAttachmentBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfDepartmentBean.html">ArrayOfDepartmentBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfDepartmentBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfFlexFieldBean.html">ArrayOfFlexFieldBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfFlexFieldBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfFlexRollingEntityBean.html">ArrayOfFlexRollingEntityBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfFlexRollingEntityBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfHistoryBean.html">ArrayOfHistoryBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfHistoryBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfInterviewBean.html">ArrayOfInterviewBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfInterviewBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfLocationBean.html">ArrayOfLocationBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfLocationBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfLookupBean.html">ArrayOfLookupBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfLookupBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfMetadataBean.html">ArrayOfMetadataBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfMetadataBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfOfferBean.html">ArrayOfOfferBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfOfferBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfParticipantBean.html">ArrayOfParticipantBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfParticipantBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/ArrayOfParticipantBeanExpressionHolder.html">ArrayOfParticipantBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/ArrayOfParticipantBeanExpressionHolderTransformer.html">ArrayOfParticipantBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfReferenceBean.html">ArrayOfReferenceBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfReferenceBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfRegionBean.html">ArrayOfRegionBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfRegionBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfRequisitionBean.html">ArrayOfRequisitionBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfRequisitionBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfSearchResultBean.html">ArrayOfSearchResultBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfSearchResultBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfWorkHistoryBean.html">ArrayOfWorkHistoryBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOfWorkHistoryBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfXsdLong.html">ArrayOfXsdLong</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOf_xsd_long complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/ArrayOfXsdLongExpressionHolder.html">ArrayOfXsdLongExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/ArrayOfXsdLongExpressionHolderTransformer.html">ArrayOfXsdLongExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ArrayOfXsdString.html">ArrayOfXsdString</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ArrayOf_xsd_string complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/ArrayOfXsdStringExpressionHolder.html">ArrayOfXsdStringExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/ArrayOfXsdStringExpressionHolderTransformer.html">ArrayOfXsdStringExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/AttachmentBean.html">AttachmentBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for AttachmentBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_B">B</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/BackgroundCheckBean.html">BackgroundCheckBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for BackgroundCheckBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/BackgroundCheckBeanExpressionHolder.html">BackgroundCheckBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/BackgroundCheckBeanExpressionHolderTransformer.html">BackgroundCheckBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ByteArr.html">ByteArr</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ByteArr complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/ByteArrExpressionHolder.html">ByteArrExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/ByteArrExpressionHolderTransformer.html">ByteArrExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_C">C</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/CalendarEventBean.html">CalendarEventBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for CalendarEventBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/CalendarEventBeanExpressionHolder.html">CalendarEventBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/CalendarEventBeanExpressionHolderTransformer.html">CalendarEventBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/CandidateBean.html">CandidateBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for CandidateBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/CandidateBeanExpressionHolder.html">CandidateBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/CandidateBeanExpressionHolderTransformer.html">CandidateBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/CandidateDetailsBean.html">CandidateDetailsBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for CandidateDetailsBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/CandidateInsertResultBean.html">CandidateInsertResultBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for CandidateInsertResultBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/basic/Capabilities.html">Capabilities</a></td>
+            <td class="jd-descrcol" width="100%">This interface is implemented for every org.mule.api.annotations.Module annotated class, to dynamically query what its capabilities are.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/basic/Capability.html">Capability</a></td>
+            <td class="jd-descrcol" width="100%">Enumeration of possible capabilities of Mule modules.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/connection/Connection.html">Connection</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/connection/ConnectionManager.html">ConnectionManager</a>&lt;K,&nbsp;C&nbsp;extends&nbsp;<a href="../java/org/mule/modules/taleo/connection/Connection.html">Connection</a>&gt;</td>
+            <td class="jd-descrcol" width="100%">Wrapper around org.mule.api.annotations.Connector annotated class that will infuse it with connection management capabilities.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ContactBean.html">ContactBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ContactBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/ContactBeanExpressionHolder.html">ContactBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/ContactBeanExpressionHolderTransformer.html">ContactBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ContactLogBean.html">ContactLogBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ContactLogBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/ContactLogBeanExpressionHolder.html">ContactLogBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/ContactLogBeanExpressionHolderTransformer.html">ContactLogBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateAccountDefinitionParser.html">CreateAccountDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateAccountMessageProcessor.html">CreateAccountMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateAccountMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createAccount(org.mule.modules.taleo.model.AccountBean)">createAccount(org.mule.modules.taleo.model.AccountBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateAttachmentDefinitionParser.html">CreateAttachmentDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateAttachmentMessageProcessor.html">CreateAttachmentMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateAttachmentMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createAttachment(long, java.lang.String, java.lang.String, java.lang.String, org.mule.modules.taleo.model.ByteArr)">createAttachment(long, java.lang.String, java.lang.String, java.lang.String, org.mule.modules.taleo.model.ByteArr)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateBackgroundCheckDefinitionParser.html">CreateBackgroundCheckDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateBackgroundCheckMessageProcessor.html">CreateBackgroundCheckMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateBackgroundCheckMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createBackgroundCheck(org.mule.modules.taleo.model.BackgroundCheckBean)">createBackgroundCheck(org.mule.modules.taleo.model.BackgroundCheckBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateCandidateDefinitionParser.html">CreateCandidateDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateCandidateMessageProcessor.html">CreateCandidateMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateCandidateMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createCandidate(org.mule.modules.taleo.model.CandidateBean)">createCandidate(org.mule.modules.taleo.model.CandidateBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateContactDefinitionParser.html">CreateContactDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateContactLogDefinitionParser.html">CreateContactLogDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateContactLogMessageProcessor.html">CreateContactLogMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateContactLogMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createContactLog(org.mule.modules.taleo.model.ContactLogBean)">createContactLog(org.mule.modules.taleo.model.ContactLogBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateContactMessageProcessor.html">CreateContactMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateContactMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createContact(org.mule.modules.taleo.model.ContactBean)">createContact(org.mule.modules.taleo.model.ContactBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateDepartmentDefinitionParser.html">CreateDepartmentDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateDepartmentMessageProcessor.html">CreateDepartmentMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateDepartmentMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createDepartment(org.mule.modules.taleo.model.DepartmentBean)">createDepartment(org.mule.modules.taleo.model.DepartmentBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateEmailLogDefinitionParser.html">CreateEmailLogDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateEmailLogMessageProcessor.html">CreateEmailLogMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateEmailLogMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createEmailLog(java.lang.String, java.lang.String, java.lang.String, java.util.GregorianCalendar)">createEmailLog(java.lang.String, java.lang.String, java.lang.String, java.util.GregorianCalendar)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateEmailSentLogDefinitionParser.html">CreateEmailSentLogDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateEmailSentLogMessageProcessor.html">CreateEmailSentLogMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateEmailSentLogMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createEmailSentLog(java.lang.String, java.lang.String, java.lang.String, java.util.GregorianCalendar)">createEmailSentLog(java.lang.String, java.lang.String, java.lang.String, java.util.GregorianCalendar)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateEmployeeDefinitionParser.html">CreateEmployeeDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateEmployeeMessageProcessor.html">CreateEmployeeMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateEmployeeMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createEmployee(org.mule.modules.taleo.model.EmployeeBean)">createEmployee(org.mule.modules.taleo.model.EmployeeBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateEntityAttachmentDefinitionParser.html">CreateEntityAttachmentDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateEntityAttachmentMessageProcessor.html">CreateEntityAttachmentMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateEntityAttachmentMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createEntityAttachment(java.lang.String, long, java.lang.String, java.lang.String, java.lang.String, org.mule.modules.taleo.model.ByteArr)">createEntityAttachment(java.lang.String, long, java.lang.String, java.lang.String, java.lang.String, org.mule.modules.taleo.model.ByteArr)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateEventDefinitionParser.html">CreateEventDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateEventMessageProcessor.html">CreateEventMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateEventMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createEvent(org.mule.modules.taleo.model.CalendarEventBean)">createEvent(org.mule.modules.taleo.model.CalendarEventBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateInterviewDefinitionParser.html">CreateInterviewDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateInterviewMessageProcessor.html">CreateInterviewMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateInterviewMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createInterview(org.mule.modules.taleo.model.InterviewBean)">createInterview(org.mule.modules.taleo.model.InterviewBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateLinkDefinitionParser.html">CreateLinkDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateLinkMessageProcessor.html">CreateLinkMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateLinkMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createLink(java.lang.String, long, java.lang.String, long)">createLink(java.lang.String, long, java.lang.String, long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateLocationDefinitionParser.html">CreateLocationDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateLocationMessageProcessor.html">CreateLocationMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateLocationMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createLocation(org.mule.modules.taleo.model.LocationBean)">createLocation(org.mule.modules.taleo.model.LocationBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateOfferDefinitionParser.html">CreateOfferDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateOfferMessageProcessor.html">CreateOfferMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateOfferMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createOffer(org.mule.modules.taleo.model.OfferBean)">createOffer(org.mule.modules.taleo.model.OfferBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateReferenceDefinitionParser.html">CreateReferenceDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateReferenceMessageProcessor.html">CreateReferenceMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateReferenceMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createReference(org.mule.modules.taleo.model.ReferenceBean)">createReference(org.mule.modules.taleo.model.ReferenceBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateRegionDefinitionParser.html">CreateRegionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateRegionMessageProcessor.html">CreateRegionMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateRegionMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createRegion(org.mule.modules.taleo.model.RegionBean)">createRegion(org.mule.modules.taleo.model.RegionBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateRequisitionDefinitionParser.html">CreateRequisitionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateRequisitionMessageProcessor.html">CreateRequisitionMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateRequisitionMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createRequisition(org.mule.modules.taleo.model.RequisitionBean)">createRequisition(org.mule.modules.taleo.model.RequisitionBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateRequisitionTemplateDefinitionParser.html">CreateRequisitionTemplateDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateRequisitionTemplateMessageProcessor.html">CreateRequisitionTemplateMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateRequisitionTemplateMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createRequisitionTemplate(org.mule.modules.taleo.model.RequisitionBean)">createRequisitionTemplate(org.mule.modules.taleo.model.RequisitionBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateTaskDefinitionParser.html">CreateTaskDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateTaskMessageProcessor.html">CreateTaskMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateTaskMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createTask(org.mule.modules.taleo.model.TaskBean)">createTask(org.mule.modules.taleo.model.TaskBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateUserDefinitionParser.html">CreateUserDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateUserMessageProcessor.html">CreateUserMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateUserMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createUser(org.mule.modules.taleo.model.UserBean)">createUser(org.mule.modules.taleo.model.UserBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/CreateUserWithPermissionsDefinitionParser.html">CreateUserWithPermissionsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/CreateUserWithPermissionsMessageProcessor.html">CreateUserWithPermissionsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateUserWithPermissionsMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#createUserWithPermissions(org.mule.modules.taleo.model.UserBean, java.util.Map<java.lang.String, java.lang.Object>)">createUserWithPermissions(org.mule.modules.taleo.model.UserBean, java.util.Map)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/client/CustomMessageReaderInterceptor.html">CustomMessageReaderInterceptor</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_D">D</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/agents/DefaultSplashScreenAgent.html">DefaultSplashScreenAgent</a></td>
+            <td class="jd-descrcol" width="100%">Agent implementation to add splash screen information for DevKit extensions at application startup
+ 
+&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteAccountDefinitionParser.html">DeleteAccountDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteAccountMessageProcessor.html">DeleteAccountMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteAccountMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteAccount(long)">deleteAccount(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteAttachmentDefinitionParser.html">DeleteAttachmentDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteAttachmentMessageProcessor.html">DeleteAttachmentMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteAttachmentMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteAttachment(long)">deleteAttachment(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteBackgroundCheckDefinitionParser.html">DeleteBackgroundCheckDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteBackgroundCheckMessageProcessor.html">DeleteBackgroundCheckMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteBackgroundCheckMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteBackgroundCheck(long)">deleteBackgroundCheck(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteCandidateDefinitionParser.html">DeleteCandidateDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteCandidateMessageProcessor.html">DeleteCandidateMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteCandidateMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteCandidate(long)">deleteCandidate(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteContactDefinitionParser.html">DeleteContactDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteContactLogDefinitionParser.html">DeleteContactLogDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteContactLogMessageProcessor.html">DeleteContactLogMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteContactLogMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteContactLog(long)">deleteContactLog(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteContactMessageProcessor.html">DeleteContactMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteContactMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteContact(long)">deleteContact(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteDepartmentDefinitionParser.html">DeleteDepartmentDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteDepartmentMessageProcessor.html">DeleteDepartmentMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteDepartmentMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteDepartment(long)">deleteDepartment(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteEmployeeByNumberDefinitionParser.html">DeleteEmployeeByNumberDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteEmployeeByNumberMessageProcessor.html">DeleteEmployeeByNumberMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteEmployeeByNumberMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteEmployeeByNumber(java.lang.String)">deleteEmployeeByNumber(java.lang.String)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteEmployeeDefinitionParser.html">DeleteEmployeeDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteEmployeeMessageProcessor.html">DeleteEmployeeMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteEmployeeMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteEmployee(long)">deleteEmployee(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteEventDefinitionParser.html">DeleteEventDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteEventMessageProcessor.html">DeleteEventMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteEventMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteEvent(long)">deleteEvent(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteInterviewDefinitionParser.html">DeleteInterviewDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteInterviewMessageProcessor.html">DeleteInterviewMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteInterviewMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteInterview(long)">deleteInterview(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteLocationDefinitionParser.html">DeleteLocationDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteLocationMessageProcessor.html">DeleteLocationMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteLocationMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteLocation(long)">deleteLocation(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteOfferDefinitionParser.html">DeleteOfferDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteOfferMessageProcessor.html">DeleteOfferMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteOfferMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteOffer(long)">deleteOffer(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteReferenceDefinitionParser.html">DeleteReferenceDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteReferenceMessageProcessor.html">DeleteReferenceMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteReferenceMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteReference(long)">deleteReference(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteRegionDefinitionParser.html">DeleteRegionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteRegionMessageProcessor.html">DeleteRegionMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteRegionMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteRegion(long)">deleteRegion(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteRequisitionDefinitionParser.html">DeleteRequisitionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteRequisitionMessageProcessor.html">DeleteRequisitionMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteRequisitionMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteRequisition(long)">deleteRequisition(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteRollingEntityDefinitionParser.html">DeleteRollingEntityDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteRollingEntityMessageProcessor.html">DeleteRollingEntityMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteRollingEntityMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteRollingEntity(long)">deleteRollingEntity(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteTaskDefinitionParser.html">DeleteTaskDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteTaskMessageProcessor.html">DeleteTaskMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteTaskMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteTask(long)">deleteTask(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/DeleteUserDefinitionParser.html">DeleteUserDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/DeleteUserMessageProcessor.html">DeleteUserMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteUserMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#deleteUser(long)">deleteUser(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/DepartmentArr.html">DepartmentArr</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for DepartmentArr complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/DepartmentBean.html">DepartmentBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for DepartmentBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/DepartmentBeanExpressionHolder.html">DepartmentBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/DepartmentBeanExpressionHolderTransformer.html">DepartmentBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_E">E</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/EmployeeBean.html">EmployeeBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for EmployeeBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/EmployeeBeanExpressionHolder.html">EmployeeBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/EmployeeBeanExpressionHolderTransformer.html">EmployeeBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/EntityBean.html">EntityBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for EntityBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/api/EntityTypeEnum.html">EntityTypeEnum</a></td>
+            <td class="jd-descrcol" width="100%">Type of related Entity:
+ ACCT = accounts
+ CAND = candidates
+ CTCT = contacts
+ EMPL = employees
+ REQU = requisitions
+ WORK = users&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/api/transformers/EntityTypeEnumEnumTransformer.html">EntityTypeEnumEnumTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_F">F</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/FlexEntityBean.html">FlexEntityBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for FlexEntityBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/FlexFieldBean.html">FlexFieldBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for FlexFieldBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/FlexRollingEntityBean.html">FlexRollingEntityBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for FlexRollingEntityBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/FlexRollingEntityBeanArr.html">FlexRollingEntityBeanArr</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for FlexRollingEntityBeanArr complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/FlexRollingEntityBeanExpressionHolder.html">FlexRollingEntityBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/FlexRollingEntityBeanExpressionHolderTransformer.html">FlexRollingEntityBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_G">G</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetAccountByIdDefinitionParser.html">GetAccountByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetAccountByIdMessageProcessor.html">GetAccountByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetAccountByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getAccountById(long)">getAccountById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetAccountHistoryDefinitionParser.html">GetAccountHistoryDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetAccountHistoryMessageProcessor.html">GetAccountHistoryMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetAccountHistoryMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getAccountHistory(long)">getAccountHistory(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetAssociatedUsersDefinitionParser.html">GetAssociatedUsersDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetAssociatedUsersMessageProcessor.html">GetAssociatedUsersMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetAssociatedUsersMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getAssociatedUsers(long, java.lang.String)">getAssociatedUsers(long, java.lang.String)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetAttachmentDataDefinitionParser.html">GetAttachmentDataDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetAttachmentDataMessageProcessor.html">GetAttachmentDataMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetAttachmentDataMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getAttachmentData(long)">getAttachmentData(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetAttachmentDefinitionParser.html">GetAttachmentDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetAttachmentMessageProcessor.html">GetAttachmentMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetAttachmentMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getAttachment(long)">getAttachment(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetAttachmentsDefinitionParser.html">GetAttachmentsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetAttachmentsMessageProcessor.html">GetAttachmentsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetAttachmentsMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getAttachments(long)">getAttachments(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetBackgroundCheckByIdDefinitionParser.html">GetBackgroundCheckByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetBackgroundCheckByIdMessageProcessor.html">GetBackgroundCheckByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetBackgroundCheckByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getBackgroundCheckById(long)">getBackgroundCheckById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetBackgroundChecksByCandidateDefinitionParser.html">GetBackgroundChecksByCandidateDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetBackgroundChecksByCandidateMessageProcessor.html">GetBackgroundChecksByCandidateMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetBackgroundChecksByCandidateMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getBackgroundChecksByCandidate(long)">getBackgroundChecksByCandidate(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetBinaryOfferDefinitionParser.html">GetBinaryOfferDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetBinaryOfferMessageProcessor.html">GetBinaryOfferMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetBinaryOfferMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getBinaryOffer(long)">getBinaryOffer(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetBinaryResumeDefinitionParser.html">GetBinaryResumeDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetBinaryResumeMessageProcessor.html">GetBinaryResumeMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetBinaryResumeMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getBinaryResume(long)">getBinaryResume(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetCandidateByIdDefinitionParser.html">GetCandidateByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetCandidateByIdMessageProcessor.html">GetCandidateByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetCandidateByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getCandidateById(long)">getCandidateById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetCandidateDetailsByIdDefinitionParser.html">GetCandidateDetailsByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetCandidateDetailsByIdMessageProcessor.html">GetCandidateDetailsByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetCandidateDetailsByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getCandidateDetailsById(long, boolean, boolean, boolean, boolean, boolean, boolean)">getCandidateDetailsById(long, boolean, boolean, boolean, boolean, boolean, boolean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetCandidateHistoryDefinitionParser.html">GetCandidateHistoryDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetCandidateHistoryMessageProcessor.html">GetCandidateHistoryMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetCandidateHistoryMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getCandidateHistory(long)">getCandidateHistory(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetCandidatesByRequisitionDefinitionParser.html">GetCandidatesByRequisitionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetCandidatesByRequisitionMessageProcessor.html">GetCandidatesByRequisitionMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetCandidatesByRequisitionMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getCandidatesByRequisition(long)">getCandidatesByRequisition(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetCandidateWorkHistoryDefinitionParser.html">GetCandidateWorkHistoryDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetCandidateWorkHistoryMessageProcessor.html">GetCandidateWorkHistoryMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetCandidateWorkHistoryMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getCandidateWorkHistory(long)">getCandidateWorkHistory(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetCandReqStatusDefinitionParser.html">GetCandReqStatusDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetCandReqStatusMessageProcessor.html">GetCandReqStatusMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetCandReqStatusMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getCandReqStatus(long, long)">getCandReqStatus(long, long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetContactByIdDefinitionParser.html">GetContactByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetContactByIdMessageProcessor.html">GetContactByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetContactByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getContactById(long)">getContactById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetContactHistoryDefinitionParser.html">GetContactHistoryDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetContactHistoryMessageProcessor.html">GetContactHistoryMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetContactHistoryMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getContactHistory(long)">getContactHistory(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetContactLogByIdDefinitionParser.html">GetContactLogByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetContactLogByIdMessageProcessor.html">GetContactLogByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetContactLogByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getContactLogById(long)">getContactLogById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetContactLogsByEntityDefinitionParser.html">GetContactLogsByEntityDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetContactLogsByEntityMessageProcessor.html">GetContactLogsByEntityMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetContactLogsByEntityMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getContactLogsByEntity(java.lang.String, long)">getContactLogsByEntity(java.lang.String, long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetDepartmentByIdDefinitionParser.html">GetDepartmentByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetDepartmentByIdMessageProcessor.html">GetDepartmentByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetDepartmentByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getDepartmentById(long)">getDepartmentById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetDepartmentByNameDefinitionParser.html">GetDepartmentByNameDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetDepartmentByNameMessageProcessor.html">GetDepartmentByNameMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetDepartmentByNameMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getDepartmentByName(java.lang.String)">getDepartmentByName(java.lang.String)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetDepartmentsDefinitionParser.html">GetDepartmentsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetDepartmentsMessageProcessor.html">GetDepartmentsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetDepartmentsMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getDepartments()">getDepartments()</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetEmployeeByIdDefinitionParser.html">GetEmployeeByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetEmployeeByIdMessageProcessor.html">GetEmployeeByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetEmployeeByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getEmployeeById(long)">getEmployeeById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetEmployeeByNumberDefinitionParser.html">GetEmployeeByNumberDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetEmployeeByNumberMessageProcessor.html">GetEmployeeByNumberMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetEmployeeByNumberMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getEmployeeByNumber(java.lang.String)">getEmployeeByNumber(java.lang.String)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetEnabledServicesDefinitionParser.html">GetEnabledServicesDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetEnabledServicesMessageProcessor.html">GetEnabledServicesMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetEnabledServicesMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getEnabledServices()">getEnabledServices()</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetEntityAttachmentsDefinitionParser.html">GetEntityAttachmentsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetEntityAttachmentsMessageProcessor.html">GetEntityAttachmentsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetEntityAttachmentsMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getEntityAttachments(java.lang.String, long)">getEntityAttachments(java.lang.String, long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetEventByEntityDefinitionParser.html">GetEventByEntityDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetEventByEntityMessageProcessor.html">GetEventByEntityMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetEventByEntityMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getEventByEntity(java.lang.String, long)">getEventByEntity(java.lang.String, long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetEventByIdDefinitionParser.html">GetEventByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetEventByIdMessageProcessor.html">GetEventByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetEventByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getEventById(long)">getEventById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetInterviewByIdDefinitionParser.html">GetInterviewByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetInterviewByIdMessageProcessor.html">GetInterviewByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetInterviewByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getInterviewById(long)">getInterviewById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetInterviewsByCandidateDefinitionParser.html">GetInterviewsByCandidateDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetInterviewsByCandidateMessageProcessor.html">GetInterviewsByCandidateMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetInterviewsByCandidateMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getInterviewsByCandidate(long)">getInterviewsByCandidate(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetLocationByIdDefinitionParser.html">GetLocationByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetLocationByIdMessageProcessor.html">GetLocationByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetLocationByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getLocationById(long)">getLocationById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetLocationByNameDefinitionParser.html">GetLocationByNameDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetLocationByNameMessageProcessor.html">GetLocationByNameMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetLocationByNameMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getLocationByName(java.lang.String)">getLocationByName(java.lang.String)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetLocationsDefinitionParser.html">GetLocationsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetLocationsMessageProcessor.html">GetLocationsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetLocationsMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getLocations()">getLocations()</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetLoginTokenDefinitionParser.html">GetLoginTokenDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetLoginTokenMessageProcessor.html">GetLoginTokenMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetLoginTokenMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getLoginToken(java.lang.String)">getLoginToken(java.lang.String)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetLookupDefinitionParser.html">GetLookupDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetLookupMessageProcessor.html">GetLookupMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetLookupMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getLookup(java.lang.String)">getLookup(java.lang.String)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetMetadataDefinitionParser.html">GetMetadataDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetMetadataMessageProcessor.html">GetMetadataMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetMetadataMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getMetadata(org.mule.modules.taleo.api.EntityTypeEnum)">getMetadata(org.mule.modules.taleo.api.EntityTypeEnum)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetOfferByIdDefinitionParser.html">GetOfferByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetOfferByIdMessageProcessor.html">GetOfferByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetOfferByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getOfferById(long)">getOfferById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetOffersDefinitionParser.html">GetOffersDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetOffersMessageProcessor.html">GetOffersMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetOffersMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getOffers(long)">getOffers(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetPublicEventsDefinitionParser.html">GetPublicEventsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetPublicEventsMessageProcessor.html">GetPublicEventsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetPublicEventsMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getPublicEvents(java.util.GregorianCalendar, java.util.GregorianCalendar)">getPublicEvents(java.util.GregorianCalendar, java.util.GregorianCalendar)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetReferenceByIdDefinitionParser.html">GetReferenceByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetReferenceByIdMessageProcessor.html">GetReferenceByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetReferenceByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getReferenceById(long)">getReferenceById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetReferencesByCandidateDefinitionParser.html">GetReferencesByCandidateDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetReferencesByCandidateMessageProcessor.html">GetReferencesByCandidateMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetReferencesByCandidateMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getReferencesByCandidate(long)">getReferencesByCandidate(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetRegionByIdDefinitionParser.html">GetRegionByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetRegionByIdMessageProcessor.html">GetRegionByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetRegionByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getRegionById(long)">getRegionById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetRegionByNameDefinitionParser.html">GetRegionByNameDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetRegionByNameMessageProcessor.html">GetRegionByNameMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetRegionByNameMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getRegionByName(java.lang.String)">getRegionByName(java.lang.String)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetRegionsDefinitionParser.html">GetRegionsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetRegionsMessageProcessor.html">GetRegionsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetRegionsMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getRegions()">getRegions()</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetRequisitionByIdDefinitionParser.html">GetRequisitionByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetRequisitionByIdMessageProcessor.html">GetRequisitionByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetRequisitionByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getRequisitionById(long)">getRequisitionById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetRequisitionHistoryDefinitionParser.html">GetRequisitionHistoryDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetRequisitionHistoryMessageProcessor.html">GetRequisitionHistoryMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetRequisitionHistoryMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getRequisitionHistory(long)">getRequisitionHistory(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetRequisitionsDefinitionParser.html">GetRequisitionsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetRequisitionsMessageProcessor.html">GetRequisitionsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetRequisitionsMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getRequisitions(long)">getRequisitions(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetRollingEntitiesDefinitionParser.html">GetRollingEntitiesDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetRollingEntitiesMessageProcessor.html">GetRollingEntitiesMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetRollingEntitiesMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getRollingEntities(java.lang.String, java.lang.String, long)">getRollingEntities(java.lang.String, java.lang.String, long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetSystemPropsDefinitionParser.html">GetSystemPropsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetSystemPropsMessageProcessor.html">GetSystemPropsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetSystemPropsMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getSystemProps()">getSystemProps()</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetTaskByEntityDefinitionParser.html">GetTaskByEntityDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetTaskByEntityMessageProcessor.html">GetTaskByEntityMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetTaskByEntityMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getTaskByEntity(java.lang.String, long)">getTaskByEntity(java.lang.String, long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetTaskByIdDefinitionParser.html">GetTaskByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetTaskByIdMessageProcessor.html">GetTaskByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetTaskByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getTaskById(long)">getTaskById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetTaskByUserDefinitionParser.html">GetTaskByUserDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetTaskByUserMessageProcessor.html">GetTaskByUserMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetTaskByUserMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getTaskByUser(long, java.util.GregorianCalendar, java.util.GregorianCalendar)">getTaskByUser(long, java.util.GregorianCalendar, java.util.GregorianCalendar)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetUrlDefinitionParser.html">GetUrlDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetUrlMessageProcessor.html">GetUrlMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetUrlMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getUrl(java.lang.String)">getUrl(java.lang.String)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetUserByIdDefinitionParser.html">GetUserByIdDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetUserByIdMessageProcessor.html">GetUserByIdMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetUserByIdMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getUserById(long)">getUserById(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/GetUserHistoryDefinitionParser.html">GetUserHistoryDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/GetUserHistoryMessageProcessor.html">GetUserHistoryMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetUserHistoryMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#getUserHistory(long)">getUserHistory(long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_H">H</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/HistoryBean.html">HistoryBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for HistoryBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/HistoryBeanArr.html">HistoryBeanArr</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for HistoryBeanArr complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/callback/HttpCallback.html">HttpCallback</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/adapter/HttpCallbackAdapter.html">HttpCallbackAdapter</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_I">I</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/InterviewBean.html">InterviewBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for InterviewBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/InterviewBeanExpressionHolder.html">InterviewBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/InterviewBeanExpressionHolderTransformer.html">InterviewBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/IWebAPI.html">IWebAPI</a></td>
+            <td class="jd-descrcol" width="100%">This class was generated by Apache CXF 2.5.1
+ 2013-07-02T09:34:22.032-05:00
+ Generated source version: 2.5.1
+ 
+&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/IWebAPIService.html">IWebAPIService</a></td>
+            <td class="jd-descrcol" width="100%">This class was generated by Apache CXF 2.5.1
+ 2013-07-02T09:34:22.099-05:00
+ Generated source version: 2.5.1
+ 
+&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_L">L</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/LocationArr.html">LocationArr</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for LocationArr complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/LocationBean.html">LocationBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for LocationBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/LocationBeanExpressionHolder.html">LocationBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/LocationBeanExpressionHolderTransformer.html">LocationBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/LoginPartnerDefinitionParser.html">LoginPartnerDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/LoginPartnerMessageProcessor.html">LoginPartnerMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">LoginPartnerMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#loginPartner(java.lang.String, java.lang.String, long, java.lang.String)">loginPartner(java.lang.String, java.lang.String, long, java.lang.String)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for LongArr complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/LongArrExpressionHolder.html">LongArrExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/LongArrExpressionHolderTransformer.html">LongArrExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/LookupArr.html">LookupArr</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for LookupArr complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/LookupBean.html">LookupBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for LookupBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_M">M</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/process/ManagedConnectionProcessInterceptor.html">ManagedConnectionProcessInterceptor</a>&lt;T&gt;</td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/connectivity/ManagedConnectionProcessTemplate.html">ManagedConnectionProcessTemplate</a>&lt;P&gt;</td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/Map.html">Map</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for Map complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/MapExpressionHolder.html">MapExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/MapExpressionHolderTransformer.html">MapExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/MapItem.html">MapItem</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for mapItem complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/MapItemExpressionHolder.html">MapItemExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/MapItemExpressionHolderTransformer.html">MapItemExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/MetadataArr.html">MetadataArr</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for MetadataArr complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/basic/MetadataAware.html">MetadataAware</a></td>
+            <td class="jd-descrcol" width="100%">This interface is implemented for every org.mule.api.annotations.Module and org.mule.api.annotations.Connector annotated class and its purpose is to define a contract to query the annotated class about its metadata.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/MetadataBean.html">MetadataBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for MetadataBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_N">N</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/process/NestedProcessorChain.html">NestedProcessorChain</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/oauth/NotAuthorizedException.html">NotAuthorizedException</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_O">O</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/oauth/OAuth1Adapter.html">OAuth1Adapter</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/oauth/OAuth2Adapter.html">OAuth2Adapter</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/oauth/OAuthAdapter.html">OAuthAdapter</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/oauth/OAuthManager.html">OAuthManager</a>&lt;C&nbsp;extends&nbsp;<a href="../java/org/mule/modules/taleo/oauth/OAuthAdapter.html">OAuthAdapter</a>&gt;</td>
+            <td class="jd-descrcol" width="100%">Wrapper around org.mule.api.annotations.oauth.OAuth annotated class that will infuse it with
+ access token management capabilities.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ObjectFactory.html">ObjectFactory</a></td>
+            <td class="jd-descrcol" width="100%">This object contains factory methods for each 
+ Java content interface and Java element interface 
+ generated in the org.mule.modules.taleo.model package.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/OfferBean.html">OfferBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for OfferBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/OfferBeanExpressionHolder.html">OfferBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/OfferBeanExpressionHolderTransformer.html">OfferBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_P">P</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/ParseResumeDefinitionParser.html">ParseResumeDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/ParseResumeIntoCandidateDefinitionParser.html">ParseResumeIntoCandidateDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/ParseResumeIntoCandidateMessageProcessor.html">ParseResumeIntoCandidateMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">ParseResumeIntoCandidateMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#parseResumeIntoCandidate(org.mule.modules.taleo.model.ByteArr, java.lang.String, java.lang.String)">parseResumeIntoCandidate(org.mule.modules.taleo.model.ByteArr, java.lang.String, java.lang.String)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/ParseResumeMessageProcessor.html">ParseResumeMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">ParseResumeMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#parseResume(org.mule.modules.taleo.model.ByteArr)">parseResume(org.mule.modules.taleo.model.ByteArr)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ParticipantBean.html">ParticipantBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ParticipantBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/ParticipantBeanExpressionHolder.html">ParticipantBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/ParticipantBeanExpressionHolderTransformer.html">ParticipantBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/adapter/PoolManager.html">PoolManager</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/PostRequisitionDefinitionParser.html">PostRequisitionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/PostRequisitionMessageProcessor.html">PostRequisitionMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">PostRequisitionMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#postRequisition(long, long, int)">postRequisition(long, long, int)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/process/ProcessAdapter.html">ProcessAdapter</a>&lt;O&gt;</td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/process/ProcessCallback.html">ProcessCallback</a>&lt;T,&nbsp;O&gt;</td>
+            <td class="jd-descrcol" width="100%">Callback with logic to execute within a controlled environment provided by <code><a href="../java/org/mule/modules/taleo/process/ProcessTemplate.html">ProcessTemplate</a></code>&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/process/ProcessCallbackProcessInterceptor.html">ProcessCallbackProcessInterceptor</a>&lt;T,&nbsp;O&gt;</td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/process/ProcessInterceptor.html">ProcessInterceptor</a>&lt;T,&nbsp;O&gt;</td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/process/ProcessTemplate.html">ProcessTemplate</a>&lt;T,&nbsp;O&gt;</td>
+            <td class="jd-descrcol" width="100%">ProcessTemplate provides a processing context for message processing.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_R">R</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/ReferenceBean.html">ReferenceBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for ReferenceBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/ReferenceBeanExpressionHolder.html">ReferenceBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/ReferenceBeanExpressionHolderTransformer.html">ReferenceBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/RegionArr.html">RegionArr</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for RegionArr complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/RegionBean.html">RegionBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for RegionBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/RegionBeanExpressionHolder.html">RegionBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/RegionBeanExpressionHolderTransformer.html">RegionBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/RemoveAssociatedUserDefinitionParser.html">RemoveAssociatedUserDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/RemoveAssociatedUserMessageProcessor.html">RemoveAssociatedUserMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">RemoveAssociatedUserMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#removeAssociatedUser(long, java.lang.String, long)">removeAssociatedUser(long, java.lang.String, long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/RemoveCandidateDefinitionParser.html">RemoveCandidateDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/RemoveCandidateMessageProcessor.html">RemoveCandidateMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">RemoveCandidateMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#removeCandidate(long, long)">removeCandidate(long, long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/RemoveLinkDefinitionParser.html">RemoveLinkDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/RemoveLinkMessageProcessor.html">RemoveLinkMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">RemoveLinkMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#removeLink(java.lang.String, long, java.lang.String, long)">removeLink(java.lang.String, long, java.lang.String, long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/RequisitionBean.html">RequisitionBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for RequisitionBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/RequisitionBeanExpressionHolder.html">RequisitionBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/RequisitionBeanExpressionHolderTransformer.html">RequisitionBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/oauth/RestoreAccessTokenCallback.html">RestoreAccessTokenCallback</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/process/RetryProcessInterceptor.html">RetryProcessInterceptor</a>&lt;T,&nbsp;O&gt;</td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_S">S</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/oauth/SaveAccessTokenCallback.html">SaveAccessTokenCallback</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/SearchAccountDefinitionParser.html">SearchAccountDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/SearchAccountMessageProcessor.html">SearchAccountMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">SearchAccountMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#searchAccount(java.util.Map<java.lang.String, java.lang.Object>)">searchAccount(java.util.Map)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/SearchCandidateDefinitionParser.html">SearchCandidateDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/SearchCandidateMessageProcessor.html">SearchCandidateMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">SearchCandidateMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#searchCandidate(java.util.Map<java.lang.String, java.lang.Object>)">searchCandidate(java.util.Map)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/SearchContactDefinitionParser.html">SearchContactDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/SearchContactMessageProcessor.html">SearchContactMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">SearchContactMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#searchContact(java.util.Map<java.lang.String, java.lang.Object>)">searchContact(java.util.Map)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/SearchEmployeeDefinitionParser.html">SearchEmployeeDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/SearchEmployeeMessageProcessor.html">SearchEmployeeMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">SearchEmployeeMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#searchEmployee(java.util.Map<java.lang.String, java.lang.Object>)">searchEmployee(java.util.Map)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/SearchRequisitionDefinitionParser.html">SearchRequisitionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/SearchRequisitionMessageProcessor.html">SearchRequisitionMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">SearchRequisitionMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#searchRequisition(java.util.Map<java.lang.String, java.lang.Object>)">searchRequisition(java.util.Map)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/SearchResultArr.html">SearchResultArr</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for SearchResultArr complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/SearchResultBean.html">SearchResultBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for SearchResultBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/SearchUserDefinitionParser.html">SearchUserDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/SearchUserMessageProcessor.html">SearchUserMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">SearchUserMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#searchUser(java.util.Map<java.lang.String, java.lang.Object>)">searchUser(java.util.Map)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/SetAssociatedUserDefinitionParser.html">SetAssociatedUserDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/SetAssociatedUserMessageProcessor.html">SetAssociatedUserMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">SetAssociatedUserMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#setAssociatedUser(long, java.lang.String, long, int)">setAssociatedUser(long, java.lang.String, long, int)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/SetBinaryOfferDefinitionParser.html">SetBinaryOfferDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/SetBinaryOfferMessageProcessor.html">SetBinaryOfferMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">SetBinaryOfferMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#setBinaryOffer(long, java.lang.String, org.mule.modules.taleo.model.ByteArr)">setBinaryOffer(long, java.lang.String, org.mule.modules.taleo.model.ByteArr)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/SetBinaryResumeDefinitionParser.html">SetBinaryResumeDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/SetBinaryResumeMessageProcessor.html">SetBinaryResumeMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">SetBinaryResumeMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#setBinaryResume(long, java.lang.String, org.mule.modules.taleo.model.ByteArr)">setBinaryResume(long, java.lang.String, org.mule.modules.taleo.model.ByteArr)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/callback/SourceCallback.html">SourceCallback</a></td>
+            <td class="jd-descrcol" width="100%">Callback interface used by org.mule.api.annotations.Source annotated methods to dispatch messages.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/devkit/SplashScreenAgent.html">SplashScreenAgent</a></td>
+            <td class="jd-descrcol" width="100%">Marks DevKit org.mule.api.agent.Agent implementations to take care of logging information at Mule app level mainly for troubleshooting purposes.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/callback/StopSourceCallback.html">StopSourceCallback</a></td>
+            <td class="jd-descrcol" width="100%">Callback returned by methods that are annotated with @Source
+ <p/>
+ It will be executed when the MessageSource is being stopped.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/transformers/StringToClassTransformer.html">StringToClassTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/SubmitCandidateDefinitionParser.html">SubmitCandidateDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/SubmitCandidateMessageProcessor.html">SubmitCandidateMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">SubmitCandidateMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#submitCandidate(long, org.mule.modules.taleo.model.LongArr)">submitCandidate(long, org.mule.modules.taleo.model.LongArr)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_T">T</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/client/TaleoClient.html">TaleoClient</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></td>
+            <td class="jd-descrcol" width="100%">Cloud Connector&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/adapters/TaleoConnectorCapabilitiesAdapter.html">TaleoConnectorCapabilitiesAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>TaleoConnectorCapabilitiesAdapter</code> is a wrapper around <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code> that implements org.mule.api.Capabilities interface.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/TaleoConnectorConfigDefinitionParser.html">TaleoConnectorConfigDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/connectivity/TaleoConnectorConnectionFactory.html">TaleoConnectorConnectionFactory</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/adapters/TaleoConnectorConnectionIdentifierAdapter.html">TaleoConnectorConnectionIdentifierAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>TaleoConnectorConnectionIdentifierAdapter</code> is a wrapper around <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code> that implements org.mule.devkit.dynamic.api.helper.Connection interface.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/connectivity/TaleoConnectorConnectionKey.html">TaleoConnectorConnectionKey</a></td>
+            <td class="jd-descrcol" width="100%">A tuple of connection parameters
+ 
+&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/connectivity/TaleoConnectorConnectionManager.html">TaleoConnectorConnectionManager</a></td>
+            <td class="jd-descrcol" width="100%">A <code>TaleoConnectorConnectionManager</code> is a wrapper around <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code> that adds connection management capabilities to the pojo.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/adapters/TaleoConnectorLifecycleAdapter.html">TaleoConnectorLifecycleAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>TaleoConnectorLifecycleAdapter</code> is a wrapper around <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html">TaleoConnectorMetadataAdapater</a></td>
+            <td class="jd-descrcol" width="100%">A <code>TaleoConnectorMetadataAdapater</code> is a wrapper around <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code> that adds support for querying metadata about the extension.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/adapters/TaleoConnectorProcessAdapter.html">TaleoConnectorProcessAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>TaleoConnectorProcessAdapter</code> is a wrapper around <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code> that enables custom processing strategies.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/client/TaleoCxfClientImpl.html">TaleoCxfClientImpl</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/client/TaleoException.html">TaleoException</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/TaleoNamespaceHandler.html">TaleoNamespaceHandler</a></td>
+            <td class="jd-descrcol" width="100%">Registers bean definitions parsers for handling elements in <code>http://www.mulesoft.org/schema/mule/taleo</code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/TaskBean.html">TaskBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for TaskBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/TaskBeanExpressionHolder.html">TaskBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/TaskBeanExpressionHolderTransformer.html">TaskBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_U">U</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/oauth/UnableToAcquireAccessTokenException.html">UnableToAcquireAccessTokenException</a></td>
+            <td class="jd-descrcol" width="100%">Exception thrown when the access token needed for accessing a protected resource cannot be acquired
+ 
+&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/connection/UnableToAcquireConnectionException.html">UnableToAcquireConnectionException</a></td>
+            <td class="jd-descrcol" width="100%">Exception thrown when the connection needed for executing an
+  operation is null.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/oauth/UnableToAcquireRequestTokenException.html">UnableToAcquireRequestTokenException</a></td>
+            <td class="jd-descrcol" width="100%">Exception thrown when the request token needed for building the authorization URL cannot be acquired
+ 
+&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/connection/UnableToReleaseConnectionException.html">UnableToReleaseConnectionException</a></td>
+            <td class="jd-descrcol" width="100%">Exception thrown when the release connection operation of the
+  connection manager fails.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UnpostRequisitionDefinitionParser.html">UnpostRequisitionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UnpostRequisitionMessageProcessor.html">UnpostRequisitionMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UnpostRequisitionMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#unpostRequisition(long, long)">unpostRequisition(long, long)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateAccountDefinitionParser.html">UpdateAccountDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateAccountMessageProcessor.html">UpdateAccountMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateAccountMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateAccount(org.mule.modules.taleo.model.AccountBean)">updateAccount(org.mule.modules.taleo.model.AccountBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateAttachmentDefinitionParser.html">UpdateAttachmentDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateAttachmentMessageProcessor.html">UpdateAttachmentMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateAttachmentMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateAttachment(long, java.lang.String, java.lang.String, java.lang.String, org.mule.modules.taleo.model.ByteArr)">updateAttachment(long, java.lang.String, java.lang.String, java.lang.String, org.mule.modules.taleo.model.ByteArr)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateBackgroundCheckDefinitionParser.html">UpdateBackgroundCheckDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateBackgroundCheckMessageProcessor.html">UpdateBackgroundCheckMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateBackgroundCheckMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateBackgroundCheck(org.mule.modules.taleo.model.BackgroundCheckBean)">updateBackgroundCheck(org.mule.modules.taleo.model.BackgroundCheckBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateCandidateDefinitionParser.html">UpdateCandidateDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateCandidateMessageProcessor.html">UpdateCandidateMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateCandidateMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateCandidate(org.mule.modules.taleo.model.CandidateBean)">updateCandidate(org.mule.modules.taleo.model.CandidateBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateContactDefinitionParser.html">UpdateContactDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateContactLogDefinitionParser.html">UpdateContactLogDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateContactLogMessageProcessor.html">UpdateContactLogMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateContactLogMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateContactLog(org.mule.modules.taleo.model.ContactLogBean)">updateContactLog(org.mule.modules.taleo.model.ContactLogBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateContactMessageProcessor.html">UpdateContactMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateContactMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateContact(org.mule.modules.taleo.model.ContactBean)">updateContact(org.mule.modules.taleo.model.ContactBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateEmployeeDefinitionParser.html">UpdateEmployeeDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateEmployeeMessageProcessor.html">UpdateEmployeeMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateEmployeeMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateEmployee(org.mule.modules.taleo.model.EmployeeBean)">updateEmployee(org.mule.modules.taleo.model.EmployeeBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateEventDefinitionParser.html">UpdateEventDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateEventMessageProcessor.html">UpdateEventMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateEventMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateEvent(org.mule.modules.taleo.model.CalendarEventBean)">updateEvent(org.mule.modules.taleo.model.CalendarEventBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateInterviewDefinitionParser.html">UpdateInterviewDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateInterviewMessageProcessor.html">UpdateInterviewMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateInterviewMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateInterview(org.mule.modules.taleo.model.InterviewBean)">updateInterview(org.mule.modules.taleo.model.InterviewBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateOfferDefinitionParser.html">UpdateOfferDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateOfferMessageProcessor.html">UpdateOfferMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateOfferMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateOffer(org.mule.modules.taleo.model.OfferBean)">updateOffer(org.mule.modules.taleo.model.OfferBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateReferenceDefinitionParser.html">UpdateReferenceDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateReferenceMessageProcessor.html">UpdateReferenceMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateReferenceMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateReference(org.mule.modules.taleo.model.ReferenceBean)">updateReference(org.mule.modules.taleo.model.ReferenceBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateRequisitionDefinitionParser.html">UpdateRequisitionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateRequisitionMessageProcessor.html">UpdateRequisitionMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateRequisitionMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateRequisition(org.mule.modules.taleo.model.RequisitionBean)">updateRequisition(org.mule.modules.taleo.model.RequisitionBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateTaskDefinitionParser.html">UpdateTaskDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateTaskMessageProcessor.html">UpdateTaskMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateTaskMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateTask(org.mule.modules.taleo.model.TaskBean)">updateTask(org.mule.modules.taleo.model.TaskBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpdateUserDefinitionParser.html">UpdateUserDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpdateUserMessageProcessor.html">UpdateUserMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpdateUserMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#updateUser(org.mule.modules.taleo.model.UserBean)">updateUser(org.mule.modules.taleo.model.UserBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpsertCandidateToRequisitionsDefinitionParser.html">UpsertCandidateToRequisitionsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpsertCandidateToRequisitionsMessageProcessor.html">UpsertCandidateToRequisitionsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpsertCandidateToRequisitionsMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#upsertCandidateToRequisitions(long, org.mule.modules.taleo.model.LongArr, long, long, java.lang.Boolean)">upsertCandidateToRequisitions(long, org.mule.modules.taleo.model.LongArr, long, long, java.lang.Boolean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpsertDepartmentDefinitionParser.html">UpsertDepartmentDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpsertDepartmentMessageProcessor.html">UpsertDepartmentMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpsertDepartmentMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#upsertDepartment(org.mule.modules.taleo.model.DepartmentBean)">upsertDepartment(org.mule.modules.taleo.model.DepartmentBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpsertEmployeeDefinitionParser.html">UpsertEmployeeDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpsertEmployeeMessageProcessor.html">UpsertEmployeeMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpsertEmployeeMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#upsertEmployee(java.lang.String, org.mule.modules.taleo.model.EmployeeBean)">upsertEmployee(java.lang.String, org.mule.modules.taleo.model.EmployeeBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpsertLocationDefinitionParser.html">UpsertLocationDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpsertLocationMessageProcessor.html">UpsertLocationMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpsertLocationMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#upsertLocation(org.mule.modules.taleo.model.LocationBean)">upsertLocation(org.mule.modules.taleo.model.LocationBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpsertRegionDefinitionParser.html">UpsertRegionDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpsertRegionMessageProcessor.html">UpsertRegionMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpsertRegionMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#upsertRegion(org.mule.modules.taleo.model.RegionBean)">upsertRegion(org.mule.modules.taleo.model.RegionBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/config/UpsertRollingEntityDefinitionParser.html">UpsertRollingEntityDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/processors/UpsertRollingEntityMessageProcessor.html">UpsertRollingEntityMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">UpsertRollingEntityMessageProcessor invokes the <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html#upsertRollingEntity(org.mule.modules.taleo.model.FlexRollingEntityBean)">upsertRollingEntity(org.mule.modules.taleo.model.FlexRollingEntityBean)</a></code> method in <code><a href="../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/UserBean.html">UserBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for UserBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/holders/UserBeanExpressionHolder.html">UserBeanExpressionHolder</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/transformers/UserBeanExpressionHolderTransformer.html">UserBeanExpressionHolderTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_V">V</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/Vector.html">Vector</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for Vector complex type.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_W">W</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/WebServicesException.html">WebServicesException</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for WebServicesException complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/WebServicesException_Exception.html">WebServicesException_Exception</a></td>
+            <td class="jd-descrcol" width="100%">This class was generated by Apache CXF 2.5.1
+ 2013-07-02T09:34:21.981-05:00
+ Generated source version: 2.5.1
+&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/WorkHistoryArr.html">WorkHistoryArr</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for WorkHistoryArr complex type.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/model/WorkHistoryBean.html">WorkHistoryBean</a></td>
+            <td class="jd-descrcol" width="100%"><p>Java class for WorkHistoryBean complex type.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_X">X</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/org/mule/modules/taleo/client/XmlCustomDepthReader.html">XmlCustomDepthReader</a></td>
+            <td class="jd-descrcol" width="100%">Taleo is not making RPC/Literal compliant responses, we where forced to add custom handling for some namespaces at certains levels
+ to avoid unmarshalling errors&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div><!-- end jd-content -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>

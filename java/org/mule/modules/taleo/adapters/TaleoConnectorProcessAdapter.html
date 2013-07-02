@@ -1,0 +1,4694 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule Taleo Cloud Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
+<title>
+
+  TaleoConnectorProcessAdapter
+
+
+| Mule Taleo Cloud Connector
+
+</title>
+<link href="../../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../../", "../../../../../../assets/");
+</script>
+<script src="../../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule Taleo Cloud Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule Taleo Cloud Connector</span>
+    
+    <ul id="header-tabs" class="">
+    
+    	<li id="guide"><a href="../../../../../../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../../../../../../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../../../../../../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links">
+                <a href="../../../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../../../java/classes.html" >Class Index</a>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/package-summary.html">org.mule.modules.taleo</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/adapter/package-summary.html">org.mule.modules.taleo.adapter</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/adapters/package-summary.html">org.mule.modules.taleo.adapters</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/agents/package-summary.html">org.mule.modules.taleo.agents</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/api/package-summary.html">org.mule.modules.taleo.api</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/api/transformers/package-summary.html">org.mule.modules.taleo.api.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/basic/package-summary.html">org.mule.modules.taleo.basic</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/callback/package-summary.html">org.mule.modules.taleo.callback</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/client/package-summary.html">org.mule.modules.taleo.client</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/config/package-summary.html">org.mule.modules.taleo.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/connection/package-summary.html">org.mule.modules.taleo.connection</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/connectivity/package-summary.html">org.mule.modules.taleo.connectivity</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/devkit/package-summary.html">org.mule.modules.taleo.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/model/package-summary.html">org.mule.modules.taleo.model</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/model/holders/package-summary.html">org.mule.modules.taleo.model.holders</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/model/transformers/package-summary.html">org.mule.modules.taleo.model.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/oauth/package-summary.html">org.mule.modules.taleo.oauth</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/process/package-summary.html">org.mule.modules.taleo.process</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/processors/package-summary.html">org.mule.modules.taleo.processors</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/org/mule/modules/taleo/transformers/package-summary.html">org.mule.modules.taleo.transformers</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorCapabilitiesAdapter.html">TaleoConnectorCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorConnectionIdentifierAdapter.html">TaleoConnectorConnectionIdentifierAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorLifecycleAdapter.html">TaleoConnectorLifecycleAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html">TaleoConnectorMetadataAdapater</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorProcessAdapter.html">TaleoConnectorProcessAdapter</a></li>
+      </ul>
+    </li>
+              
+              
+              
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links">
+            <a href="../../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../../classes.html" >Class Index</a>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+   
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+  <a href="#inhconstants">Inherited Constants</a>
+  
+
+
+
+  &#124; <a href="#inhfields">Inherited Fields</a>
+  
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1>TaleoConnectorProcessAdapter</h1>
+
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+    extends <a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorLifecycleAdapter.html">TaleoConnectorLifecycleAdapter</a><br/>
+  
+  
+  
+
+  
+  
+      implements 
+      
+        <a href="../../../../../../java/org/mule/modules/taleo/process/ProcessAdapter.html">ProcessAdapter</a>&lt;O&gt; 
+      
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+        
+        <td colspan="6" class="jd-inheritance-class-cell">java.lang.Object</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="5" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/taleo/TaleoConnector.html">org.mule.modules.taleo.TaleoConnector</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="4" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorCapabilitiesAdapter.html">org.mule.modules.taleo.adapters.TaleoConnectorCapabilitiesAdapter</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html">org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorLifecycleAdapter.html">org.mule.modules.taleo.adapters.TaleoConnectorLifecycleAdapter</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.modules.taleo.adapters.TaleoConnectorProcessAdapter</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
+          ><img id="subclasses-direct-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
+
+  <div id="subclasses-direct">
+      <div id="subclasses-direct-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorConnectionIdentifierAdapter.html">TaleoConnectorConnectionIdentifierAdapter</a>
+            
+          
+      </div>
+      <div id="subclasses-direct-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorConnectionIdentifierAdapter.html">TaleoConnectorConnectionIdentifierAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>TaleoConnectorConnectionIdentifierAdapter</code> is a wrapper around <code><a href="../../../../../../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code> that implements org.mule.devkit.dynamic.api.helper.Connection interface.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>A <code>TaleoConnectorProcessAdapter</code> is a wrapper around <code><a href="../../../../../../java/org/mule/modules/taleo/TaleoConnector.html">TaleoConnector</a></code> that enables custom processing strategies.
+ 
+</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="inhconstants" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Constants</div></th></tr>
+
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html">org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater</a>
+<div id="inherited-constants-org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater">
+  <div id="inherited-constants-org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html#DEVKIT_BUILD">DEVKIT_BUILD</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html#DEVKIT_VERSION">DEVKIT_VERSION</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html#MODULE_NAME">MODULE_NAME</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html#MODULE_VERSION">MODULE_VERSION</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Disposable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Disposable
+<div id="inherited-constants-org.mule.api.lifecycle.Disposable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Initialisable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Initialisable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Initialisable
+<div id="inherited-constants-org.mule.api.lifecycle.Initialisable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Initialisable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Initialisable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Startable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Startable
+<div id="inherited-constants-org.mule.api.lifecycle.Startable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Startable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Startable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Stoppable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Stoppable
+<div id="inherited-constants-org.mule.api.lifecycle.Stoppable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="inhfields" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Fields</div></th></tr>
+
+
+
+
+
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.modules.taleo.TaleoConnector" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-org.mule.modules.taleo.TaleoConnector-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html">org.mule.modules.taleo.TaleoConnector</a>
+<div id="inherited-fields-org.mule.modules.taleo.TaleoConnector">
+  <div id="inherited-fields-org.mule.modules.taleo.TaleoConnector-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-org.mule.modules.taleo.TaleoConnector-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="../../../../../../java/org/mule/modules/taleo/client/TaleoClient.html">TaleoClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#client">client</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#companyCode">companyCode</a></td>
+          <td class="jd-descrcol" width="100%">Company code of the company
+</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#dispatcherUrl">dispatcherUrl</a></td>
+          <td class="jd-descrcol" width="100%">Url endpoint that will provide the URL for following messages
+</td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorProcessAdapter.html#TaleoConnectorProcessAdapter()">TaleoConnectorProcessAdapter</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            &lt;P&gt;
+            <a href="../../../../../../java/org/mule/modules/taleo/process/ProcessTemplate.html">ProcessTemplate</a>&lt;P,&nbsp;<a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorCapabilitiesAdapter.html">TaleoConnectorCapabilitiesAdapter</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorProcessAdapter.html#getProcessTemplate()">getProcessTemplate</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorLifecycleAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorLifecycleAdapter-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorLifecycleAdapter.html">org.mule.modules.taleo.adapters.TaleoConnectorLifecycleAdapter</a>
+
+<div id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorLifecycleAdapter">
+  <div id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorLifecycleAdapter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorLifecycleAdapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorLifecycleAdapter.html#dispose()">dispose</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorLifecycleAdapter.html#initialise()">initialise</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorLifecycleAdapter.html#start()">start</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorLifecycleAdapter.html#stop()">stop</a></span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html">org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater</a>
+
+<div id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater">
+  <div id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorMetadataAdapater-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html#getDevkitBuild()">getDevkitBuild</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the build of the DevKit used to create this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html#getDevkitVersion()">getDevkitVersion</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the version of the DevKit used to create this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html#getModuleName()">getModuleName</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the user-friendly name of this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorMetadataAdapater.html#getModuleVersion()">getModuleVersion</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the version of this module
+</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorCapabilitiesAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorCapabilitiesAdapter-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorCapabilitiesAdapter.html">org.mule.modules.taleo.adapters.TaleoConnectorCapabilitiesAdapter</a>
+
+<div id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorCapabilitiesAdapter">
+  <div id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorCapabilitiesAdapter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.taleo.adapters.TaleoConnectorCapabilitiesAdapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/adapters/TaleoConnectorCapabilitiesAdapter.html#isCapableOf(org.mule.modules.taleo.basic.Capability)">isCapableOf</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/basic/Capability.html">Capability</a> capability)</nobr>
+        
+        <div class="jd-descrdiv">Returns true if this module implements such capability
+ 
+</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.taleo.TaleoConnector" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.taleo.TaleoConnector-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html">org.mule.modules.taleo.TaleoConnector</a>
+
+<div id="inherited-methods-org.mule.modules.taleo.TaleoConnector">
+  <div id="inherited-methods-org.mule.modules.taleo.TaleoConnector-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.taleo.TaleoConnector-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#connect(java.lang.String, java.lang.String)">connect</a></span>(String username, String password)</nobr>
+        
+        <div class="jd-descrdiv">Connect</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#connectionId()">connectionId</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Are we connected
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createAccount(org.mule.modules.taleo.model.AccountBean)">createAccount</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/AccountBean.html">AccountBean</a> account)</nobr>
+        
+        <div class="jd-descrdiv">The endpoint receives a message to create an account, and sends a correlated message ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼of account ID.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createAttachment(long, java.lang.String, java.lang.String, java.lang.String, org.mule.modules.taleo.model.ByteArr)">createAttachment</a></span>(long candidateId, String attachmentDescription, String attachmentName, String contentType, <a href="../../../../../../java/org/mule/modules/taleo/model/ByteArr.html">ByteArr</a> binaryResume)</nobr>
+        
+        <div class="jd-descrdiv">The endpoint receives a message to create an attachment for a specific candidate, and sends a correlated message of attachment ID.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createBackgroundCheck(org.mule.modules.taleo.model.BackgroundCheckBean)">createBackgroundCheck</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/BackgroundCheckBean.html">BackgroundCheckBean</a> backgroundCheck)</nobr>
+        
+        <div class="jd-descrdiv">Create a background check.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createCandidate(org.mule.modules.taleo.model.CandidateBean)">createCandidate</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/CandidateBean.html">CandidateBean</a> candidate)</nobr>
+        
+        <div class="jd-descrdiv">Create a candidate
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createContact(org.mule.modules.taleo.model.ContactBean)">createContact</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/ContactBean.html">ContactBean</a> contact)</nobr>
+        
+        <div class="jd-descrdiv">Create a Contact
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createContactLog(org.mule.modules.taleo.model.ContactLogBean)">createContactLog</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/ContactLogBean.html">ContactLogBean</a> contactLog)</nobr>
+        
+        <div class="jd-descrdiv">Create a contact log
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createDepartment(org.mule.modules.taleo.model.DepartmentBean)">createDepartment</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/DepartmentBean.html">DepartmentBean</a> department)</nobr>
+        
+        <div class="jd-descrdiv">Create a department
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createEmailLog(java.lang.String, java.lang.String, java.lang.String, java.util.GregorianCalendar)">createEmailLog</a></span>(String email, String subject, String body, GregorianCalendar date)</nobr>
+        
+        <div class="jd-descrdiv">Create a contact record that somebody sent an email to the user (INBOUND EMAIL).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createEmailSentLog(java.lang.String, java.lang.String, java.lang.String, java.util.GregorianCalendar)">createEmailSentLog</a></span>(String email, String subject, String body, GregorianCalendar date)</nobr>
+        
+        <div class="jd-descrdiv">Create a contact record that the user sent somebody an email (OUTBOUND EMAIL).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createEmployee(org.mule.modules.taleo.model.EmployeeBean)">createEmployee</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/EmployeeBean.html">EmployeeBean</a> employee)</nobr>
+        
+        <div class="jd-descrdiv">Create an employee
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createEntityAttachment(java.lang.String, long, java.lang.String, java.lang.String, java.lang.String, org.mule.modules.taleo.model.ByteArr)">createEntityAttachment</a></span>(String entityType, long entityId, String description, String fileName, String contentType, <a href="../../../../../../java/org/mule/modules/taleo/model/ByteArr.html">ByteArr</a> data)</nobr>
+        
+        <div class="jd-descrdiv">Create an attachment for a specific ID associated with a specific entity (i.e.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createEvent(org.mule.modules.taleo.model.CalendarEventBean)">createEvent</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/CalendarEventBean.html">CalendarEventBean</a> event)</nobr>
+        
+        <div class="jd-descrdiv">Create an event
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createInterview(org.mule.modules.taleo.model.InterviewBean)">createInterview</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/InterviewBean.html">InterviewBean</a> interview)</nobr>
+        
+        <div class="jd-descrdiv">Create an interview instance for a specific candidate.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createLink(java.lang.String, long, java.lang.String, long)">createLink</a></span>(String entityType1, long entityId1, String entityType2, long entityId2)</nobr>
+        
+        <div class="jd-descrdiv">Link an entity (by ID) to another entity (by ID) in Taleo Business Edition.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createLocation(org.mule.modules.taleo.model.LocationBean)">createLocation</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/LocationBean.html">LocationBean</a> location)</nobr>
+        
+        <div class="jd-descrdiv">Create a Location.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createOffer(org.mule.modules.taleo.model.OfferBean)">createOffer</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/OfferBean.html">OfferBean</a> offer)</nobr>
+        
+        <div class="jd-descrdiv">Create an offer for a specific candidate.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createReference(org.mule.modules.taleo.model.ReferenceBean)">createReference</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/ReferenceBean.html">ReferenceBean</a> reference)</nobr>
+        
+        <div class="jd-descrdiv">Create a reference for a specific candidate
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createRegion(org.mule.modules.taleo.model.RegionBean)">createRegion</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/RegionBean.html">RegionBean</a> region)</nobr>
+        
+        <div class="jd-descrdiv">Create a Region
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createRequisition(org.mule.modules.taleo.model.RequisitionBean)">createRequisition</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/RequisitionBean.html">RequisitionBean</a> requisition)</nobr>
+        
+        <div class="jd-descrdiv">Create a requisition
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createRequisitionTemplate(org.mule.modules.taleo.model.RequisitionBean)">createRequisitionTemplate</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/RequisitionBean.html">RequisitionBean</a> requisition)</nobr>
+        
+        <div class="jd-descrdiv">Create a requisition template.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createTask(org.mule.modules.taleo.model.TaskBean)">createTask</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/TaskBean.html">TaskBean</a> task)</nobr>
+        
+        <div class="jd-descrdiv">Create a task.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createUser(org.mule.modules.taleo.model.UserBean)">createUser</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/UserBean.html">UserBean</a> user)</nobr>
+        
+        <div class="jd-descrdiv">Create a User.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#createUserWithPermissions(org.mule.modules.taleo.model.UserBean, java.util.Map<java.lang.String, java.lang.Object>)">createUserWithPermissions</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/UserBean.html">UserBean</a> user, Map&lt;String,&nbsp;Object&gt; additionalEntities)</nobr>
+        
+        <div class="jd-descrdiv">Create a user with permission attributes
+  
+  </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteAccount(long)">deleteAccount</a></span>(long accountId)</nobr>
+        
+        <div class="jd-descrdiv">Delete an Account.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteAttachment(long)">deleteAttachment</a></span>(long attachmentId)</nobr>
+        
+        <div class="jd-descrdiv">Delete an attachment
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteBackgroundCheck(long)">deleteBackgroundCheck</a></span>(long backgroundCheckId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a background check instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteCandidate(long)">deleteCandidate</a></span>(long candidateId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a candidate
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteContact(long)">deleteContact</a></span>(long contactId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a contact
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteContactLog(long)">deleteContactLog</a></span>(long contactLogId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a contact log
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteDepartment(long)">deleteDepartment</a></span>(long departmentId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a department
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteEmployee(long)">deleteEmployee</a></span>(long employeeId)</nobr>
+        
+        <div class="jd-descrdiv">Delete an employee
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteEmployeeByNumber(java.lang.String)">deleteEmployeeByNumber</a></span>(String employeeNumber)</nobr>
+        
+        <div class="jd-descrdiv">Delete an employee by employee number
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteEvent(long)">deleteEvent</a></span>(long eventId)</nobr>
+        
+        <div class="jd-descrdiv">Delete an event instance
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteInterview(long)">deleteInterview</a></span>(long interviewId)</nobr>
+        
+        <div class="jd-descrdiv">Delete an interview instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteLocation(long)">deleteLocation</a></span>(long locationId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a Location.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteOffer(long)">deleteOffer</a></span>(long offerId)</nobr>
+        
+        <div class="jd-descrdiv">Delete an offer instance
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteReference(long)">deleteReference</a></span>(long referenceId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a reference instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteRegion(long)">deleteRegion</a></span>(long regionId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a Region 
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteRequisition(long)">deleteRequisition</a></span>(long requisitionId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a requisition instance
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteRollingEntity(long)">deleteRollingEntity</a></span>(long rollingEntityId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a specific rolling entity instance based on ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteTask(long)">deleteTask</a></span>(long taskId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a task instance
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#deleteUser(long)">deleteUser</a></span>(long userId)</nobr>
+        
+        <div class="jd-descrdiv">Delete a user
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#disconnect()">disconnect</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Disconnect
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/AccountBean.html">AccountBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getAccountById(long)">getAccountById</a></span>(long accountId)</nobr>
+        
+        <div class="jd-descrdiv">Get an account details
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/HistoryBeanArr.html">HistoryBeanArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getAccountHistory(long)">getAccountHistory</a></span>(long accountId)</nobr>
+        
+        <div class="jd-descrdiv">Get an account history.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getAssociatedUsers(long, java.lang.String)">getAssociatedUsers</a></span>(long requisitionId, String association)</nobr>
+        
+        <div class="jd-descrdiv">Get a users association within a given requisition.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/AttachmentBean.html">AttachmentBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getAttachment(long)">getAttachment</a></span>(long attachmentId)</nobr>
+        
+        <div class="jd-descrdiv">Get an attachment by attachment ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/ByteArr.html">ByteArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getAttachmentData(long)">getAttachmentData</a></span>(long attachmentId)</nobr>
+        
+        <div class="jd-descrdiv">Get attachment data by ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getAttachments(long)">getAttachments</a></span>(long candidateId)</nobr>
+        
+        <div class="jd-descrdiv">Get attachment(s) by candidate id.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/BackgroundCheckBean.html">BackgroundCheckBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getBackgroundCheckById(long)">getBackgroundCheckById</a></span>(long backgroundCheckId)</nobr>
+        
+        <div class="jd-descrdiv">Get a specific background check by ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getBackgroundChecksByCandidate(long)">getBackgroundChecksByCandidate</a></span>(long candidateId)</nobr>
+        
+        <div class="jd-descrdiv">Get all background checks for a specific Candidate ID
+  
+  </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/ByteArr.html">ByteArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getBinaryOffer(long)">getBinaryOffer</a></span>(long offerId)</nobr>
+        
+        <div class="jd-descrdiv">Get the offer letter binary attachment associated with a candidate (based on offer ID).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/ByteArr.html">ByteArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getBinaryResume(long)">getBinaryResume</a></span>(long candidateId)</nobr>
+        
+        <div class="jd-descrdiv">Get the primary resume binary attachment associated with a candidate.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getCandReqStatus(long, long)">getCandReqStatus</a></span>(long candidateId, long requisitionId)</nobr>
+        
+        <div class="jd-descrdiv">Get a status of a requisition for a particular candidate
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/CandidateBean.html">CandidateBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getCandidateById(long)">getCandidateById</a></span>(long candidateId)</nobr>
+        
+        <div class="jd-descrdiv">Get a candidate general information by ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/CandidateDetailsBean.html">CandidateDetailsBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getCandidateDetailsById(long, boolean, boolean, boolean, boolean, boolean, boolean)">getCandidateDetailsById</a></span>(long candidateId, boolean includeRequisitions, boolean includeInterviews, boolean includeReferences, boolean includeHistory, boolean includeAttachments, boolean includeOffers)</nobr>
+        
+        <div class="jd-descrdiv">Get candidate detailed information by ID.By default all flags are true
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/HistoryBeanArr.html">HistoryBeanArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getCandidateHistory(long)">getCandidateHistory</a></span>(long candidateId)</nobr>
+        
+        <div class="jd-descrdiv">Get a Candidate transaction history
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/WorkHistoryArr.html">WorkHistoryArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getCandidateWorkHistory(long)">getCandidateWorkHistory</a></span>(long candidateId)</nobr>
+        
+        <div class="jd-descrdiv">Get the rolling entity specific to a candidate’s work history form details
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getCandidatesByRequisition(long)">getCandidatesByRequisition</a></span>(long requisitionId)</nobr>
+        
+        <div class="jd-descrdiv">Get all candidates by Requisition ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getCompanyCode()">getCompanyCode</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/ContactBean.html">ContactBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getContactById(long)">getContactById</a></span>(long contactId)</nobr>
+        
+        <div class="jd-descrdiv">Get a contact details
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/HistoryBeanArr.html">HistoryBeanArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getContactHistory(long)">getContactHistory</a></span>(long contactId)</nobr>
+        
+        <div class="jd-descrdiv">Get a Contact transaction history
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/ContactLogBean.html">ContactLogBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getContactLogById(long)">getContactLogById</a></span>(long contactLogId)</nobr>
+        
+        <div class="jd-descrdiv">Get a contact log details by contact log ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getContactLogsByEntity(java.lang.String, long)">getContactLogsByEntity</a></span>(String entityType, long entityId)</nobr>
+        
+        <div class="jd-descrdiv">Get contact log(s) associated with any Taleo Business Edition entity that supports storing of contact logs
+  
+  </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/DepartmentBean.html">DepartmentBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getDepartmentById(long)">getDepartmentById</a></span>(long departmentId)</nobr>
+        
+        <div class="jd-descrdiv">Get a Department details
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/DepartmentBean.html">DepartmentBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getDepartmentByName(java.lang.String)">getDepartmentByName</a></span>(String departmentName)</nobr>
+        
+        <div class="jd-descrdiv">Get a Department details
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/DepartmentArr.html">DepartmentArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getDepartments()">getDepartments</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get all Departments.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getDispatcherUrl()">getDispatcherUrl</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/EmployeeBean.html">EmployeeBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getEmployeeById(long)">getEmployeeById</a></span>(long employeeId)</nobr>
+        
+        <div class="jd-descrdiv">Get employee general information by ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/EmployeeBean.html">EmployeeBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getEmployeeByNumber(java.lang.String)">getEmployeeByNumber</a></span>(String employeeNumber)</nobr>
+        
+        <div class="jd-descrdiv">Get employee general information by Number
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getEnabledServices()">getEnabledServices</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the all the application modules the company code has turned on.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getEntityAttachments(java.lang.String, long)">getEntityAttachments</a></span>(String entityType, long entityId)</nobr>
+        
+        <div class="jd-descrdiv">Get attachment(s) associated with any Taleo Business Edition entity that supports attachment upload.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getEventByEntity(java.lang.String, long)">getEventByEntity</a></span>(String entityType, long entityId)</nobr>
+        
+        <div class="jd-descrdiv">Get event(s) associated with any Taleo Business Edition entity that supports storing/creation of calendar events.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/CalendarEventBean.html">CalendarEventBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getEventById(long)">getEventById</a></span>(long eventId)</nobr>
+        
+        <div class="jd-descrdiv">Get event details by event ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/InterviewBean.html">InterviewBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getInterviewById(long)">getInterviewById</a></span>(long interviewId)</nobr>
+        
+        <div class="jd-descrdiv">Get interview details by interview ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getInterviewsByCandidate(long)">getInterviewsByCandidate</a></span>(long candidateId)</nobr>
+        
+        <div class="jd-descrdiv">Get interview(s) associated with any Taleo Business Edition candidate
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LocationBean.html">LocationBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getLocationById(long)">getLocationById</a></span>(long locationId)</nobr>
+        
+        <div class="jd-descrdiv">Get a Location details
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LocationBean.html">LocationBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getLocationByName(java.lang.String)">getLocationByName</a></span>(String locationName)</nobr>
+        
+        <div class="jd-descrdiv">Get a Location details
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LocationArr.html">LocationArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getLocations()">getLocations</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get all Locations.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getLoginToken(java.lang.String)">getLoginToken</a></span>(String sessionId)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve the token results of a login session ID.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LookupArr.html">LookupArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getLookup(java.lang.String)">getLookup</a></span>(String fieldName)</nobr>
+        
+        <div class="jd-descrdiv">Lookup picklist values for a given field.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/MetadataArr.html">MetadataArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getMetadata(org.mule.modules.taleo.api.EntityTypeEnum)">getMetadata</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/api/EntityTypeEnum.html">EntityTypeEnum</a> entityType)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve all field values within an entity.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/OfferBean.html">OfferBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getOfferById(long)">getOfferById</a></span>(long offerId)</nobr>
+        
+        <div class="jd-descrdiv">Get offer details by offer ID.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getOffers(long)">getOffers</a></span>(long candidateId)</nobr>
+        
+        <div class="jd-descrdiv">Get offer(s) associated with any Taleo Business Edition candidate.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getPublicEvents(java.util.GregorianCalendar, java.util.GregorianCalendar)">getPublicEvents</a></span>(GregorianCalendar startDate, GregorianCalendar endDate)</nobr>
+        
+        <div class="jd-descrdiv">Get all public events within a start date and end date
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/ReferenceBean.html">ReferenceBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getReferenceById(long)">getReferenceById</a></span>(long referenceId)</nobr>
+        
+        <div class="jd-descrdiv">Get reference details by reference ID.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getReferencesByCandidate(long)">getReferencesByCandidate</a></span>(long candidateId)</nobr>
+        
+        <div class="jd-descrdiv">Get reference(s) associated with any Taleo Business Edition candidate
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/RegionBean.html">RegionBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getRegionById(long)">getRegionById</a></span>(long regionId)</nobr>
+        
+        <div class="jd-descrdiv">Get a Region details
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/RegionBean.html">RegionBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getRegionByName(java.lang.String)">getRegionByName</a></span>(String regionName)</nobr>
+        
+        <div class="jd-descrdiv">Get a Region details.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/RegionArr.html">RegionArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getRegions()">getRegions</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get all Regions.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/RequisitionBean.html">RequisitionBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getRequisitionById(long)">getRequisitionById</a></span>(long requisitionId)</nobr>
+        
+        <div class="jd-descrdiv">Get requisition details by requisition ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/HistoryBeanArr.html">HistoryBeanArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getRequisitionHistory(long)">getRequisitionHistory</a></span>(long requisitionId)</nobr>
+        
+        <div class="jd-descrdiv">Get a Requisition transaction history.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getRequisitions(long)">getRequisitions</a></span>(long candidateId)</nobr>
+        
+        <div class="jd-descrdiv">Get requisition(s) associated with any Taleo Business Edition candidate
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/FlexRollingEntityBeanArr.html">FlexRollingEntityBeanArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getRollingEntities(java.lang.String, java.lang.String, long)">getRollingEntities</a></span>(String rollingEntityType, String entityType, long entityId)</nobr>
+        
+        <div class="jd-descrdiv">Get a specific rolling entity for a candidate or employee.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getSystemProps()">getSystemProps</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the system props of a company code using valid session variable.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getTaskByEntity(java.lang.String, long)">getTaskByEntity</a></span>(String entityType, long entityId)</nobr>
+        
+        <div class="jd-descrdiv">Get task(s) associated with any Taleo Business Edition entity that supports storing/creation of task events
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/TaskBean.html">TaskBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getTaskById(long)">getTaskById</a></span>(long taskId)</nobr>
+        
+        <div class="jd-descrdiv">Get task details by task ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getTaskByUser(long, java.util.GregorianCalendar, java.util.GregorianCalendar)">getTaskByUser</a></span>(long userId, GregorianCalendar startDate, GregorianCalendar endDate)</nobr>
+        
+        <div class="jd-descrdiv">Get all tasks associated with a user
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getUrl(java.lang.String)">getUrl</a></span>(String companyCode)</nobr>
+        
+        <div class="jd-descrdiv">Get URL of a company code, or customer instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/UserBean.html">UserBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getUserById(long)">getUserById</a></span>(long userId)</nobr>
+        
+        <div class="jd-descrdiv">Get an User details
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/HistoryBeanArr.html">HistoryBeanArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#getUserHistory(long)">getUserHistory</a></span>(long userId)</nobr>
+        
+        <div class="jd-descrdiv">Get a Users system history within Taleo Business Edition.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#isConnected()">isConnected</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Are we connected
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#loginPartner(java.lang.String, java.lang.String, long, java.lang.String)">loginPartner</a></span>(String orgCode, String partnerCode, long currentTimeMillis, String digest)</nobr>
+        
+        <div class="jd-descrdiv">Login a Partner.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#parseResume(org.mule.modules.taleo.model.ByteArr)">parseResume</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/ByteArr.html">ByteArr</a> binaryAttachment)</nobr>
+        
+        <div class="jd-descrdiv">Receives a message resume binary attachment, and sends back a passed output of resume data (using third-party provider ResumeMirror)
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/CandidateInsertResultBean.html">CandidateInsertResultBean</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#parseResumeIntoCandidate(org.mule.modules.taleo.model.ByteArr, java.lang.String, java.lang.String)">parseResumeIntoCandidate</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/ByteArr.html">ByteArr</a> binaryAttachment, String referredBy, String fileName)</nobr>
+        
+        <div class="jd-descrdiv">Creates a new candidate with contact information parsed with the original resume appended to the candidate record, and sends back:
+        Candidate ID (either newly created or existing if duplicate)
+        Duplicate Value where 0 equals none existing and 1 equals duplicate exists
+
+        </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#postRequisition(long, long, int)">postRequisition</a></span>(long requisitionId, long posterId, int formVersion)</nobr>
+        
+        <div class="jd-descrdiv">Post a specific requisition to a supported posting location.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#removeAssociatedUser(long, java.lang.String, long)">removeAssociatedUser</a></span>(long requisitionId, String association, long userId)</nobr>
+        
+        <div class="jd-descrdiv">Remove an association of a user to a requisition.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#removeCandidate(long, long)">removeCandidate</a></span>(long candidateId, long requisitionId)</nobr>
+        
+        <div class="jd-descrdiv">Remove an existing candidate assignment from a requisition (both based on ID variables)
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#removeLink(java.lang.String, long, java.lang.String, long)">removeLink</a></span>(String entityType1, long entityId1, String entityType2, long entityId2)</nobr>
+        
+        <div class="jd-descrdiv">Remove Linkage between two entities in Taleo Business Edition.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/SearchResultArr.html">SearchResultArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#searchAccount(java.util.Map<java.lang.String, java.lang.Object>)">searchAccount</a></span>(Map&lt;String,&nbsp;Object&gt; searchParams)</nobr>
+        
+        <div class="jd-descrdiv">Query all accounts based on defined key (field name) and value (data looking for), and sends a correlated message of Account ID and associated search relevance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/SearchResultArr.html">SearchResultArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#searchCandidate(java.util.Map<java.lang.String, java.lang.Object>)">searchCandidate</a></span>(Map&lt;String,&nbsp;Object&gt; searchParams)</nobr>
+        
+        <div class="jd-descrdiv">Query all candidates based on defined key (field name) and value (data looking for).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/SearchResultArr.html">SearchResultArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#searchContact(java.util.Map<java.lang.String, java.lang.Object>)">searchContact</a></span>(Map&lt;String,&nbsp;Object&gt; searchParams)</nobr>
+        
+        <div class="jd-descrdiv">Query all contacts based on defined key (field name) and value (data looking for)
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/SearchResultArr.html">SearchResultArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#searchEmployee(java.util.Map<java.lang.String, java.lang.Object>)">searchEmployee</a></span>(Map&lt;String,&nbsp;Object&gt; searchParams)</nobr>
+        
+        <div class="jd-descrdiv">Query all employees based on defined key (field name) and value (data looking for)
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/SearchResultArr.html">SearchResultArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#searchRequisition(java.util.Map<java.lang.String, java.lang.Object>)">searchRequisition</a></span>(Map&lt;String,&nbsp;Object&gt; searchParams)</nobr>
+        
+        <div class="jd-descrdiv">Query all requisitions based on defined key (fieldname) and value (data looking for).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/org/mule/modules/taleo/model/SearchResultArr.html">SearchResultArr</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#searchUser(java.util.Map<java.lang.String, java.lang.Object>)">searchUser</a></span>(Map&lt;String,&nbsp;Object&gt; searchParams)</nobr>
+        
+        <div class="jd-descrdiv">Query all Users based on defined key (field name) and value (data looking for).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#setAssociatedUser(long, java.lang.String, long, int)">setAssociatedUser</a></span>(long requisitionId, String association, long userId, int userSequenceNumber)</nobr>
+        
+        <div class="jd-descrdiv">Set a user’s association to a requisition
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#setBinaryOffer(long, java.lang.String, org.mule.modules.taleo.model.ByteArr)">setBinaryOffer</a></span>(long offerId, String fileName, <a href="../../../../../../java/org/mule/modules/taleo/model/ByteArr.html">ByteArr</a> content)</nobr>
+        
+        <div class="jd-descrdiv">Append an offer letter attachment by offer ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#setBinaryResume(long, java.lang.String, org.mule.modules.taleo.model.ByteArr)">setBinaryResume</a></span>(long candidateId, String fileName, <a href="../../../../../../java/org/mule/modules/taleo/model/ByteArr.html">ByteArr</a> binaryAttachment)</nobr>
+        
+        <div class="jd-descrdiv">Append a resume attachment to a candidate ID.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#setCompanyCode(java.lang.String)">setCompanyCode</a></span>(String companyCode)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#setDispatcherUrl(java.lang.String)">setDispatcherUrl</a></span>(String dispatcherUrl)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#submitCandidate(long, org.mule.modules.taleo.model.LongArr)">submitCandidate</a></span>(long candidateId, <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a> requisitionIds)</nobr>
+        
+        <div class="jd-descrdiv">Submit a candidate to a requisition(s)
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#unpostRequisition(long, long)">unpostRequisition</a></span>(long requisitionId, long posterId)</nobr>
+        
+        <div class="jd-descrdiv">Unpost a specific requisition to a posting location
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateAccount(org.mule.modules.taleo.model.AccountBean)">updateAccount</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/AccountBean.html">AccountBean</a> account)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing account.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateAttachment(long, java.lang.String, java.lang.String, java.lang.String, org.mule.modules.taleo.model.ByteArr)">updateAttachment</a></span>(long attachmentId, String attachmentDescription, String attachmentName, String contentType, <a href="../../../../../../java/org/mule/modules/taleo/model/ByteArr.html">ByteArr</a> binaryResume)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing attachment.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateBackgroundCheck(org.mule.modules.taleo.model.BackgroundCheckBean)">updateBackgroundCheck</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/BackgroundCheckBean.html">BackgroundCheckBean</a> backgroundCheck)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing BackgroundCheck instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateCandidate(org.mule.modules.taleo.model.CandidateBean)">updateCandidate</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/CandidateBean.html">CandidateBean</a> candidate)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing candidate.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateContact(org.mule.modules.taleo.model.ContactBean)">updateContact</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/ContactBean.html">ContactBean</a> contact)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing contact.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateContactLog(org.mule.modules.taleo.model.ContactLogBean)">updateContactLog</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/ContactLogBean.html">ContactLogBean</a> contactLog)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing contact log.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateEmployee(org.mule.modules.taleo.model.EmployeeBean)">updateEmployee</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/EmployeeBean.html">EmployeeBean</a> employee)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing employee.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateEvent(org.mule.modules.taleo.model.CalendarEventBean)">updateEvent</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/CalendarEventBean.html">CalendarEventBean</a> event)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing calendar event.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateInterview(org.mule.modules.taleo.model.InterviewBean)">updateInterview</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/InterviewBean.html">InterviewBean</a> interview)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing interview instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateOffer(org.mule.modules.taleo.model.OfferBean)">updateOffer</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/OfferBean.html">OfferBean</a> offer)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing offer instance
+ 
+ 
+ 
+  Update requests replace all data fields in the offerBean (i.e.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateReference(org.mule.modules.taleo.model.ReferenceBean)">updateReference</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/ReferenceBean.html">ReferenceBean</a> reference)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing reference instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateRequisition(org.mule.modules.taleo.model.RequisitionBean)">updateRequisition</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/RequisitionBean.html">RequisitionBean</a> requisition)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing requisition instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateTask(org.mule.modules.taleo.model.TaskBean)">updateTask</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/TaskBean.html">TaskBean</a> task)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing task event.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#updateUser(org.mule.modules.taleo.model.UserBean)">updateUser</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/UserBean.html">UserBean</a> user)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing user.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#upsertCandidateToRequisitions(long, org.mule.modules.taleo.model.LongArr, long, long, java.lang.Boolean)">upsertCandidateToRequisitions</a></span>(long candidateId, <a href="../../../../../../java/org/mule/modules/taleo/model/LongArr.html">LongArr</a> requisitionIds, long statusId, long reasonId, Boolean doRanking)</nobr>
+        
+        <div class="jd-descrdiv">Upsert, or append a candidate to a requisition
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#upsertDepartment(org.mule.modules.taleo.model.DepartmentBean)">upsertDepartment</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/DepartmentBean.html">DepartmentBean</a> department)</nobr>
+        
+        <div class="jd-descrdiv">Update or create a department instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#upsertEmployee(java.lang.String, org.mule.modules.taleo.model.EmployeeBean)">upsertEmployee</a></span>(String employeeNumber, <a href="../../../../../../java/org/mule/modules/taleo/model/EmployeeBean.html">EmployeeBean</a> employee)</nobr>
+        
+        <div class="jd-descrdiv">Upsert an existing employee record (create new and/or update existing).</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#upsertLocation(org.mule.modules.taleo.model.LocationBean)">upsertLocation</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/LocationBean.html">LocationBean</a> location)</nobr>
+        
+        <div class="jd-descrdiv">Update or create a Location instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#upsertRegion(org.mule.modules.taleo.model.RegionBean)">upsertRegion</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/RegionBean.html">RegionBean</a> region)</nobr>
+        
+        <div class="jd-descrdiv">Update or create a Region instance.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            long</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/TaleoConnector.html#upsertRollingEntity(org.mule.modules.taleo.model.FlexRollingEntityBean)">upsertRollingEntity</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/model/FlexRollingEntityBean.html">FlexRollingEntityBean</a> rollingEntityBean)</nobr>
+        
+        <div class="jd-descrdiv">Update an existing rolling entity instance.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  java.lang.Object
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">clone</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">equals</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">finalize</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            Class&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">hashCode</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notify</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notifyAll</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Disposable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Disposable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Disposable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">dispose</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Initialisable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Initialisable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Initialisable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Initialisable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Initialisable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Initialisable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">initialise</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Startable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Startable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Startable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Startable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Startable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">start</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Stoppable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Stoppable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Stoppable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">stop</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.taleo.basic.Capabilities" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.taleo.basic.Capabilities-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../../org/mule/modules/taleo/basic/Capabilities.html">org.mule.modules.taleo.basic.Capabilities</a>
+
+<div id="inherited-methods-org.mule.modules.taleo.basic.Capabilities">
+  <div id="inherited-methods-org.mule.modules.taleo.basic.Capabilities-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.taleo.basic.Capabilities-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/basic/Capabilities.html#isCapableOf(org.mule.modules.taleo.basic.Capability)">isCapableOf</a></span>(<a href="../../../../../../java/org/mule/modules/taleo/basic/Capability.html">Capability</a> capability)</nobr>
+        
+        <div class="jd-descrdiv">Returns true if this module implements such
+ capability</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.taleo.basic.MetadataAware" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.taleo.basic.MetadataAware-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../../org/mule/modules/taleo/basic/MetadataAware.html">org.mule.modules.taleo.basic.MetadataAware</a>
+
+<div id="inherited-methods-org.mule.modules.taleo.basic.MetadataAware">
+  <div id="inherited-methods-org.mule.modules.taleo.basic.MetadataAware-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.taleo.basic.MetadataAware-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/basic/MetadataAware.html#getDevkitBuild()">getDevkitBuild</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the build of the DevKit used to create this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/basic/MetadataAware.html#getDevkitVersion()">getDevkitVersion</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the version of the DevKit used to create this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/basic/MetadataAware.html#getModuleName()">getModuleName</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the user-friendly name of this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/basic/MetadataAware.html#getModuleVersion()">getModuleVersion</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the version of this module
+</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.taleo.process.ProcessAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.taleo.process.ProcessAdapter-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../../org/mule/modules/taleo/process/ProcessAdapter.html">org.mule.modules.taleo.process.ProcessAdapter</a>
+
+<div id="inherited-methods-org.mule.modules.taleo.process.ProcessAdapter">
+  <div id="inherited-methods-org.mule.modules.taleo.process.ProcessAdapter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.taleo.process.ProcessAdapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            &lt;T&gt;
+            <a href="../../../../../../java/org/mule/modules/taleo/process/ProcessTemplate.html">ProcessTemplate</a>&lt;T,&nbsp;O&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/modules/taleo/process/ProcessAdapter.html#getProcessTemplate()">getProcessTemplate</a></span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="TaleoConnectorProcessAdapter()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">TaleoConnectorProcessAdapter</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="getProcessTemplate()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../../java/org/mule/modules/taleo/process/ProcessTemplate.html">ProcessTemplate</a>&lt;P,&nbsp;<a href="../../../../../../java/org/mule/modules/taleo/adapters/TaleoConnectorCapabilitiesAdapter.html">TaleoConnectorCapabilitiesAdapter</a>&gt;
+      </span>
+      <span class="sympad">getProcessTemplate</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>
