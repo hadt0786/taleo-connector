@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="taleo-demo">
+    <global-element type="http://www.mulesoft.org/schema/mule/taleo/config" name="Taleo" entity-id="Taleo#1">
+        <properties>
+            <property value="${taleo.username}" name="username"/>
+            <property value="Taleo" name="name"/>
+            <property name="dispatcherUrl"/>
+            <property value="${taleo.password}" name="password"/>
+            <property value="1" name="auxiliary;index"/>
+            <property value="${taleo.companyCode}" name="companyCode"/>
+            <property-collection name="@http://www.mulesoft.org/schema/mule/taleo/connection-pooling-profile;0">
+                <property value="WHEN_EXHAUSTED_GROW" name="exhaustedAction"/>
+                <property value="2" name="auxiliary;index"/>
+                <property value="2" name="auxiliary;wrapIn"/>
+                <property value="INITIALISE_ONE" name="initialisationPolicy"/>
+            </property-collection>
+        </properties>
+    </global-element>
+    <flow SubFlow="false" name="get-interview-by-id" entity-id="ecb2451f-8644-468e-af87-e9fdda43d0f9">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property value="3" name="auxiliary;index"/>
+            <property name="tracking:enable-default-events"/>
+        </properties>
+        <lane isChoiceOtherwiseLane="false" index="0" hadOnlyOneElement="false" entity-id="compartment-lane#1">
+            <graphicalData height="0" width="0" y="0" x="0"/>
+            <endpoint message-exchange-pattern="RequestResponse" direction="Inbound" type="http://www.mulesoft.org/schema/mule/http/endpoint" name="HTTP" entity-id="HTTP#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="8081" name="port"/>
+                    <property value="localhost" name="host"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="followRedirects"/>
+                    <property value="http://www.mulesoft.org/schema/mule/http/endpoint" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="keep-alive"/>
+                    <property name="contentType"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="password"/>
+                    <property value="request-response" name="exchange-pattern"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
+                    <property name="address"/>
+                    <property value="taleoDemo" name="path"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="method"/>
+                    <property name="user"/>
+                    <property value="4" name="auxiliary;index"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Create CandidateBean" entity-id="Groovy#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property value="5" name="auxiliary;index"/>
+                    <property name="mimeType"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property value="&#xA;import org.mule.modules.taleo.model.CandidateBean;&#xA;import java.util.UUID;&#xA;&#xA;CandidateBean candidateBean = new CandidateBean();&#xA;// CandidateBean candidateBean = (CandidateBean) context.getBean(&quot;candidateBean&quot;);&#xA;candidateBean.setEmail(String.format(&quot;%s@email.com&quot;, UUID.randomUUID().toString().substring(0, 8)));&#xA;candidateBean.setLastName(&quot;Karim&quot;);&#xA;&#xA;return candidateBean;" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                        <property value="6" name="auxiliary;index"/>
+                        <property value="6" name="auxiliary;wrapIn"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property value="&#xA;import org.mule.modules.taleo.model.CandidateBean;&#xA;import java.util.UUID;&#xA;&#xA;CandidateBean candidateBean = new CandidateBean();&#xA;// CandidateBean candidateBean = (CandidateBean) context.getBean(&quot;candidateBean&quot;);&#xA;candidateBean.setEmail(String.format(&quot;%s@email.com&quot;, UUID.randomUUID().toString().substring(0, 8)));&#xA;candidateBean.setLastName(&quot;Karim&quot;);&#xA;&#xA;return candidateBean;" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                        <property value="6" name="auxiliary;index"/>
+                        <property value="6" name="auxiliary;wrapIn"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/taleo/taleo-connector" name="Create candidate" entity-id="Taleo#2">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name=""/>
+                    <property name="username"/>
+                    <property value="http://www.mulesoft.org/schema/mule/taleo/create-candidate" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="password"/>
+                    <property value="Taleo" name="config-ref"/>
+                    <property value="7" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/taleo/candidate;0">
+                        <property value="#[payload]" name="ref"/>
+                        <property value="8" name="auxiliary;index"/>
+                        <property value="8" name="auxiliary;wrapIn"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/message-properties-transformer" name="Store candidateId" entity-id="Message Properties#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="scope"/>
+                    <property name="overwrite"/>
+                    <property name="encoding"/>
+                    <property value="9" name="auxiliary;index"/>
+                    <property name="mimeType"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/add-message-property;0">
+                        <property value="#[payload]" name="value"/>
+                        <property value="candidateId" name="key"/>
+                        <property value="10" name="auxiliary;index"/>
+                        <property value="10" name="auxiliary;wrapIn"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="### Created candidateId is #[groovy:message.getProperty('candidateId')]. " name="message"/>
+                    <property name="category"/>
+                    <property value="INFO" name="level"/>
+                    <property value="11" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/scripting/groovyTransformer" name="Create InterviewBean" entity-id="Groovy#2">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="encoding"/>
+                    <property value="12" name="auxiliary;index"/>
+                    <property name="mimeType"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
+                        <property value="&#xA;import javax.xml.datatype.DatatypeFactory;&#xA;import org.joda.time.DateTime;&#xA;import org.mule.modules.taleo.model.InterviewBean;&#xA;&#xA;InterviewBean interviewBean = new InterviewBean();&#xA;// InterviewBean interviewBean = (InterviewBean) context.getBean(&quot;interviewBean&quot;);&#xA;interviewBean.setCandidateId(message.getProperty('candidateId'));&#xA;interviewBean.setStartDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(new DateTime().toGregorianCalendar()));&#xA;interviewBean.setStatus(&quot;Phone Screen&quot;);&#xA;interviewBean.setCreator(&quot;Skarim&quot;);&#xA;interviewBean.setInterviewRoom(&quot;Whistler&quot;);&#xA;&#xA;return interviewBean;" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                        <property value="13" name="auxiliary;index"/>
+                        <property value="13" name="auxiliary;wrapIn"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
+                        <property value="&#xA;import javax.xml.datatype.DatatypeFactory;&#xA;import org.joda.time.DateTime;&#xA;import org.mule.modules.taleo.model.InterviewBean;&#xA;&#xA;InterviewBean interviewBean = new InterviewBean();&#xA;// InterviewBean interviewBean = (InterviewBean) context.getBean(&quot;interviewBean&quot;);&#xA;interviewBean.setCandidateId(message.getProperty('candidateId'));&#xA;interviewBean.setStartDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(new DateTime().toGregorianCalendar()));&#xA;interviewBean.setStatus(&quot;Phone Screen&quot;);&#xA;interviewBean.setCreator(&quot;Skarim&quot;);&#xA;interviewBean.setInterviewRoom(&quot;Whistler&quot;);&#xA;&#xA;return interviewBean;" name="text"/>
+                        <property value="Groovy" name="engine"/>
+                        <property value="13" name="auxiliary;index"/>
+                        <property value="13" name="auxiliary;wrapIn"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/taleo/taleo-connector" name="Create interview" entity-id="Taleo#3">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name=""/>
+                    <property name="username"/>
+                    <property value="http://www.mulesoft.org/schema/mule/taleo/create-interview" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="password"/>
+                    <property value="Taleo" name="config-ref"/>
+                    <property value="14" name="auxiliary;index"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/taleo/interview;0">
+                        <property value="#[payload]" name="ref"/>
+                        <property value="15" name="auxiliary;index"/>
+                        <property value="15" name="auxiliary;wrapIn"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/message-properties-transformer" name="Store interviewId" entity-id="Message Properties#2">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name="returnClass"/>
+                    <property name="ignoreBadInput"/>
+                    <property name="scope"/>
+                    <property name="overwrite"/>
+                    <property name="encoding"/>
+                    <property value="16" name="auxiliary;index"/>
+                    <property name="mimeType"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/add-message-property;0">
+                        <property value="#[payload]" name="value"/>
+                        <property value="interviewId" name="key"/>
+                        <property value="17" name="auxiliary;index"/>
+                        <property value="17" name="auxiliary;wrapIn"/>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#2">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="### Created interviewId is #[groovy:message.getProperty('interviewId')]. " name="message"/>
+                    <property name="category"/>
+                    <property value="INFO" name="level"/>
+                    <property value="18" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/taleo/taleo-connector" name="Get interview by id" entity-id="Taleo#4">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name=""/>
+                    <property name="username"/>
+                    <property value="http://www.mulesoft.org/schema/mule/taleo/get-interview-by-id" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="password"/>
+                    <property value="Taleo" name="config-ref"/>
+                    <property value="19" name="auxiliary;index"/>
+                    <property value="#[groovy:message.getProperty('interviewId')]" name="interviewId"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/logger" name="Logger" entity-id="Logger#3">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="### Retrieved interviewBean id is #[payload.id] associated with candidate id #[payload.candidateId]. " name="message"/>
+                    <property name="category"/>
+                    <property value="INFO" name="level"/>
+                    <property value="20" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/taleo/taleo-connector" name="Delete interview" entity-id="Taleo#5">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name=""/>
+                    <property name="username"/>
+                    <property value="http://www.mulesoft.org/schema/mule/taleo/delete-interview" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="password"/>
+                    <property value="Taleo" name="config-ref"/>
+                    <property value="21" name="auxiliary;index"/>
+                    <property value="#[groovy:message.getProperty('interviewId')]" name="interviewId"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/taleo/taleo-connector" name="Delete candidate" entity-id="Taleo#6">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property name=""/>
+                    <property name="username"/>
+                    <property value="#[groovy:message.getProperty('candidateId')]" name="candidateId"/>
+                    <property value="http://www.mulesoft.org/schema/mule/taleo/delete-candidate" name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute"/>
+                    <property name="password"/>
+                    <property value="Taleo" name="config-ref"/>
+                    <property value="22" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+            <pattern type="http://www.mulesoft.org/schema/mule/core/set-payload" name="Check console" entity-id="Set Payload#1">
+                <graphicalData height="0" width="0" y="0" x="0"/>
+                <properties>
+                    <property value="Demo completed check console." name="value"/>
+                    <property value="23" name="auxiliary;index"/>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <description></description>
+</mule-configuration>

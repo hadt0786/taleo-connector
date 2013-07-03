@@ -8,7 +8,7 @@
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/taleo/current/mule-taleo.xsd">
     
-    <context:property-placeholder location="automation-credentials.properties" />
+    <context:property-placeholder location="${TALEO_CREDENTIALS}" />
     
     <taleo:config name="Taleo" username="${taleo.username}" password="${taleo.password}" companyCode="${taleo.companyCode}" doc:name="Taleo">
         <taleo:connection-pooling-profile initialisationPolicy="INITIALISE_ONE" exhaustedAction="WHEN_EXHAUSTED_GROW"/>

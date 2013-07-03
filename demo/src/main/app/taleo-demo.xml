@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:taleo="http://www.mulesoft.org/schema/mule/taleo" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/taleo/1.0-SNAPSHOT/mule-taleo.xsd
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd">
+   
+    <taleo:config name="Taleo" username="${taleo.username}" password="${taleo.password}" companyCode="${taleo.companyCode}" doc:name="Taleo">
+        <taleo:connection-pooling-profile initialisationPolicy="INITIALISE_ONE" exhaustedAction="WHEN_EXHAUSTED_GROW"/>
+    </taleo:config>
+
+    <flow name="get-interview-by-id" doc:name="get-interview-by-id">
+        <http:inbound-endpoint exchange-pattern="request-response" host="localhost" port="8081" doc:name="HTTP" path="taleoDemo"/>
+          
+        <scripting:transformer doc:name="Create CandidateBean">
+            <scripting:script engine="Groovy"><![CDATA[
+import org.mule.modules.taleo.model.CandidateBean;
+import java.util.UUID;
+
+CandidateBean candidateBean = new CandidateBean();
+// CandidateBean candidateBean = (CandidateBean) context.getBean("candidateBean");
+candidateBean.setEmail(String.format("%s@email.com", UUID.randomUUID().toString().substring(0, 8)));
+candidateBean.setLastName("Karim");
+
+return candidateBean;]]></scripting:script>
+        </scripting:transformer>
+
+        <taleo:create-candidate config-ref="Taleo" doc:name="Create candidate">
+            <taleo:candidate ref="#[payload]"/>
+        </taleo:create-candidate>
+        
+        <message-properties-transformer doc:name="Store candidateId">
+            <add-message-property key="candidateId" value="#[payload]"/>
+        </message-properties-transformer>
+        
+        <logger level="INFO" doc:name="Logger" message="### Created candidateId is #[groovy:message.getProperty('candidateId')]. "/>
+        
+        <scripting:transformer doc:name="Create InterviewBean">
+            <scripting:script engine="Groovy"><![CDATA[
+import javax.xml.datatype.DatatypeFactory;
+import org.joda.time.DateTime;
+import org.mule.modules.taleo.model.InterviewBean;
+
+InterviewBean interviewBean = new InterviewBean();
+// InterviewBean interviewBean = (InterviewBean) context.getBean("interviewBean");
+interviewBean.setCandidateId(message.getProperty('candidateId'));
+interviewBean.setStartDate(DatatypeFactory.newInstance().newXMLGregorianCalendar(new DateTime().toGregorianCalendar()));
+interviewBean.setStatus("Phone Screen");
+interviewBean.setCreator("Skarim");
+interviewBean.setInterviewRoom("Whistler");
+
+return interviewBean;]]></scripting:script>
+        </scripting:transformer>
+
+        <taleo:create-interview config-ref="Taleo" doc:name="Create interview">
+            <taleo:interview ref="#[payload]" />
+        </taleo:create-interview>
+        
+         <message-properties-transformer doc:name="Store interviewId">
+            <add-message-property key="interviewId" value="#[payload]"/>
+        </message-properties-transformer>
+        
+        <logger level="INFO" doc:name="Logger" message="### Created interviewId is #[groovy:message.getProperty('interviewId')]. "/>
+        
+        <taleo:get-interview-by-id config-ref="Taleo" doc:name="Get interview by id" interviewId="#[groovy:message.getProperty('interviewId')]">
+        </taleo:get-interview-by-id>
+        
+        <logger level="INFO" doc:name="Logger" message="### Retrieved interviewBean id is #[payload.id] associated with candidate id #[payload.candidateId]. "/>
+        
+        <taleo:delete-interview config-ref="Taleo" doc:name="Delete interview" interviewId="#[groovy:message.getProperty('interviewId')]">
+        </taleo:delete-interview>
+        
+        <taleo:delete-candidate config-ref="Taleo" doc:name="Delete candidate" candidateId="#[groovy:message.getProperty('candidateId')]">
+        </taleo:delete-candidate>
+        
+        <set-payload value="Demo completed check console." doc:name="Check console"/>
+        
+    </flow>
+</mule>
