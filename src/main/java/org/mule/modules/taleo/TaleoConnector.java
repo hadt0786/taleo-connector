@@ -21,6 +21,7 @@ import org.mule.api.annotations.Disconnect;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.ValidateConnection;
 import org.mule.api.annotations.display.Password;
+import org.mule.api.annotations.licensing.RequiresEnterpriseLicense;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
@@ -69,6 +70,7 @@ import org.mule.modules.taleo.model.WorkHistoryArr;
  * @author MuleSoft, Inc.
  */
 @Connector(name="taleo", schemaVersion="1.0", friendlyName = "Taleo", minMuleVersion="3.4")
+@RequiresEnterpriseLicense
 public class TaleoConnector
 {
 	private TaleoClient client;
