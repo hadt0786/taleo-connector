@@ -10,7 +10,6 @@ import org.mule.api.annotations.ConnectionStrategy;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Default;
-import org.mule.api.annotations.param.Optional;
 import org.mule.modules.taleo.api.EntityTypeEnum;
 import org.mule.modules.taleo.client.TaleoException;
 import org.mule.modules.taleo.model.*;
@@ -54,7 +53,7 @@ public class TaleoConnector {
     @Processor
     public long upsertEmployee(
             String employeeNumber,
-            @Optional @Default("#[payload]") EmployeeBean employee)
+            @Default("#[payload]") EmployeeBean employee)
             throws TaleoException {
         return connectionManagement.getClient().upsertEmployee(employeeNumber, employee);
     }
@@ -112,7 +111,7 @@ public class TaleoConnector {
      */
     @Processor
     public SearchResultArr searchRequisition(
-            @Optional @Default("#[payload]") java.util.Map<String, Object> searchParams)
+            @Default("#[payload]") java.util.Map<String, Object> searchParams)
             throws TaleoException {
         Map searchMapParams = toTaleoMap(searchParams);
         return connectionManagement.getClient().searchRequisition(searchMapParams);
