@@ -1,379 +1,347 @@
 /**
- * (c) 2003-2012 MuleSoft, Inc. This software is protected under international
- * copyright law. All use of this software is subject to MuleSoft's Master
- * Subscription Agreement (or other Terms of Service) separately entered
- * into between you and MuleSoft. If such an agreement is not in
- * place, you may not use the software.
+ * (c) 2003-2015 MuleSoft, Inc. The software in this package is published under
+ * the terms of the CPAL v1.0 license, a copy of which has been included with this
+ * distribution in the LICENSE.md file.
  */
 
 package org.mule.modules.taleo.client;
 
-import java.util.GregorianCalendar;
-
 import org.mule.api.ConnectionException;
 import org.mule.modules.taleo.api.EntityTypeEnum;
-import org.mule.modules.taleo.model.AccountBean;
-import org.mule.modules.taleo.model.AttachmentBean;
-import org.mule.modules.taleo.model.BackgroundCheckBean;
-import org.mule.modules.taleo.model.ByteArr;
-import org.mule.modules.taleo.model.CalendarEventBean;
-import org.mule.modules.taleo.model.CandidateBean;
-import org.mule.modules.taleo.model.CandidateDetailsBean;
-import org.mule.modules.taleo.model.CandidateInsertResultBean;
-import org.mule.modules.taleo.model.ContactBean;
-import org.mule.modules.taleo.model.ContactLogBean;
-import org.mule.modules.taleo.model.DepartmentArr;
-import org.mule.modules.taleo.model.DepartmentBean;
-import org.mule.modules.taleo.model.EmployeeBean;
-import org.mule.modules.taleo.model.FlexRollingEntityBean;
-import org.mule.modules.taleo.model.FlexRollingEntityBeanArr;
-import org.mule.modules.taleo.model.HistoryBeanArr;
-import org.mule.modules.taleo.model.InterviewBean;
-import org.mule.modules.taleo.model.LocationArr;
-import org.mule.modules.taleo.model.LocationBean;
-import org.mule.modules.taleo.model.LongArr;
-import org.mule.modules.taleo.model.LookupArr;
-import org.mule.modules.taleo.model.Map;
-import org.mule.modules.taleo.model.MetadataArr;
-import org.mule.modules.taleo.model.OfferBean;
-import org.mule.modules.taleo.model.ReferenceBean;
-import org.mule.modules.taleo.model.RegionArr;
-import org.mule.modules.taleo.model.RegionBean;
-import org.mule.modules.taleo.model.RequisitionBean;
-import org.mule.modules.taleo.model.SearchResultArr;
-import org.mule.modules.taleo.model.TaskBean;
-import org.mule.modules.taleo.model.UserBean;
-import org.mule.modules.taleo.model.WorkHistoryArr;
+import org.mule.modules.taleo.model.*;
+
+import java.util.GregorianCalendar;
 
 public interface TaleoClient {
 
-	//Connection handling
-	boolean isConnected();
+    //Connection handling
+    boolean isConnected();
 
-	String connectionId();
-	
-	void connect(String username, String password, String companyCode) throws ConnectionException;
-	
-	void disconnect();
-	//Account
-	long createAccount(AccountBean account) throws TaleoException;
+    String connectionId();
 
-	void deleteAccount(long accountId) throws TaleoException;
+    void connect(String username, String password, String companyCode) throws ConnectionException;
 
-	AccountBean getAccountById(long accountId) throws TaleoException;
+    void disconnect();
 
-	HistoryBeanArr getAccountHistory(long accountId) throws TaleoException;
+    //Account
+    long createAccount(AccountBean account) throws TaleoException;
 
-	SearchResultArr searchAccount(Map searchParams) throws TaleoException;
+    void deleteAccount(long accountId) throws TaleoException;
 
-	void updateAccount(AccountBean account) throws TaleoException;
+    AccountBean getAccountById(long accountId) throws TaleoException;
 
-	//Attachments
-	long createAttachment(long candidateId, String attachment,
-			String attachmentName, String contentType, ByteArr binaryResume) throws TaleoException;
+    HistoryBeanArr getAccountHistory(long accountId) throws TaleoException;
 
-	long createEntityAttachment(String entityType, long entityId,
-			String description, String fileName, String contentType,
-			ByteArr data) throws TaleoException;
+    SearchResultArr searchAccount(Map searchParams) throws TaleoException;
 
-	AttachmentBean getAttachment(long attachmentId) throws TaleoException;
-	
-	void deleteAttachment(long attachmentId) throws TaleoException;
+    void updateAccount(AccountBean account) throws TaleoException;
 
-	ByteArr getAttachmentData(long attachmentId) throws TaleoException;
+    //Attachments
+    long createAttachment(long candidateId, String attachment,
+                          String attachmentName, String contentType, ByteArr binaryResume) throws TaleoException;
 
-	LongArr getAttachments(long candidateId) throws TaleoException;
+    long createEntityAttachment(String entityType, long entityId,
+                                String description, String fileName, String contentType,
+                                ByteArr data) throws TaleoException;
 
-	LongArr getEntityAttachments(String entityType, long entityId) throws TaleoException;
+    AttachmentBean getAttachment(long attachmentId) throws TaleoException;
 
-	void updateAttachment(long attachmentId, String description, String name,
-			String contentType, ByteArr binaryResume) throws TaleoException;
+    void deleteAttachment(long attachmentId) throws TaleoException;
 
-	//BackgroundCheck
-	long createBackgroundCheck(BackgroundCheckBean backgroundCheck) throws TaleoException;
+    ByteArr getAttachmentData(long attachmentId) throws TaleoException;
 
-	void deleteBackgroundCheck(long backgroundCheckId) throws TaleoException;
+    LongArr getAttachments(long candidateId) throws TaleoException;
 
-	BackgroundCheckBean getBackgroundCheckById(long backgroundCheckId) throws TaleoException;
+    LongArr getEntityAttachments(String entityType, long entityId) throws TaleoException;
 
-	LongArr getBackgroundChecksByCandidate(long candidateId) throws TaleoException;
+    void updateAttachment(long attachmentId, String description, String name,
+                          String contentType, ByteArr binaryResume) throws TaleoException;
 
-	void updateBackgroundCheck(BackgroundCheckBean backgroundCheck) throws TaleoException;
+    //BackgroundCheck
+    long createBackgroundCheck(BackgroundCheckBean backgroundCheck) throws TaleoException;
 
-	//Candidate
-	long createCandidate(CandidateBean candidate) throws TaleoException;
+    void deleteBackgroundCheck(long backgroundCheckId) throws TaleoException;
 
-	void deleteCandidate(long candidateId) throws TaleoException;
+    BackgroundCheckBean getBackgroundCheckById(long backgroundCheckId) throws TaleoException;
 
-	CandidateBean getCandidateById(long candidateId) throws TaleoException;
+    LongArr getBackgroundChecksByCandidate(long candidateId) throws TaleoException;
 
-	CandidateDetailsBean getCandidateDetailsById(long candidateId,
-			boolean includeRequisitions, boolean includeInterviews,
-			boolean includeReferences, boolean includeHistory,
-			boolean includeAttachments, boolean includeOffers) throws TaleoException;
+    void updateBackgroundCheck(BackgroundCheckBean backgroundCheck) throws TaleoException;
 
-	HistoryBeanArr getCandidateHistory(long candidateId) throws TaleoException;
+    //Candidate
+    long createCandidate(CandidateBean candidate) throws TaleoException;
 
-	LongArr getCandidatesByRequisition(long requisitionId) throws TaleoException;
+    void deleteCandidate(long candidateId) throws TaleoException;
 
-	WorkHistoryArr getCandidateWorkHistory(long candidateId) throws TaleoException;
+    CandidateBean getCandidateById(long candidateId) throws TaleoException;
 
-	String getCandReqStatus(long candidateId, long requisitionId) throws TaleoException;
+    CandidateDetailsBean getCandidateDetailsById(long candidateId,
+                                                 boolean includeRequisitions, boolean includeInterviews,
+                                                 boolean includeReferences, boolean includeHistory,
+                                                 boolean includeAttachments, boolean includeOffers) throws TaleoException;
 
-	LongArr getRequisitions(long candidateId) throws TaleoException;
+    HistoryBeanArr getCandidateHistory(long candidateId) throws TaleoException;
 
-	SearchResultArr searchCandidate(Map searchParams) throws TaleoException;
+    LongArr getCandidatesByRequisition(long requisitionId) throws TaleoException;
 
-	void submitCandidate(long candidateId, LongArr requisitionIds) throws TaleoException;
+    WorkHistoryArr getCandidateWorkHistory(long candidateId) throws TaleoException;
 
-	void removeCandidate(long candidateId, long requisitionId) throws TaleoException;
+    String getCandReqStatus(long candidateId, long requisitionId) throws TaleoException;
 
-	void updateCandidate(CandidateBean candidate) throws TaleoException;
+    LongArr getRequisitions(long candidateId) throws TaleoException;
 
-	void upsertCandidateToRequisitions(long candidateId,
-			LongArr requisitionIds, long statusId, long reasonId,
-			boolean doRanking) throws TaleoException;
+    SearchResultArr searchCandidate(Map searchParams) throws TaleoException;
 
-	//Contact
-	long createContact(ContactBean contact) throws TaleoException;
+    void submitCandidate(long candidateId, LongArr requisitionIds) throws TaleoException;
 
-	void deleteContact(long contactId) throws TaleoException;
+    void removeCandidate(long candidateId, long requisitionId) throws TaleoException;
 
-	ContactBean getContactById(long contactId) throws TaleoException;
+    void updateCandidate(CandidateBean candidate) throws TaleoException;
 
-	HistoryBeanArr getContactHistory(long contactId) throws TaleoException;
+    void upsertCandidateToRequisitions(long candidateId,
+                                       LongArr requisitionIds, long statusId, long reasonId,
+                                       boolean doRanking) throws TaleoException;
 
-	SearchResultArr searchContact(Map searchParams) throws TaleoException;
+    //Contact
+    long createContact(ContactBean contact) throws TaleoException;
 
-	void updateContact(ContactBean contact) throws TaleoException;
+    void deleteContact(long contactId) throws TaleoException;
 
-	//Contact Log
-	long createContactLog(ContactLogBean contactLog) throws TaleoException;
+    ContactBean getContactById(long contactId) throws TaleoException;
 
-	void deleteContactLog(long contactLogId) throws TaleoException;
+    HistoryBeanArr getContactHistory(long contactId) throws TaleoException;
 
-	ContactLogBean getContactLogById(long contactLogId) throws TaleoException;
+    SearchResultArr searchContact(Map searchParams) throws TaleoException;
 
-	LongArr getContactLogsByEntity(String entityType, long entityId) throws TaleoException;
+    void updateContact(ContactBean contact) throws TaleoException;
 
-	void updateContactLog(ContactLogBean contactLog) throws TaleoException;
+    //Contact Log
+    long createContactLog(ContactLogBean contactLog) throws TaleoException;
 
-	//Department
-	long createDepartment(DepartmentBean department) throws TaleoException;
+    void deleteContactLog(long contactLogId) throws TaleoException;
 
-	void deleteDepartment(long departmentId) throws TaleoException;
+    ContactLogBean getContactLogById(long contactLogId) throws TaleoException;
 
-	DepartmentBean getDepartmentById(long departmentId) throws TaleoException;
+    LongArr getContactLogsByEntity(String entityType, long entityId) throws TaleoException;
 
-	DepartmentBean getDepartmentByName(String name) throws TaleoException;
+    void updateContactLog(ContactLogBean contactLog) throws TaleoException;
 
-	DepartmentArr getDepartments() throws TaleoException;
+    //Department
+    long createDepartment(DepartmentBean department) throws TaleoException;
 
-	long upsertDepartment(DepartmentBean department) throws TaleoException;
+    void deleteDepartment(long departmentId) throws TaleoException;
 
-	long createEmailLog(String email, String subject, String body,
-			GregorianCalendar date) throws TaleoException;
+    DepartmentBean getDepartmentById(long departmentId) throws TaleoException;
 
-	long createEmailSentLog(String email, String subject, String body, 
-			GregorianCalendar date) throws TaleoException;
+    DepartmentBean getDepartmentByName(String name) throws TaleoException;
 
-	//Employee
-	long createEmployee(EmployeeBean employee) throws TaleoException;
+    DepartmentArr getDepartments() throws TaleoException;
 
-	void deleteEmployee(long employeeId) throws TaleoException;
+    long upsertDepartment(DepartmentBean department) throws TaleoException;
 
-	void deleteEmployeeByNumber(String employeeNumber) throws TaleoException;
+    long createEmailLog(String email, String subject, String body,
+                        GregorianCalendar date) throws TaleoException;
 
-	EmployeeBean getEmployeeById(long employeeId) throws TaleoException;
+    long createEmailSentLog(String email, String subject, String body,
+                            GregorianCalendar date) throws TaleoException;
 
-	EmployeeBean getEmployeeByNumber(String employeeNumber) throws TaleoException;
+    //Employee
+    long createEmployee(EmployeeBean employee) throws TaleoException;
 
-	SearchResultArr searchEmployee(Map searchParams) throws TaleoException;
+    void deleteEmployee(long employeeId) throws TaleoException;
 
-	void updateEmployee(EmployeeBean employee) throws TaleoException;
+    void deleteEmployeeByNumber(String employeeNumber) throws TaleoException;
 
-	long upsertEmployee(String employeeNumber, EmployeeBean employee) throws TaleoException;
+    EmployeeBean getEmployeeById(long employeeId) throws TaleoException;
 
-	//Event
-	long createEvent(CalendarEventBean event) throws TaleoException;
+    EmployeeBean getEmployeeByNumber(String employeeNumber) throws TaleoException;
 
-	void deleteEvent(long eventId) throws TaleoException;
+    SearchResultArr searchEmployee(Map searchParams) throws TaleoException;
 
-	CalendarEventBean getEventById(long eventId) throws TaleoException;
+    void updateEmployee(EmployeeBean employee) throws TaleoException;
 
-	LongArr getEventByEntity(String entityType, long entityId) throws TaleoException;
+    long upsertEmployee(String employeeNumber, EmployeeBean employee) throws TaleoException;
 
-	LongArr getPublicEvents(GregorianCalendar startDate,
-			GregorianCalendar endDate) throws TaleoException;
+    //Event
+    long createEvent(CalendarEventBean event) throws TaleoException;
 
-	void updateEvent(CalendarEventBean event) throws TaleoException;
+    void deleteEvent(long eventId) throws TaleoException;
 
-	//Interview
-	long createInterview(InterviewBean interview) throws TaleoException;
+    CalendarEventBean getEventById(long eventId) throws TaleoException;
 
-	void deleteInterview(long interviewId) throws TaleoException;
+    LongArr getEventByEntity(String entityType, long entityId) throws TaleoException;
 
-	LongArr getInterviewsByCandidate(long candidateId) throws TaleoException;
+    LongArr getPublicEvents(GregorianCalendar startDate,
+                            GregorianCalendar endDate) throws TaleoException;
 
-	InterviewBean getInterviewById(long interviewId) throws TaleoException;
+    void updateEvent(CalendarEventBean event) throws TaleoException;
 
-	void updateInterview(InterviewBean interview) throws TaleoException;
+    //Interview
+    long createInterview(InterviewBean interview) throws TaleoException;
 
-	//Link
-	void createLink(String entityType1, long entityId1, String entityType2,
-			long entityId2) throws TaleoException;
+    void deleteInterview(long interviewId) throws TaleoException;
 
-	void removeLink(String entityType1, long entityId1, String entityType2,
-			long entityId2) throws TaleoException;
+    LongArr getInterviewsByCandidate(long candidateId) throws TaleoException;
 
-	//Location
-	long createLocation(LocationBean location) throws TaleoException;
+    InterviewBean getInterviewById(long interviewId) throws TaleoException;
 
-	void deleteLocation(long locationId) throws TaleoException;
+    void updateInterview(InterviewBean interview) throws TaleoException;
 
-	LocationBean getLocationById(long locationId) throws TaleoException;
+    //Link
+    void createLink(String entityType1, long entityId1, String entityType2,
+                    long entityId2) throws TaleoException;
 
-	LocationBean getLocationByName(String locationName) throws TaleoException;
+    void removeLink(String entityType1, long entityId1, String entityType2,
+                    long entityId2) throws TaleoException;
 
-	LocationArr getLocations() throws TaleoException;
+    //Location
+    long createLocation(LocationBean location) throws TaleoException;
 
-	long upsertLocation(LocationBean location) throws TaleoException;
+    void deleteLocation(long locationId) throws TaleoException;
 
-	//Login
-	String getUrl(String companyCode) throws TaleoException;
+    LocationBean getLocationById(long locationId) throws TaleoException;
 
-	String login(String companyCode, String userId, String password) throws TaleoException;
-	
-	void logout(String sessionId) throws TaleoException;
+    LocationBean getLocationByName(String locationName) throws TaleoException;
 
-	String getLoginToken(String sessionId) throws TaleoException;
+    LocationArr getLocations() throws TaleoException;
 
-	//Meta-data
-	LookupArr getLookup(String fieldName) throws TaleoException;
+    long upsertLocation(LocationBean location) throws TaleoException;
 
-	MetadataArr getMetadata(EntityTypeEnum entityType) throws TaleoException;
+    //Login
+    String getUrl(String companyCode) throws TaleoException;
 
-	//Offer
-	long createOffer(OfferBean offer) throws TaleoException;
+    String login(String companyCode, String userId, String password) throws TaleoException;
 
-	void deleteOffer(long offerId) throws TaleoException;
+    void logout(String sessionId) throws TaleoException;
 
-	ByteArr getBinaryOffer(long offerId) throws TaleoException;
+    String getLoginToken(String sessionId) throws TaleoException;
 
-	OfferBean getOfferByID(long offerId) throws TaleoException;
+    //Meta-data
+    LookupArr getLookup(String fieldName) throws TaleoException;
 
-	LongArr getOffers(long candidateId) throws TaleoException;
+    MetadataArr getMetadata(EntityTypeEnum entityType) throws TaleoException;
 
-	void setBinaryOffer(long offerId, String fileName, ByteArr content) throws TaleoException;
+    //Offer
+    long createOffer(OfferBean offer) throws TaleoException;
 
-	void updateOffer(OfferBean offer) throws TaleoException;
-	
-	//Reference
-	long createReference(ReferenceBean reference) throws TaleoException;
+    void deleteOffer(long offerId) throws TaleoException;
 
-	void deleteReference(long referenceId) throws TaleoException;
+    ByteArr getBinaryOffer(long offerId) throws TaleoException;
 
-	LongArr getReferencesByCandidate(long candidateId) throws TaleoException;
+    OfferBean getOfferByID(long offerId) throws TaleoException;
 
-	ReferenceBean getReferenceById(long referenceId) throws TaleoException;
+    LongArr getOffers(long candidateId) throws TaleoException;
 
-	void updateReference(ReferenceBean reference) throws TaleoException;
+    void setBinaryOffer(long offerId, String fileName, ByteArr content) throws TaleoException;
 
-	//Region
-	long createRegion(RegionBean region) throws TaleoException;
+    void updateOffer(OfferBean offer) throws TaleoException;
 
-	void deleteRegion(long regionId) throws TaleoException;
+    //Reference
+    long createReference(ReferenceBean reference) throws TaleoException;
 
-	RegionBean getRegionById(long regionId) throws TaleoException;
+    void deleteReference(long referenceId) throws TaleoException;
 
-	RegionBean getRegionByName(String regionName) throws TaleoException;
+    LongArr getReferencesByCandidate(long candidateId) throws TaleoException;
 
-	RegionArr getRegions() throws TaleoException;
+    ReferenceBean getReferenceById(long referenceId) throws TaleoException;
 
-	long upsertRegion(RegionBean region) throws TaleoException;
+    void updateReference(ReferenceBean reference) throws TaleoException;
 
-	//Requisition
-	long createRequisition(RequisitionBean requisition) throws TaleoException;
+    //Region
+    long createRegion(RegionBean region) throws TaleoException;
 
-	long createRequisitionTemplate(RequisitionBean requisition) throws TaleoException;
+    void deleteRegion(long regionId) throws TaleoException;
 
-	void deleteRequisition(long requisitionId) throws TaleoException;
+    RegionBean getRegionById(long regionId) throws TaleoException;
 
-	RequisitionBean getRequisitionById(long requisitionId) throws TaleoException;
+    RegionBean getRegionByName(String regionName) throws TaleoException;
 
-	HistoryBeanArr getRequisitionHistory(long requisitionId) throws TaleoException;
+    RegionArr getRegions() throws TaleoException;
 
-	void postRequisition(long requisitionId, long posterId, int formVersion) throws TaleoException;
+    long upsertRegion(RegionBean region) throws TaleoException;
 
-	SearchResultArr searchRequisition(Map searchParameters) throws TaleoException;
+    //Requisition
+    long createRequisition(RequisitionBean requisition) throws TaleoException;
 
-	void unpostRequisition(long requisitionId, long posterId) throws TaleoException;
+    long createRequisitionTemplate(RequisitionBean requisition) throws TaleoException;
 
-	void updateRequisition(RequisitionBean requisition) throws TaleoException;
+    void deleteRequisition(long requisitionId) throws TaleoException;
 
-	//Resume
-	ByteArr getBinaryResume(long candidateId) throws TaleoException;
+    RequisitionBean getRequisitionById(long requisitionId) throws TaleoException;
 
-	String parseResume(ByteArr binaryAttachment) throws TaleoException;
+    HistoryBeanArr getRequisitionHistory(long requisitionId) throws TaleoException;
 
-	CandidateInsertResultBean parseResumeIntoCandidate(
-			ByteArr binaryAttachment, String referredBy, String fileName) throws TaleoException;
+    void postRequisition(long requisitionId, long posterId, int formVersion) throws TaleoException;
 
-	void setBinaryResume(long candidateId, String fileName,
-			ByteArr binaryAttachment) throws TaleoException;
+    SearchResultArr searchRequisition(Map searchParameters) throws TaleoException;
 
-	//RollingEntity
-	void deleteRollingEntity(long rollingEntityId) throws TaleoException;
+    void unpostRequisition(long requisitionId, long posterId) throws TaleoException;
 
-	FlexRollingEntityBeanArr getRollingEntities(String rollingEntityType,
-			String entityType, long entityId) throws TaleoException;
+    void updateRequisition(RequisitionBean requisition) throws TaleoException;
 
-	long upsertRollingEntity(FlexRollingEntityBean rollingEntityBean) throws TaleoException;
+    //Resume
+    ByteArr getBinaryResume(long candidateId) throws TaleoException;
 
-	//System
-	String getEnabledServices() throws TaleoException;
+    String parseResume(ByteArr binaryAttachment) throws TaleoException;
 
-	Map getSystemProps() throws TaleoException;
+    CandidateInsertResultBean parseResumeIntoCandidate(
+            ByteArr binaryAttachment, String referredBy, String fileName) throws TaleoException;
 
-	//Task
-	long createTask(TaskBean task) throws TaleoException;
+    void setBinaryResume(long candidateId, String fileName,
+                         ByteArr binaryAttachment) throws TaleoException;
 
-	void deleteTask(long taskId) throws TaleoException;
+    //RollingEntity
+    void deleteRollingEntity(long rollingEntityId) throws TaleoException;
 
-	LongArr getTaskByEntity(String entityType, long entityId) throws TaleoException;
+    FlexRollingEntityBeanArr getRollingEntities(String rollingEntityType,
+                                                String entityType, long entityId) throws TaleoException;
 
-	TaskBean getTaskById(long taskId) throws TaleoException;
+    long upsertRollingEntity(FlexRollingEntityBean rollingEntityBean) throws TaleoException;
 
-	LongArr getTaskByUser(long userId, GregorianCalendar startDate,
-			GregorianCalendar endDate) throws TaleoException;
+    //System
+    String getEnabledServices() throws TaleoException;
 
-	void updateTask(TaskBean task) throws TaleoException;
+    Map getSystemProps() throws TaleoException;
 
-	//Associate
-	LongArr getAssociatedUsers(long requisitionId, String association) throws TaleoException;
-	
-	void removeAssociatedUser(long requisitionId, String association,
-			long userId) throws TaleoException;
-	
-	void setAssociatedUser(long requisitionId, String association, long userId,
-			int userSequenceNumber) throws TaleoException;
+    //Task
+    long createTask(TaskBean task) throws TaleoException;
 
-	//User
-	long createUser(UserBean user) throws TaleoException;
+    void deleteTask(long taskId) throws TaleoException;
 
-	long createUserWithPermissions(UserBean user, Map additionalEntities) throws TaleoException;
+    LongArr getTaskByEntity(String entityType, long entityId) throws TaleoException;
 
-	void deleteUser(long userId) throws TaleoException;
+    TaskBean getTaskById(long taskId) throws TaleoException;
 
-	UserBean getUserById(long userId) throws TaleoException;
+    LongArr getTaskByUser(long userId, GregorianCalendar startDate,
+                          GregorianCalendar endDate) throws TaleoException;
 
-	HistoryBeanArr getUserHistory(long userId) throws TaleoException;
+    void updateTask(TaskBean task) throws TaleoException;
 
-	void updateUser(UserBean user) throws TaleoException;
+    //Associate
+    LongArr getAssociatedUsers(long requisitionId, String association) throws TaleoException;
 
-	String loginPartner(String orgCode, String partnerCode,
-			long currentTimeMillis, String digest) throws TaleoException;
+    void removeAssociatedUser(long requisitionId, String association,
+                              long userId) throws TaleoException;
 
-	SearchResultArr searchUser(Map searchParams) throws TaleoException;
+    void setAssociatedUser(long requisitionId, String association, long userId,
+                           int userSequenceNumber) throws TaleoException;
+
+    //User
+    long createUser(UserBean user) throws TaleoException;
+
+    long createUserWithPermissions(UserBean user, Map additionalEntities) throws TaleoException;
+
+    void deleteUser(long userId) throws TaleoException;
+
+    UserBean getUserById(long userId) throws TaleoException;
+
+    HistoryBeanArr getUserHistory(long userId) throws TaleoException;
+
+    void updateUser(UserBean user) throws TaleoException;
+
+    String loginPartner(String orgCode, String partnerCode,
+                        long currentTimeMillis, String digest) throws TaleoException;
+
+    SearchResultArr searchUser(Map searchParams) throws TaleoException;
 
 }

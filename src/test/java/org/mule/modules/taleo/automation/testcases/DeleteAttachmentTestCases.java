@@ -1,17 +1,10 @@
 /**
- * (c) 2003-2012 MuleSoft, Inc. This software is protected under international
- * copyright law. All use of this software is subject to MuleSoft's Master
- * Subscription Agreement (or other Terms of Service) separately entered
- * into between you and MuleSoft. If such an agreement is not in
- * place, you may not use the software.
+ * (c) 2003-2015 MuleSoft, Inc. The software in this package is published under
+ * the terms of the CPAL v1.0 license, a copy of which has been included with this
+ * distribution in the LICENSE.md file.
  */
 
 package org.mule.modules.taleo.automation.testcases;
-
-import static org.junit.Assert.fail;
-
-import java.util.HashMap;
-import java.util.UUID;
 
 import org.junit.After;
 import org.junit.Before;
@@ -21,77 +14,82 @@ import org.mule.api.MuleEvent;
 import org.mule.api.processor.MessageProcessor;
 import org.mule.modules.taleo.model.CandidateBean;
 
+import java.util.HashMap;
+import java.util.UUID;
+
+import static org.junit.Assert.fail;
+
 
 public class DeleteAttachmentTestCases extends TaleoTestParent {
-	
-	 
-	@Before
-	public void setUp() {
-    	
-    	testObjects =  new HashMap<String,Object>();
-    	CandidateBean candidateBean = (CandidateBean) context.getBean("deleteAttachmentCandidateBean");
-    	candidateBean.setEmail(String.format("%s@email.com", UUID.randomUUID().toString().substring(0, 8)));
-    	
-    	testObjects.put("candidateRef", candidateBean);
-    	
-		MessageProcessor createCandidateFlow = lookupFlowConstruct("create-candidate");
-    	
-		try {
 
-			MuleEvent createCandidateResponse = createCandidateFlow.process(getTestEvent(testObjects));
-			Long candidateId = (Long) createCandidateResponse.getMessage().getPayload();
 
-			testObjects = (HashMap<String,Object>) context.getBean("deleteAttachmentTestData");
-			testObjects.put("candidateId", candidateId);
-			
-			MessageProcessor deleteAttachmentFlow = lookupFlowConstruct("create-attachment");
-			
-			testObjects.put("attachmentDescription", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
-			testObjects.put("attachmentName", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
+    @Before
+    public void setUp() {
 
-			MuleEvent deleteAttachmentResponse = deleteAttachmentFlow.process(getTestEvent(testObjects));
-			Long attachmentId = (Long) deleteAttachmentResponse.getMessage().getPayload();
-			
-			testObjects.put("attachmentId", attachmentId);
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			fail();
-		}
-     
-	}
-	
-	@After
-	public void tearDown() {
-		
-		MessageProcessor deleteCandidateFlow = lookupFlowConstruct("delete-candidate");
-		
-		try {		
-			
-			if (testObjects.containsKey("candidateId")) {	
-				deleteCandidateFlow.process(getTestEvent(testObjects));	
-			}
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-				e.printStackTrace();
-				fail();
-		}
-		
-	}
-	
-	
+        testObjects = new HashMap<String, Object>();
+        CandidateBean candidateBean = (CandidateBean) context.getBean("deleteAttachmentCandidateBean");
+        candidateBean.setEmail(String.format("%s@email.com", UUID.randomUUID().toString().substring(0, 8)));
+
+        testObjects.put("candidateRef", candidateBean);
+
+        MessageProcessor createCandidateFlow = lookupFlowConstruct("create-candidate");
+
+        try {
+
+            MuleEvent createCandidateResponse = createCandidateFlow.process(getTestEvent(testObjects));
+            Long candidateId = (Long) createCandidateResponse.getMessage().getPayload();
+
+            testObjects = (HashMap<String, Object>) context.getBean("deleteAttachmentTestData");
+            testObjects.put("candidateId", candidateId);
+
+            MessageProcessor deleteAttachmentFlow = lookupFlowConstruct("create-attachment");
+
+            testObjects.put("attachmentDescription", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
+            testObjects.put("attachmentName", String.format("%s.docx", UUID.randomUUID().toString().substring(0, 10)));
+
+            MuleEvent deleteAttachmentResponse = deleteAttachmentFlow.process(getTestEvent(testObjects));
+            Long attachmentId = (Long) deleteAttachmentResponse.getMessage().getPayload();
+
+            testObjects.put("attachmentId", attachmentId);
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            fail();
+        }
+
+    }
+
+    @After
+    public void tearDown() {
+
+        MessageProcessor deleteCandidateFlow = lookupFlowConstruct("delete-candidate");
+
+        try {
+
+            if (testObjects.containsKey("candidateId")) {
+                deleteCandidateFlow.process(getTestEvent(testObjects));
+            }
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            fail();
+        }
+
+    }
+
+
     @Category({SmokeTests.class, RegressionTests.class})
-	@Test(expected=org.mule.api.MessagingException.class)
-	public void testDeleteAttachment() throws Exception {
-		
-		MessageProcessor deleteAttachmentFlow = lookupFlowConstruct("delete-attachment");
-		deleteAttachmentFlow.process(getTestEvent(testObjects));
+    @Test(expected = org.mule.api.MessagingException.class)
+    public void testDeleteAttachment() throws Exception {
 
-		MessageProcessor getAttachmentFlow = lookupFlowConstruct("get-attachment");
-		getAttachmentFlow.process(getTestEvent(testObjects));
+        MessageProcessor deleteAttachmentFlow = lookupFlowConstruct("delete-attachment");
+        deleteAttachmentFlow.process(getTestEvent(testObjects));
 
-	}
-    
+        MessageProcessor getAttachmentFlow = lookupFlowConstruct("get-attachment");
+        getAttachmentFlow.process(getTestEvent(testObjects));
+
+    }
+
 }

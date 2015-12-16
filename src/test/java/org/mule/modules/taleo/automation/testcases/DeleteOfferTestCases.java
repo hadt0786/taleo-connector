@@ -1,20 +1,10 @@
 /**
- * (c) 2003-2012 MuleSoft, Inc. This software is protected under international
- * copyright law. All use of this software is subject to MuleSoft's Master
- * Subscription Agreement (or other Terms of Service) separately entered
- * into between you and MuleSoft. If such an agreement is not in
- * place, you may not use the software.
+ * (c) 2003-2015 MuleSoft, Inc. The software in this package is published under
+ * the terms of the CPAL v1.0 license, a copy of which has been included with this
+ * distribution in the LICENSE.md file.
  */
 
 package org.mule.modules.taleo.automation.testcases;
-
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
-
-import java.util.HashMap;
-import java.util.UUID;
-
-import javax.xml.datatype.DatatypeFactory;
 
 import org.joda.time.DateTime;
 import org.junit.After;
@@ -29,107 +19,115 @@ import org.mule.modules.taleo.model.CandidateBean;
 import org.mule.modules.taleo.model.OfferBean;
 import org.mule.modules.taleo.model.RequisitionBean;
 
+import javax.xml.datatype.DatatypeFactory;
+import java.util.HashMap;
+import java.util.UUID;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
 public class DeleteOfferTestCases extends TaleoTestParent {
-	
-	@Rule
-    public ExpectedException thrown= ExpectedException.none();
-	
-	@Before
-	public void setUp() {
-		
-		setupForOffer("deleteOfferCandidateBean","deleteOfferRequisitionBean");
 
-		OfferBean offer=(OfferBean) context.getBean("deleteOfferOfferBean");
-		offer.setCandidateId((Long) testObjects.get("candidateId"));
-		offer.setRequisitionId((Long) testObjects.get("requisitionId"));
-		testObjects.put("offerRef",offer);
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
-		MessageProcessor flow = lookupFlowConstruct("create-offer");
+    @Before
+    public void setUp() {
 
-		try {
+        setupForOffer("deleteOfferCandidateBean", "deleteOfferRequisitionBean");
 
-			MuleEvent response = flow.process(getTestEvent(testObjects));
-			Long offerId = (Long) response.getMessage().getPayload();
+        OfferBean offer = (OfferBean) context.getBean("deleteOfferOfferBean");
+        offer.setCandidateId((Long) testObjects.get("candidateId"));
+        offer.setRequisitionId((Long) testObjects.get("requisitionId"));
+        testObjects.put("offerRef", offer);
 
-			assertNotNull(offerId);
+        MessageProcessor flow = lookupFlowConstruct("create-offer");
 
-			testObjects.put("offerId", offerId);
+        try {
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}	
-	private void setupForOffer(String candidateBeanVariableName, String requisitionBeanVariableName) {
-		MuleEvent createCandidateResponse, createRequisitionResponse;
+            MuleEvent response = flow.process(getTestEvent(testObjects));
+            Long offerId = (Long) response.getMessage().getPayload();
 
-		MessageProcessor createCandidateFlow = lookupFlowConstruct("create-candidate");
-		MessageProcessor createRequisitionFlow = lookupFlowConstruct("create-requisition");
+            assertNotNull(offerId);
 
-		CandidateBean candidateBean = (CandidateBean) context
-				.getBean(candidateBeanVariableName);
-		candidateBean.setEmail(String.format("%s@email.com", UUID.randomUUID()
-				.toString().substring(0, 8)));
+            testObjects.put("offerId", offerId);
 
-		testObjects = new HashMap<String, Object>();
-		testObjects.put("candidateRef", candidateBean);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
 
-		try {
+    private void setupForOffer(String candidateBeanVariableName, String requisitionBeanVariableName) {
+        MuleEvent createCandidateResponse, createRequisitionResponse;
 
-			createCandidateResponse = createCandidateFlow
-					.process(getTestEvent(testObjects));
-			Long candidateId = (Long) createCandidateResponse.getMessage()
-					.getPayload();
-			testObjects.put("candidateId", candidateId);
+        MessageProcessor createCandidateFlow = lookupFlowConstruct("create-candidate");
+        MessageProcessor createRequisitionFlow = lookupFlowConstruct("create-requisition");
 
-			RequisitionBean requisitionBean = (RequisitionBean) context
-					.getBean(requisitionBeanVariableName);
-			requisitionBean.setOpenedDate(DatatypeFactory.newInstance()
-					.newXMLGregorianCalendar(
-							new DateTime().toGregorianCalendar()));
-			testObjects.put("requisitionRef", requisitionBean);
+        CandidateBean candidateBean = (CandidateBean) context
+                .getBean(candidateBeanVariableName);
+        candidateBean.setEmail(String.format("%s@email.com", UUID.randomUUID()
+                .toString().substring(0, 8)));
 
-			createRequisitionResponse = createRequisitionFlow
-					.process(getTestEvent(testObjects));
-			Long requisitionId = (Long) createRequisitionResponse.getMessage()
-					.getPayload();
-			testObjects.put("requisitionId", requisitionId);
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-	
+        testObjects = new HashMap<String, Object>();
+        testObjects.put("candidateRef", candidateBean);
+
+        try {
+
+            createCandidateResponse = createCandidateFlow
+                    .process(getTestEvent(testObjects));
+            Long candidateId = (Long) createCandidateResponse.getMessage()
+                    .getPayload();
+            testObjects.put("candidateId", candidateId);
+
+            RequisitionBean requisitionBean = (RequisitionBean) context
+                    .getBean(requisitionBeanVariableName);
+            requisitionBean.setOpenedDate(DatatypeFactory.newInstance()
+                    .newXMLGregorianCalendar(
+                            new DateTime().toGregorianCalendar()));
+            testObjects.put("requisitionRef", requisitionBean);
+
+            createRequisitionResponse = createRequisitionFlow
+                    .process(getTestEvent(testObjects));
+            Long requisitionId = (Long) createRequisitionResponse.getMessage()
+                    .getPayload();
+            testObjects.put("requisitionId", requisitionId);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
     @Category({SmokeTests.class, RegressionTests.class})
-	@Test(expected=org.mule.api.MessagingException.class)
-	public void testDeleteOffer() throws Exception {
-		
-		MessageProcessor deleteOfferFlow = lookupFlowConstruct("delete-offer");
-		deleteOfferFlow.process(getTestEvent(testObjects));
+    @Test(expected = org.mule.api.MessagingException.class)
+    public void testDeleteOffer() throws Exception {
 
-		MessageProcessor getOfferByIdFlow = lookupFlowConstruct("get-offer-by-id");
-		getOfferByIdFlow.process(getTestEvent(testObjects));
-	
-	}
-    
+        MessageProcessor deleteOfferFlow = lookupFlowConstruct("delete-offer");
+        deleteOfferFlow.process(getTestEvent(testObjects));
+
+        MessageProcessor getOfferByIdFlow = lookupFlowConstruct("get-offer-by-id");
+        getOfferByIdFlow.process(getTestEvent(testObjects));
+
+    }
+
     @After
-	public void tearDown() {
+    public void tearDown() {
 
-		MessageProcessor deleteRequisitionFlow = lookupFlowConstruct("delete-requisition");
-		MessageProcessor deleteCandidateFlow = lookupFlowConstruct("delete-candidate");
-		try {
+        MessageProcessor deleteRequisitionFlow = lookupFlowConstruct("delete-requisition");
+        MessageProcessor deleteCandidateFlow = lookupFlowConstruct("delete-candidate");
+        try {
 
-			if (testObjects.containsKey("requisitionId")) {
-				deleteRequisitionFlow.process(getTestEvent(testObjects));
-			}
+            if (testObjects.containsKey("requisitionId")) {
+                deleteRequisitionFlow.process(getTestEvent(testObjects));
+            }
 
-			if (testObjects.containsKey("candidateId")) {
-				deleteCandidateFlow.process(getTestEvent(testObjects));
-			}
+            if (testObjects.containsKey("candidateId")) {
+                deleteCandidateFlow.process(getTestEvent(testObjects));
+            }
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
 }

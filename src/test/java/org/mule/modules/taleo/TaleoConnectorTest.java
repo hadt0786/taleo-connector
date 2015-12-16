@@ -1,9 +1,7 @@
 /**
- * (c) 2003-2012 MuleSoft, Inc. This software is protected under international
- * copyright law. All use of this software is subject to MuleSoft's Master
- * Subscription Agreement (or other Terms of Service) separately entered
- * into between you and MuleSoft. If such an agreement is not in
- * place, you may not use the software.
+ * (c) 2003-2015 MuleSoft, Inc. The software in this package is published under
+ * the terms of the CPAL v1.0 license, a copy of which has been included with this
+ * distribution in the LICENSE.md file.
  */
 
 /**
@@ -11,34 +9,29 @@
  */
 package org.mule.modules.taleo;
 
+import org.junit.Test;
 import org.mule.api.MuleEvent;
 import org.mule.construct.Flow;
-import org.mule.tck.FunctionalTestCase;
 import org.mule.tck.AbstractMuleTestCase;
+import org.mule.tck.FunctionalTestCase;
 
-import org.junit.Test;
-
-public class TaleoConnectorTest extends FunctionalTestCase
-{
+public class TaleoConnectorTest extends FunctionalTestCase {
     @Override
-    protected String getConfigResources()
-    {
+    protected String getConfigResources() {
         return "mule-config.xml";
     }
 
     @Test
-    public void testFlow() throws Exception
-    {
+    public void testFlow() throws Exception {
     }
 
     /**
-    * Run the flow specified by name and assert equality on the expected output
-    *
-    * @param flowName The name of the flow to run
-    * @param expect The expected output
-    */
-    protected <T> void runFlowAndExpect(String flowName, T expect) throws Exception
-    {
+     * Run the flow specified by name and assert equality on the expected output
+     *
+     * @param flowName The name of the flow to run
+     * @param expect The expected output
+     */
+    protected <T> void runFlowAndExpect(String flowName, T expect) throws Exception {
         Flow flow = lookupFlowConstruct(flowName);
         MuleEvent event = AbstractMuleTestCase.getTestEvent(null);
         MuleEvent responseEvent = flow.process(event);
@@ -47,15 +40,14 @@ public class TaleoConnectorTest extends FunctionalTestCase
     }
 
     /**
-    * Run the flow specified by name using the specified payload and assert
-    * equality on the expected output
-    *
-    * @param flowName The name of the flow to run
-    * @param expect The expected output
-    * @param payload The payload of the input event
-    */
-    protected <T, U> void runFlowWithPayloadAndExpect(String flowName, T expect, U payload) throws Exception
-    {
+     * Run the flow specified by name using the specified payload and assert
+     * equality on the expected output
+     *
+     * @param flowName The name of the flow to run
+     * @param expect The expected output
+     * @param payload The payload of the input event
+     */
+    protected <T, U> void runFlowWithPayloadAndExpect(String flowName, T expect, U payload) throws Exception {
         Flow flow = lookupFlowConstruct(flowName);
         MuleEvent event = AbstractMuleTestCase.getTestEvent(payload);
         MuleEvent responseEvent = flow.process(event);
@@ -68,8 +60,7 @@ public class TaleoConnectorTest extends FunctionalTestCase
      *
      * @param name Name of the flow to retrieve
      */
-    protected Flow lookupFlowConstruct(String name)
-    {
+    protected Flow lookupFlowConstruct(String name) {
         return (Flow) AbstractMuleTestCase.muleContext.getRegistry().lookupFlowConstruct(name);
     }
 }

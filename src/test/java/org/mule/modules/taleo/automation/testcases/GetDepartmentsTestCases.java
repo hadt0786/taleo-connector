@@ -1,20 +1,10 @@
 /**
- * (c) 2003-2012 MuleSoft, Inc. This software is protected under international
- * copyright law. All use of this software is subject to MuleSoft's Master
- * Subscription Agreement (or other Terms of Service) separately entered
- * into between you and MuleSoft. If such an agreement is not in
- * place, you may not use the software.
+ * (c) 2003-2015 MuleSoft, Inc. The software in this package is published under
+ * the terms of the CPAL v1.0 license, a copy of which has been included with this
+ * distribution in the LICENSE.md file.
  */
 
 package org.mule.modules.taleo.automation.testcases;
-
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.UUID;
 
 import org.junit.After;
 import org.junit.Before;
@@ -26,98 +16,106 @@ import org.mule.modules.taleo.model.ArrayOfDepartmentBean;
 import org.mule.modules.taleo.model.DepartmentArr;
 import org.mule.modules.taleo.model.DepartmentBean;
 
-public class GetDepartmentsTestCases extends TaleoTestParent {
-	
-	private String departmentName = UUID.randomUUID().toString();
-	private Long departmentId;
-	
-	@Before
-	public void setUp() {
-		
-    	testObjects =  new HashMap<String,Object>();
-    	
-    	DepartmentBean departmentBean = (DepartmentBean) context.getBean("getDepartmentsDepartmentBean");
-    	departmentBean.setDepartmentName(departmentName);
-    	testObjects.put("departmentName", departmentName);
-    	
-    	testObjects.put("departmentRef", departmentBean);
-    	
-		MessageProcessor flow = lookupFlowConstruct("create-department");
-    	
-		try {
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
-			MuleEvent response = flow.process(getTestEvent(testObjects));
-			departmentId = (Long) response.getMessage().getPayload();
-			testObjects.put("departmentId", departmentId);
-			
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			fail();
-		}
-		
-	}	
-	
-	
-	@After
-	public void tearDown() {
-		
-		MessageProcessor flow = lookupFlowConstruct("delete-department");
-		
-		try {		
-			
-			if (testObjects.containsKey("departmentId")) {
-				
-				flow.process(getTestEvent(testObjects));
-				
-			}
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-				e.printStackTrace();
-				fail();
-		}
-		
-	}
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+public class GetDepartmentsTestCases extends TaleoTestParent {
+
+    private String departmentName = UUID.randomUUID().toString();
+    private Long departmentId;
+
+    @Before
+    public void setUp() {
+
+        testObjects = new HashMap<String, Object>();
+
+        DepartmentBean departmentBean = (DepartmentBean) context.getBean("getDepartmentsDepartmentBean");
+        departmentBean.setDepartmentName(departmentName);
+        testObjects.put("departmentName", departmentName);
+
+        testObjects.put("departmentRef", departmentBean);
+
+        MessageProcessor flow = lookupFlowConstruct("create-department");
+
+        try {
+
+            MuleEvent response = flow.process(getTestEvent(testObjects));
+            departmentId = (Long) response.getMessage().getPayload();
+            testObjects.put("departmentId", departmentId);
+
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            fail();
+        }
+
+    }
+
+
+    @After
+    public void tearDown() {
+
+        MessageProcessor flow = lookupFlowConstruct("delete-department");
+
+        try {
+
+            if (testObjects.containsKey("departmentId")) {
+
+                flow.process(getTestEvent(testObjects));
+
+            }
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            fail();
+        }
+
+    }
 
     @Category({RegressionTests.class})
-	@Test
-	public void testGetDepartments() {
-    	
-		MessageProcessor getDepartmentsFlow = lookupFlowConstruct("get-departments");
-		
-		MuleEvent response;
-		
-		boolean found = false;
-		
-		try {
-			
-			response = getDepartmentsFlow.process(getTestEvent(null));
-			DepartmentArr departmentArr = (DepartmentArr) response.getMessage().getPayload();
-			
-			List<DepartmentBean> deparments= ((ArrayOfDepartmentBean) departmentArr.getArray()).getItem();
-			Iterator<DepartmentBean> iterator = deparments.iterator();
-			
-			while (iterator.hasNext()) {
-				
-				DepartmentBean departmentBean = iterator.next();
-				
-				if ((departmentBean.getDepartmentId() == departmentId) && 
-				   (departmentBean.getDepartmentName().equals(departmentName) )) {
-					found = true;	
-				}
-				
-			}
-			
-			assertTrue(found);
+    @Test
+    public void testGetDepartments() {
 
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			fail();
-		}
-     
-	}
-    
+        MessageProcessor getDepartmentsFlow = lookupFlowConstruct("get-departments");
+
+        MuleEvent response;
+
+        boolean found = false;
+
+        try {
+
+            response = getDepartmentsFlow.process(getTestEvent(null));
+            DepartmentArr departmentArr = (DepartmentArr) response.getMessage().getPayload();
+
+            List<DepartmentBean> deparments = ((ArrayOfDepartmentBean) departmentArr.getArray()).getItem();
+            Iterator<DepartmentBean> iterator = deparments.iterator();
+
+            while (iterator.hasNext()) {
+
+                DepartmentBean departmentBean = iterator.next();
+
+                if ((departmentBean.getDepartmentId() == departmentId) &&
+                        (departmentBean.getDepartmentName().equals(departmentName))) {
+                    found = true;
+                }
+
+            }
+
+            assertTrue(found);
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            fail();
+        }
+
+    }
+
 }
