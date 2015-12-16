@@ -6,11 +6,11 @@
       xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
         http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/taleo/1.0/mule-taleo.xsd">
 
-    <taleo:config
+    <taleo:config name="taleo"
             username="xxx" password="yyy" companyCode="DUMMY"/>
 
     <flow name="testFlow">
-        <taleo:get-departments/>
+        <taleo:get-departments config-ref="taleo"/>
     </flow>
 
 </mule>
