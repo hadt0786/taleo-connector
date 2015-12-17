@@ -2,18 +2,15 @@
 
 <mule xmlns="http://www.mulesoft.org/schema/mule/core"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns:spring="http://www.springframework.org/schema/beans"
       xmlns:taleo="http://www.mulesoft.org/schema/mule/taleo"
-      xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
         http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/taleo/1.0/mule-taleo.xsd">
 
-    <taleo:config
+    <taleo:config name="taleo"
             username="xxx" password="yyy" companyCode="DUMMY"/>
 
     <flow name="testFlow">
-        <taleo:get-departments/>
+        <taleo:get-departments config-ref="taleo"/>
     </flow>
 
 </mule>
