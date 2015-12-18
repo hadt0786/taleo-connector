@@ -1,0 +1,1600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" url="http://www.mulesoft.org/schema/mule/taleo" prefix="taleo">
+  <global-cloud-connector versions="[3.4.0,8.0.0]" caption="Taleo" description="" icon="" localId="parentConfig" image="" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric"></global-cloud-connector>
+  <nested caption="" description="" localId="connection-pooling-profile" abstract="true">
+    <radioBoolean name="defaultPoolingProfile" caption="Use default connection pool configuration" description="Use default connection pool configuration." fillLine="true"></radioBoolean>
+    <radioBoolean name="customPoolingProfile" caption="Define connection pool configuration" description="Define connection pool configuration." fillLine="true"></radioBoolean>
+    <integer defaultValue="5" min="-1" step="0" name="maxActive" caption="Max active" description="Controls the maximum number of connections that can be borrowed from the pool at one time. When set to a negative value, there is no limit to the number of connections that may be active at one time. When maxActive is exceeded, the pool is said to be exhausted." controlled="customPoolingProfile" indented="true" fillLine="true"></integer>
+    <integer defaultValue="5" min="-1" step="0" name="maxIdle" caption="Max idle" description="Controls the maximum number of connections that can sit idle in the pool at any time. When set to a negative value, there is no limit to the number of connections that may be idle at one time." controlled="customPoolingProfile" indented="true" fillLine="true"></integer>
+    <enum defaultValue="INITIALISE_ONE" name="initialisationPolicy" caption="Initialisation policy" description="Determines how connections in a pool should be initialized. The possible values are: INITIALISE_NONE (will not load any connection into the pool on startup), INITIALISE_ONE (will load one initial connection into the pool on startup), or INITIALISE_ALL (will load all connections in the pool on startup)" alwaysFill="true" controlled="customPoolingProfile" indented="true">
+      <option value="INITIALISE_NONE"></option>
+      <option value="INITIALISE_ONE"></option>
+      <option value="INITIALISE_ALL"></option>
+    </enum>
+    <enum defaultValue="WHEN_EXHAUSTED_GROW" name="exhaustedAction" caption="Exhausted action" description="Specifies the behavior of the connection pool when the pool is exhausted. Possible values are: &quot;WHEN_EXHAUSTED_FAIL&quot;, which will throw a NoSuchElementException, &quot;WHEN_EXHAUSTED_WAIT&quot;, which will block by invoking Object.wait(long) until a new or idle object is available, or WHEN_EXHAUSTED_GROW, which will create a new connection and return it, essentially making maxActive meaningless. If a positive maxWait value is supplied, it will block for at most that many milliseconds, after which a NoSuchElementException will be thrown. If maxThreadWait is a negative value, it will block indefinitely." alwaysFill="true" controlled="customPoolingProfile" indented="true">
+      <option value="WHEN_EXHAUSTED_WAIT"></option>
+      <option value="WHEN_EXHAUSTED_FAIL"></option>
+      <option value="WHEN_EXHAUSTED_GROW"></option>
+    </enum>
+    <integer defaultValue="5" min="-1" step="0" name="maxWait" caption="Max wait" description="When exhausted action is Wait (or block) this is the amount of time in milliseconds that the pool will wait before failing. Setting a negative value will block indefinitely until an idle instance becomes available." controlled="customPoolingProfile" indented="true" fillLine="true"></integer>
+    <integer defaultValue="1800000" min="-1" step="0" name="minEvictionMillis" caption="Min eviction (ms)" description="Determines the minimum amount of time a connection may sit idle in the pool before it is eligible for eviction. When non-positive, no connections will be evicted from the pool due to idle time alone." controlled="customPoolingProfile" indented="true" fillLine="true"></integer>
+    <integer defaultValue="-1" min="-1" step="0" name="evictionCheckIntervalMillis" caption="Eviction check interval (ms)" description="Specifies the number of milliseconds between runs of the connection evictor. When non-positive, no connection evictor is executed." controlled="customPoolingProfile" indented="true" fillLine="true"></integer>
+  </nested>
+  <nested caption="" description="" localId="reconnectionStrategyElement" abstract="true">
+    <label name="connectionLabel" caption="Define how mule should attempt to handle a connection failure" description=""></label>
+    <radioBoolean name="noReconnection" caption="Do not use a Reconnection strategy" description="Disable reconection strategy" fillLine="true"></radioBoolean>
+    <radioBoolean name="standardReconnection" caption="Standard Reconnection" description="A reconnection strategy that allows the user to configure how many times a reconnection should be attempted and how long to wait between attempts." fillLine="true"></radioBoolean>
+    <integer defaultValue="2000" min="1" max="2147483647" step="1" name="reconnectionFrequency" caption="Frequency (ms)" description="How often (in ms) to reconnect" controlled="standardReconnection" indented="true"></integer>
+    <integer defaultValue="2" min="1" max="2147483647" step="1" name="reconnectionAttemps" caption="Reconnection Attempts" description="How many reconnection attempts to make" controlled="standardReconnection,!reconnectForever" indented="true"></integer>
+    <boolean name="reconnectForever" caption="Reconnect Forever" description="A reconnection strategy that retries an infinite number of times at the specified frequency." controlled="standardReconnection" indented="true"></boolean>
+    <radioBoolean name="customReconnection" caption="Custom Reconnection" description="A user-defined reconnection strategy." fillLine="true"></radioBoolean>
+    <classname name="class" caption="Class" description="A class that implements the RetryPolicyTemplate interface." controlled="customReconnection" indented="true"></classname>
+    <childElement allowMultiple="true" name="http://www.springframework.org/schema/beans/property" caption="Properties" description="Property elements." controlled="customReconnection"></childElement>
+  </nested>
+  <global-cloud-connector versions="[3.4.0,8.0.0]" caption="Taleo: Connection Management" description="Global Connection Management configuration information." icon="icons/small/taleo-connector-24x16.png" localId="config" image="icons/large/taleo-connector-48x32.png" abstract="false" extends="http://www.mulesoft.org/schema/mule/taleo/parentConfig" connectivityTesting="on" connectivityTestingLabel="Test Connection..." metaData="static" metaDataKeyDisplay="DISPLAY_NAME">
+    <attribute-category caption="General" description="Taleo configuration properties.">
+      <group id="taleoGenericProperties" caption="Basic Settings">
+        <name name="name" caption="Name" description="Give a name to this configuration so it can be later referenced by config-ref." required="true"></name>
+      </group>
+      <group id="connection" caption="Connection">
+        <string name="username" caption="Username" description="A username." required="true" javaType="java.lang.String"></string>
+        <password name="password" caption="Password" description="A password." required="true" javaType="java.lang.String"></password>
+      </group>
+      <group id="general" caption="General">
+        <string name="companyCode" caption="Company Code" description="Company code of the company." required="true" javaType="java.lang.String"></string>
+        <string defaultValue="https://tbe.taleo.net/MANAGER/dispatcher/servlet/rpcrouter" name="dispatcherUrl" caption="Dispatcher Url" description="Url endpoint that will provide the URL for following messages." required="false" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+    <attribute-category caption="Pooling Profile" description="Pooling profile options.">
+      <group id="poolingProfile" caption="Pooling Profile">
+        <childElement inplace="true" name="http://www.mulesoft.org/schema/mule/taleo/connection-pooling-profile" caption="" description="" valuePersistence="org.mule.tooling.ui.modules.core.widgets.meta.PoolingProfileValuePersistence"></childElement>
+      </group>
+    </attribute-category>
+    <attribute-category caption="Reconnection" description="Reconnection options.">
+      <group id="reconnectionStrategies" caption="Strategies">
+        <childElement inplace="true" name="http://www.mulesoft.org/schema/mule/core/reconnectionStrategyElement" caption="" description="" valuePersistence="org.mule.tooling.ui.modules.core.widgets.meta.HTTPTransactionValuePersistence"></childElement>
+        <childElement allowSubTypes="true" allowedSubTypes="http://www.mulesoft.org/schema/mule/core/reconnect,http://www.mulesoft.org/schema/mule/core/reconnect-custom-strategy,http://www.mulesoft.org/schema/mule/core/reconnect-forever" name="http://www.mulesoft.org/schema/mule/core/abstractReconnectionStrategy" caption="" description="" visibleInDialog="false"></childElement>
+      </group>
+    </attribute-category>
+  </global-cloud-connector>
+  <cloud-connector caption="Abstracttaleoconnectorgeneric" description="Interact with Taleo." icon="icons/small/taleo-connector-24x16.png" localId="abstractTaleoConnectorGeneric" image="icons/large/taleo-connector-48x32.png" abstract="true">
+    <attribute-category caption="General" description="General.">
+      <group id="abstractTaleoConnectorGeneric" caption="Basic Settings">
+        <globalRef requiredType="http://www.mulesoft.org/schema/mule/taleo/config" name="config-ref" caption="Connector Configuration" description="Specify which configuration to use for this invocation." required="true"></globalRef>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector versions="[3.4.0,8.0.0]" aliasId="org.mule.tooling.ui.modules.core.pattern.taleo" caption="Taleo" description="Cloud Connector." icon="icons/small/taleo-connector-24x16.png" localId="taleo-connector" image="icons/large/taleo-connector-48x32.png" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric">
+    <attribute-category caption="General" description="General.">
+      <group id="taleoConnectorGeneric" caption="Basic Settings">
+        <modeSwitch alwaysCombo="true" name="Taleo operations to execute" caption="Operation" description="Operation.">
+          <no-operation abstractElement="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" versions="[3.4.0,8.0.0]" connector-name="processor"></no-operation>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-account" modeLabel="Create account"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-attachment" modeLabel="Create attachment"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-background-check" modeLabel="Create background check"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-candidate" modeLabel="Create candidate"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-contact" modeLabel="Create contact"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-contact-log" modeLabel="Create contact log"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-department" modeLabel="Create department"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-email-log" modeLabel="Create email log"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-email-sent-log" modeLabel="Create email sent log"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-employee" modeLabel="Create employee"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-entity-attachment" modeLabel="Create entity attachment"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-event" modeLabel="Create event"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-interview" modeLabel="Create interview"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-link" modeLabel="Create link"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-location" modeLabel="Create location"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-offer" modeLabel="Create offer"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-reference" modeLabel="Create reference"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-region" modeLabel="Create region"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-requisition" modeLabel="Create requisition"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-requisition-template" modeLabel="Create requisition template"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-task" modeLabel="Create task"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-user" modeLabel="Create user"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/create-user-with-permissions" modeLabel="Create user with permissions"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-account" modeLabel="Delete account"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-attachment" modeLabel="Delete attachment"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-background-check" modeLabel="Delete background check"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-candidate" modeLabel="Delete candidate"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-contact" modeLabel="Delete contact"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-contact-log" modeLabel="Delete contact log"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-department" modeLabel="Delete department"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-employee" modeLabel="Delete employee"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-employee-by-number" modeLabel="Delete employee by number"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-event" modeLabel="Delete event"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-interview" modeLabel="Delete interview"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-location" modeLabel="Delete location"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-offer" modeLabel="Delete offer"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-reference" modeLabel="Delete reference"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-region" modeLabel="Delete region"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-requisition" modeLabel="Delete requisition"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-rolling-entity" modeLabel="Delete rolling entity"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-task" modeLabel="Delete task"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/delete-user" modeLabel="Delete user"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-account-by-id" modeLabel="Get account by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-account-history" modeLabel="Get account history"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-associated-users" modeLabel="Get associated users"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-attachment" modeLabel="Get attachment"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-attachment-data" modeLabel="Get attachment data"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-attachments" modeLabel="Get attachments"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-background-check-by-id" modeLabel="Get background check by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-background-checks-by-candidate" modeLabel="Get background checks by candidate"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-binary-offer" modeLabel="Get binary offer"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-binary-resume" modeLabel="Get binary resume"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-cand-req-status" modeLabel="Get cand req status"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-candidate-by-id" modeLabel="Get candidate by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-candidate-details-by-id" modeLabel="Get candidate details by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-candidate-history" modeLabel="Get candidate history"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-candidate-work-history" modeLabel="Get candidate work history"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-candidates-by-requisition" modeLabel="Get candidates by requisition"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-contact-by-id" modeLabel="Get contact by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-contact-history" modeLabel="Get contact history"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-contact-log-by-id" modeLabel="Get contact log by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-contact-logs-by-entity" modeLabel="Get contact logs by entity"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-department-by-id" modeLabel="Get department by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-department-by-name" modeLabel="Get department by name"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-departments" modeLabel="Get departments"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-employee-by-id" modeLabel="Get employee by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-employee-by-number" modeLabel="Get employee by number"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-enabled-services" modeLabel="Get enabled services"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-entity-attachments" modeLabel="Get entity attachments"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-event-by-entity" modeLabel="Get event by entity"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-event-by-id" modeLabel="Get event by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-interview-by-id" modeLabel="Get interview by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-interviews-by-candidate" modeLabel="Get interviews by candidate"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-location-by-id" modeLabel="Get location by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-location-by-name" modeLabel="Get location by name"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-locations" modeLabel="Get locations"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-login-token" modeLabel="Get login token"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-lookup" modeLabel="Get lookup"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-metadata" modeLabel="Get metadata"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-offer-by-id" modeLabel="Get offer by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-offers" modeLabel="Get offers"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-public-events" modeLabel="Get public events"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-reference-by-id" modeLabel="Get reference by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-references-by-candidate" modeLabel="Get references by candidate"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-region-by-id" modeLabel="Get region by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-region-by-name" modeLabel="Get region by name"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-regions" modeLabel="Get regions"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-requisition-by-id" modeLabel="Get requisition by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-requisition-history" modeLabel="Get requisition history"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-requisitions" modeLabel="Get requisitions"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-rolling-entities" modeLabel="Get rolling entities"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-system-props" modeLabel="Get system props"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-task-by-entity" modeLabel="Get task by entity"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-task-by-id" modeLabel="Get task by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-task-by-user" modeLabel="Get task by user"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-url" modeLabel="Get url"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-user-by-id" modeLabel="Get user by id"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/get-user-history" modeLabel="Get user history"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/login-partner" modeLabel="Login partner"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/parse-resume" modeLabel="Parse resume"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/parse-resume-into-candidate" modeLabel="Parse resume into candidate"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/post-requisition" modeLabel="Post requisition"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/remove-associated-user" modeLabel="Remove associated user"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/remove-candidate" modeLabel="Remove candidate"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/remove-link" modeLabel="Remove link"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/search-account" modeLabel="Search account"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/search-candidate" modeLabel="Search candidate"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/search-contact" modeLabel="Search contact"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/search-employee" modeLabel="Search employee"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/search-requisition" modeLabel="Search requisition"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/search-user" modeLabel="Search user"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/set-associated-user" modeLabel="Set associated user"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/set-binary-offer" modeLabel="Set binary offer"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/set-binary-resume" modeLabel="Set binary resume"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/submit-candidate" modeLabel="Submit candidate"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/unpost-requisition" modeLabel="Unpost requisition"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-account" modeLabel="Update account"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-attachment" modeLabel="Update attachment"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-background-check" modeLabel="Update background check"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-candidate" modeLabel="Update candidate"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-contact" modeLabel="Update contact"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-contact-log" modeLabel="Update contact log"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-employee" modeLabel="Update employee"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-event" modeLabel="Update event"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-interview" modeLabel="Update interview"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-offer" modeLabel="Update offer"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-reference" modeLabel="Update reference"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-requisition" modeLabel="Update requisition"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-task" modeLabel="Update task"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/update-user" modeLabel="Update user"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/upsert-candidate-to-requisitions" modeLabel="Upsert candidate to requisitions"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/upsert-department" modeLabel="Upsert department"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/upsert-employee" modeLabel="Upsert employee"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/upsert-location" modeLabel="Upsert location"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/upsert-region" modeLabel="Upsert region"></mode>
+          <mode modeId="http://www.mulesoft.org/schema/mule/taleo/upsert-rolling-entity" modeLabel="Upsert rolling entity"></mode>
+        </modeSwitch>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Account" icon="icons/small/taleo-connector-24x16.png" localId="create-account" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/account" caption="Account Reference" required="false" javaType="org.mule.modules.taleo.model.AccountBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Attachment" icon="icons/small/taleo-connector-24x16.png" localId="create-attachment" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="Candidate Id." required="true" javaType="long"></integer>
+        <string name="attachmentDescription" caption="Attachment Description" description="Attachment description." required="true" javaType="java.lang.String"></string>
+        <string name="attachmentName" caption="Attachment Name" description="Attachment name." required="true" javaType="java.lang.String"></string>
+        <string name="contentType" caption="Content Type" description="Content Type." required="true" javaType="java.lang.String"></string>
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/binary-resume" caption="Binary Resume Reference" required="false" javaType="org.mule.modules.taleo.model.ByteArr"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Background Check" icon="icons/small/taleo-connector-24x16.png" localId="create-background-check" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/background-check" caption="Background Check Reference" required="false" javaType="org.mule.modules.taleo.model.BackgroundCheckBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Candidate" icon="icons/small/taleo-connector-24x16.png" localId="create-candidate" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/candidate" caption="Candidate Reference" required="false" javaType="org.mule.modules.taleo.model.CandidateBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Contact" icon="icons/small/taleo-connector-24x16.png" localId="create-contact" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/contact" caption="Contact Reference" required="false" javaType="org.mule.modules.taleo.model.ContactBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Contact Log" icon="icons/small/taleo-connector-24x16.png" localId="create-contact-log" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/contact-log" caption="Contact Log Reference" required="false" javaType="org.mule.modules.taleo.model.ContactLogBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Department" icon="icons/small/taleo-connector-24x16.png" localId="create-department" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/department" caption="Department Reference" required="false" javaType="org.mule.modules.taleo.model.DepartmentBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Email Log" icon="icons/small/taleo-connector-24x16.png" localId="create-email-log" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="body" caption="Body" description="Body of email message." required="true" javaType="java.lang.String"></string>
+        <string name="email" caption="Email" description="Email address of candidate, contact, or user (must already exist)." required="true" javaType="java.lang.String"></string>
+        <string name="subject" caption="Subject" description="Subject of email message." required="true" javaType="java.lang.String"></string>
+        <string name="date-ref" caption="Date Reference" description="Calendar of email message." required="true" javaType="java.util.GregorianCalendar"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Email Sent Log" icon="icons/small/taleo-connector-24x16.png" localId="create-email-sent-log" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="body" caption="Body" description="Body of email message." required="true" javaType="java.lang.String"></string>
+        <string name="email" caption="Email" description="Email address of candidate, contact, or user (must already exist)." required="true" javaType="java.lang.String"></string>
+        <string name="subject" caption="Subject" description="Subject of email message." required="true" javaType="java.lang.String"></string>
+        <string name="date-ref" caption="Date Reference" description="Calendar of email message." required="true" javaType="java.util.GregorianCalendar"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Employee" icon="icons/small/taleo-connector-24x16.png" localId="create-employee" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/employee" caption="Employee Reference" required="false" javaType="org.mule.modules.taleo.model.EmployeeBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Entity Attachment" icon="icons/small/taleo-connector-24x16.png" localId="create-entity-attachment" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="entityType" caption="Entity Type" description="Entity type." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="entityId" caption="Entity Id" description="ID of associated entity." required="true" javaType="long"></integer>
+        <string name="contentType" caption="Content Type" description="Content Type." required="true" javaType="java.lang.String"></string>
+        <string name="description" caption="Description" description="Description of the file." required="true" javaType="java.lang.String"></string>
+        <string name="fileName" caption="File Name" description="Binary File Name." required="true" javaType="java.lang.String"></string>
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/data" caption="Data Reference" required="false" javaType="org.mule.modules.taleo.model.ByteArr"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Event" icon="icons/small/taleo-connector-24x16.png" localId="create-event" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/event" caption="Event Reference" required="false" javaType="org.mule.modules.taleo.model.CalendarEventBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Interview" icon="icons/small/taleo-connector-24x16.png" localId="create-interview" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/interview" caption="Interview Reference" required="false" javaType="org.mule.modules.taleo.model.InterviewBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Create Link" icon="icons/small/taleo-connector-24x16.png" localId="create-link" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="entityType1" caption="Entity Type1" description="EntityType as provided in above list." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="entityId1" caption="Entity Id1" description="ID of entity type 1." required="true" javaType="long"></integer>
+        <string name="entityType2" caption="Entity Type2" description="EntityType as provided in above list." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="entityId2" caption="Entity Id2" description="ID of entity type 2." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Location" icon="icons/small/taleo-connector-24x16.png" localId="create-location" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/location" caption="Location Reference" required="false" javaType="org.mule.modules.taleo.model.LocationBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Offer" icon="icons/small/taleo-connector-24x16.png" localId="create-offer" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/offer" caption="Offer Reference" required="false" javaType="org.mule.modules.taleo.model.OfferBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Reference" icon="icons/small/taleo-connector-24x16.png" localId="create-reference" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/reference" caption="Reference Reference" required="false" javaType="org.mule.modules.taleo.model.ReferenceBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Region" icon="icons/small/taleo-connector-24x16.png" localId="create-region" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/region" caption="Region Reference" required="false" javaType="org.mule.modules.taleo.model.RegionBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Requisition" icon="icons/small/taleo-connector-24x16.png" localId="create-requisition" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/requisition" caption="Requisition Reference" required="false" javaType="org.mule.modules.taleo.model.RequisitionBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Requisition Template" icon="icons/small/taleo-connector-24x16.png" localId="create-requisition-template" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/requisition" caption="Requisition Reference" required="false" javaType="org.mule.modules.taleo.model.RequisitionBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create Task" icon="icons/small/taleo-connector-24x16.png" localId="create-task" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/task" caption="Task Reference" required="false" javaType="org.mule.modules.taleo.model.TaskBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create User" icon="icons/small/taleo-connector-24x16.png" localId="create-user" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/user" caption="User Reference" required="false" javaType="org.mule.modules.taleo.model.UserBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Create User With Permissions" icon="icons/small/taleo-connector-24x16.png" localId="create-user-with-permissions" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/user" caption="User Reference" required="true" javaType="org.mule.modules.taleo.model.UserBean"></childElement>
+        <element-controller-map mapName="additional-entities" localName="create-user-with-permissions-additional-entities" itemName="additional-entity" defaultValue="#[payload]" caption="Additional Entities" description="A map containing: approver (Boolean) offerAppr (Boolean) reviewManager(Boolean) reviewApprover(Boolean)." required="false" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;"></element-controller-map>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Account" icon="icons/small/taleo-connector-24x16.png" localId="delete-account" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="accountId" caption="Account Id" description="￼￼ID of Account." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Attachment" icon="icons/small/taleo-connector-24x16.png" localId="delete-attachment" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="attachmentId" caption="Attachment Id" description="ID of attachment." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Background Check" icon="icons/small/taleo-connector-24x16.png" localId="delete-background-check" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="backgroundCheckId" caption="Background Check Id" description="ID of Background Check." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Candidate" icon="icons/small/taleo-connector-24x16.png" localId="delete-candidate" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of Candidate." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Contact" icon="icons/small/taleo-connector-24x16.png" localId="delete-contact" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="contactId" caption="Contact Id" description="ID of contact." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Contact Log" icon="icons/small/taleo-connector-24x16.png" localId="delete-contact-log" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="contactLogId" caption="Contact Log Id" description="ID of contact log." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Department" icon="icons/small/taleo-connector-24x16.png" localId="delete-department" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="departmentId" caption="Department Id" description="ID of department." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Employee" icon="icons/small/taleo-connector-24x16.png" localId="delete-employee" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="employeeId" caption="Employee Id" description="ID of Employee." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Employee By Number" icon="icons/small/taleo-connector-24x16.png" localId="delete-employee-by-number" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="employeeNumber" caption="Employee Number" description="Number of Employee." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Event" icon="icons/small/taleo-connector-24x16.png" localId="delete-event" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="eventId" caption="Event Id" description="ID of Event." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Interview" icon="icons/small/taleo-connector-24x16.png" localId="delete-interview" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="interviewId" caption="Interview Id" description="ID of interview." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Location" icon="icons/small/taleo-connector-24x16.png" localId="delete-location" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="locationId" caption="Location Id" description="ID of Location." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Offer" icon="icons/small/taleo-connector-24x16.png" localId="delete-offer" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="offerId" caption="Offer Id" description="ID of Offer." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Reference" icon="icons/small/taleo-connector-24x16.png" localId="delete-reference" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="referenceId" caption="Reference Id" description="ID of Reference." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Region" icon="icons/small/taleo-connector-24x16.png" localId="delete-region" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="regionId" caption="Region Id" description="ID of Region." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Requisition" icon="icons/small/taleo-connector-24x16.png" localId="delete-requisition" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="ID of requisition." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Rolling Entity" icon="icons/small/taleo-connector-24x16.png" localId="delete-rolling-entity" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="rollingEntityId" caption="Rolling Entity Id" description="ID of rolling entity." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete Task" icon="icons/small/taleo-connector-24x16.png" localId="delete-task" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="taskId" caption="Task Id" description="ID of Task." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Delete User" icon="icons/small/taleo-connector-24x16.png" localId="delete-user" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="userId" caption="User Id" description="ID of User." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.AccountBean" caption="Get Account By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-account-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="accountId" caption="Account Id" description="ID of Account." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.HistoryBeanArr" caption="Get Account History" icon="icons/small/taleo-connector-24x16.png" localId="get-account-history" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="accountId" caption="Account Id" description="ID of Account." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Associated Users" icon="icons/small/taleo-connector-24x16.png" localId="get-associated-users" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="Requisition ID." required="true" javaType="long"></integer>
+        <string name="association" caption="Association" description="Association Values Picklist of Association Values: ‘O’ = Owner ‘A’ = approvers (in order) ‘F’ = offer approvers (in order) ‘V’ = agencies." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.AttachmentBean" caption="Get Attachment" icon="icons/small/taleo-connector-24x16.png" localId="get-attachment" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="attachmentId" caption="Attachment Id" description="ID of the attachment." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.ByteArr" caption="Get Attachment Data" icon="icons/small/taleo-connector-24x16.png" localId="get-attachment-data" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="attachmentId" caption="Attachment Id" description="ID of attachment." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Attachments" icon="icons/small/taleo-connector-24x16.png" localId="get-attachments" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of Candidate." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.BackgroundCheckBean" caption="Get Background Check By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-background-check-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="backgroundCheckId" caption="Background Check Id" description="ID of Background Check." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Background Checks By Candidate" icon="icons/small/taleo-connector-24x16.png" localId="get-background-checks-by-candidate" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.ByteArr" caption="Get Binary Offer" icon="icons/small/taleo-connector-24x16.png" localId="get-binary-offer" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="offerId" caption="Offer Id" description="ID of offer instance." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.ByteArr" caption="Get Binary Resume" icon="icons/small/taleo-connector-24x16.png" localId="get-binary-resume" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" caption="Get Cand Req Status" icon="icons/small/taleo-connector-24x16.png" localId="get-cand-req-status" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+        <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="ID of requisition." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.CandidateBean" caption="Get Candidate By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-candidate-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of Candidate." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.CandidateDetailsBean" caption="Get Candidate Details By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-candidate-details-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+        <boolean defaultValue="true" name="includeAttachments" caption="Include Attachments" description="True/False to include or not this information." supportsExpressions="true" required="false" javaType="boolean"></boolean>
+        <boolean defaultValue="true" name="includeHistory" caption="Include History" description="True/False to include or not this information." supportsExpressions="true" required="false" javaType="boolean"></boolean>
+        <boolean defaultValue="true" name="includeInterviews" caption="Include Interviews" description="True/False to include or not this information." supportsExpressions="true" required="false" javaType="boolean"></boolean>
+        <boolean defaultValue="true" name="includeOffers" caption="Include Offers" description="True/False to include or not this information." supportsExpressions="true" required="false" javaType="boolean"></boolean>
+        <boolean defaultValue="true" name="includeReferences" caption="Include References" description="True/False to include or not this information." supportsExpressions="true" required="false" javaType="boolean"></boolean>
+        <boolean defaultValue="true" name="includeRequisitions" caption="Include Requisitions" description="True/False to include or not this information." supportsExpressions="true" required="false" javaType="boolean"></boolean>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.HistoryBeanArr" caption="Get Candidate History" icon="icons/small/taleo-connector-24x16.png" localId="get-candidate-history" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of Candidate." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.WorkHistoryArr" caption="Get Candidate Work History" icon="icons/small/taleo-connector-24x16.png" localId="get-candidate-work-history" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Candidates By Requisition" icon="icons/small/taleo-connector-24x16.png" localId="get-candidates-by-requisition" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="Requisition ID." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.ContactBean" caption="Get Contact By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-contact-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="contactId" caption="Contact Id" description="ID of contact." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.HistoryBeanArr" caption="Get Contact History" icon="icons/small/taleo-connector-24x16.png" localId="get-contact-history" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="contactId" caption="Contact Id" description="ID of contact." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.ContactLogBean" caption="Get Contact Log By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-contact-log-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="contactLogId" caption="Contact Log Id" description="ID of contact log." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Contact Logs By Entity" icon="icons/small/taleo-connector-24x16.png" localId="get-contact-logs-by-entity" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="entityType" caption="Entity Type" description="Type of related entity: ACCT = accounts CAND = candidates EMPL = employees REQU = requisitions WORK = users." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="entityId" caption="Entity Id" description="ID of associated entity." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.DepartmentBean" caption="Get Department By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-department-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="departmentId" caption="Department Id" description="ID of department." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.DepartmentBean" caption="Get Department By Name" icon="icons/small/taleo-connector-24x16.png" localId="get-department-by-name" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="departmentName" caption="Department Name" description="Name of the department." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.DepartmentArr" caption="Get Departments" icon="icons/small/taleo-connector-24x16.png" localId="get-departments" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General."></attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.EmployeeBean" caption="Get Employee By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-employee-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="employeeId" caption="Employee Id" description="ID of Employee." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.EmployeeBean" caption="Get Employee By Number" icon="icons/small/taleo-connector-24x16.png" localId="get-employee-by-number" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="employeeNumber" caption="Employee Number" description="Defined Employee Number." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" caption="Get Enabled Services" icon="icons/small/taleo-connector-24x16.png" localId="get-enabled-services" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General."></attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Entity Attachments" icon="icons/small/taleo-connector-24x16.png" localId="get-entity-attachments" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="entityType" caption="Entity Type" description="Entity Type." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="entityId" caption="Entity Id" description="ID of associated entity." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Event By Entity" icon="icons/small/taleo-connector-24x16.png" localId="get-event-by-entity" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="entityType" caption="Entity Type" description="Type of related entity: ACCT = accounts CAND = candidates EMPL = employees REQU = requisitions WORK = users." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="entityId" caption="Entity Id" description="ID of associated entity." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.CalendarEventBean" caption="Get Event By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-event-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="eventId" caption="Event Id" description="ID of Event instance." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.InterviewBean" caption="Get Interview By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-interview-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="interviewId" caption="Interview Id" description="ID of interview instance." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Interviews By Candidate" icon="icons/small/taleo-connector-24x16.png" localId="get-interviews-by-candidate" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LocationBean" caption="Get Location By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-location-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="locationId" caption="Location Id" description="ID of location." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LocationBean" caption="Get Location By Name" icon="icons/small/taleo-connector-24x16.png" localId="get-location-by-name" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="locationName" caption="Location Name" description="Name of Location." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LocationArr" caption="Get Locations" icon="icons/small/taleo-connector-24x16.png" localId="get-locations" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General."></attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" caption="Get Login Token" icon="icons/small/taleo-connector-24x16.png" localId="get-login-token" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="sessionId" caption="Session Id" description="Session ID." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LookupArr" caption="Get Lookup" icon="icons/small/taleo-connector-24x16.png" localId="get-lookup" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="fieldName" caption="Field Name" description="Field name." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.MetadataArr" caption="Get Metadata" icon="icons/small/taleo-connector-24x16.png" localId="get-metadata" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <enum allowsCustom="true" name="entityType" caption="Entity Type" description="￼￼￼Type of related entity: ACCT = accounts CAND = candidates CTCT = contacts EMPL = employees REQU = requisitions WORK = users." supportsExpressions="true" required="true" javaType="org.mule.modules.taleo.api.EntityTypeEnum">
+          <option value="ACCT"></option>
+          <option value="CAND"></option>
+          <option value="CTCT"></option>
+          <option value="EMPL"></option>
+          <option value="REQU"></option>
+          <option value="WORK"></option>
+        </enum>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.OfferBean" caption="Get Offer By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-offer-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="offerId" caption="Offer Id" description="ID of offer instance." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Offers" icon="icons/small/taleo-connector-24x16.png" localId="get-offers" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Public Events" icon="icons/small/taleo-connector-24x16.png" localId="get-public-events" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="startDate-ref" caption="Start Date Reference" description="Start of start date interval." required="true" javaType="java.util.GregorianCalendar"></string>
+        <string name="endDate-ref" caption="End Date Reference" description="End of start date interval." required="true" javaType="java.util.GregorianCalendar"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.ReferenceBean" caption="Get Reference By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-reference-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="referenceId" caption="Reference Id" description="ID of Reference Instance." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get References By Candidate" icon="icons/small/taleo-connector-24x16.png" localId="get-references-by-candidate" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.RegionBean" caption="Get Region By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-region-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="regionId" caption="Region Id" description="ID of Region." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.RegionBean" caption="Get Region By Name" icon="icons/small/taleo-connector-24x16.png" localId="get-region-by-name" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="regionName" caption="Region Name" description="Name of Region." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.RegionArr" caption="Get Regions" icon="icons/small/taleo-connector-24x16.png" localId="get-regions" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General."></attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.RequisitionBean" caption="Get Requisition By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-requisition-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="ID of requisition." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.HistoryBeanArr" caption="Get Requisition History" icon="icons/small/taleo-connector-24x16.png" localId="get-requisition-history" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="ID of Requisition." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Requisitions" icon="icons/small/taleo-connector-24x16.png" localId="get-requisitions" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.FlexRollingEntityBeanArr" caption="Get Rolling Entities" icon="icons/small/taleo-connector-24x16.png" localId="get-rolling-entities" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="entityType" caption="Entity Type" description="Acceptable Value : CAND." required="true" javaType="java.lang.String"></string>
+        <string name="rollingEntityType" caption="Rolling Entity Type" description="Acceptable Values: WORK_HISTORY RESIDENCE_HISTORY EDUCATION REFERENCES CERTIFICATES_LICENCES ." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="entityId" caption="Entity Id" description="Candidate ID." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" caption="Get System Props" icon="icons/small/taleo-connector-24x16.png" localId="get-system-props" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General."></attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Task By Entity" icon="icons/small/taleo-connector-24x16.png" localId="get-task-by-entity" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="entityType" caption="Entity Type" description="Type of related entity: ACCT = accounts CAND = candidates EMPL = employees REQU = requisitions WORK = users." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="entityId" caption="Entity Id" description="ID of associated entity." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.TaskBean" caption="Get Task By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-task-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="taskId" caption="Task Id" description="ID of Task instance." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.LongArr" caption="Get Task By User" icon="icons/small/taleo-connector-24x16.png" localId="get-task-by-user" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="userId" caption="User Id" description="User ID." required="true" javaType="long"></integer>
+        <string name="startDate-ref" caption="Start Date Reference" description="StartDate interval for due items." required="true" javaType="java.util.GregorianCalendar"></string>
+        <string name="endDate-ref" caption="End Date Reference" description="EndDate interval for due items." required="true" javaType="java.util.GregorianCalendar"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" caption="Get Url" icon="icons/small/taleo-connector-24x16.png" localId="get-url" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="companyCode" caption="Company Code" description="Company Code of Taleo Customer." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.UserBean" caption="Get User By Id" icon="icons/small/taleo-connector-24x16.png" localId="get-user-by-id" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="userId" caption="User Id" description="User ID." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.HistoryBeanArr" caption="Get User History" icon="icons/small/taleo-connector-24x16.png" localId="get-user-history" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="userId" caption="User Id" description="ID of User." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" caption="Login Partner" icon="icons/small/taleo-connector-24x16.png" localId="login-partner" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="orgCode" caption="Org Code" description="Organization code." required="true" javaType="java.lang.String"></string>
+        <string name="partnerCode" caption="Partner Code" description="Partner Code." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="currentTimeMillis" caption="Current Time Millis" description="Time." required="true" javaType="long"></integer>
+        <string name="digest" caption="Digest" description="Digest." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" caption="Parse Resume" icon="icons/small/taleo-connector-24x16.png" localId="parse-resume" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/binary-attachment" caption="Binary Attachment Reference" required="false" javaType="org.mule.modules.taleo.model.ByteArr"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.CandidateInsertResultBean" caption="Parse Resume Into Candidate" icon="icons/small/taleo-connector-24x16.png" localId="parse-resume-into-candidate" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/binary-attachment" caption="Binary Attachment Reference" required="false" javaType="org.mule.modules.taleo.model.ByteArr"></childElement>
+        <string name="fileName" caption="File Name" description="Name of the resume file including extension. The following MIME types are acceptable: Text = text/plain html = text/html RTF = text/richtext Word = application/msword DocX = application/vnd.openxmlformats- officedocument.wordprocessingml.document PDF = application/pdf." required="true" javaType="java.lang.String"></string>
+        <string name="referredBy" caption="Referred By" description="Name of referral source." required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Post Requisition" icon="icons/small/taleo-connector-24x16.png" localId="post-requisition" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="ID of Requisition." required="true" javaType="long"></integer>
+        <integer min="0" step="1" name="posterId" caption="Poster Id" description="ID of the posting location, for example a specific Taleo Business Edition Career Website (picklist value ID #)." required="true" javaType="long"></integer>
+        <integer min="0" step="1" name="formVersion" caption="Form Version" description="￼ID of the required application form to be used within the posting location (picklist value ID #)." required="true" javaType="int"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Remove Associated User" icon="icons/small/taleo-connector-24x16.png" localId="remove-associated-user" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="Requisition ID." required="true" javaType="long"></integer>
+        <string name="association" caption="Association" description="Picklist of Association Values: ‘O’ = Owner ‘A’ = approvers (in order) ‘F’ = offer approvers." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="userId" caption="User Id" description="ID of User." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Remove Candidate" icon="icons/small/taleo-connector-24x16.png" localId="remove-candidate" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+        <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="ID of requisition." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Remove Link" icon="icons/small/taleo-connector-24x16.png" localId="remove-link" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="entityType1" caption="Entity Type1" description="EntityType as provided in above list." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="entityId1" caption="Entity Id1" description="ID of entity type 1." required="true" javaType="long"></integer>
+        <string name="entityType2" caption="Entity Type2" description="EntityType as provided in above list." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="entityId2" caption="Entity Id2" description="ID of entity type 2." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.SearchResultArr" caption="Search Account" icon="icons/small/taleo-connector-24x16.png" localId="search-account" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <element-controller-map mapName="search-params" localName="search-account-search-params" itemName="search-param" defaultValue="#[payload]" caption="Search Params" description="Map of search parameters always contains:key: name of field to search as a string. value: search parameter as string. For more details check Taleo Business Guide." required="false" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;"></element-controller-map>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.SearchResultArr" caption="Search Candidate" icon="icons/small/taleo-connector-24x16.png" localId="search-candidate" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <element-controller-map mapName="search-params" localName="search-candidate-search-params" itemName="search-param" defaultValue="#[payload]" caption="Search Params" description="Map of search parameters always contains:key: name of field to search as a string. value: search parameter as string. For more details check Taleo Business Guide." required="false" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;"></element-controller-map>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.SearchResultArr" caption="Search Contact" icon="icons/small/taleo-connector-24x16.png" localId="search-contact" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <element-controller-map mapName="search-params" localName="search-contact-search-params" itemName="search-param" defaultValue="#[payload]" caption="Search Params" description="Map of search parameters always contains:key: name of field to search as a string. value: search parameter as string. For more details check Taleo Business Guide." required="false" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;"></element-controller-map>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.SearchResultArr" caption="Search Employee" icon="icons/small/taleo-connector-24x16.png" localId="search-employee" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <element-controller-map mapName="search-params" localName="search-employee-search-params" itemName="search-param" defaultValue="#[payload]" caption="Search Params" description="Map of search parameters always contains:key: name of field to search as a string. value: search parameter as string. For more details check Taleo Business Guide." required="false" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;"></element-controller-map>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.SearchResultArr" caption="Search Requisition" icon="icons/small/taleo-connector-24x16.png" localId="search-requisition" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <element-controller-map mapName="search-params" localName="search-requisition-search-params" itemName="search-param" defaultValue="#[payload]" caption="Search Params" description="Map of search parameters always contains:key: name of field to search as a string. value: search parameter as string. For more details check Taleo Business Guide." required="false" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;"></element-controller-map>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.modules.taleo.model.SearchResultArr" caption="Search User" icon="icons/small/taleo-connector-24x16.png" localId="search-user" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <element-controller-map mapName="search-params" localName="search-user-search-params" itemName="search-param" defaultValue="#[payload]" caption="Search Params" description="Map of search parameters always contains:key: name of field to search as a string. value: search parameter as string. For more details check Taleo Business Guide." required="false" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;"></element-controller-map>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Set Associated User" icon="icons/small/taleo-connector-24x16.png" localId="set-associated-user" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="Requisition ID." required="true" javaType="long"></integer>
+        <string name="association" caption="Association" description="Picklist of Association Values: ‘O’ = Owner ‘A’ = approvers (in order) ‘F’ = offer approvers (in order) ‘V’ = agencies." required="true" javaType="java.lang.String"></string>
+        <integer min="0" step="1" name="userId" caption="User Id" description="User ID." required="true" javaType="long"></integer>
+        <integer min="0" step="1" name="userSequenceNumber" caption="User Sequence Number" description="￼Sequence number of user to association value." required="true" javaType="int"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Set Binary Offer" icon="icons/small/taleo-connector-24x16.png" localId="set-binary-offer" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="offerId" caption="Offer Id" description="ID of Offer instance." required="true" javaType="long"></integer>
+        <string name="fileName" caption="File Name" description="Filename of binary file with defined file extension. The following MIME types are acceptable: Text = text/plain html = text/html RTF = text/richtext Word = application/msword DocX = application/vnd.openxmlformats- officedocument.wordprocessingml.document PDF = application/pdf." required="true" javaType="java.lang.String"></string>
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/content" caption="Content Reference" required="false" javaType="org.mule.modules.taleo.model.ByteArr"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Set Binary Resume" icon="icons/small/taleo-connector-24x16.png" localId="set-binary-resume" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+        <string name="fileName" caption="File Name" description="Filename of binary file with defined file extension. The following MIME types are acceptable:  Text = text/plain html = text/html RTF = text/richtext Word = application/msword DocX = application/vnd.openxmlformats- officedocument.wordprocessingml.document PDF = application/pdf ." required="true" javaType="java.lang.String"></string>
+        <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/binary-attachment" caption="Binary Attachment Reference" required="true" javaType="org.mule.modules.taleo.model.ByteArr"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Submit Candidate" icon="icons/small/taleo-connector-24x16.png" localId="submit-candidate" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+        <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/requisition-ids" caption="Requisition Ids Reference" required="true" javaType="org.mule.modules.taleo.model.LongArr"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Unpost Requisition" icon="icons/small/taleo-connector-24x16.png" localId="unpost-requisition" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="ID of requisition." required="true" javaType="long"></integer>
+        <integer min="0" step="1" name="posterId" caption="Poster Id" description="ID of the posting location, for example a specific Taleo Business Edition Career Website (picklist value ID #)." required="true" javaType="long"></integer>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Account" icon="icons/small/taleo-connector-24x16.png" localId="update-account" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/account" caption="Account Reference" required="false" javaType="org.mule.modules.taleo.model.AccountBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Attachment" icon="icons/small/taleo-connector-24x16.png" localId="update-attachment" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="attachmentId" caption="Attachment Id" description="Attachment ID." required="true" javaType="long"></integer>
+        <string name="attachmentDescription" caption="Attachment Description" description="Attachment Description." required="true" javaType="java.lang.String"></string>
+        <string name="attachmentName" caption="Attachment Name" description="Attachment Name." required="true" javaType="java.lang.String"></string>
+        <string name="contentType" caption="Content Type" description="Content Type." required="true" javaType="java.lang.String"></string>
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/binary-resume" caption="Binary Resume Reference" required="false" javaType="org.mule.modules.taleo.model.ByteArr"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Background Check" icon="icons/small/taleo-connector-24x16.png" localId="update-background-check" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/background-check" caption="Background Check Reference" required="false" javaType="org.mule.modules.taleo.model.BackgroundCheckBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Candidate" icon="icons/small/taleo-connector-24x16.png" localId="update-candidate" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/candidate" caption="Candidate Reference" required="false" javaType="org.mule.modules.taleo.model.CandidateBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Contact" icon="icons/small/taleo-connector-24x16.png" localId="update-contact" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/contact" caption="Contact Reference" required="false" javaType="org.mule.modules.taleo.model.ContactBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Contact Log" icon="icons/small/taleo-connector-24x16.png" localId="update-contact-log" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/contact-log" caption="Contact Log Reference" required="false" javaType="org.mule.modules.taleo.model.ContactLogBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Employee" icon="icons/small/taleo-connector-24x16.png" localId="update-employee" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/employee" caption="Employee Reference" required="false" javaType="org.mule.modules.taleo.model.EmployeeBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Event" icon="icons/small/taleo-connector-24x16.png" localId="update-event" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/event" caption="Event Reference" required="false" javaType="org.mule.modules.taleo.model.CalendarEventBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Interview" icon="icons/small/taleo-connector-24x16.png" localId="update-interview" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/interview" caption="Interview Reference" required="false" javaType="org.mule.modules.taleo.model.InterviewBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Offer" icon="icons/small/taleo-connector-24x16.png" localId="update-offer" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/offer" caption="Offer Reference" required="false" javaType="org.mule.modules.taleo.model.OfferBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Reference" icon="icons/small/taleo-connector-24x16.png" localId="update-reference" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/reference" caption="Reference Reference" required="false" javaType="org.mule.modules.taleo.model.ReferenceBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Requisition" icon="icons/small/taleo-connector-24x16.png" localId="update-requisition" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/requisition" caption="Requisition Reference" required="false" javaType="org.mule.modules.taleo.model.RequisitionBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update Task" icon="icons/small/taleo-connector-24x16.png" localId="update-task" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/task" caption="Task Reference" required="false" javaType="org.mule.modules.taleo.model.TaskBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Update User" icon="icons/small/taleo-connector-24x16.png" localId="update-user" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/user" caption="User Reference" required="false" javaType="org.mule.modules.taleo.model.UserBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" caption="Upsert Candidate To Requisitions" icon="icons/small/taleo-connector-24x16.png" localId="upsert-candidate-to-requisitions" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="ID of candidate." required="true" javaType="long"></integer>
+        <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/requisition-ids" caption="Requisition Ids Reference" required="true" javaType="org.mule.modules.taleo.model.LongArr"></childElement>
+        <integer min="0" step="1" name="statusId" caption="Status Id" description="ID of status or requisition-specific status ID." required="true" javaType="long"></integer>
+        <integer min="0" step="1" name="reasonId" caption="Reason Id" description="ID of reasonRej or requisition rejected status ID." required="true" javaType="long"></integer>
+        <boolean defaultValue="false" name="doRanking" caption="Do Ranking" description="Forces the system to recalculate the candidate’s rank for that requisition on upsert." supportsExpressions="true" required="false" javaType="java.lang.Boolean"></boolean>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Upsert Department" icon="icons/small/taleo-connector-24x16.png" localId="upsert-department" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/department" caption="Department Reference" required="false" javaType="org.mule.modules.taleo.model.DepartmentBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Upsert Employee" icon="icons/small/taleo-connector-24x16.png" localId="upsert-employee" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="employeeNumber" caption="Employee Number" description="Defined Employee Number." required="true" javaType="java.lang.String"></string>
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/employee" caption="Employee Reference" required="false" javaType="org.mule.modules.taleo.model.EmployeeBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Upsert Location" icon="icons/small/taleo-connector-24x16.png" localId="upsert-location" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/location" caption="Location Reference" required="false" javaType="org.mule.modules.taleo.model.LocationBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Upsert Region" icon="icons/small/taleo-connector-24x16.png" localId="upsert-region" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/region" caption="Region Reference" required="false" javaType="org.mule.modules.taleo.model.RegionBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="long" caption="Upsert Rolling Entity" icon="icons/small/taleo-connector-24x16.png" localId="upsert-rolling-entity" image="icons/large/taleo-connector-48x32.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/taleo/abstractTaleoConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <childElement inplace="true" allowMultiple="false" defaultValue="#[payload]" name="http://www.mulesoft.org/schema/mule/taleo/rolling-entity-bean" caption="Rolling Entity Bean Reference" required="false" javaType="org.mule.modules.taleo.model.FlexRollingEntityBean"></childElement>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <nested xmlname="account" caption="" description="" localId="account" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Account Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="address" caption="Address" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="city" caption="City" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="country" caption="Country" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="description" caption="Description" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="fax" caption="Fax" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="industry" caption="Industry" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="name" caption="Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="parentAccountId" caption="Parent Account Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="phone" caption="Phone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="state" caption="State" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="type" caption="Type" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="webSite" caption="Web Site" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="zipCode" caption="Zip Code" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+  </nested>
+  <nested xmlname="additional-entities" caption="" description="" localId="additional-entities" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Additional Entities Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <element-controller-listOfPojo listName="item" localName="configurable-item" itemName="item" caption="Item" description="" required="false" controlled="complex" javaType="java.util.List&lt;org.mule.modules.taleo.model.MapItem&gt;"></element-controller-listOfPojo>
+  </nested>
+  <nested xmlname="additional-properties" caption="" description="" localId="additional-properties" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Additional Properties Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <element-controller-listOfPojo listName="item" localName="configurable-item" itemName="item" caption="Item" description="" required="false" controlled="complex" javaType="java.util.List&lt;org.mule.modules.taleo.model.MapItem&gt;"></element-controller-listOfPojo>
+  </nested>
+  <nested xmlname="array" caption="" description="" localId="array" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Array Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <element-controller-list listName="item" localName="configurable-item" itemName="item" caption="Item" description="" required="false" controlled="complex" javaType="java.util.List&lt;java.lang.Long&gt;"></element-controller-list>
+  </nested>
+  <nested xmlname="assigned-to" caption="" description="" localId="assigned-to" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Assigned To Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <element-controller-listOfPojo listName="item" localName="configurable-item" itemName="item" caption="Item" description="" required="false" controlled="complex" javaType="java.util.List&lt;org.mule.modules.taleo.model.ParticipantBean&gt;"></element-controller-listOfPojo>
+  </nested>
+  <nested xmlname="associated-locations" caption="" description="" localId="associated-locations" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Associated Locations Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <element-controller-list listName="item" localName="configurable-item" itemName="item" caption="Item" description="" required="false" controlled="complex" javaType="java.util.List&lt;java.lang.String&gt;"></element-controller-list>
+  </nested>
+  <nested xmlname="associated-users" caption="" description="" localId="associated-users" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Associated Users Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <element-controller-list listName="item" localName="configurable-item" itemName="item" caption="Item" description="" required="false" controlled="complex" javaType="java.util.List&lt;java.lang.Long&gt;"></element-controller-list>
+  </nested>
+  <nested xmlname="attributes" caption="" description="" localId="attributes" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Attributes Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <element-controller-listOfPojo listName="item" localName="configurable-item" itemName="item" caption="Item" description="" required="false" controlled="complex" javaType="java.util.List&lt;org.mule.modules.taleo.model.FlexFieldBean&gt;"></element-controller-listOfPojo>
+  </nested>
+  <nested xmlname="background-check" caption="" description="" localId="background-check" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Background Check Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="checkerEmail" caption="Checker Email" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="checkerName" caption="Checker Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="checkerPhone" caption="Checker Phone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="comments" caption="Comments" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="creator" caption="Creator" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+  </nested>
+  <nested xmlname="binary-attachment" caption="" description="" localId="binary-attachment" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Binary Attachment Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="array-ref" caption="Array Reference" description="" required="false" controlled="complex" javaType="byte[]"></string>
+  </nested>
+  <nested xmlname="binary-resume" caption="" description="" localId="binary-resume" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Binary Resume Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="array-ref" caption="Array Reference" description="" required="false" controlled="complex" javaType="byte[]"></string>
+  </nested>
+  <nested xmlname="candidate" caption="" description="" localId="candidate" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Candidate Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="address" caption="Address" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="cellPhone" caption="Cell Phone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="city" caption="City" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="country" caption="Country" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="email" caption="Email" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="firstName" caption="First Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="gender" caption="Gender" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="hiredDate-ref" caption="Hired Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="lastName" caption="Last Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="legalStatus" caption="Legal Status" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="middleInitial" caption="Middle Initial" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="password" caption="Password" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="phone" caption="Phone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="race" caption="Race" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="rank" caption="Rank" description="" required="false" controlled="complex" javaType="int"></integer>
+    <string name="reasonRejected" caption="Reason Rejected" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="referredBy" caption="Referred By" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="resumeFileName" caption="Resume File Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="source" caption="Source" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="startDate-ref" caption="Start Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="state" caption="State" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="submittedBy" caption="Submitted By" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="textResume" caption="Text Resume" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="veteran" caption="Veteran" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="zipCode" caption="Zip Code" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+  </nested>
+  <nested xmlname="contact" caption="" description="" localId="contact" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Contact Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <integer min="0" step="1" name="accountId" caption="Account Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="address" caption="Address" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="assistantEmail" caption="Assistant Email" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="assistantName" caption="Assistant Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="assistantPhone" caption="Assistant Phone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="cellPhone" caption="Cell Phone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="city" caption="City" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="contactType" caption="Contact Type" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="country" caption="Country" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="creator" caption="Creator" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="department" caption="Department" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="description" caption="Description" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="email" caption="Email" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="fax" caption="Fax" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="firstName" caption="First Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="lastName" caption="Last Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="phone" caption="Phone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="reportsToId" caption="Reports To Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="state" caption="State" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="title" caption="Title" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="zipCode" caption="Zip Code" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+  </nested>
+  <nested xmlname="contact-log" caption="" description="" localId="contact-log" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Contact Log Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="comments" caption="Comments" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="contactDate-ref" caption="Contact Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="creationDate-ref" caption="Creation Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="creator" caption="Creator" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="entityId" caption="Entity Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="entityType" caption="Entity Type" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="id" caption="Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="lastUpdated-ref" caption="Last Updated Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="subject" caption="Subject" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="typeNo" caption="Type No" description="" required="false" controlled="complex" javaType="int"></integer>
+  </nested>
+  <nested xmlname="content" caption="" description="" localId="content" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Content Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="array-ref" caption="Array Reference" description="" required="false" controlled="complex" javaType="byte[]"></string>
+  </nested>
+  <nested xmlname="data" caption="" description="" localId="data" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Data Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="array-ref" caption="Array Reference" description="" required="false" controlled="complex" javaType="byte[]"></string>
+  </nested>
+  <nested xmlname="default-approvers" caption="" description="" localId="default-approvers" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Default Approvers Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <element-controller-list listName="item" localName="configurable-item" itemName="item" caption="Item" description="" required="false" controlled="complex" javaType="java.util.List&lt;java.lang.Long&gt;"></element-controller-list>
+  </nested>
+  <nested xmlname="department" caption="" description="" localId="department" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Department Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/additional-properties" caption="Additional Properties Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.Map"></childElement>
+    <string name="creationDate-ref" caption="Creation Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <integer min="0" step="1" name="departmentId" caption="Department Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="departmentName" caption="Department Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="lastUpdated-ref" caption="Last Updated Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/associated-users" caption="Associated Users Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.ArrayOfXsdLong"></childElement>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/default-approvers" caption="Default Approvers Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.ArrayOfXsdLong"></childElement>
+  </nested>
+  <nested xmlname="employee" caption="" description="" localId="employee" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Employee Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="employeeNumber" caption="Employee Number" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="email" caption="Email" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="firstName" caption="First Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="middleInitial" caption="Middle Initial" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="lastName" caption="Last Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="cellPhone" caption="Cell Phone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="title" caption="Title" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="hiredDate-ref" caption="Hired Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="startDate-ref" caption="Start Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="race" caption="Race" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="gender" caption="Gender" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <boolean name="lockedFromEws" caption="Locked From Ews" description="" supportsExpressions="true" required="false" controlled="complex" javaType="boolean"></boolean>
+    <integer min="0" step="1" name="reviewManagerId" caption="Review Manager Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <integer min="0" step="1" name="departmentId" caption="Department Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="hierarchyPath" caption="Hierarchy Path" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="managerId" caption="Manager Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <integer min="0" step="1" name="locationId" caption="Location Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="ewsLogin" caption="Ews Login" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="ewsPassword" caption="Ews Password" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="jobTitle" caption="Job Title" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="jobCode" caption="Job Code" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="salaryGrade" caption="Salary Grade" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="salary" caption="Salary" description="" required="false" controlled="complex" javaType="double"></string>
+    <string name="payFrequency" caption="Pay Frequency" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <boolean name="changePswdOnEwsLogin" caption="Change Pswd On Ews Login" description="" supportsExpressions="true" required="false" controlled="complex" javaType="boolean"></boolean>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/additional-entities" caption="Additional Entities Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.Map"></childElement>
+  </nested>
+  <nested xmlname="event" caption="" description="" localId="event" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Event Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="creator" caption="Creator" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="description" caption="Description" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="duration" caption="Duration" description="" required="false" controlled="complex" javaType="long"></integer>
+    <integer min="0" step="1" name="entityId" caption="Entity Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="entityType" caption="Entity Type" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <boolean name="isPrivate" caption="Is Private" description="" supportsExpressions="true" required="false" controlled="complex" javaType="boolean"></boolean>
+    <string name="location" caption="Location" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/participants" caption="Participants Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.ArrayOfParticipantBean"></childElement>
+    <string name="startDate-ref" caption="Start Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="subject" caption="Subject" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+  </nested>
+  <nested xmlname="flex-values" caption="" description="" localId="flex-values" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Flex Values Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <element-controller-listOfPojo listName="item" localName="configurable-item" itemName="item" caption="Item" description="" required="false" controlled="complex" javaType="java.util.List&lt;org.mule.modules.taleo.model.FlexFieldBean&gt;"></element-controller-listOfPojo>
+  </nested>
+  <nested xmlname="interview" caption="" description="" localId="interview" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Interview Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="comments" caption="Comments" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="creator" caption="Creator" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="interviewRoom" caption="Interview Room" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="interviewType" caption="Interview Type" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/participants" caption="Participants Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.ArrayOfParticipantBean"></childElement>
+    <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="startDate-ref" caption="Start Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+  </nested>
+  <nested xmlname="interview-rooms" caption="" description="" localId="interview-rooms" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Interview Rooms Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <element-controller-list listName="item" localName="configurable-item" itemName="item" caption="Item" description="" required="false" controlled="complex" javaType="java.util.List&lt;java.lang.String&gt;"></element-controller-list>
+  </nested>
+  <nested xmlname="location" caption="" description="" localId="location" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Location Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/additional-properties" caption="Additional Properties Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.Map"></childElement>
+    <string name="directions" caption="Directions" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="locationId" caption="Location Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="locationName" caption="Location Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="regionId" caption="Region Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="timeZone" caption="Time Zone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/interview-rooms" caption="Interview Rooms Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.ArrayOfXsdString"></childElement>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/default-approvers" caption="Default Approvers Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.ArrayOfXsdLong"></childElement>
+  </nested>
+  <nested xmlname="offer" caption="" description="" localId="offer" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Offer Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="creator" caption="Creator" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="employmentType" caption="Employment Type" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="expirationDate-ref" caption="Expiration Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="manager" caption="Manager" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="offerFileName" caption="Offer File Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="payRate" caption="Pay Rate" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="requisitionId" caption="Requisition Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="startDate-ref" caption="Start Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="stockOptions" caption="Stock Options" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="title" caption="Title" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+  </nested>
+  <nested xmlname="participants" caption="" description="" localId="participants" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Participants Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <element-controller-listOfPojo listName="item" localName="configurable-item" itemName="item" caption="Item" description="" required="false" controlled="complex" javaType="java.util.List&lt;org.mule.modules.taleo.model.ParticipantBean&gt;"></element-controller-listOfPojo>
+  </nested>
+  <nested xmlname="reference" caption="" description="" localId="reference" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Reference Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <integer min="0" step="1" name="candidateId" caption="Candidate Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="comments" caption="Comments" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="creator" caption="Creator" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="employer" caption="Employer" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="refEmail" caption="Ref Email" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="refName" caption="Ref Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="refPhone" caption="Ref Phone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="refTitle" caption="Ref Title" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="relToCandidate" caption="Rel To Candidate" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+  </nested>
+  <nested xmlname="region" caption="" description="" localId="region" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Region Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/additional-properties" caption="Additional Properties Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.Map"></childElement>
+    <string name="creationDate-ref" caption="Creation Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="lastUpdated-ref" caption="Last Updated Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <integer min="0" step="1" name="regionId" caption="Region Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="regionName" caption="Region Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/associated-locations" caption="Associated Locations Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.ArrayOfXsdString"></childElement>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/associated-users" caption="Associated Users Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.ArrayOfXsdLong"></childElement>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/default-approvers" caption="Default Approvers Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.ArrayOfXsdLong"></childElement>
+  </nested>
+  <nested xmlname="requisition" caption="" description="" localId="requisition" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Requisition Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="city" caption="City" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="description" caption="Description" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="duration" caption="Duration" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="filledDate-ref" caption="Filled Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="jobCategory" caption="Job Category" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="jobCode" caption="Job Code" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="location" caption="Location" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="numOpen" caption="Num Open" description="" required="false" controlled="complex" javaType="int"></integer>
+    <string name="openedDate-ref" caption="Opened Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="payRange" caption="Pay Range" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="state" caption="State" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="title" caption="Title" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+  </nested>
+  <nested xmlname="requisition-ids" caption="" description="" localId="requisition-ids" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Requisition Ids Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/array" caption="Array Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.ArrayOfXsdLong"></childElement>
+  </nested>
+  <nested xmlname="rolling-entity-bean" caption="" description="" localId="rolling-entity-bean" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Rolling Entity Bean Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="entityType" caption="Entity Type" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <integer min="0" step="1" name="entityId" caption="Entity Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="subType" caption="Sub Type" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+  </nested>
+  <nested xmlname="task" caption="" description="" localId="task" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="Task Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <childElement inplace="true" allowMultiple="false" name="http://www.mulesoft.org/schema/mule/taleo/assigned-to" caption="Assigned To Reference" required="false" controlled="complex" javaType="org.mule.modules.taleo.model.ArrayOfParticipantBean"></childElement>
+    <string name="creator" caption="Creator" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="description" caption="Description" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="dueDate-ref" caption="Due Date Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <integer min="0" step="1" name="entityId" caption="Entity Id" description="" required="false" controlled="complex" javaType="long"></integer>
+    <string name="entityType" caption="Entity Type" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="priority" caption="Priority" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="subject" caption="Subject" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+  </nested>
+  <nested xmlname="user" caption="" description="" localId="user" abstract="false">
+    <radioBoolean name="useReference" caption="Reference or expression" description="Provide a reference to a bean or use an expression" fillLine="true"></radioBoolean>
+    <string name="ref" caption="User Reference" description="" controlled="useReference"></string>
+    <radioBoolean name="complex" caption="Define attributes" description="Define this element's attributes" fillLine="true"></radioBoolean>
+    <string name="cellPhone" caption="Cell Phone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="email" caption="Email" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="fax" caption="Fax" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="firstName" caption="First Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="lastLogin-ref" caption="Last Login Reference" description="" required="false" controlled="complex" javaType="javax.xml.datatype.XMLGregorianCalendar"></string>
+    <string name="lastName" caption="Last Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="localeCode" caption="Locale Code" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="location" caption="Location" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="loginName" caption="Login Name" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="manager" caption="Manager" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="middleInitial" caption="Middle Initial" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="phone" caption="Phone" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="role" caption="Role" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="timeZoneId" caption="Time Zone Id" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+    <string name="title" caption="Title" description="" required="false" controlled="complex" javaType="java.lang.String"></string>
+  </nested>
+</namespace>

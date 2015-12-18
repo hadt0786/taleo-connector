@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<repository name='file:/Users/marianoquintela/Documents/ClonedRepos/taleo-connector/target/update-site/ - artifacts' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1'>
+  <properties size='2'>
+    <property name='p2.timestamp' value='1450461900346'/>
+    <property name='p2.compressed' value='false'/>
+  </properties>
+  <mappings size='3'>
+    <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
+    <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
+    <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
+  </mappings>
+  <artifacts size='2'>
+    <artifact classifier='osgi.bundle' id='org.mule.tooling.ui.contribution.taleo.3.4.0' version='2.0.0.201512181504'>
+      <properties size='3'>
+        <property name='artifact.size' value='2883242'/>
+        <property name='download.size' value='2883242'/>
+        <property name='download.md5' value='cebfde1d4576e04abf734946f8d3e6ee'/>
+      </properties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='org.mule.tooling.ui.extension.taleo.3.4.0' version='2.0.0.201512181504'>
+      <properties size='4'>
+        <property name='artifact.size' value='15934'/>
+        <property name='download.size' value='15934'/>
+        <property name='download.md5' value='2abaffc89b89356a3d553cfb00daf338'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+    </artifact>
+  </artifacts>
+</repository>

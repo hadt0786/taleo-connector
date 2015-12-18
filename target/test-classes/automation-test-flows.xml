@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:taleo="http://www.mulesoft.org/schema/mule/taleo"
+      xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+      version="EE-3.4.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:context="http://www.springframework.org/schema/context"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/taleo http://www.mulesoft.org/schema/mule/taleo/current/mule-taleo.xsd">
+
+    <context:property-placeholder location="${TALEO_CREDENTIALS}"/>
+
+    <taleo:config name="Taleo" username="${taleo.username}" password="${taleo.password}"
+                  companyCode="${taleo.companyCode}" doc:name="Taleo">
+        <taleo:connection-pooling-profile initialisationPolicy="INITIALISE_ONE" exhaustedAction="WHEN_EXHAUSTED_GROW"/>
+    </taleo:config>
+
+    <flow name="create-account" doc:name="create-account">
+        <taleo:create-account config-ref="Taleo" doc:name="Create account">
+            <taleo:account ref="#[payload.accountRef]"/>
+        </taleo:create-account>
+    </flow>
+    <flow name="get-account-by-id" doc:name="get-account-by-id">
+        <taleo:get-account-by-id config-ref="Taleo" doc:name="Get account by id" accountId="#[payload.accountId]">
+        </taleo:get-account-by-id>
+    </flow>
+    <flow name="get-account-history" doc:name="get-account-history">
+        <taleo:get-account-history config-ref="Taleo" doc:name="Get account history" accountId="#[payload.accountId]">
+        </taleo:get-account-history>
+    </flow>
+    <flow name="update-account" doc:name="update-account">
+        <taleo:update-account config-ref="Taleo" doc:name="Update account">
+            <taleo:account ref="#[payload.accountRef]"/>
+        </taleo:update-account>
+    </flow>
+    <flow name="search-account" doc:name="search-account">
+        <taleo:search-account config-ref="Taleo" doc:name="Search account">
+            <taleo:search-params ref="#[payload.searchParamsRef]"/>
+        </taleo:search-account>
+    </flow>
+    <flow name="delete-account" doc:name="delete-account">
+        <taleo:delete-account config-ref="Taleo" doc:name="Create account" accountId="#[payload.accountId]">
+        </taleo:delete-account>
+    </flow>
+    <flow name="get-user-by-id" doc:name="get-user-by-id">
+        <taleo:get-user-by-id config-ref="Taleo" doc:name="Get user by id" userId="#[payload.userId]">
+        </taleo:get-user-by-id>
+    </flow>
+    <flow name="get-user-history" doc:name="get-user-history">
+        <taleo:get-user-history config-ref="Taleo" doc:name="Get user history" userId="#[payload.userId]">
+        </taleo:get-user-history>
+    </flow>
+    <flow name="search-user" doc:name="search-user">
+        <taleo:search-user config-ref="Taleo" doc:name="Search user">
+            <taleo:search-params ref="#[payload.searchParamsRef]"/>
+        </taleo:search-user>
+    </flow>
+    <flow name="create-contact" doc:name="create-contact">
+        <taleo:create-contact config-ref="Taleo" doc:name="Create contact">
+            <taleo:contact ref="#[payload.contactRef]"/>
+        </taleo:create-contact>
+    </flow>
+    <flow name="get-contact-by-id" doc:name="get-contact-by-id">
+        <taleo:get-contact-by-id config-ref="Taleo" doc:name="Get contact by id" contactId="#[payload.contactId]">
+        </taleo:get-contact-by-id>
+    </flow>
+    <flow name="get-contact-history" doc:name="get-contact-history">
+        <taleo:get-contact-history config-ref="Taleo" doc:name="Get contact history" contactId="#[payload.contactId]">
+        </taleo:get-contact-history>
+    </flow>
+    <flow name="update-contact" doc:name="update-contact">
+        <taleo:update-contact config-ref="Taleo" doc:name="Update contact">
+            <taleo:contact ref="#[payload.contactRef]"/>
+        </taleo:update-contact>
+    </flow>
+    <flow name="search-contact" doc:name="search-contact">
+        <taleo:search-contact config-ref="Taleo" doc:name="Search contact">
+            <taleo:search-params ref="#[payload.searchParamsRef]"/>
+        </taleo:search-contact>
+    </flow>
+    <flow name="delete-contact" doc:name="delete-contact">
+        <taleo:delete-contact config-ref="Taleo" doc:name="Delete contact" contactId="#[payload.contactId]">
+        </taleo:delete-contact>
+    </flow>
+    <flow name="create-candidate" doc:name="create-candidate">
+        <taleo:create-candidate config-ref="Taleo" doc:name="Create candidate">
+            <taleo:candidate ref="#[payload.candidateRef]"/>
+        </taleo:create-candidate>
+    </flow>
+    <flow name="get-candidate-by-id" doc:name="get-candidate-by-id">
+        <taleo:get-candidate-by-id config-ref="Taleo" doc:name="Get candidate by id"
+                                   candidateId="#[payload.candidateId]">
+        </taleo:get-candidate-by-id>
+    </flow>
+    <flow name="get-candidate-history" doc:name="get-candidate-history">
+        <taleo:get-candidate-history config-ref="Taleo" doc:name="Get candidate history"
+                                     candidateId="#[payload.candidateId]">
+        </taleo:get-candidate-history>
+    </flow>
+    <flow name="update-candidate" doc:name="update-candidate">
+        <taleo:update-candidate config-ref="Taleo" doc:name="Update candidate">
+            <taleo:candidate ref="#[payload.candidateRef]"/>
+        </taleo:update-candidate>
+    </flow>
+    <flow name="search-candidate" doc:name="search-candidate">
+        <taleo:search-candidate config-ref="Taleo" doc:name="Search candidate">
+            <taleo:search-params ref="#[payload.searchParamsRef]"/>
+        </taleo:search-candidate>
+    </flow>
+    <flow name="delete-candidate" doc:name="delete-candidate">
+        <taleo:delete-candidate config-ref="Taleo" doc:name="Delete candidate" candidateId="#[payload.candidateId]">
+        </taleo:delete-candidate>
+    </flow>
+    <flow name="get-candidate-details-by-id" doc:name="get-candidate-details-by-id">
+        <taleo:get-candidate-details-by-id config-ref="Taleo" candidateId="#[payload.candidateId]" doc:name="Taleo"/>
+    </flow>
+
+    <flow name="create-department" doc:name="create-department">
+        <taleo:create-department config-ref="Taleo" doc:name="Create department">
+            <taleo:department ref="#[payload.departmentRef]"/>
+        </taleo:create-department>
+    </flow>
+    <flow name="get-department-by-id" doc:name="get-department-by-id">
+        <taleo:get-department-by-id config-ref="Taleo" doc:name="Get department by id"
+                                    departmentId="#[payload.departmentId]">
+        </taleo:get-department-by-id>
+    </flow>
+    <flow name="get-department-by-name" doc:name="get-department-by-name">
+        <taleo:get-department-by-name config-ref="Taleo" doc:name="Get department by name"
+                                      departmentName="#[payload.departmentName]">
+        </taleo:get-department-by-name>
+    </flow>
+    <flow name="upsert-department" doc:name="update-department">
+        <taleo:upsert-department config-ref="Taleo" doc:name="Update department">
+            <taleo:department ref="#[payload.departmentRef]"/>
+        </taleo:upsert-department>
+    </flow>
+    <flow name="get-departments" doc:name="get-departments">
+        <taleo:get-departments config-ref="Taleo" doc:name="Get departments">
+        </taleo:get-departments>
+    </flow>
+    <flow name="delete-department" doc:name="delete-department">
+        <taleo:delete-department config-ref="Taleo" doc:name="Delete department" departmentId="#[payload.departmentId]">
+        </taleo:delete-department>
+    </flow>
+
+    <flow name="create-attachment" doc:name="create-attachment">
+        <taleo:create-attachment config-ref="Taleo" doc:name="Create attachment"
+                                 attachmentDescription="#[payload.attachmentDescription]"
+                                 attachmentName="#[payload.attachmentName]" candidateId="#[payload.candidateId]"
+                                 contentType="#[payload.contentType]">
+            <taleo:binary-resume ref="#[payload.binaryResumeRef]"/>
+        </taleo:create-attachment>
+    </flow>
+    <flow name="get-attachment" doc:name="get-attachment">
+        <taleo:get-attachment config-ref="Taleo" doc:name="Get attachment" attachmentId="#[payload.attachmentId]">
+        </taleo:get-attachment>
+    </flow>
+    <flow name="get-attachment-data" doc:name="get-attachment-data">
+        <taleo:get-attachment-data config-ref="Taleo" doc:name="Get attachment data"
+                                   attachmentId="#[payload.attachmentId]">
+        </taleo:get-attachment-data>
+    </flow>
+    <flow name="get-attachments" doc:name="get-attachments">
+        <taleo:get-attachments config-ref="Taleo" doc:name="Get attachments" candidateId="#[payload.candidateId]">
+        </taleo:get-attachments>
+    </flow>
+    <flow name="update-attachment" doc:name="update-attachment">
+        <taleo:update-attachment config-ref="Taleo" doc:name="Update attachment" attachmentId="#[payload.attachmentId]"
+                                 attachmentName="#[payload.attachmentName]" contentType="#[payload.contentType]"
+                                 attachmentDescription="#[payload.attachmentDescription]">
+            <taleo:binary-resume ref="#[payload.binaryResumeRef]"/>
+        </taleo:update-attachment>
+    </flow>
+    <flow name="delete-attachment" doc:name="delete-attachment">
+        <taleo:delete-attachment config-ref="Taleo" doc:name="Delete attachment" attachmentId="#[payload.attachmentId]">
+        </taleo:delete-attachment>
+    </flow>
+    <flow name="create-entity-attachment" doc:name="create-entity-attachment">
+        <taleo:create-entity-attachment config-ref="Taleo" doc:name="Create entity attachment"
+                                        contentType="#[payload.contentType]" description="#[payload.description]"
+                                        entityId="#[payload.entityId]" entityType="#[payload.entityType]"
+                                        fileName="#[payload.fileName]">
+            <taleo:data ref="#[payload.dataRef]"/>
+        </taleo:create-entity-attachment>
+    </flow>
+    <flow name="get-entity-attachments" doc:name="get-entity-attachments">
+        <taleo:get-entity-attachments config-ref="Taleo" doc:name="Get entity attachments"
+                                      entityId="#[payload.entityId]" entityType="#[payload.entityType]">
+        </taleo:get-entity-attachments>
+    </flow>
+    <flow name="create-background-check" doc:name="create-background-check">
+        <taleo:create-background-check config-ref="Taleo" doc:name="Create background check">
+            <taleo:background-check ref="#[payload.backgroundCheckRef]"/>
+        </taleo:create-background-check>
+    </flow>
+    <flow name="get-background-check-by-id" doc:name="get-background-check-by-id">
+        <taleo:get-background-check-by-id config-ref="Taleo" doc:name="Get background check by id"
+                                          backgroundCheckId="#[payload.backgroundCheckId]">
+        </taleo:get-background-check-by-id>
+    </flow>
+    <flow name="get-background-checks-by-candidate" doc:name="get-background-checks-by-candidate">
+        <taleo:get-background-checks-by-candidate config-ref="Taleo" doc:name="Get background check by candidate"
+                                                  candidateId="#[payload.candidateId]">
+        </taleo:get-background-checks-by-candidate>
+    </flow>
+    <flow name="update-background-check" doc:name="update-background-check">
+        <taleo:update-background-check config-ref="Taleo" doc:name="Update background check">
+            <taleo:background-check ref="#[payload.backgroundCheckRef]"/>
+        </taleo:update-background-check>
+    </flow>
+    <flow name="delete-background-check" doc:name="delete-background-check">
+        <taleo:delete-background-check config-ref="Taleo" doc:name="Delete background check"
+                                       backgroundCheckId="#[payload.backgroundCheckId]">
+        </taleo:delete-background-check>
+    </flow>
+    <flow name="create-interview" doc:name="create-interview">
+        <taleo:create-interview config-ref="Taleo" doc:name="Create interview">
+            <taleo:interview ref="#[payload.interviewRef]"/>
+        </taleo:create-interview>
+    </flow>
+    <flow name="get-interview-by-id" doc:name="get-interview-by-id">
+        <taleo:get-interview-by-id config-ref="Taleo" doc:name="Get interview by id"
+                                   interviewId="#[payload.interviewId]">
+        </taleo:get-interview-by-id>
+    </flow>
+    <flow name="get-interviews-by-candidate" doc:name="get-interviews-by-candidate">
+        <taleo:get-interviews-by-candidate config-ref="Taleo" doc:name="Get interviews by candidate"
+                                           candidateId="#[payload.candidateId]">
+        </taleo:get-interviews-by-candidate>
+    </flow>
+    <flow name="update-interview" doc:name="update-interview">
+        <taleo:update-interview config-ref="Taleo" doc:name="Update interview">
+            <taleo:interview ref="#[payload.interviewRef]"/>
+        </taleo:update-interview>
+    </flow>
+    <flow name="delete-interview" doc:name="delete-interview ">
+        <taleo:delete-interview config-ref="Taleo" doc:name="Delete interview" interviewId="#[payload.interviewId]">
+        </taleo:delete-interview>
+    </flow>
+    <flow name="create-requisition" doc:name="create-requisition">
+        <taleo:create-requisition config-ref="Taleo" doc:name="Create requisition">
+            <taleo:requisition ref="#[payload.requisitionRef]"/>
+        </taleo:create-requisition>
+    </flow>
+    <flow name="create-requisition-template" doc:name="create-requisition-template">
+        <taleo:create-requisition-template config-ref="Taleo" doc:name="Create interview template">
+            <taleo:requisition ref="#[payload.requisitionRef]"/>
+        </taleo:create-requisition-template>
+    </flow>
+    <flow name="get-requisition-by-id" doc:name="get-requisition-by-id">
+        <taleo:get-requisition-by-id config-ref="Taleo" doc:name="Get requisition by id"
+                                     requisitionId="#[payload.requisitionId]">
+        </taleo:get-requisition-by-id>
+    </flow>
+    <flow name="get-requisition-history" doc:name="get-requisition-history">
+        <taleo:get-requisition-history config-ref="Taleo" doc:name="Get requisition history"
+                                       requisitionId="#[payload.requisitionId]">
+        </taleo:get-requisition-history>
+    </flow>
+    <flow name="update-requisition" doc:name="update-requisition">
+        <taleo:update-requisition config-ref="Taleo" doc:name="Update requisition">
+            <taleo:requisition ref="#[payload.requisitionRef]"/>
+        </taleo:update-requisition>
+    </flow>
+    <flow name="search-requisition" doc:name="search-requisition">
+        <taleo:search-requisition config-ref="Taleo" doc:name="Search requisitions">
+            <taleo:search-params ref="#[payload.searchParamsRef]"/>
+        </taleo:search-requisition>
+    </flow>
+    <flow name="delete-requisition" doc:name="delete-requisition">
+        <taleo:delete-requisition config-ref="Taleo" doc:name="Delete requisition"
+                                  requisitionId="#[payload.requisitionId]">
+        </taleo:delete-requisition>
+    </flow>
+    <flow name="upsert-candidate-to-requisitions" doc:name="upsert-candidate-to-requisitions">
+        <taleo:upsert-candidate-to-requisitions config-ref="Taleo" doc:name="Taleo" doRanking="#[payload.doRanking]"
+                                                candidateId="#[payload.candidateId]" reasonId="#[payload.reasonId]"
+                                                statusId="#[payload.statusId]">
+            <taleo:requisition-ids ref="#[payload.requisitionIdsRef]"/>
+        </taleo:upsert-candidate-to-requisitions>
+    </flow>
+    <flow name="get-requisitions" doc:name="get-requisitions">
+        <taleo:get-requisitions config-ref="Taleo" doc:name="Get requisitions" candidateId="#[payload.candidateId]">
+        </taleo:get-requisitions>
+    </flow>
+    <flow name="submit-candidate" doc:name="submit-candidate">
+        <taleo:submit-candidate config-ref="Taleo" doc:name="Submit candidate" candidateId="#[payload.candidateId]">
+            <taleo:requisition-ids ref="#[payload.requisitionIdsRef]"/>
+        </taleo:submit-candidate>
+    </flow>
+    <flow name="remove-candidate" doc:name="remove-candidate">
+        <taleo:remove-candidate config-ref="Taleo" doc:name="Remove candidate" candidateId="#[payload.candidateId]"
+                                requisitionId="#[payload.requisitionId]">
+        </taleo:remove-candidate>
+    </flow>
+    <flow name="post-requisition" doc:name="post-requisition">
+        <taleo:post-requisition config-ref="Taleo" doc:name="Create interview" formVersion="#[payload.formVersion]"
+                                posterId="#[payload.posterId]" requisitionId="#[payload.requisitionId]">
+        </taleo:post-requisition>
+    </flow>
+    <flow name="unpost-requisition" doc:name="unpost-requisition">
+        <taleo:unpost-requisition config-ref="Taleo" doc:name="Unpost requisition" posterId="#[payload.posterId]"
+                                  requisitionId="#[payload.requisitionId]">
+        </taleo:unpost-requisition>
+    </flow>
+    <flow name="set-associated-user" doc:name="set-associated-user">
+        <taleo:set-associated-user config-ref="Taleo" doc:name="Set associated user"
+                                   requisitionId="#[payload.requisitionId]" association="#[payload.association]"
+                                   userId="#[payload.userId]" userSequenceNumber="#[payload.userSequenceNumber]">
+        </taleo:set-associated-user>
+    </flow>
+    <flow name="get-associated-users" doc:name="get-associated-users">
+        <taleo:get-associated-users config-ref="Taleo" doc:name="Get associated users"
+                                    requisitionId="#[payload.requisitionId]" association="#[payload.association]">
+        </taleo:get-associated-users>
+    </flow>
+    <flow name="remove-associated-user" doc:name="remove-associated-user">
+        <taleo:remove-associated-user config-ref="Taleo" doc:name="Remove associated user"
+                                      association="#[payload.association]" requisitionId="#[payload.requisitionId]"
+                                      userId="#[payload.userId]">
+        </taleo:remove-associated-user>
+    </flow>
+    <flow name="create-link" doc:name="create-link">
+        <taleo:create-link config-ref="Taleo" doc:name="Create link" entityId1="#[payload.entityIdOne]"
+                           entityId2="#[payload.entityIdTwo]" entityType1="#[payload.entityTypeOne]"
+                           entityType2="#[payload.entityTypeTwo]">
+        </taleo:create-link>
+    </flow>
+    <flow name="remove-link" doc:name="remove-link">
+        <taleo:remove-link config-ref="Taleo" doc:name="Remove link" entityId1="#[payload.entityIdOne]"
+                           entityId2="#[payload.entityIdTwo]" entityType1="#[payload.entityTypeOne]"
+                           entityType2="#[payload.entityTypeTwo]">
+        </taleo:remove-link>
+    </flow>
+    <flow name="create-offer" doc:name="create-offer">
+        <taleo:create-offer config-ref="Taleo" doc:name="Create offer">
+            <taleo:offer ref="#[payload.offerRef]"/>
+        </taleo:create-offer>
+    </flow>
+    <flow name="get-offer-by-id" doc:name="get-offer-by-id">
+        <taleo:get-offer-by-id config-ref="Taleo" doc:name="Get offer by id" offerId="#[payload.offerId]">
+        </taleo:get-offer-by-id>
+    </flow>
+    <flow name="update-offer" doc:name="update-offer">
+        <taleo:update-offer config-ref="Taleo" doc:name="Update offer">
+            <taleo:offer ref="#[payload.offerRef]"/>
+        </taleo:update-offer>
+    </flow>
+    <flow name="delete-offer" doc:name="delete-offer">
+        <taleo:delete-offer config-ref="Taleo" doc:name="Create offer" offerId="#[payload.offerId]">
+        </taleo:delete-offer>
+    </flow>
+
+</mule>

@@ -1,0 +1,15 @@
+<jaxws:bindings
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        wsdlLocation="WebAPI.wsdl"
+        xmlns="http://java.sun.com/xml/ns/jaxws"
+        xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:jaxws="http://java.sun.com/xml/ns/jaxws">
+
+    <jaxws:bindings node="wsdl:definitions/wsdl:types">
+
+        <jaxws:enableWrapperStyle>false</jaxws:enableWrapperStyle>
+        <jxb:bindings node="*/xsd:complexType[@name='mapItem']//xsd:element[@name='value']">
+            <jxb:property name="propertyValue"/>
+        </jxb:bindings>
+    </jaxws:bindings>
+</jaxws:bindings>

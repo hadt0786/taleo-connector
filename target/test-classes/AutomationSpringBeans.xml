@@ -1,0 +1,1761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>${TALEO_CREDENTIALS}</value>
+        </property>
+    </bean>
+
+    <!-- create-account -->
+
+    <bean id="createAccountAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+        <property name="address" value="99 Seymour"/>
+        <property name="city" value="San Paolo"/>
+        <property name="country" value="Brazil"/>
+        <property name="description" value="TESTING"/>
+        <property name="fax" value="894-439-0404"/>
+        <property name="industry" value="Aerospace"/>
+        <property name="name" value="Brazil Aero"/>
+        <property name="phone" value="894-439-0404"/>
+        <property name="type" value="Partner"/>
+        <property name="webSite" value="www.brazil.com"/>
+    </bean>
+
+    <!-- get-account-by-id -->
+
+    <bean id="getAccountByIdAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+        <property name="address" value="99 Seymour"/>
+        <property name="city" value="San Paolo"/>
+        <property name="country" value="Brazil"/>
+        <property name="description" value="TESTING"/>
+        <property name="fax" value="894-439-0404"/>
+        <property name="industry" value="Aerospace"/>
+        <property name="name" value="Brazil Aero"/>
+        <property name="phone" value="894-439-0404"/>
+        <property name="type" value="Partner"/>
+        <property name="webSite" value="www.brazil.com"/>
+    </bean>
+
+    <!-- delete-account -->
+
+    <bean id="deleteAccountAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+        <property name="address" value="99 Seymour"/>
+        <property name="city" value="San Paolo"/>
+        <property name="country" value="Brazil"/>
+        <property name="description" value="TESTING"/>
+        <property name="fax" value="894-439-0404"/>
+        <property name="industry" value="Aerospace"/>
+        <property name="name" value="Brazil Aero"/>
+        <property name="phone" value="894-439-0404"/>
+
+        <property name="type" value="Partner"/>
+        <property name="webSite" value="www.brazil.com"/>
+    </bean>
+
+    <!-- update-account -->
+
+    <bean id="updateAccountAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+        <property name="address" value="99 Seymour"/>
+        <property name="city" value="San Paolo"/>
+        <property name="country" value="Brazil"/>
+        <property name="description" value="TESTING"/>
+        <property name="fax" value="894-439-0404"/>
+        <property name="industry" value="Aerospace"/>
+        <property name="name" value="Brazil Aero"/>
+        <property name="phone" value="894-439-0404"/>
+        <property name="type" value="Partner"/>
+        <property name="webSite" value="www.brazil.com"/>
+    </bean>
+
+    <!-- get-account-history -->
+
+    <bean id="getAccountHistoryAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+        <property name="address" value="99 Seymour"/>
+        <property name="city" value="San Paolo"/>
+        <property name="country" value="Brazil"/>
+        <property name="description" value="TESTING"/>
+        <property name="fax" value="894-439-0404"/>
+        <property name="industry" value="Aerospace"/>
+        <property name="name" value="Brazil Aero"/>
+        <property name="phone" value="894-439-0404"/>
+        <property name="type" value="Partner"/>
+        <property name="webSite" value="www.brazil.com"/>
+    </bean>
+
+    <!-- search-account -->
+
+    <bean id="searchAccountAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+        <property name="address" value="99 Seymour"/>
+        <property name="city" value="San Paolo"/>
+        <property name="country" value="Brazil"/>
+        <property name="description" value="TESTING"/>
+        <property name="fax" value="894-439-0404"/>
+        <property name="industry" value="Aerospace"/>
+        <property name="name" value="Brazil Aero"/>
+        <property name="phone" value="894-439-0404"/>
+        <property name="type" value="Partner"/>
+        <property name="webSite" value="www.brazil.com"/>
+    </bean>
+
+    <util:map id="searchAccountSearchParams" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="description" value="TESTING"/>
+    </util:map>
+
+    <!-- search-user  -->
+
+    <util:map id="searchUserSearchParams" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="loginName" value="${taleo.username}"/>
+    </util:map>
+
+    <util:map id="searchUserTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="expectedUserId" value="${taleo.userId}"/>
+        <entry key="searchParams" value-ref="searchUserSearchParams"/>
+    </util:map>
+
+    <!-- get-user-history  -->
+
+    <util:map id="getUserHistoryTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="userId" value="${taleo.userId}"/>
+        <entry key="expectedUsername" value="${taleo.username}"/>
+    </util:map>
+
+    <!-- get-user-by-id  -->
+
+    <util:map id="getUserByIdTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="userId" value="${taleo.userId}"/>
+        <entry key="expectedEmail" value="${taleo.email}"/>
+    </util:map>
+
+    <!-- create-contact -->
+
+    <bean id="createContactContactBean" class="org.mule.modules.taleo.model.ContactBean">
+        <property name="address" value="82 Taleo Drive"/>
+        <property name="assistantEmail" value="skarim@taleo.com"/>
+        <property name="assistantName" value="Shakir Karim"/>
+        <property name="assistantPhone" value="604-761-0087"/>
+        <property name="cellPhone" value="604-920-3949"/>
+        <property name="city" value="Dublin"/>
+        <property name="contactType" value="?"/>
+        <property name="country" value="United States"/>
+        <property name="department" value="Sales"/>
+        <property name="description" value="Head of Partners and Alliances"/>
+        <property name="email" value="ddarrah@taleo.com"/>
+        <property name="fax" value="604-323-2323"/>
+        <property name="firstName" value="Don"/>
+        <property name="lastName" value="Darrah"/>
+        <property name="phone" value="583-903-3434"/>
+        <property name="state" value="US-CA"/>
+        <property name="title" value="Manager"/>
+        <property name="zipCode" value="90210"/>
+    </bean>
+
+    <!-- get-contact-by-id -->
+
+    <bean id="getContactByIdContactBean" class="org.mule.modules.taleo.model.ContactBean">
+        <property name="address" value="82 Taleo Drive"/>
+        <property name="assistantEmail" value="skarim@taleo.com"/>
+        <property name="assistantName" value="Shakir Karim"/>
+        <property name="assistantPhone" value="604-761-0087"/>
+        <property name="cellPhone" value="604-920-3949"/>
+        <property name="city" value="Dublin"/>
+        <property name="contactType" value="?"/>
+        <property name="country" value="United States"/>
+        <property name="department" value="Sales"/>
+        <property name="description" value="Head of Partners and Alliances"/>
+        <property name="email" value="ddarrah@taleo.com"/>
+        <property name="fax" value="604-323-2323"/>
+        <property name="firstName" value="Don"/>
+        <property name="lastName" value="Darrah"/>
+        <property name="phone" value="583-903-3434"/>
+        <property name="state" value="US-CA"/>
+        <property name="title" value="Manager"/>
+        <property name="zipCode" value="90210"/>
+    </bean>
+
+    <!-- delete-contact -->
+
+    <bean id="deleteContactContactBean" class="org.mule.modules.taleo.model.ContactBean">
+        <property name="address" value="82 Taleo Drive"/>
+        <property name="assistantEmail" value="skarim@taleo.com"/>
+        <property name="assistantName" value="Shakir Karim"/>
+        <property name="assistantPhone" value="604-761-0087"/>
+        <property name="cellPhone" value="604-920-3949"/>
+        <property name="city" value="Dublin"/>
+        <property name="contactType" value="?"/>
+        <property name="country" value="United States"/>
+        <property name="department" value="Sales"/>
+        <property name="description" value="Head of Partners and Alliances"/>
+        <property name="email" value="ddarrah@taleo.com"/>
+        <property name="fax" value="604-323-2323"/>
+        <property name="firstName" value="Don"/>
+        <property name="lastName" value="Darrah"/>
+        <property name="phone" value="583-903-3434"/>
+        <property name="state" value="US-CA"/>
+        <property name="title" value="Manager"/>
+        <property name="zipCode" value="90210"/>
+    </bean>
+
+    <!-- update-contact -->
+
+    <bean id="updateContactContactBean" class="org.mule.modules.taleo.model.ContactBean">
+        <property name="address" value="82 Taleo Drive"/>
+        <property name="assistantEmail" value="skarim@taleo.com"/>
+        <property name="assistantName" value="Shakir Karim"/>
+        <property name="assistantPhone" value="604-761-0087"/>
+        <property name="cellPhone" value="604-920-3949"/>
+        <property name="city" value="Dublin"/>
+        <property name="contactType" value="?"/>
+        <property name="country" value="United States"/>
+        <property name="department" value="Sales"/>
+        <property name="description" value="Head of Partners and Alliances"/>
+        <property name="email" value="ddarrah@taleo.com"/>
+        <property name="fax" value="604-323-2323"/>
+        <property name="firstName" value="Don"/>
+        <property name="lastName" value="Darrah"/>
+        <property name="phone" value="583-903-3434"/>
+        <property name="state" value="US-CA"/>
+        <property name="title" value="Manager"/>
+        <property name="zipCode" value="90210"/>
+    </bean>
+
+    <!-- get-contact-history -->
+
+    <bean id="getContactHistoryContactBean" class="org.mule.modules.taleo.model.ContactBean">
+        <property name="address" value="82 Taleo Drive"/>
+        <property name="assistantEmail" value="skarim@taleo.com"/>
+        <property name="assistantName" value="Shakir Karim"/>
+        <property name="assistantPhone" value="604-761-0087"/>
+        <property name="cellPhone" value="604-920-3949"/>
+        <property name="city" value="Dublin"/>
+        <property name="contactType" value="?"/>
+        <property name="country" value="United States"/>
+        <property name="department" value="Sales"/>
+        <property name="description" value="Head of Partners and Alliances"/>
+        <property name="email" value="ddarrah@taleo.com"/>
+        <property name="fax" value="604-323-2323"/>
+        <property name="firstName" value="Don"/>
+        <property name="lastName" value="Darrah"/>
+        <property name="phone" value="583-903-3434"/>
+        <property name="state" value="US-CA"/>
+        <property name="title" value="Manager"/>
+        <property name="zipCode" value="90210"/>
+    </bean>
+
+    <!-- search-contact -->
+
+    <bean id="searchContactContactBean" class="org.mule.modules.taleo.model.ContactBean">
+        <property name="address" value="82 Taleo Drive"/>
+        <property name="assistantEmail" value="skarim@taleo.com"/>
+        <property name="assistantName" value="Shakir Karim"/>
+        <property name="assistantPhone" value="604-761-0087"/>
+        <property name="cellPhone" value="604-920-3949"/>
+        <property name="city" value="Dublin"/>
+        <property name="contactType" value="?"/>
+        <property name="country" value="United States"/>
+        <property name="department" value="Sales"/>
+        <property name="description" value="TESTING"/>
+        <property name="email" value="ddarrah@taleo.com"/>
+        <property name="fax" value="604-323-2323"/>
+        <property name="firstName" value="Don"/>
+        <property name="lastName" value="Darrah"/>
+        <property name="phone" value="583-903-3434"/>
+        <property name="state" value="US-CA"/>
+        <property name="title" value="Manager"/>
+        <property name="zipCode" value="90210"/>
+    </bean>
+
+    <util:map id="searchContactSearchParams" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="description" value="TESTING"/>
+    </util:map>
+
+    <!-- create-candidate -->
+
+    <bean id="createCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="My status to work in this country is unknown"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <!-- get-candidate-by-id -->
+
+    <bean id="getCandidateByIdCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="My status to work in this country is unknown"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <!-- delete-candidate -->
+
+    <bean id="deleteCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="My status to work in this country is unknown"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <!-- update-candidate -->
+
+    <bean id="updateCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="My status to work in this country is unknown"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <!-- get-candidate-history -->
+
+    <bean id="getCandidateHistoryCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="My status to work in this country is unknown"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <!-- search-candidate -->
+
+    <bean id="searchCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <util:map id="searchCandidateSearchParams" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="legalStatus" value="TESTING"/>
+    </util:map>
+
+    <!-- create-department -->
+
+    <bean id="createDepartmentDepartmentBean" class="org.mule.modules.taleo.model.DepartmentBean">
+        <property name="associatedUsers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultApprovers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- get-department-by-id -->
+
+    <bean id="getDepartmentByIdDepartmentBean" class="org.mule.modules.taleo.model.DepartmentBean">
+        <property name="associatedUsers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultApprovers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- get-department-by-name -->
+
+    <bean id="getDepartmentByNameDepartmentBean" class="org.mule.modules.taleo.model.DepartmentBean">
+        <property name="associatedUsers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultApprovers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- get-departments -->
+
+    <bean id="getDepartmentsDepartmentBean" class="org.mule.modules.taleo.model.DepartmentBean">
+        <property name="associatedUsers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultApprovers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- delete-department -->
+
+    <bean id="deleteDepartmentDepartmentBean" class="org.mule.modules.taleo.model.DepartmentBean">
+        <property name="associatedUsers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultApprovers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- upsert-department -->
+
+    <bean id="upsertDepartmentDepartmentBean" class="org.mule.modules.taleo.model.DepartmentBean">
+        <property name="associatedUsers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultApprovers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="upsertDepartmentAdditionalProperties" class="org.mule.modules.taleo.model.Map">
+        <property name="item">
+            <util:list value-type="org.mule.modules.taleo.model.MapItem">
+                <bean class="org.mule.modules.taleo.model.MapItem">
+                    <property name="key" value="userRequisitionApproverIds"/>
+                    <property name="propertyValue" value="${taleo.userId}"/>
+                </bean>
+            </util:list>
+        </property>
+    </bean>
+
+    <!-- get-department-history -->
+
+    <bean id="getDepartmentHistoryDepartmentBean" class="org.mule.modules.taleo.model.DepartmentBean">
+        <property name="associatedUsers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultApprovers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- search-department -->
+
+    <bean id="searchDepartmentDepartmentBean" class="org.mule.modules.taleo.model.DepartmentBean">
+        <property name="associatedUsers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+        <property name="defaultApprovers">
+            <bean class="org.mule.modules.taleo.model.ArrayOfXsdLong">
+                <property name="item">
+                    <util:list value-type="java.lang.Long">
+                        <value>${taleo.userId}</value>
+                    </util:list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <util:map id="searchDepartmentSearchParams" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="departmentName" value="TESTING"/>
+    </util:map>
+
+    <!-- create-attachment -->
+
+    <bean id="createAttachmentCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="createAttachmentBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+        <property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX=="/>
+    </bean>
+
+    <util:map id="createAttachmentTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <entry key="binaryResumeRef" value-ref="createAttachmentBinaryResumeRef"/>
+    </util:map>
+
+    <!-- get-attachment -->
+
+    <bean id="getAttachmentCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="getAttachmentBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+        <property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX=="/>
+    </bean>
+
+    <util:map id="getAttachmentTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="attachmentDescription" value="test1.docx"/>
+        <entry key="attachmentName" value="test1.docx"/>
+        <entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <entry key="binaryResumeRef" value-ref="getAttachmentBinaryResumeRef"/>
+    </util:map>
+
+    <!-- get-attachment-data -->
+
+    <bean id="getAttachmentDataCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="getAttachmentDataBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+        <property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX=="/>
+    </bean>
+
+    <util:map id="getAttachmentDataTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="attachmentDescription" value="test1.docx"/>
+        <entry key="attachmentName" value="test1.docx"/>
+        <entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <entry key="binaryResumeRef" value-ref="getAttachmentDataBinaryResumeRef"/>
+    </util:map>
+
+    <!-- get-attachments -->
+
+    <bean id="getAttachmentsAttachmentsAmount" class="java.lang.Integer">
+        <constructor-arg>
+            <value>2</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="getAttachmentsCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="getAttachmentsBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+        <property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX=="/>
+    </bean>
+
+    <util:map id="getAttachmentsTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <entry key="binaryResumeRef" value-ref="getAttachmentsBinaryResumeRef"/>
+    </util:map>
+
+    <!-- update-attachment -->
+
+    <bean id="updateAttachmentCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="updateAttachmentBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+        <property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX=="/>
+    </bean>
+
+    <util:map id="updateAttachmentTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <entry key="binaryResumeRef" value-ref="updateAttachmentBinaryResumeRef"/>
+    </util:map>
+
+    <!-- delete-attachment -->
+
+    <bean id="deleteAttachmentCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="deleteAttachmentBinaryResumeRef" class="org.mule.modules.taleo.model.ByteArr">
+        <property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaX=="/>
+    </bean>
+
+    <util:map id="deleteAttachmentTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="contentType" value="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+        <entry key="binaryResumeRef" value-ref="deleteAttachmentBinaryResumeRef"/>
+    </util:map>
+
+    <!-- create-entity-attachment -->
+
+    <bean id="createEntityAttachmentCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="createEntityAttachmentDataRef" class="org.mule.modules.taleo.model.ByteArr">
+        <property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaXplZCAxL0wgMTg3NT=="/>
+    </bean>
+
+    <util:map id="createEntityAttachmentTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="entityType" value="CAND"/>
+        <entry key="description" value="pdfAttachment"/>
+        <entry key="fileName" value="new.pdf"/>
+        <entry key="contentType" value="application/pdf"/>
+        <entry key="dataRef" value-ref="createEntityAttachmentDataRef"/>
+    </util:map>
+
+    <!-- get-entity-attachments -->
+
+    <bean id="getEntityAttachmentsAttachmentsAmount" class="java.lang.Integer">
+        <constructor-arg>
+            <value>2</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="getEntityAttachmentsCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="getEntityAttachmentsDataRef" class="org.mule.modules.taleo.model.ByteArr">
+        <property name="array" value="JVBERi0xLjQNJeLjz9MNCjYgMCBvYmogPDwvTGluZWFyaXplZCAxL0wgMTg3NT=="/>
+    </bean>
+
+    <util:map id="getEntityAttachmentsTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="entityType" value="CAND"/>
+        <entry key="description" value="pdfAttachment"/>
+        <entry key="fileName" value="new.pdf"/>
+        <entry key="contentType" value="application/pdf"/>
+        <entry key="dataRef" value-ref="getEntityAttachmentsDataRef"/>
+    </util:map>
+
+    <!-- create-background-check -->
+
+    <bean id="createBackgroundCheckCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="createBackgroundCheckBackgroundCheckBean" class="org.mule.modules.taleo.model.BackgroundCheckBean">
+        <property name="checkerEmail" value="checkerEmail"/>
+        <property name="checkerName" value="checkerName"/>
+        <property name="checkerPhone" value="checkerPhone"/>
+        <property name="comments" value="comments"/>
+        <property name="creator" value="creator"/>
+    </bean>
+
+    <!-- delete-background-check -->
+
+    <bean id="deleteBackgroundCheckCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="deleteBackgroundCheckBackgroundCheckBean" class="org.mule.modules.taleo.model.BackgroundCheckBean">
+        <property name="checkerEmail" value="checkerEmail"/>
+        <property name="checkerName" value="checkerName"/>
+        <property name="checkerPhone" value="checkerPhone"/>
+        <property name="comments" value="comments"/>
+        <property name="creator" value="creator"/>
+    </bean>
+
+    <!-- get-background-check-by-id -->
+
+    <bean id="getBackgroundCheckByIdCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="getBackgroundCheckByIdBackgroundCheckBean" class="org.mule.modules.taleo.model.BackgroundCheckBean">
+        <property name="checkerEmail" value="checkerEmail"/>
+        <property name="checkerName" value="checkerName"/>
+        <property name="checkerPhone" value="checkerPhone"/>
+        <property name="comments" value="comments"/>
+        <property name="creator" value="creator"/>
+    </bean>
+
+    <!-- get-backgroundchecks-by-candidate -->
+
+    <bean id="getBackgroundChecksByCandidateBackgroundChecksAmount" class="java.lang.Integer">
+        <constructor-arg>
+            <value>2</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="getBackgroundChecksByCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="getBackgroundChecksByCandidateBackgroundCheckBean"
+          class="org.mule.modules.taleo.model.BackgroundCheckBean">
+        <property name="checkerEmail" value="sara@intellius.com"/>
+        <property name="checkerName" value="Intellius Background"/>
+        <property name="checkerPhone" value="630-345-6978"/>
+        <property name="comments" value="Package 1 background check process"/>
+    </bean>
+
+    <!-- udpate-background -->
+
+    <bean id="updateBackgroundCheckCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="updateBackgroundCheckBackgroundCheckBean" class="org.mule.modules.taleo.model.BackgroundCheckBean">
+        <property name="checkerEmail" value="sara@intellius.com"/>
+        <property name="checkerName" value="Intellius Background"/>
+        <property name="checkerPhone" value="630-345-6978"/>
+        <property name="comments" value="Package 1 background check process"/>
+    </bean>
+
+    <!-- create-interview -->
+
+    <bean id="createInterviewCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="createInterviewInterviewBean" class="org.mule.modules.taleo.model.InterviewBean">
+        <property name="status" value="Phone Screen"/>
+        <property name="comments" value="Direct Report"/>
+        <property name="creator" value="skarim"/>
+        <property name="interviewRoom" value="Whistler"/>
+        <property name="interviewType" value="1st Interview"/>
+        <property name="requisitionId" value="13"/>
+    </bean>
+
+    <!-- delete-interview -->
+
+    <bean id="deleteInterviewCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="deleteInterviewInterviewBean" class="org.mule.modules.taleo.model.InterviewBean">
+        <property name="status" value="Phone Screen"/>
+        <property name="comments" value="Direct Report"/>
+        <property name="creator" value="skarim"/>
+        <property name="interviewRoom" value="Whistler"/>
+        <property name="interviewType" value="1st Interview"/>
+        <property name="requisitionId" value="13"/>
+    </bean>
+
+    <!-- get-interview-by-id -->
+
+    <bean id="getInterviewByIdCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="getInterviewByIdInterviewBean" class="org.mule.modules.taleo.model.InterviewBean">
+        <property name="status" value="Phone Screen"/>
+        <property name="comments" value="Direct Report"/>
+        <property name="creator" value="skarim"/>
+        <property name="interviewRoom" value="Whistler"/>
+        <property name="interviewType" value="1st Interview"/>
+        <property name="requisitionId" value="13"/>
+    </bean>
+
+    <!-- get-interviews-by-candidate -->
+
+    <bean id="getInterviewsByCandidateInterviewsAmount" class="java.lang.Integer">
+        <constructor-arg>
+            <value>2</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="getInterviewsByCandidateCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="getInterviewsByCandidateInterviewBean" class="org.mule.modules.taleo.model.InterviewBean">
+        <property name="status" value="Phone Screen"/>
+        <property name="comments" value="Direct Report"/>
+        <property name="creator" value="skarim"/>
+        <property name="interviewRoom" value="Whistler"/>
+        <property name="interviewType" value="1st Interview"/>
+        <property name="requisitionId" value="13"/>
+    </bean>
+
+    <!-- update-interview -->
+
+    <bean id="updateInterviewCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="updateInterviewInterviewBean" class="org.mule.modules.taleo.model.InterviewBean">
+        <property name="status" value="Phone Screen"/>
+        <property name="comments" value="Direct Report"/>
+        <property name="creator" value="skarim"/>
+        <property name="interviewRoom" value="Whistler"/>
+        <property name="interviewType" value="1st Interview"/>
+        <property name="requisitionId" value="13"/>
+    </bean>
+
+    <!-- create-requisition -->
+
+    <bean id="createRequisitionRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <!-- create-requisition-template -->
+
+    <bean id="createRequisitionTemplateRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <!-- get-requisition-by-id -->
+
+    <bean id="getRequisitionByIdRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <!-- delete-requisition -->
+
+    <bean id="deleteRequisitionRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <!-- update-requisition -->
+
+    <bean id="updateRequisitionRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <!-- get-requisition-history -->
+
+    <bean id="getRequisitionHistoryRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <!-- search-requisition -->
+
+    <bean id="searchRequisitionRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <util:map id="searchRequisitionSearchParams" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="description" value="TESTING"/>
+    </util:map>
+
+    <!-- upsert-candidate-to-requisitions -->
+
+    <bean id="getRequisitionsRequisitionsAmount" class="java.lang.Integer">
+        <constructor-arg>
+            <value>2</value>
+        </constructor-arg>
+    </bean>
+
+    <bean id="getRequisitionsCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="getRequisitionsRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <util:map id="getRequisitionsUpsertCandidateToRequisitions" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="statusId" value="14"/>
+        <entry key="reasonId" value="476"/>
+        <entry key="doRanking" value="True"/>
+    </util:map>
+
+    <!-- post and unpost requisiton -->
+
+    <bean id="postUnpostRequisitionRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <util:map id="postUnpostRequisitionTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="formVersion" value="0"/>
+        <entry key="posterId" value="1"/>
+    </util:map>
+
+    <!-- associated-users -->
+
+    <bean id="associatedUserRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <util:map id="associatedUserTestData" map-class="java.util.HashMap"
+              key-type="java.lang.String" value-type="java.lang.Object" scope="prototype">
+        <entry key="association" value="A"/>
+        <entry key="userId" value="${taleo.userId}"/>
+        <entry key="userSequenceNumber" value="1"/>
+    </util:map>
+
+    <!-- create-offer -->
+
+    <bean id="createOfferOfferBean" class="org.mule.modules.taleo.model.OfferBean">
+        <property name="status" value="New"/>
+        <property name="candidateId" value="48"/>
+        <property name="employmentType" value="Full time"/>
+        <property name="manager" value="skarim"/>
+        <property name="requisitionId" value="13"/>
+        <property name="title" value="Offer Business Development"/>
+    </bean>
+
+    <!-- get-offer-by-id -->
+
+    <bean id="getOfferByIdOfferBean" class="org.mule.modules.taleo.model.OfferBean">
+        <property name="status" value="New"/>
+        <property name="candidateId" value="48"/>
+        <property name="employmentType" value="Full time"/>
+        <property name="manager" value="skarim"/>
+        <property name="requisitionId" value="13"/>
+        <property name="title" value="Offer Business Development"/>
+    </bean>
+
+    <!-- delete-offer -->
+
+    <bean id="deleteOfferOfferBean" class="org.mule.modules.taleo.model.OfferBean">
+        <property name="status" value="New"/>
+        <property name="candidateId" value="48"/>
+        <property name="employmentType" value="Full time"/>
+        <property name="manager" value="skarim"/>
+        <property name="requisitionId" value="13"/>
+        <property name="title" value="Offer Business Development"/>
+    </bean>
+
+    <!-- update-offer -->
+
+    <bean id="updateOfferOfferBean" class="org.mule.modules.taleo.model.OfferBean">
+        <property name="status" value="New"/>
+        <property name="candidateId" value="48"/>
+        <property name="employmentType" value="Full time"/>
+        <property name="manager" value="skarim"/>
+        <property name="requisitionId" value="13"/>
+        <property name="title" value="Offer Business Development"/>
+    </bean>
+
+    <bean id="createOfferCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="createOfferRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <bean id="deleteOfferCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="deleteOfferRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+    <bean id="updateOfferCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="updateOfferRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+    <bean id="getOfferByIdCandidateBean" class="org.mule.modules.taleo.model.CandidateBean">
+        <property name="status" value="Hired"/>
+        <property name="address" value="2323 Macaroni Road"/>
+        <property name="cellPhone" value="999-343-2344"/>
+        <property name="city" value="Jason"/>
+        <property name="country" value="US-CA"/>
+        <property name="firstName" value="Jessica"/>
+        <property name="gender" value="Choose Not to Disclose"/>
+        <property name="lastName" value="Karim"/>
+        <property name="legalStatus" value="TESTING"/>
+        <property name="middleInitial" value="H"/>
+        <property name="password" value="jason"/>
+        <property name="phone" value="748-232-2323"/>
+        <property name="race" value="Hispanic or Latino"/>
+        <property name="rank" value="100"/>
+        <property name="reasonRejected" value="Position was canceled"/>
+        <property name="referredBy" value="skarim"/>
+        <property name="source" value="Other"/>
+        <property name="state" value="US-CA"/>
+        <property name="submittedBy" value="skarim"/>
+        <property name="textResume" value="Skilled in after school specials"/>
+        <property name="veteran" value="Armed Forces Service Medal Veterans"/>
+        <property name="zipCode" value="93045"/>
+    </bean>
+
+    <bean id="getOfferByIdRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+    <!-- create-delete-link -->
+
+    <bean id="createLinkAccountBean" class="org.mule.modules.taleo.model.AccountBean">
+        <property name="address" value="99 Seymour"/>
+        <property name="city" value="San Paolo"/>
+        <property name="country" value="Brazil"/>
+        <property name="description" value="TESTING"/>
+        <property name="fax" value="894-439-0404"/>
+        <property name="industry" value="Aerospace"/>
+        <property name="name" value="Brazil Aero"/>
+        <property name="phone" value="894-439-0404"/>
+        <property name="type" value="Partner"/>
+        <property name="webSite" value="www.brazil.com"/>
+    </bean>
+
+    <bean id="createLinkRequisitionBean" class="org.mule.modules.taleo.model.RequisitionBean">
+        <property name="status" value="Waiting for Approval"/>
+        <property name="description"
+                  value="The Human Resources Generalist originates and leads Human Resources practices and objectives that will provide an employee-oriented, high performance culture that emphasizes empowerment, quality, productivity and standards, goal attainment, and the recruitment and ongoing development of a superior workforce. The Human Resources Generalist coordinates implementation of services, policies, and programs through Human Resources staff; reports to the Human Resources Director, and assists and advises company managers about Human Resources issues."/>
+        <property name="duration" value="Full time"/>
+        <property name="jobCategory" value="Professionals"/>
+        <property name="jobCode" value="Level 1"/>
+        <property name="location" value="Headquarters"/>
+        <property name="numOpen" value="3"/>
+        <property name="payRange" value="50000 - 75000"/>
+        <property name="title" value="HR Generalist"/>
+    </bean>
+
+</beans>

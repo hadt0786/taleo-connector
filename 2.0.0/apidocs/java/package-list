@@ -1,0 +1,17 @@
+org.mule.modules.taleo
+org.mule.modules.taleo.adapter
+org.mule.modules.taleo.adapters
+org.mule.modules.taleo.agents
+org.mule.modules.taleo.api
+org.mule.modules.taleo.api.transformers
+org.mule.modules.taleo.client
+org.mule.modules.taleo.config
+org.mule.modules.taleo.connectivity
+org.mule.modules.taleo.devkit
+org.mule.modules.taleo.model
+org.mule.modules.taleo.model.holders
+org.mule.modules.taleo.model.transformers
+org.mule.modules.taleo.pooling
+org.mule.modules.taleo.processors
+org.mule.modules.taleo.strategy
+
